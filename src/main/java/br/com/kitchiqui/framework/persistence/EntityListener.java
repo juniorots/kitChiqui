@@ -24,7 +24,6 @@ public final class EntityListener {
     public void onPreUpdate(DomainObject obj) {
         setLastUpdate(obj);
     }
-
     private void setId(@NonNull DomainObject obj) {
         if (obj.getId() == null) {
             obj.setId(UUID.randomUUID());
