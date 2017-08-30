@@ -4,7 +4,7 @@
   <artifactId>kitChiqui</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <description>kitsDiferentes</description>
-  <packaging>war</packaging>
+  <packaging>ear</packaging>
   
   <name>kitchiqui</name>
 
