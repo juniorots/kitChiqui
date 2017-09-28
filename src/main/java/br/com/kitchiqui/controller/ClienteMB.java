@@ -27,7 +27,8 @@ import lombok.Cleanup;
 @RequestScoped
 public class ClienteMB implements Serializable {
 
-    private Cliente cliente= null;
+	private static final long serialVersionUID = 1L;
+	private Cliente cliente= null;
     private Collection<Cliente> listaCliente = new ArrayList<>();
     
     /**
