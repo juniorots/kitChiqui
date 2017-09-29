@@ -26,6 +26,9 @@ public class Produto extends DomainObject {
 	
 	@NotNull
 	private String descritivo;
+	
+	@NotNull
+	private Integer tipo;
 
 	public String getSrcImagem() {
 		return srcImagem;
@@ -58,5 +61,13 @@ public class Produto extends DomainObject {
 	public void setDescritivo(String descritivo) {
 		this.descritivo = descritivo;
 	}
+
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
+	}	
 	
 }
