@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:icecore="http://www.icefaces.org/icefaces/core"
       xmlns:p="http://primefaces.org/ui">
             
@@ -14,7 +15,7 @@
 	        <div class="fullscreenbanner-container">
 	          <div class="fullscreenbanner">
 	            <ul>
-            	 <c:forEach produtos="#{produtoMB.listaProdutos}" var="produto">	
+            	 <c:forEach items="#{produtoMB.listaProdutos}" var="produto">	
 	              <li data-transition="slidehorizontal" data-slotamount="5" data-masterspeed="700" data-title="Slide 1">
 	                <img src="img/home/banner-slider/slider-bg.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"/>
 	                <div class="slider-caption slider-captionV1 container">

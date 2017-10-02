@@ -8,6 +8,8 @@ package br.com.kitchiqui.negocio;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,6 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Produto;
 import lombok.Cleanup;
 
@@ -54,14 +57,17 @@ public class ProdutoDAOTest {
       Produto produto = new Produto();    
       ProdutoDAO dao = new ProdutoDAO(entityManager);
       
-//      usuario.setEmail("juniorots@gmail.com");
-//      usuario.setSenha("12345");
-//      usuario.setReceberEmail("S");
+      produto.setSrcImagem("img/home/banner-slider/shoe1.png");
+      produto.setTitulo("TÊNIS AMARELO");
+      produto.setSubTitulo("Promoção do mês");
+      produto.setDescritivo("Sensação do verão");
+      produto.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       
-      Produto insProduto = dao.insert(produto);
       
+      dao.insert(produto);      
       entityManager.getTransaction().commit();
 
+//      Produto insProduto = dao.insert(produto);
 //      List<Produto> usuarios = dao.selectAll();
 //      assertNotNull(usInserido.getId());
 //      assertEquals(1, usuario.size());

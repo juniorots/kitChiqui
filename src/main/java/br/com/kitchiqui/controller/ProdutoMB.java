@@ -1,9 +1,16 @@
+/**
+ * Vendas de Kits chiques.
+ * 
+ * @author Jose Alves
+ */
 package br.com.kitchiqui.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -12,6 +19,8 @@ import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.Produto;
 import lombok.Cleanup;
 
+@ManagedBean
+@SessionScoped
 public class ProdutoMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +41,13 @@ public class ProdutoMB implements Serializable {
         entityManager.getTransaction().begin();
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
-        this.listaProdutos.addAll( dao.selectAll() );
+        
+        Produto p = new Produto();
+        p.setTitulo("TESTE DE PRODUTO");
+        p.setSrcImagem("img/home/banner-slider/shoe1.png");
+        
+        this.listaProdutos.add(p);
+//        this.listaProdutos.addAll( dao.selectAll() );
 	}
 	
 	
