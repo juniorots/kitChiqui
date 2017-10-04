@@ -15,6 +15,9 @@ public class Produto extends DomainObject {
 
 	private static final long serialVersionUID = 1L;
 	
+	@NotNull 
+	private int idProduto;
+	
 	@NotNull
 	private String srcImagem;
 	
@@ -29,6 +32,14 @@ public class Produto extends DomainObject {
 	
 	@NotNull
 	private Integer tipo;
+
+	public int getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
 
 	public String getSrcImagem() {
 		return srcImagem;

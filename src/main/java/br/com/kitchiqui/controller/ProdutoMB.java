@@ -16,7 +16,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Produto;
+import br.com.kitchiqui.util.CargaInicial;
 import lombok.Cleanup;
 
 @ManagedBean
@@ -29,6 +31,9 @@ public class ProdutoMB implements Serializable {
 	private Collection<Produto> listaProdutos = new ArrayList<>();
 	
 	public ProdutoMB() {
+
+		// Trabalhando na carga inicial
+		CargaInicial.carregarVitrinePrincipal();
 		
 		/*
          * Trabalhando no conteudo...
@@ -42,12 +47,11 @@ public class ProdutoMB implements Serializable {
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
         
-        Produto p = new Produto();
-        p.setTitulo("TESTE DE PRODUTO");
-        p.setSrcImagem("img/home/banner-slider/shoe1.png");
-        
-        this.listaProdutos.add(p);
-//        this.listaProdutos.addAll( dao.selectAll() );
+        for (Produto p : dao.selectAll()) {
+        	if (p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())) { 
+        		this.listaProdutos.addAll( dao.selectAll() );
+        	}
+        }
 	}
 	
 	
