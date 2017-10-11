@@ -7,7 +7,7 @@ package br.com.kitchiqui.modelo;
 
 public enum EnumTipoProduto {
 	PRODUTO_VITRINE(1),
-	PRODUTO_MOSTRUARIO(2);
+	PRODUTO_DESTAQUE(2);
 	
 	private final Integer tipo;
 	

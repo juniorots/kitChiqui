@@ -14,7 +14,14 @@
         <ui:define name="centro">
             <div class="conteudo">
                 <h:form id="form">
-				<ui:include src="vitrinePai.xhtml"/> 		
+					<ui:include src="vitrinePai.xhtml"/> 
+					
+					<section class="mainContent clearfix">
+        				<div class="container">		
+							<ui:include src="colecaoProduto.xhtml"/>
+							<ui:include src="destaqueProduto.xhtml"/>
+						</div>
+					</section>
                 </h:form>
             </div>
         </ui:define>

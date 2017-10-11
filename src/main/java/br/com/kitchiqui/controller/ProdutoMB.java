@@ -15,11 +15,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import lombok.Cleanup;
 import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Produto;
-import br.com.kitchiqui.util.CargaInicial;
-import lombok.Cleanup;
 
 @ManagedBean
 @SessionScoped
@@ -28,13 +27,12 @@ public class ProdutoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Produto produto = null;
-	private Collection<Produto> listaProdutos = new ArrayList<>();
+	private Collection<Produto> listaVitrine = new ArrayList();
+	private Collection<Produto> listaDestaque = new ArrayList();
+	private Collection<Produto> listaParceiros = new ArrayList();
 	
 	public ProdutoMB() {
 
-		// Trabalhando na carga inicial
-		CargaInicial.carregarVitrinePrincipal();
-		
 		/*
          * Trabalhando no conteudo...
          */
@@ -49,7 +47,10 @@ public class ProdutoMB implements Serializable {
         
         for (Produto p : dao.selectAll()) {
         	if (p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())) { 
-        		this.listaProdutos.addAll( dao.selectAll() );
+        		this.listaVitrine.add( p );
+        	}
+        	if (p.getTipo().equals(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo())) { 
+        		this.listaDestaque.add( p );
         	}
         }
 	}
@@ -61,11 +62,32 @@ public class ProdutoMB implements Serializable {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-	public Collection<Produto> getListaProdutos() {
-		return listaProdutos;
+	
+	public Collection<Produto> getListaParceiros() {
+		return listaParceiros;
 	}
-	public void setListaProdutos(Collection<Produto> listaProdutos) {
-		this.listaProdutos = listaProdutos;
+
+
+	public void setListaParceiros(Collection<Produto> listaParceiros) {
+		this.listaParceiros = listaParceiros;
+	}
+
+
+	public Collection<Produto> getListaDestaque() {
+		return listaDestaque;
+	}
+
+
+	public void setListaDestaque(Collection<Produto> listaDestaque) {
+		this.listaDestaque = listaDestaque;
+	}
+
+
+	public Collection<Produto> getListaVitrine() {
+		return listaVitrine;
+	}
+	public void setListaVitrine(Collection<Produto> listaVitrine) {
+		this.listaVitrine = listaVitrine;
 	}
 	
 }

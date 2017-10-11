@@ -8,9 +8,11 @@ package br.com.kitchiqui.modelo;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.stereotype.Component;
+
 import br.com.kitchiqui.framework.persistence.DomainObject;
 
-@Entity
+@Entity 
 public class Produto extends DomainObject {
 
 	private static final long serialVersionUID = 1L;
@@ -24,14 +26,22 @@ public class Produto extends DomainObject {
 	@NotNull
 	private String titulo;
 	
-	@NotNull
 	private String subTitulo;
 	
-	@NotNull
 	private String descritivo;
 	
 	@NotNull
 	private Integer tipo;
+	
+	private Double preco;
+	
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
 
 	public int getIdProduto() {
 		return idProduto;

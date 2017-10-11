@@ -8,26 +8,29 @@
 
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
-    <jta-data-source>java:/jdbc/kitchiqui</jta-data-source>  
     <exclude-unlisted-classes>false</exclude-unlisted-classes>  
+    
+    <!-- 
+    	NOTA: Ao utilizar JUnit, inserir tag <jta-data-source> nesse bloco de comentario
+    <jta-data-source>java:/jdbc/kitchiqui</jta-data-source>  
+    <class>br.com.kitchiqui.modelo.Produto</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    -->
     
     <properties>
     
-      <!-- Wildfly -->	
-      <property name="wildfly.jpa.hibernate.search.module" value="none" />
 	  <property name="jboss.as.jpa.providerModule" value="application" />
-
+	  <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+	  
       <property name="hibernate.archive.autodetection" value="class"/>
       <property name="hibernate.show_sql" value="true"/>
             
-      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
       <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
       
-      <!--
       <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/kitchiqui"/>
       <property name="hibernate.connection.username" value="kitchiqui"/>
       <property name="hibernate.connection.password" value="ablife"/>
-       -->
        
       <!-- Postgres - REMOTO 
       <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>

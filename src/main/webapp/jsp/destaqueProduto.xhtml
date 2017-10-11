@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:icecore="http://www.icefaces.org/icefaces/core"
+      xmlns:p="http://primefaces.org/ui">
+            
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+   		<div class="row featuredProducts margin-bottom">
+   			<div class="col-xs-12">
+              <div class="page-header">
+                <h4>Destaque do mês</h4>
+              </div>
+            </div>
+   			
+   			<div class="col-xs-12">
+       			<div class="owl-carousel featuredProductsSlider">
+   				<c:forEach items="#{produtoMB.listaDestaque}" var="produto">
+				<div class="slide">
+             	<div class="productImage clearfix">
+    	            <img src="#{produto.srcImagem}" alt="featured-product-img"/>
+	                <!-- 
+					 <img src="img/home/featured-product/product-01.jpg" alt="featured-product-img"/>
+					-->
+		        	<div class="productMasking">
+			        	<ul class="list-inline btn-group" role="group">
+			              <li><a data-toggle="modal" href=".login-modal" class="btn btn-default"><i class="fa fa-heart"></i></a></li>
+			              <li><a href="cart-page.html" class="btn btn-default"><i class="fa fa-shopping-cart"></i></a></li>
+			              <li><a data-toggle="modal" href=".quick-view" class="btn btn-default"><i class="fa fa-eye"></i></a></li>
+			            </ul>
+			          </div>
+			    </div>
+			    <div class="productCaption clearfix">
+	    	      <a href="single-product.html">
+		            <h5>#{produto.titulo}</h5>
+		          </a>
+			          <h3>#{produto.preco}</h3>
+		        </div>
+		      </div>
+		     </c:forEach>
+	 		</div>
+		</div>
+	</div>    		      
+</html>

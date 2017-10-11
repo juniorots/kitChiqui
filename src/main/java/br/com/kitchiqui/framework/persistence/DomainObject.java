@@ -2,9 +2,11 @@ package br.com.kitchiqui.framework.persistence;
 
 import java.io.Serializable;
 import java.util.UUID;
+
 import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -26,4 +28,12 @@ public abstract class DomainObject implements Serializable {
 
     @Id
     private UUID id;
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
 }

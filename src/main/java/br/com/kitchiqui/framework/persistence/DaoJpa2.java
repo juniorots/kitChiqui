@@ -34,7 +34,8 @@ import lombok.extern.log4j.Log4j;
 public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
 
     private static final String NOT_SUPPORTED_YET = "Not supported yet.";
-
+    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DaoJpa2.class);
+    
     private Class<DO> domainClass;
     private EntityManager entityManager;
 
