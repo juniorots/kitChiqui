@@ -8,8 +8,6 @@ package br.com.kitchiqui.modelo;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.stereotype.Component;
-
 import br.com.kitchiqui.framework.persistence.DomainObject;
 
 @Entity 

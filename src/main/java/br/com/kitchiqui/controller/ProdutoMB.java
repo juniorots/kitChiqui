@@ -16,8 +16,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import lombok.Cleanup;
+import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
+import br.com.kitchiqui.modelo.Parceiro;
 import br.com.kitchiqui.modelo.Produto;
 
 @ManagedBean
@@ -29,7 +31,7 @@ public class ProdutoMB implements Serializable {
 	private Produto produto = null;
 	private Collection<Produto> listaVitrine = new ArrayList();
 	private Collection<Produto> listaDestaque = new ArrayList();
-	private Collection<Produto> listaParceiros = new ArrayList();
+	private Collection<Parceiro> listaParceiros = new ArrayList();
 	
 	public ProdutoMB() {
 
@@ -44,6 +46,7 @@ public class ProdutoMB implements Serializable {
         entityManager.getTransaction().begin();
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
+        ParceiroDAO parDAO = new ParceiroDAO(entityManager);
         
         for (Produto p : dao.selectAll()) {
         	if (p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())) { 
@@ -53,8 +56,11 @@ public class ProdutoMB implements Serializable {
         		this.listaDestaque.add( p );
         	}
         }
+        
+        for (Parceiro par : parDAO.selectAll()) {
+        	this.listaParceiros.add( par );
+        }
 	}
-	
 	
 	public Produto getProduto() {
 		return produto;
@@ -62,26 +68,22 @@ public class ProdutoMB implements Serializable {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-	
-	public Collection<Produto> getListaParceiros() {
+
+	public Collection<Parceiro> getListaParceiros() {
 		return listaParceiros;
 	}
 
-
-	public void setListaParceiros(Collection<Produto> listaParceiros) {
+	public void setListaParceiros(Collection<Parceiro> listaParceiros) {
 		this.listaParceiros = listaParceiros;
 	}
-
 
 	public Collection<Produto> getListaDestaque() {
 		return listaDestaque;
 	}
 
-
 	public void setListaDestaque(Collection<Produto> listaDestaque) {
 		this.listaDestaque = listaDestaque;
 	}
-
 
 	public Collection<Produto> getListaVitrine() {
 		return listaVitrine;

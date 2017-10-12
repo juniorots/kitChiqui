@@ -17,13 +17,13 @@
     			<div class="col-xs-12">
 	              <div class="owl-carousel partnersLogoSlider">
 	              
-	              	<c:forEach items="#{produtoMB.listaParceiros}" var="produto">
+	              	<c:forEach items="#{produtoMB.listaParceiros}" var="parceiro">
 		              	<div class="slide">
-		                    <img src="img/home/partners/partner-01.png" alt="partner-img"/>
-		                    <!-- 
-			                    <img src="img/home/partners/partner-01.png" alt="partner-img"/>
-		                    -->
 		                  	<div class="partnersLogo clearfix">
+			                    <img src="#{parceiro.srcImagem}" alt="partner-img"/>
+			                    <!-- 
+				                    <img src="img/home/partners/partner-01.png" alt="partner-img"/>
+			                    -->
 	                  		</div>
 	                	</div>
                 	</c:forEach>

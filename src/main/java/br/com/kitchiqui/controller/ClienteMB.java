@@ -29,7 +29,7 @@ public class ClienteMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Cliente cliente= null;
-    private Collection<Cliente> listaCliente = new ArrayList<>();
+    private Collection<Cliente> listaCliente = new ArrayList();
     
     /**
      * Creates a new instance of ClienteMB
@@ -180,7 +180,7 @@ public class ClienteMB implements Serializable {
         
         ClienteDAO dao = new ClienteDAO(entityManager);
         
-        HashMap<String, String> campos = new HashMap<>();
+        HashMap<String, String> campos = new HashMap();
         campos.put("email", getCliente().getEmail() );
         campos.put("senha", Util.cifrar( getCliente().getSenha() ) );
 
@@ -214,8 +214,8 @@ public class ClienteMB implements Serializable {
         
         ClienteDAO dao = new ClienteDAO(entityManager);
         
-        HashMap<String, String> campos = new HashMap<>();
-        HashMap<String, Date> campoData = new HashMap<>();
+        HashMap<String, String> campos = new HashMap();
+        HashMap<String, Date> campoData = new HashMap();
         campos.put("email", getCliente().getEmail() );
         campoData.put("dtNascimento", getCliente().getDtNascimento() );
         

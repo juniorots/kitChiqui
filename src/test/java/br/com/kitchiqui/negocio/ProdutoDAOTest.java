@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import lombok.Cleanup;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,7 +20,6 @@ import org.junit.Test;
 import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Produto;
-import lombok.Cleanup;
 
 public class ProdutoDAOTest {
 	
@@ -38,11 +39,11 @@ public class ProdutoDAOTest {
     public void tearDown() {
     }
 
-//  @Test
+  @Test
   public void example() {
   }
     
-  @Test
+//  @Test
   public void mainTest() {
 	  
 	  @Cleanup
@@ -144,7 +145,7 @@ public class ProdutoDAOTest {
       prod11.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       dao.insert(prod11);
       
-      entityManager.getTransaction().commit();
+//      entityManager.getTransaction().commit();
   }
   
 }
