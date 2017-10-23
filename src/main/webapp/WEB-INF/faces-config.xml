@@ -11,11 +11,11 @@
             <from-outcome>inicio</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
-        <!-- 
         <navigation-case>
-            <from-outcome>cadastrarUsuario</from-outcome>
-            <to-view-id>/jsp/cadastrarUsuario.xhtml</to-view-id>
+            <from-outcome>detalheProduto</from-outcome>
+            <to-view-id>/jsp/detalheProduto.xhtml</to-view-id>
         </navigation-case>
+        <!-- 
         <navigation-case>
             <from-outcome>acidosGraxos</from-outcome>
             <to-view-id>/jsp/acidosGraxos.xhtml</to-view-id>

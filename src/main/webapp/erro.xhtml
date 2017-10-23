@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <h:head>
+			<ui:include src="WEB-INF/template/cabecalho.xhtml"/>
+        </h:head>
+       	<body class="body-wrapper">
+		<h:form>
+		    <!-- MAIN CONTENT SECTION -->
+		    <section class="mainContent clearfix notFound">
+		      <div class="container">
+		        <div class="row">
+		          <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+		            <h:commandLink class="navbar-brand pageLogo" action="#{produtoMB.paginaPrincipal}"><img src="img/kitChiquiLogo01.png" alt="logo"/></h:commandLink>
+		            <h1>500</h1>
+		            <h2>Vixi, Deu ruim!!</h2><h3>Tente outra vez.</h3><h7>- Raul Seixas -</h7>
+		            <br />
+		            <!-- 
+			            <div class="input-group">
+			              <input type="text" class="form-control" placeholder="Search again" aria-describedby="basic-addon2">
+			              <a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-search"></i></a>
+			            </div>
+		            -->
+		            <h:commandLink class="btn btn-default" action="#{produtoMB.paginaPrincipal}" role="button">Início</h:commandLink>
+		          </div>
+		        </div>
+		      </div>
+		    </section>
+		</h:form>
+		
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <script src="plugins/jquery-ui/jquery-ui.js"></script>
+	    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+	    <script src="plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	    <script src="plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	    <script src="plugins/owl-carousel/owl.carousel.js"></script>
+	    <script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+	    <script src="plugins/countdown/jquery.syotimer.js"></script>
+	    <script src="js/custom.js"></script>
+	  </body>
+</html>

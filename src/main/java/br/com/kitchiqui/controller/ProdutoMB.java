@@ -8,9 +8,11 @@ package br.com.kitchiqui.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.UUID;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,6 +23,7 @@ import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Parceiro;
 import br.com.kitchiqui.modelo.Produto;
+import br.com.kitchiqui.util.Util;
 
 @ManagedBean
 @SessionScoped
@@ -32,6 +35,11 @@ public class ProdutoMB implements Serializable {
 	private Collection<Produto> listaVitrine = new ArrayList();
 	private Collection<Produto> listaDestaque = new ArrayList();
 	private Collection<Parceiro> listaParceiros = new ArrayList();
+	private Collection<Produto> listaFiltro = new ArrayList();
+
+	// section forwarding...	
+	private static final String DETALHE_PRODUTO = "/jsp/detalheProduto.xhtml";
+	private static final String PAGINA_PRINCIPAL = "/jsp/principal.xhtml";
 	
 	public ProdutoMB() {
 
@@ -62,11 +70,42 @@ public class ProdutoMB implements Serializable {
         }
 	}
 	
+	/**
+	 * Tratando especificacao do produto
+	 * @return
+	 */
+	public void detalharProduto() {
+		
+		@Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        this.produto = dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto")));
+        
+		Util.forward(DETALHE_PRODUTO);
+	}
+	
+	public void paginaPrincipal(){
+		Util.forward(PAGINA_PRINCIPAL);
+	}
+	
 	public Produto getProduto() {
 		return produto;
 	}
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public Collection<Produto> getListaFiltro() {
+		return listaFiltro;
+	}
+
+	public void setListaFiltro(Collection<Produto> listaFiltro) {
+		this.listaFiltro = listaFiltro;
 	}
 
 	public Collection<Parceiro> getListaParceiros() {

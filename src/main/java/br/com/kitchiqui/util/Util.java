@@ -6,7 +6,6 @@
 
 package br.com.kitchiqui.util;
 
-import br.com.kitchiqui.modelo.Cliente;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,12 +14,18 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
+
 import javax.faces.application.FacesMessage;
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.primefaces.context.RequestContext;
+
+import br.com.kitchiqui.modelo.Cliente;
 
 /**
  *
@@ -139,9 +144,11 @@ public class Util {
      */
     public static void forward( String caminho ) {
         try {
-            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-            ec.redirect( ((HttpServletRequest) ec.getRequest()).getContextPath() + caminho );            
-            ec.redirect( ((HttpServletRequest) ec.getRequest()).getRequestURI() );            
+        	FacesContext context = FacesContext.getCurrentInstance();
+        	ViewHandler vh = context.getApplication().getViewHandler();
+        	UIViewRoot vr = vh.createView(FacesContext.getCurrentInstance(), caminho);
+        	context.setViewRoot(vr);
+        	context.renderResponse();
         } catch ( Exception e) {
             e.printStackTrace();
         }

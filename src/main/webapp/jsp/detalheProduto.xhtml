@@ -7,7 +7,7 @@
       xmlns:icecore="http://www.icefaces.org/icefaces/core"
       xmlns:p="http://primefaces.org/ui">
       <ui:composition template="/WEB-INF/template/mestre.xhtml">
-            
+      <ui:define name="centro">
         <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
             #[request.contextPath}/<DIRETORIO>/..
@@ -24,7 +24,7 @@
 		       <div class="col-xs-6">
 		         <ol class="breadcrumb pull-right">
 		           <li>
-		             <a href="index.html">Início</a>
+		             <h:commandLink action="#{produtoMB.paginaPrincipal}">Início</h:commandLink>
 		           </li>
 		           <li class="active">Detalhe do produto</li>
 		         </ol>
@@ -41,26 +41,46 @@
 						<div class="media">
 							<div class="media-left productSlider">
 							
-                                  <div class="item active" data-thumb="0">
-			                        <img src="img/products/signle-product/product-slide-big-01.jpg">
-			                      </div>
-			                      <div class="item" data-thumb="1">
-			                        <img src="img/products/signle-product/product-slide-big-02.jpg">
-			                      </div>
-			                      <div class="item" data-thumb="2">
-			                        <img src="img/products/signle-product/product-slide-big-03.jpg">
-			                      </div>
-			                      <div class="item" data-thumb="3">
-			                        <img src="img/products/signle-product/product-slide-big-04.jpg">
-			                      </div>
+								<div id="carousel" class="carousel slide" data-ride="carousel">
+                    				<div class="carousel-inner">
+                    					<c:set var="i" value="0"/>
+                    					<c:forEach var="pGrande" items="#{produtoMB.produto.listaGrandeProduto}">
+                    						<div class="item active" data-thumb="${i}">
+				                        		<img src="#{pGrande.srcImagem}"/>
+				                      		</div>
+				                      		<c:set var="i" value="${i+1}"/>		
+                    					</c:forEach>
+                    				<!-- 
+	                                  <div class="item active" data-thumb="0">
+				                        <img src="img/products/signle-product/product-slide-big-01.jpg"/>
+				                      </div>
+				                      <div class="item" data-thumb="1">
+				                        <img src="img/products/signle-product/product-slide-big-02.jpg"/>
+				                      </div>
+				                      <div class="item" data-thumb="2">
+				                        <img src="img/products/signle-product/product-slide-big-03.jpg"/>
+				                      </div>
+				                      <div class="item" data-thumb="3">
+				                        <img src="img/products/signle-product/product-slide-big-04.jpg"/>
+				                      </div>
+									</div>
+                    				-->
+								</div>
 							
 								  <div class="clearfix">
 				                    <div id="thumbcarousel" class="carousel slide" data-interval="false">
 				                      <div class="carousel-inner">
-				                          <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="img/products/signle-product/product-slide-small-01.jpg"></div>
-				                          <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="img/products/signle-product/product-slide-small-02.jpg"></div>
-				                          <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="img/products/signle-product/product-slide-small-03.jpg"></div>
-				                          <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="img/products/signle-product/product-slide-small-04.jpg"></div>
+				                      	<c:set var="i" value="0"/>
+				                      	<c:forEach var="pPequeno" items="#{produtoMB.produto.listaPequenoProduto}">
+				            				<div data-target="#carousel" data-slide-to="${i}" class="thumb"><img src="#{pPequeno.srcImagem}"/></div>
+				            				<c:set var="i" value="${i+1}"/>          		
+				                      	</c:forEach>
+				                      	<!-- 
+					                      <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="img/products/signle-product/product-slide-small-01.jpg"/></div>
+				                          <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="img/products/signle-product/product-slide-small-02.jpg"/></div>
+				                          <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="img/products/signle-product/product-slide-small-03.jpg"/></div>
+				                          <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="img/products/signle-product/product-slide-small-04.jpg"/></div>
+				                      	 -->			
 				                      </div>
 				                      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
 				                        <span class="glyphicon glyphicon-chevron-left"></span>
@@ -75,19 +95,15 @@
 							
 							<div class="media-body">
 								<ul class="list-inline">
-				                    <li><a href="index.html"><i class="fa fa-reply" aria-hidden="true"></i>Continuar Comprando</a></li>
+				                    <li><h:commandLink action="#{produtoMB.paginaPrincipal}"><i class="fa fa-reply" aria-hidden="true"></i>Continuar Comprando</h:commandLink></li>
 				                    <!-- 
 				                    <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li>
 				                    -->
 				                </ul>
-				                <h2>Pellentesque non risus quis tellus</h2>
-                  				<h3>$149</h3>
+				                <h2>#{produtoMB.produto.tituloDescritivo}</h2>
+                  				<h3>#{produtoMB.produto.preco}</h3>
                   				<p>
-                  					Mauris lobortis augue ex, ut faucibus nisi mollis ac. Sed volutpat scelerisque ex ut ullamcorper. 
-                  				Cras at velit quis sapien dapibus laoreet a id odio. Sed sit amet accumsan ante, eu congue metus. 
-                  				Aenean eros tortor, cursus quis feugiat sed, vestibulum vel purus. Etiam aliquam turpis quis blandit finibus. 
-                  				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor placerat lectus, facilisis ornare leo tincidunt vel. 
-                  				Duis rutrum felis felis, eget malesuada massa tincidunt a.
+                  					#{produtoMB.produto.anotacaoPrincipalDescritivo}
                   				</p>
                   				<span class="quick-drop">
 				                    <select name="guiest_id3" id="guiest_id3" class="select-drop">
@@ -97,7 +113,7 @@
 				                      <option value="3">Grande</option>
 				                    </select>
 				                </span>
-				                <span class="quick-drop resizeWidth">
+				                <span class="quick-drop">
 				                    <select name="guiest_id4" id="guiest_id4" class="select-drop">
 				                      <option value="0">Quantidade</option>
 				                      <option value="1">1</option>
@@ -106,7 +122,7 @@
 				                    </select>
 				                </span>
 				                <div class="btn-area">
-				                    <a href="cart-page.html" class="btn btn-primary btn-block">Adicionar ao carrinho <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+				                    <a href="cart-page.html" class="btn btn-primary btn-block">Comprar <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 				                </div>
                   				<div class="tabArea">
                   					<ul class="nav nav-tabs">
@@ -115,8 +131,10 @@
 				                      <li><a data-toggle="tab" href="#composicao">composição</a></li>
 				                    </ul>
                   				
-                  					<div class="detalhes">
-				                      <div id="details" class="tab-pane fade in active">
+                  					<div class="tab-content">
+				                      <div id="detalhes" class="tab-pane fade in active">
+				                      	#{produtoMB.produto.anotacaoDetalhe}
+				                      	<!-- 
 				                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				                        <ul class="list-unstyled">
 				                          <li>Black, Crew Neck</li>
@@ -124,18 +142,25 @@
 				                          <li>Waterbased Ink</li>
 				                          <li>Wash Cold, dry low</li>
 				                        </ul>
+				                      	-->
 				                      </div>
 				                      <div id="notaTecnica" class="tab-pane fade">
+				                      	#{produtoMB.produto.anotacaoTécnica}
+				                      	<!-- 
 				                        <p>
 				                        	Nulla facilisi. Mauris efficitur, massa et iaculis accumsan, mauris velit ultrices purus, quis condimentum nibh dolor ut tortor. 
 				                        Donec egestas tortor quis mattis gravida. Ut efficitur elit vitae dignissim volutpat. 
 				                        </p>
+				                      	-->
 				                      </div>
 				                      <div id="composicao" class="tab-pane fade">
+										#{produtoMB.produto.anotacaoComposicao}
+				                      	<!-- 
 				                        <p>
 				                        	Praesent dui felis, gravida a auctor at, facilisis commodo ipsum. Cras eu faucibus justo. 
 				                        Nullam varius cursus nisi, sed elementum sem sagittis at. Nulla tellus massa, vestibulum a commodo facilisis, pulvinar convallis nunc.
 				                        </p>
+				                      	 -->
 				                      </div>
 				                    </div>
                   				</div>
@@ -144,11 +169,11 @@
 												
 						</div>
 					</div>
-				</div>	
-				
+				</div>
+					
 				<ui:include src="destaqueProduto.xhtml"/>
-					 	
 		 	</div>
 		 </section>
-        
+	</ui:define>
+    </ui:composition>
 </html>
