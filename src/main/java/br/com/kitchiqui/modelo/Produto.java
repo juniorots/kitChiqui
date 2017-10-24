@@ -6,12 +6,17 @@
 package br.com.kitchiqui.modelo;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
 
@@ -40,18 +45,44 @@ public class Produto extends DomainObject {
 	/*
 	 * Secao de informacoes utilizadas no descritivo detalhado do produto
 	 */
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private LinkedList<ImagemGrandeProduto> listaGrandeProduto;
+	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Fetch (FetchMode.SELECT)
+	private List<ImagemGrandeProduto> listaGrandeProduto;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private LinkedList<ImagemPequenoProduto> listaPequenoProduto;
+	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Fetch (FetchMode.SELECT)
+	private List<ImagemPequenoProduto> listaPequenoProduto;
 	
+	private String tituloDescritivo;
+	
+	@Lob
+	private String anotacaoPrincipalDescritivo;
+	
+	@Lob
 	private String anotacaoDetalhe;
 	
-	private String anotacaoTécnica;
+	@Lob
+	private String anotacaoTecnica;
 	
+	@Lob
 	private String anotacaoComposicao;
 	
+	public String getTituloDescritivo() {
+		return tituloDescritivo;
+	}
+
+	public void setTituloDescritivo(String tituloDescritivo) {
+		this.tituloDescritivo = tituloDescritivo;
+	}
+
+	public String getAnotacaoPrincipalDescritivo() {
+		return anotacaoPrincipalDescritivo;
+	}
+
+	public void setAnotacaoPrincipalDescritivo(String anotacaoPrincipalDescritivo) {
+		this.anotacaoPrincipalDescritivo = anotacaoPrincipalDescritivo;
+	}
+
 	public Double getPreco() {
 		return preco;
 	}
@@ -100,7 +131,7 @@ public class Produto extends DomainObject {
 		this.tipo = tipo;
 	}
 
-	public LinkedList<ImagemGrandeProduto> getListaGrandeProduto() {
+	public List<ImagemGrandeProduto> getListaGrandeProduto() {
 		if (listaGrandeProduto == null) {
 			listaGrandeProduto = new LinkedList();
 		}
@@ -112,7 +143,7 @@ public class Produto extends DomainObject {
 		this.listaGrandeProduto = listaGrandeProduto;
 	}
 
-	public LinkedList<ImagemPequenoProduto> getListaPequenoProduto() {
+	public List<ImagemPequenoProduto> getListaPequenoProduto() {
 		if (listaPequenoProduto == null) {
 			listaPequenoProduto = new LinkedList();
 		}
@@ -140,12 +171,12 @@ public class Produto extends DomainObject {
 		this.anotacaoDetalhe = anotacaoDetalhe;
 	}
 
-	public String getAnotacaoTécnica() {
-		return anotacaoTécnica;
+	public String getAnotacaoTecnica() {
+		return anotacaoTecnica;
 	}
 
-	public void setAnotacaoTécnica(String anotacaoTécnica) {
-		this.anotacaoTécnica = anotacaoTécnica;
+	public void setAnotacaoTecnica(String anotacaoTecnica) {
+		this.anotacaoTecnica = anotacaoTecnica;
 	}
 
 	public String getAnotacaoComposicao() {

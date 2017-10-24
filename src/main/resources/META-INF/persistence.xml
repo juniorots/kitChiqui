@@ -9,19 +9,20 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:/jdbc/kitchiqui</jta-data-source>
     
-	<!-- NOTA: Bloco de comentario que devera ser utulizado junto com a secao 
-	do jUnit para o devido acesso a base.
+	<!-- SECAO PARA USO DE TESTES JUNIT
 	-->
 	<class>br.com.kitchiqui.modelo.Produto</class>
 	<class>br.com.kitchiqui.modelo.Parceiro</class>
 	<class>br.com.kitchiqui.modelo.Cliente</class>
+	<class>br.com.kitchiqui.modelo.ImagemGrandeProduto</class>
+	<class>br.com.kitchiqui.modelo.ImagemPequenoProduto</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>  
     
     <properties>
     
 	  <property name="jboss.as.jpa.providerModule" value="application" />
       <property name="hibernate.archive.autodetection" value="class"/>
-	  <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+	  <property name="hibernate.temp.use_jdbc_metadata_defaults" value="true" />
 
       <property name="hibernate.show_sql" value="true"/>
             
