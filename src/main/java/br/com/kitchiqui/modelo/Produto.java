@@ -5,6 +5,8 @@
  */
 package br.com.kitchiqui.modelo;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -87,6 +89,11 @@ public class Produto extends DomainObject {
 		return preco;
 	}
 
+	public String getPrecoFormatado() {
+		NumberFormat nf = new DecimalFormat("###,##0.00");
+		return "R$ " + nf.format(preco);
+	}
+	
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}

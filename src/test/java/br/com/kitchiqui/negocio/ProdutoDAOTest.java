@@ -110,13 +110,13 @@ public class ProdutoDAOTest {
       		+ "Entretanto, o cliente (atleta) que consome o produto (Psicologia do Esporte) "
       		+ "nunca opinou sobre este, na América do Sul.");
       
-      prod.setAnotacaoDetalhe("<p>A análise dos resultados proporcionou as seguintes conclusões: </p> "
-				              + "          <ul class=\"list-unstyled\"> "
-				              + "            <li>Cor amarelo;</li> "
-				              + "            <li>Tamanho versátil;</li> "
-				              + "            <li>Serve para todas as idades;</li> "
-				              + "            <li>Lavavél em máquina;</li> "
-				              + "          </ul>");
+      prod.setAnotacaoDetalhe("<p>A análise dos resultados proporcionou as seguintes conclusões:</p>"
+    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Cor branco;</li>"
+	              + "<li>Tamanho versátil;</li>"
+	              + "<li>Útil para todas as idades;</li>"
+	              + "<li>Lavavél em máquina;</li>"
+              + "</ul>");
       
       prod.setAnotacaoTecnica("O autor sugere que sejam divulgados estes resultados aos psicólogos e aos "
       		+ "membros da comissão técnica dos clubes para o aperfeiçoamento dos futuros programas de Psicologia do Esporte.");
@@ -185,13 +185,13 @@ public class ProdutoDAOTest {
       		+ "Entretanto, o cliente (atleta) que consome o produto (Psicologia do Esporte) "
       		+ "nunca opinou sobre este, na América do Sul.");
       
-      prod2.setAnotacaoDetalhe("<p>A análise dos resultados proporcionou as seguintes conclusões: </p> "
-				              + "          <ul class=\"list-unstyled\"> "
-				              + "            <li>Cor branco;</li> "
-				              + "            <li>Tamanho versátil;</li> "
-				              + "            <li>Útil para todas as idades;</li> "
-				              + "            <li>Lavavél em máquina;</li> "
-				              + "          </ul>");
+      prod2.setAnotacaoDetalhe("<p>A análise dos resultados proporcionou as seguintes conclusões:</p>"
+    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Cor branco;</li>"
+	              + "<li>Tamanho versátil;</li>"
+	              + "<li>Útil para todas as idades;</li>"
+	              + "<li>Lavavél em máquina;</li>"
+              + "</ul>");
       
       prod2.setAnotacaoTecnica("O autor sugere que sejam divulgados estes resultados aos psicólogos e aos "
       		+ "membros da comissão técnica dos clubes para o aperfeiçoamento dos futuros programas de Psicologia do Esporte.");
@@ -260,13 +260,13 @@ public class ProdutoDAOTest {
       		+ "Entretanto, o cliente (atleta) que consome o produto (Psicologia do Esporte) "
       		+ "nunca opinou sobre este, na América do Sul.");
       
-      prod3.setAnotacaoDetalhe("<p>A análise dos resultados proporcionou as seguintes conclusões: </p> "
-				              + "          <ul class=\"list-unstyled\"> "
-				              + "            <li>Cor Preto;</li> "
-				              + "            <li>Tamanho versátil;</li> "
-				              + "            <li>Útil para todas as idades;</li> "
-				              + "            <li>Lavavél em máquina;</li> "
-				              + "          </ul>");
+      prod3.setAnotacaoDetalhe("<p>A análise dos resultados proporcionou as seguintes conclusões:</p>"
+    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Cor branco;</li>"
+	              + "<li>Tamanho versátil;</li>"
+	              + "<li>Útil para todas as idades;</li>"
+	              + "<li>Lavavél em máquina;</li>"
+              + "</ul>");
       
       prod3.setAnotacaoTecnica("O autor sugere que sejam divulgados estes resultados aos psicólogos e aos "
       		+ "membros da comissão técnica dos clubes para o aperfeiçoamento dos futuros programas de Psicologia do Esporte.");

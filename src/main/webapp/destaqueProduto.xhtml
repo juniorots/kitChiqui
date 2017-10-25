@@ -37,9 +37,9 @@
 			    </div>
 			    <div class="productCaption clearfix">
 	    	      <a href="single-product.html">
-		            <h5>#{produto.titulo}</h5>
+		            <h5><h:outputText escape="false" value="#{produto.titulo}"/>}</h5>
 		          </a>
-			          <h3>#{produto.preco}</h3>
+			          <h3><h:outputText escape="false" value="#{produto.precoFormatado}"/></h3>
 		        </div>
 		      </div>
 		     </c:forEach>

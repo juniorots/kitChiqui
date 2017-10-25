@@ -38,8 +38,8 @@ public class ProdutoMB implements Serializable {
 	private Collection<Produto> listaFiltro = new ArrayList();
 
 	// section forwarding...	
-	private static final String DETALHE_PRODUTO = "/jsp/detalheProduto.xhtml";
-	private static final String PAGINA_PRINCIPAL = "/jsp/principal.xhtml";
+	private static final String DETALHE_PRODUTO = "/detalheProduto.xhtml";
+	private static final String PAGINA_PRINCIPAL = "/index.xhtml";
 	
 	public ProdutoMB() {
 
