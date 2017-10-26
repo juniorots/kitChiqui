@@ -69,6 +69,19 @@ public class Produto extends DomainObject {
 	@Lob
 	private String anotacaoComposicao;
 	
+	/*
+	 * Secao de informacoes utilizadas no filtro do produto
+	 */
+	private Integer especie;
+	
+	public Integer getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(Integer especie) {
+		this.especie = especie;
+	}
+
 	public String getTituloDescritivo() {
 		return tituloDescritivo;
 	}

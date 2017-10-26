@@ -8,6 +8,7 @@ package br.com.kitchiqui.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 import javax.faces.bean.ManagedBean;
@@ -39,6 +40,7 @@ public class ProdutoMB implements Serializable {
 
 	// section forwarding...	
 	private static final String DETALHE_PRODUTO = "/detalheProduto.xhtml";
+	private static final String FILTRO_PRODUTO = "/filtroProduto.xhtml";
 	private static final String PAGINA_PRINCIPAL = "/index.xhtml";
 	
 	public ProdutoMB() {
@@ -89,11 +91,40 @@ public class ProdutoMB implements Serializable {
 		Util.forward(DETALHE_PRODUTO);
 	}
 	
+	/**
+	 * Trabalhando nos filtros de produtos
+	 */
+	public void filtrarProduto() {
+		@Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+                
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        this.produto = null;
+        getProduto().setEspecie(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("especie")));
+        listaFiltro.clear();
+        
+        for (Produto p : dao.selectUsingFilter(this.produto)) {
+        	if (!p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())){
+        		listaFiltro.add(p);
+        	}
+        }
+        
+		Util.forward(FILTRO_PRODUTO);
+	}
+	
+	
 	public void paginaPrincipal(){
 		Util.forward(PAGINA_PRINCIPAL);
 	}
 	
 	public Produto getProduto() {
+		if (produto == null) {
+			produto = new Produto();
+		}
 		return produto;
 	}
 	public void setProduto(Produto produto) {

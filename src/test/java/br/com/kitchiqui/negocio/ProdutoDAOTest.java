@@ -20,6 +20,7 @@ import org.junit.Test;
 import br.com.kitchiqui.base.ImagemGrandeProdutoDAO;
 import br.com.kitchiqui.base.ImagemPequenoProdutoDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.modelo.EnumEspecie;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.ImagemGrandeProduto;
 import br.com.kitchiqui.modelo.ImagemPequenoProduto;
@@ -67,6 +68,7 @@ public class ProdutoDAOTest {
       prod.setSubTitulo("Promoção do mês");
       prod.setDescritivo("Sensação do verão");
       prod.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
+      prod.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       
       // Tratando secao de detalhe
       ImagemGrandeProduto imgG1 = new ImagemGrandeProduto();
@@ -142,6 +144,7 @@ public class ProdutoDAOTest {
       prod2.setSubTitulo("Suavidade no estilo");
       prod2.setDescritivo("Conquista cada passo");
       prod2.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
+      prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       
       // Tratando secao de detalhe
       ImagemGrandeProduto imgG5 = new ImagemGrandeProduto();
@@ -217,6 +220,7 @@ public class ProdutoDAOTest {
       prod3.setSubTitulo("Estilo Blade");
       prod3.setDescritivo("Dominando um estilo");
       prod3.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
+      prod3.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       
    // Tratando secao de detalhe
       ImagemGrandeProduto imgG9 = new ImagemGrandeProduto();
@@ -291,6 +295,7 @@ public class ProdutoDAOTest {
       prod4.setTitulo("Camisa verde");
       prod4.setPreco(new Double(75));
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod4.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       dao.insert(prod4);
       
       Produto prod5 = new Produto();   
@@ -299,6 +304,7 @@ public class ProdutoDAOTest {
       prod5.setTitulo("Óculos de sol");
       prod5.setPreco(new Double(300));
       prod5.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod5.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       dao.insert(prod5);
       
       Produto prod6 = new Produto();   
@@ -307,6 +313,7 @@ public class ProdutoDAOTest {
       prod6.setTitulo("Vestido florido");
       prod6.setPreco(new Double(750));
       prod6.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod6.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       dao.insert(prod6);
       
       Produto prod7 = new Produto();   
@@ -315,6 +322,7 @@ public class ProdutoDAOTest {
       prod7.setTitulo("Bolsa fit");
       prod7.setPreco(new Double(350));
       prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod7.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       dao.insert(prod7);
       
       Produto prod8 = new Produto();   
@@ -323,6 +331,7 @@ public class ProdutoDAOTest {
       prod8.setTitulo("Boné Style");
       prod8.setPreco(new Double(90));
       prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod8.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       dao.insert(prod8);
       
       Produto prod9 = new Produto();   
@@ -331,6 +340,7 @@ public class ProdutoDAOTest {
       prod9.setTitulo("Tênis vermelho");
       prod9.setPreco(new Double(500));
       prod9.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod9.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       dao.insert(prod9);
       
       Produto prod10 = new Produto();   
@@ -339,6 +349,7 @@ public class ProdutoDAOTest {
       prod10.setTitulo("Chápeu blues");
       prod10.setPreco(new Double(105));
       prod10.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod10.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       dao.insert(prod10);
       
       Produto prod11 = new Produto();   
@@ -347,6 +358,7 @@ public class ProdutoDAOTest {
       prod11.setTitulo("Vestido África");
       prod11.setPreco(new Double(1500));
       prod11.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod11.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       dao.insert(prod11);
       
       entityManager.getTransaction().commit();

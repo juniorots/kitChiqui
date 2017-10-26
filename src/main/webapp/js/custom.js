@@ -279,8 +279,8 @@ jQuery(document).ready(function() {
 
 //============================== PRICE SLIDER RANGER =========================
 jQuery(document).ready(function() {
-	var minimum = 20;
-	var maximum = 300;
+	var minimum = 40;
+	var maximum = 1000;
 
 	$( "#price-range" ).slider({
 		range: true,
@@ -288,13 +288,13 @@ jQuery(document).ready(function() {
 		max: maximum,
 		values: [ minimum, maximum ],
 		slide: function( event, ui ) {
-			$( "#price-amount-1" ).val( "$" + ui.values[ 0 ] );
-			$( "#price-amount-2" ).val( "$" + ui.values[ 1 ] );
+			$( "#price-amount-1" ).val( "R$ " + ui.values[ 0 ] );
+			$( "#price-amount-2" ).val( "R$ " + ui.values[ 1 ] );
 		}
 	});
 
-	$( "#price-amount-1" ).val( "$" + $( "#price-range" ).slider( "values", 0 ));
-	$( "#price-amount-2" ).val( "$" + $( "#price-range" ).slider( "values", 1 ));
+	$( "#price-amount-1" ).val( "R$ " + $( "#price-range" ).slider( "values", 0 ));
+	$( "#price-amount-2" ).val( "R$ " + $( "#price-range" ).slider( "values", 1 ));
 });
 //============================== PRODUCT SINGLE SLIDER =========================
 jQuery(document).ready(function() {
