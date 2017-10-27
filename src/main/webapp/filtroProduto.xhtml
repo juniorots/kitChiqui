@@ -9,6 +9,7 @@
       xmlns:p="http://primefaces.org/ui">
       <ui:composition template="/WEB-INF/template/mestre.xhtml">
       <ui:define name="centro">
+      <h:form id="formFiltro">
             
       <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
@@ -25,9 +26,7 @@
             <div class="col-xs-6">
               <ol class="breadcrumb pull-right">
                 <li>
-                	<h:form>
-	                  <h:commandLink action="#{produtoMB.paginaPrincipal}">Início</h:commandLink>
-                	</h:form>
+	            	<h:commandLink action="#{produtoMB.paginaPrincipal}">Início</h:commandLink>
                 </li>
                 <!-- 
                 <li>
@@ -55,9 +54,30 @@
 	      						<li>
 			                        <a href="javascript:;" data-toggle="collapse" data-target="#masculino">Mundo Masculino <i class="fa fa-plus"></i></a>
 			                        <ul id="masculino" class="collapse collapseItem">
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Bolsas <span>(6)</span></a></li>
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Escovas <span>(6)</span></a></li>
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Kits montados <span>(6)</span></a></li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Estojos <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdEstojo}"/></span>
+			                          		<f:param name="idClasse" value="1"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Escovas <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdEscova}"/></span>
+			                          		<f:param name="idClasse" value="3"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Kits montados <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdKitMontado}"/></span>
+			                          		<f:param name="idClasse" value="2"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Mostrar tudo <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdTodos}"/></span>
+			                          		<f:param name="idClasse" value="null"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
 			                        </ul>
 	                      		</li>
            					</c:if>
@@ -66,9 +86,30 @@
 	                      		<li>
 			                        <a href="javascript:;" data-toggle="collapse" data-target="#feminino">Coisas de Mulher <i class="fa fa-plus"></i></a>
 			                        <ul id="feminino" class="collapse collapseItem">
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Bolsas <span>(6)</span></a></li>
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Escovas <span>(6)</span></a></li>
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Kits montados <span>(6)</span></a></li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Estojos <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdEstojo}"/></span>
+			                          		<f:param name="idClasse" value="1"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Escovas <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdEscova}"/></span>
+			                          		<f:param name="idClasse" value="3"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Kits montados <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdKitMontado}"/></span>
+			                          		<f:param name="idClasse" value="2"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Mostrar tudo <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdTodos}"/></span>
+			                          		<f:param name="idClasse" value="null"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
 			                        </ul>
 	                      		</li>
                       		</c:if>
@@ -77,32 +118,53 @@
 	                      		<li>
 			                        <a href="javascript:;" data-toggle="collapse" data-target="#infantil">Só para Crianças <i class="fa fa-plus"></i></a>
 			                        <ul id="infantil" class="collapse collapseItem">
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Bolsas <span>(6)</span></a></li>
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Escovas <span>(6)</span></a></li>
-			                          <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Kits montados <span>(6)</span></a></li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Estojos <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdEstojo}"/></span>
+			                          		<f:param name="idClasse" value="1"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Escovas <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdEscova}"/></span>
+			                          		<f:param name="idClasse" value="3"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Kits montados <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdKitMontado}"/></span>
+			                          		<f:param name="idClasse" value="2"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
+			                          <li>
+			                          	<h:commandLink action="#{produtoMB.filtrarProduto}"><i class="fa fa-caret-right" aria-hidden="true"></i>Mostrar tudo <span><h:outputText escape="false" value="#{produtoMB.produto.contadorClasse.qtdTodos}"/></span>
+			                          		<f:param name="idClasse" value="null"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandLink>
+			                          </li>
 			                        </ul>
 	                      		</li>
                       		</c:if>
            				</ul>
-           			</div>			
+           			</div>	
            		</div>	
               </div>
               
               <div class="panel panel-default priceRange">
-                <div class="panel-heading">Do tamanho do seu bolso</div>
+                <div class="panel-heading">Seu bolso</div>
                 <div class="panel-body clearfix">
                   <div class="price-slider-inner">
                     <span class="amount-wrapper">
-                      Preço:
-                      <input type="text" id="price-amount-1" readonly="readonly"/>
+                      Preço: <br />
+                      <input type="text" id="price-amount-1" readonly="readonly" style="width: 40%"/>
                       <strong>-</strong>
                       <input type="text" id="price-amount-2" readonly="readonly"/>
                     </span>
                     <div id="price-range"></div>
                   </div>
-                  <input class="btn btn-default" type="submit" value="Buscar"/>
                   <!-- <span class="priceLabel">Price: <strong>$12 - $30</strong></span> -->
-                </div>
+                </div><br />
+                <input class="btn btn-default" type="submit" value="Buscar"/>
                </div>
                
                <!-- 
@@ -133,7 +195,11 @@
 			
             <div class="col-md-9 col-sm-8 col-xs-12">
               <div class="row">
-               	<h:form id="formFiltro">
+              	<c:if test="#{empty produtoMB.listaFiltro}">
+              		<div class="alert alert-info fade in">
+                  		<strong>Ops!</strong> Ainda não temos esses itens, em breve disponibilizaremos algo.
+                	</div>
+              	</c:if>
               	<c:forEach var="prod" items="#{produtoMB.listaFiltro}">
               		<div class="col-sm-4 col-xs-12">
 	                  <div class="productBox">
@@ -142,7 +208,7 @@
 	                      <div class="productMasking">
 	                      	<ul class="list-inline btn-group" role="group">
 	                      	<li>
-		                      	<h:commandLink class="btn viewBtn" action="#{produtoMB.detalharProduto}">Detalhar
+		                      	<h:commandLink class="btn viewBtn" action="#{produtoMB.detalharProduto}"><i class="fa fa-eye"></i>
 		                          	<!-- 
 										<f:param name="idProduto" value="#{produto.id}"/>
 									 		
@@ -181,7 +247,6 @@
 	                  </div>
                 	</div>
               	</c:forEach>
-               	</h:form>
               </div> 
               
             </div>
@@ -190,7 +255,8 @@
      </section> 
      
      <ui:include src="parceiros.xhtml"/>
-      
+     
+    </h:form>
     </ui:define>
 	</ui:composition>        
 </html>

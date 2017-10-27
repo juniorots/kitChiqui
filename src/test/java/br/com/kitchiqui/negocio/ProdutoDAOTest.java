@@ -20,6 +20,7 @@ import org.junit.Test;
 import br.com.kitchiqui.base.ImagemGrandeProdutoDAO;
 import br.com.kitchiqui.base.ImagemPequenoProdutoDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.modelo.EnumClasseProduto;
 import br.com.kitchiqui.modelo.EnumEspecie;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.ImagemGrandeProduto;
@@ -292,73 +293,81 @@ public class ProdutoDAOTest {
       Produto prod4 = new Produto();   
       
       prod4.setSrcImagem("img/home/featured-product/product-01.jpg");
-      prod4.setTitulo("Camisa verde");
+      prod4.setTitulo("Camisa verde - ESCOVA");
       prod4.setPreco(new Double(75));
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod4.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod4.setClasse(EnumClasseProduto.ESCOVA.getClasse());
       dao.insert(prod4);
       
       Produto prod5 = new Produto();   
       
       prod5.setSrcImagem("img/home/featured-product/product-02.jpg");
-      prod5.setTitulo("Óculos de sol");
+      prod5.setTitulo("Óculos de sol - ESCOVA");
       prod5.setPreco(new Double(300));
       prod5.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod5.setClasse(EnumClasseProduto.ESCOVA.getClasse());
       dao.insert(prod5);
       
       Produto prod6 = new Produto();   
       
       prod6.setSrcImagem("img/home/featured-product/product-03.jpg");
-      prod6.setTitulo("Vestido florido");
+      prod6.setTitulo("Vestido florido - ESCOVA");
       prod6.setPreco(new Double(750));
       prod6.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod6.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
+      prod6.setClasse(EnumClasseProduto.ESCOVA.getClasse());
       dao.insert(prod6);
       
       Produto prod7 = new Produto();   
       
       prod7.setSrcImagem("img/home/featured-product/product-04.jpg");
-      prod7.setTitulo("Bolsa fit");
+      prod7.setTitulo("Bolsa fit - KIT MONTADO");
       prod7.setPreco(new Double(350));
       prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod7.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod7.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod7);
       
       Produto prod8 = new Produto();   
       
       prod8.setSrcImagem("img/home/featured-product/product-05.jpg");
-      prod8.setTitulo("Boné Style");
+      prod8.setTitulo("Boné Style - KIT MONTADO");
       prod8.setPreco(new Double(90));
       prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod8.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
+      prod8.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod8);
       
       Produto prod9 = new Produto();   
       
       prod9.setSrcImagem("img/home/featured-product/product-06.jpg");
-      prod9.setTitulo("Tênis vermelho");
+      prod9.setTitulo("Tênis vermelho - KIT MONTADO");
       prod9.setPreco(new Double(500));
       prod9.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod9.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
+      prod9.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod9);
       
       Produto prod10 = new Produto();   
       
       prod10.setSrcImagem("img/home/featured-product/product-07.jpg");
-      prod10.setTitulo("Chápeu blues");
+      prod10.setTitulo("Chápeu blues - KIT MONTADO");
       prod10.setPreco(new Double(105));
       prod10.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod10.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod10.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod10);
       
       Produto prod11 = new Produto();   
       
       prod11.setSrcImagem("img/home/featured-product/product-09.jpg");
-      prod11.setTitulo("Vestido África");
+      prod11.setTitulo("Vestido África - ESTOJO");
       prod11.setPreco(new Double(1500));
       prod11.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod11.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
+      prod11.setClasse(EnumClasseProduto.ESTOJO.getClasse());
       dao.insert(prod11);
       
       entityManager.getTransaction().commit();

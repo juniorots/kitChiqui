@@ -280,7 +280,9 @@ jQuery(document).ready(function() {
 //============================== PRICE SLIDER RANGER =========================
 jQuery(document).ready(function() {
 	var minimum = 40;
-	var maximum = 1000;
+	var maximum = 999;
+	var tmp1 = "";
+	var tmp2 = "";
 
 	$( "#price-range" ).slider({
 		range: true,
@@ -288,13 +290,18 @@ jQuery(document).ready(function() {
 		max: maximum,
 		values: [ minimum, maximum ],
 		slide: function( event, ui ) {
-			$( "#price-amount-1" ).val( "R$ " + ui.values[ 0 ] );
-			$( "#price-amount-2" ).val( "R$ " + ui.values[ 1 ] );
+			$( "#price-amount-1" ).val( "R$ " + ui.values[ 0 ] + ",00" );
+			$( "#price-amount-2" ).val( "R$ " + ui.values[ 1 ] + ",00" );
 		}
 	});
 
-	$( "#price-amount-1" ).val( "R$ " + $( "#price-range" ).slider( "values", 0 ));
-	$( "#price-amount-2" ).val( "R$ " + $( "#price-range" ).slider( "values", 1 ));
+	$( "#price-amount-1" ).val( "R$ " + $( "#price-range" ).slider( "values", 0 ) + ",00" );
+	$( "#price-amount-2" ).val( "R$ " + $( "#price-range" ).slider( "values", 1 ) + ",00" );
+	
+	/*
+	$( "#price-amount-1" ).maskMoney({prefix: "R$ ", decimal: ",", thousands: "."});
+	$( "#price-amount-2" ).maskMoney({prefix: "R$ ", decimal: ",", thousands: "."});
+	*/
 });
 //============================== PRODUCT SINGLE SLIDER =========================
 jQuery(document).ready(function() {

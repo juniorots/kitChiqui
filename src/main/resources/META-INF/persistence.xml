@@ -16,7 +16,8 @@
 	<class>br.com.kitchiqui.modelo.Cliente</class>
 	<class>br.com.kitchiqui.modelo.ImagemGrandeProduto</class>
 	<class>br.com.kitchiqui.modelo.ImagemPequenoProduto</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>  
+	<class>br.com.kitchiqui.modelo.ContadorClasseProduto</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>  
     
     <properties>
     

@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
@@ -74,6 +75,19 @@ public class Produto extends DomainObject {
 	 */
 	private Integer especie;
 	
+	private Integer classe; // Especificar o tipo do produto vendido: Escova, Kit montado, Estojo
+	
+	@Transient
+	private ContadorClasseProduto contadorClasse = new ContadorClasseProduto();
+	
+	public ContadorClasseProduto getContadorClasse() {
+		return contadorClasse;
+	}
+
+	public void setContadorClasse(ContadorClasseProduto contadorClasse) {
+		this.contadorClasse = contadorClasse;
+	}
+
 	public Integer getEspecie() {
 		return especie;
 	}
@@ -205,5 +219,13 @@ public class Produto extends DomainObject {
 
 	public void setAnotacaoComposicao(String anotacaoComposicao) {
 		this.anotacaoComposicao = anotacaoComposicao;
+	}
+
+	public Integer getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Integer classe) {
+		this.classe = classe;
 	}	
 }

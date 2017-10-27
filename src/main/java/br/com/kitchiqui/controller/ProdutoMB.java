@@ -8,7 +8,6 @@ package br.com.kitchiqui.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 import javax.faces.bean.ManagedBean;
@@ -21,6 +20,7 @@ import javax.persistence.Persistence;
 import lombok.Cleanup;
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.modelo.EnumClasseProduto;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Parceiro;
 import br.com.kitchiqui.modelo.Produto;
@@ -105,8 +105,17 @@ public class ProdutoMB implements Serializable {
         ProdutoDAO dao = new ProdutoDAO(entityManager);
         this.produto = null;
         getProduto().setEspecie(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("especie")));
+        
+        contabilizarClasseProduto(dao);
         listaFiltro.clear();
         
+        Object tmp = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idClasse");
+        if ( tmp != null && !tmp.equals("null")) {
+        	getProduto().setClasse(Integer.parseInt(tmp.toString()));
+        } else {
+        	getProduto().setClasse(null);
+        }
+        	        
         for (Produto p : dao.selectUsingFilter(this.produto)) {
         	if (!p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())){
         		listaFiltro.add(p);
@@ -116,6 +125,21 @@ public class ProdutoMB implements Serializable {
 		Util.forward(FILTRO_PRODUTO);
 	}
 	
+	/**
+	 * Responsavel por classificar os produtos, conforme sua tipificacao, ex: conjuntos de estojos, escovas, kits montados entre outros
+	 */
+	public void contabilizarClasseProduto(ProdutoDAO dao) {
+		getProduto().setClasse(EnumClasseProduto.ESCOVA.getClasse());
+		getProduto().getContadorClasse().setQtdEscova(dao.selectUsingFilter(getProduto()).size());
+		
+		getProduto().setClasse(EnumClasseProduto.ESTOJO.getClasse());
+		getProduto().getContadorClasse().setQtdEstojo(dao.selectUsingFilter(getProduto()).size());
+		
+		getProduto().setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
+		getProduto().getContadorClasse().setQtdKitMontado(dao.selectUsingFilter(getProduto()).size());
+		
+		getProduto().setClasse(null);
+	}
 	
 	public void paginaPrincipal(){
 		Util.forward(PAGINA_PRINCIPAL);

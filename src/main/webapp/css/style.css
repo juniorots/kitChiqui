@@ -2711,6 +2711,10 @@ body.bodyColor.container {
   transform: translate(-50%, -50%);
 }
 
+.productsContent .productBox .productImage .productMasking ul {
+    left: 72%;
+}
+
 .thumbnail {
   border: none;
   border-radius: 0;
@@ -5027,21 +5031,21 @@ body.bodyColor.container {
 }
 
 .priceRange .price-slider-inner .amount-wrapper {
-  position: absolute;
-  bottom: 25px;
-  right: 20px;
-  font-size: 14px;
-  width: 120px;
+    position: absolute;
+    bottom: 31%;
+    right: 20%;
+    font-size: 14px;
+    width: 65%;
 }
 
 .priceRange .price-slider-inner .amount-wrapper input {
   background-color: transparent;
-  border: 0;
-  width: 28%;
-  font-size: 14px;
-  color: #252525;
-  font-weight: 700;
-  text-align: right;
+    border: 0;
+    width: 40%;
+    font-size: 14px;
+    color: #252525;
+    font-weight: 700;
+    text-align: left;
 }
 
 .priceRange .price-slider-inner .ui-widget-content {
@@ -5871,13 +5875,13 @@ body.bodyColor.container {
 
 @media (min-width: 480px) {
   .notFound h1 {
-    font-size: 200px;
+    font-size: 120px;
   }
 }
 
 @media (min-width: 768px) {
   .notFound h1 {
-    font-size: 300px;
+    font-size: 220px;
   }
 }
 
