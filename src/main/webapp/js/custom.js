@@ -283,25 +283,23 @@ jQuery(document).ready(function() {
 	var maximum = 999;
 	var tmp1 = "";
 	var tmp2 = "";
-
 	$( "#price-range" ).slider({
 		range: true,
 		min: minimum,
 		max: maximum,
 		values: [ minimum, maximum ],
 		slide: function( event, ui ) {
-			$( "#price-amount-1" ).val( "R$ " + ui.values[ 0 ] + ",00" );
-			$( "#price-amount-2" ).val( "R$ " + ui.values[ 1 ] + ",00" );
+			/*
+			$( "#formFiltro\\:primeiroFiltroPreco" ).val( "R$ " + ui.values[ 0 ] + ",00" );
+			$( "#formFiltro\\:segundoFiltroPreco" ).val( "R$ " + ui.values[ 1 ] + ",00" );
+			 */
+			$( "#formFiltro\\:primeiroFiltro" ).val( "R$ " + ui.values[ 0 ] + ",00" );
+			$( "#formFiltro\\:segundoFiltro" ).val( "R$ " + ui.values[ 1 ] + ",00" );
 		}
 	});
 
-	$( "#price-amount-1" ).val( "R$ " + $( "#price-range" ).slider( "values", 0 ) + ",00" );
-	$( "#price-amount-2" ).val( "R$ " + $( "#price-range" ).slider( "values", 1 ) + ",00" );
-	
-	/*
-	$( "#price-amount-1" ).maskMoney({prefix: "R$ ", decimal: ",", thousands: "."});
-	$( "#price-amount-2" ).maskMoney({prefix: "R$ ", decimal: ",", thousands: "."});
-	*/
+	$( "#formFiltro\\:primeiroFiltro" ).val( "R$ " + $( "#price-range" ).slider( "values", 0 ) + ",00" );
+	$( "#formFiltro\\:segundoFiltro" ).val( "R$ " + $( "#price-range" ).slider( "values", 1 ) + ",00" );
 });
 //============================== PRODUCT SINGLE SLIDER =========================
 jQuery(document).ready(function() {

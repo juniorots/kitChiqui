@@ -317,13 +317,26 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
                 String javaName = a.getJavaMember().getName();
                 String getter = "get" + javaName.substring(0, 1).toUpperCase() + javaName.substring(1);
                 try {
-                	if (a.getJavaType().getName().equals("java.util.List")) {
+                	if (a.getJavaType().getName().equals("java.util.List")) 
                 		continue;
+                	
+                	if (name.equals("segundoFiltroPreco"))
+                		continue;
+                	
+                	if (name.equals("primeiroFiltro")) {
+                		Method m = domainClass.getMethod(getter, (Class<?>[]) null);
+                		Method m2 = domainClass.getMethod("getSegundoFiltro()", (Class<?>[]) null);
+                		if (m.invoke(filter, (Object[]) null) != null && 
+                				m2.invoke(filter, (Object[]) null) != null) {
+                			p = cb.and( cb.between(r.get(et.getSingularAttribute("preco", Double.class)), (Double) m.invoke(filter, (Object[]) null), (Double) m2.invoke(filter, (Object[]) null)) );
+                		}
+                	} else {
+	                	Method m = domainClass.getMethod(getter, (Class<?>[]) null);
+	                    if (m.invoke(filter, (Object[]) null) != null) {
+	                        p = cb.and(p, cb.equal(r.get(name), m.invoke(filter, (Object[]) null)));
+	                    }
                 	}
-                    Method m = domainClass.getMethod(getter, (Class<?>[]) null);
-                    if (m.invoke(filter, (Object[]) null) != null) {
-                        p = cb.and(p, cb.equal(r.get(name), m.invoke(filter, (Object[]) null)));
-                    }
+                    
                 } catch (Exception e) {
                     log.error(e);
                 }

@@ -9,7 +9,6 @@
       xmlns:p="http://primefaces.org/ui">
       <ui:composition template="/WEB-INF/template/mestre.xhtml">
       <ui:define name="centro">
-      <h:form id="formFiltro">
             
       <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
@@ -26,7 +25,9 @@
             <div class="col-xs-6">
               <ol class="breadcrumb pull-right">
                 <li>
+                	<h:form id="formFiltro02">
 	            	<h:commandLink action="#{produtoMB.paginaPrincipal}">Início</h:commandLink>
+	            	</h:form>
                 </li>
                 <!-- 
                 <li>
@@ -50,6 +51,7 @@
            		<div class="panel-body">
            			<div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
            				<ul class="nav navbar-nav side-nav">
+           					<h:form id="formFiltro01">
            					<c:if test="#{produtoMB.produto.especie == 1}"> <!-- 1 - Masculino -->
 	      						<li>
 			                        <a href="javascript:;" data-toggle="collapse" data-target="#masculino">Mundo Masculino <i class="fa fa-plus"></i></a>
@@ -145,6 +147,7 @@
 			                        </ul>
 	                      		</li>
                       		</c:if>
+                      		</h:form>
            				</ul>
            			</div>	
            		</div>	
@@ -156,15 +159,19 @@
                   <div class="price-slider-inner">
                     <span class="amount-wrapper">
                       Preço: <br />
-                      <input type="text" id="price-amount-1" readonly="readonly" style="width: 40%"/>
-                      <strong>-</strong>
-                      <input type="text" id="price-amount-2" readonly="readonly"/>
+                      <h:inputText id="primeiroFiltro" style="width: 40%" value="#{produtoMB.produto.primeiroFiltro}" readonly="readonly"/>
+                      <strong>-</strong>&nbsp;
+                      <h:inputText id="segundoFiltro" value="#{produtoMB.produto.segundoFiltro}" readonly="readonly"/>
                     </span>
                     <div id="price-range"></div>
                   </div>
-                  <!-- <span class="priceLabel">Price: <strong>$12 - $30</strong></span> -->
                 </div><br />
-                <input class="btn btn-default" type="submit" value="Buscar"/>
+                <h:form id="formFiltro">
+	                <h:commandLink action="#{produtoMB.filtrarProduto}" class="btn btn-default" value="Buscar">
+	                	<f:param name="idClasse" value="#{produtoMB.produto.classe}"/>
+				        <f:param name="especie" value="#{produtoMB.produto.especie}"/>
+	                </h:commandLink>
+                </h:form>
                </div>
                
                <!-- 
@@ -200,6 +207,7 @@
                   		<strong>Ops!</strong> Ainda não temos esses itens, em breve disponibilizaremos algo.
                 	</div>
               	</c:if>
+              	<h:form id="formFiltro04">
               	<c:forEach var="prod" items="#{produtoMB.listaFiltro}">
               		<div class="col-sm-4 col-xs-12">
 	                  <div class="productBox">
@@ -247,6 +255,7 @@
 	                  </div>
                 	</div>
               	</c:forEach>
+              	</h:form>
               </div> 
               
             </div>
@@ -256,7 +265,6 @@
      
      <ui:include src="parceiros.xhtml"/>
      
-    </h:form>
     </ui:define>
 	</ui:composition>        
 </html>

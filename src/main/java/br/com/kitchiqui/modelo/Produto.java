@@ -80,12 +80,32 @@ public class Produto extends DomainObject {
 	@Transient
 	private ContadorClasseProduto contadorClasse = new ContadorClasseProduto();
 	
+	private String primeiroFiltro;
+	
+	private String segundoFiltro;
+	
 	public ContadorClasseProduto getContadorClasse() {
 		return contadorClasse;
 	}
 
 	public void setContadorClasse(ContadorClasseProduto contadorClasse) {
 		this.contadorClasse = contadorClasse;
+	}
+
+	public String getPrimeiroFiltro() {
+		return primeiroFiltro;
+	}
+
+	public void setPrimeiroFiltro(String primeiroFiltro) {
+		this.primeiroFiltro = primeiroFiltro;
+	}
+
+	public String getSegundoFiltro() {
+		return segundoFiltro;
+	}
+
+	public void setSegundoFiltro(String segundoFiltro) {
+		this.segundoFiltro = segundoFiltro;
 	}
 
 	public Integer getEspecie() {
