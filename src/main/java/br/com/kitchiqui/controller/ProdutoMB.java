@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,6 +42,11 @@ public class ProdutoMB implements Serializable {
 	private static final String DETALHE_PRODUTO = "/detalheProduto.xhtml";
 	private static final String FILTRO_PRODUTO = "/filtroProduto.xhtml";
 	private static final String PAGINA_PRINCIPAL = "/index.xhtml";
+	
+	private String primeiroFiltro;
+	private String segundoFiltro;
+	private String tmpPrimeiro;
+	private String tmpSegundo;
 	
 	public ProdutoMB() {
 
@@ -104,18 +109,35 @@ public class ProdutoMB implements Serializable {
                 
         ProdutoDAO dao = new ProdutoDAO(entityManager);
         this.produto = null;
-        getProduto().setEspecie(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("especie")));
+
+        Object tmp = null;
+        String tmp2 = "";
+        try {
+		    tmp = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idClasse");
+		    tmp2 = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("especie");
+        } catch (Exception e) {
+        	 this.tmpPrimeiro = "";
+        }
         
+        if ( tmp2 != null && !tmp2.equals("null") && !tmp2.equals("") ) {
+        	getProduto().setEspecie(Integer.parseInt(tmp2));
+        } else {
+        	getProduto().setEspecie(null);
+        }
+
         contabilizarClasseProduto(dao);
         listaFiltro.clear();
         
-        Object tmp = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idClasse");
-        if ( tmp != null && !tmp.equals("null")) {
+        if ( tmp != null && !tmp.equals("null") && !tmp.equals("")) {
         	getProduto().setClasse(Integer.parseInt(tmp.toString()));
         } else {
         	getProduto().setClasse(null);
         }
-        	        
+        	
+        Util.tratarRangePreco(getProduto(), this.primeiroFiltro, this.segundoFiltro);
+        this.tmpPrimeiro = this.primeiroFiltro;
+        this.tmpSegundo = this.segundoFiltro;
+        
         for (Produto p : dao.selectUsingFilter(this.produto)) {
         	if (!p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())){
         		listaFiltro.add(p);
@@ -185,5 +207,36 @@ public class ProdutoMB implements Serializable {
 	public void setListaVitrine(Collection<Produto> listaVitrine) {
 		this.listaVitrine = listaVitrine;
 	}
-	
+
+	public String getPrimeiroFiltro() {
+		return primeiroFiltro;
+	}
+
+	public void setPrimeiroFiltro(String primeiroFiltro) {
+		this.primeiroFiltro = primeiroFiltro;
+	}
+
+	public String getSegundoFiltro() {
+		return segundoFiltro;
+	}
+
+	public void setSegundoFiltro(String segundoFiltro) {
+		this.segundoFiltro = segundoFiltro;
+	}
+
+	public String getTmpPrimeiro() {
+		return tmpPrimeiro;
+	}
+
+	public void setTmpPrimeiro(String tmpPrimeiro) {
+		this.tmpPrimeiro = tmpPrimeiro;
+	}
+
+	public String getTmpSegundo() {
+		return tmpSegundo;
+	}
+
+	public void setTmpSegundo(String tmpSegundo) {
+		this.tmpSegundo = tmpSegundo;
+	}
 }

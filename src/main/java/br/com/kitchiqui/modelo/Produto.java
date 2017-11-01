@@ -80,9 +80,9 @@ public class Produto extends DomainObject {
 	@Transient
 	private ContadorClasseProduto contadorClasse = new ContadorClasseProduto();
 	
-	private String primeiroFiltro;
+	private Double primeiroFiltroPreco;
 	
-	private String segundoFiltro;
+	private Double segundoFiltroPreco;
 	
 	public ContadorClasseProduto getContadorClasse() {
 		return contadorClasse;
@@ -92,20 +92,20 @@ public class Produto extends DomainObject {
 		this.contadorClasse = contadorClasse;
 	}
 
-	public String getPrimeiroFiltro() {
-		return primeiroFiltro;
+	public Double getPrimeiroFiltroPreco() {
+		return primeiroFiltroPreco;
 	}
 
-	public void setPrimeiroFiltro(String primeiroFiltro) {
-		this.primeiroFiltro = primeiroFiltro;
+	public void setPrimeiroFiltroPreco(Double primeiroFiltroPreco) {
+		this.primeiroFiltroPreco = primeiroFiltroPreco;
 	}
 
-	public String getSegundoFiltro() {
-		return segundoFiltro;
+	public Double getSegundoFiltroPreco() {
+		return segundoFiltroPreco;
 	}
 
-	public void setSegundoFiltro(String segundoFiltro) {
-		this.segundoFiltro = segundoFiltro;
+	public void setSegundoFiltroPreco(Double segundoFiltroPreco) {
+		this.segundoFiltroPreco = segundoFiltroPreco;
 	}
 
 	public Integer getEspecie() {
@@ -247,5 +247,6 @@ public class Produto extends DomainObject {
 
 	public void setClasse(Integer classe) {
 		this.classe = classe;
-	}	
+	}
+
 }

@@ -323,12 +323,12 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
                 	if (name.equals("segundoFiltroPreco"))
                 		continue;
                 	
-                	if (name.equals("primeiroFiltro")) {
+                	if (name.equals("primeiroFiltroPreco")) {
                 		Method m = domainClass.getMethod(getter, (Class<?>[]) null);
-                		Method m2 = domainClass.getMethod("getSegundoFiltro()", (Class<?>[]) null);
+                		Method m2 = domainClass.getMethod("getSegundoFiltroPreco", (Class<?>[]) null);
                 		if (m.invoke(filter, (Object[]) null) != null && 
                 				m2.invoke(filter, (Object[]) null) != null) {
-                			p = cb.and( cb.between(r.get(et.getSingularAttribute("preco", Double.class)), (Double) m.invoke(filter, (Object[]) null), (Double) m2.invoke(filter, (Object[]) null)) );
+                			p = cb.and(p, cb.between(r.get(et.getSingularAttribute("preco", Double.class)), (Double) m.invoke(filter, (Object[]) null), (Double) m2.invoke(filter, (Object[]) null)) );
                 		}
                 	} else {
 	                	Method m = domainClass.getMethod(getter, (Class<?>[]) null);

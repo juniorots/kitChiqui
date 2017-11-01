@@ -297,9 +297,13 @@ jQuery(document).ready(function() {
 			$( "#formFiltro\\:segundoFiltro" ).val( "R$ " + ui.values[ 1 ] + ",00" );
 		}
 	});
-
-	$( "#formFiltro\\:primeiroFiltro" ).val( "R$ " + $( "#price-range" ).slider( "values", 0 ) + ",00" );
-	$( "#formFiltro\\:segundoFiltro" ).val( "R$ " + $( "#price-range" ).slider( "values", 1 ) + ",00" );
+    if ( $( "#formFiltro\\:tmpPrimeiro" ).val() == "" ) {
+    	$( "#formFiltro\\:primeiroFiltro" ).val( "R$ " + $( "#price-range" ).slider( "values", 0 ) + ",00" );
+    	$( "#formFiltro\\:segundoFiltro" ).val( "R$ " + $( "#price-range" ).slider( "values", 1 ) + ",00" );
+    } else {
+    	$( "#formFiltro\\:primeiroFiltro" ).val( $( "#formFiltro\\:tmpPrimeiro" ).val() );
+    	$( "#formFiltro\\:segundoFiltro" ).val( $( "#formFiltro\\:tmpSegundo" ).val() );
+    }
 });
 //============================== PRODUCT SINGLE SLIDER =========================
 jQuery(document).ready(function() {

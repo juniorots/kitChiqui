@@ -298,7 +298,7 @@ body.static .bb-fixed-header {
 .btn {
   display: inline-block;
   border-radius: 4px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-align: center;
   font-size: 14px;
   padding: 9px 0;

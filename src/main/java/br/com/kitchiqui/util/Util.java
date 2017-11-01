@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.ViewHandler;
@@ -26,6 +28,7 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 import br.com.kitchiqui.modelo.Cliente;
+import br.com.kitchiqui.modelo.Produto;
 
 /**
  *
@@ -52,6 +55,35 @@ public class Util {
         return sb.toString();
     }
    
+    /**
+     * Util para o tratamento de conversao dos valores do range
+     * @param produto
+     * @param primeiroValor
+     * @param segundoValor
+     */
+    public static void tratarRangePreco(Produto produto, String primeiroValor, String segundoValor){
+    	String exp = "[0-9,]+";
+    	Pattern p = Pattern.compile(exp);
+    	
+    	try {
+    		if (primeiroValor.equals(""))
+    			primeiroValor = null;
+    		
+    		if (segundoValor.equals(""))
+    			segundoValor = null;
+
+    		Matcher m = p.matcher(primeiroValor);
+	    	if (m.find()) 
+	    		produto.setPrimeiroFiltroPreco( Double.parseDouble( m.group().substring(0, m.group().indexOf(',') ) ) );
+	
+	    	m = p.matcher(segundoValor);
+	    	if (m.find())
+	    		produto.setSegundoFiltroPreco( Double.parseDouble( m.group().substring(0, m.group().indexOf(',') ) ) );
+    	} catch (Exception e) {
+    		// TODO nothing...
+    	}
+    }
+    
     /*
      * Montando a mensagem estilo balao...
      */
@@ -146,7 +178,7 @@ public class Util {
         try {
         	FacesContext context = FacesContext.getCurrentInstance();
         	ViewHandler vh = context.getApplication().getViewHandler();
-        	UIViewRoot vr = vh.createView(FacesContext.getCurrentInstance(), caminho);
+        	UIViewRoot vr = vh.createView(context, caminho);
         	context.setViewRoot(vr);
         	context.renderResponse();
         } catch ( Exception e) {
