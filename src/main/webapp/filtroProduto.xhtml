@@ -44,55 +44,58 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 col-sm-4 col-xs-12 sideBar">
-              <div class="panel panel-default">
-              
-           		<div class="panel-heading">Olhe que o temos!</div>
-           		<div class="panel-body">
-           			<div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
-           				<ul class="nav navbar-nav side-nav">
-      						<li>
-		                        <a href="javascript:;" data-toggle="collapse" data-target="#produtos">
-		                        	<c:if test="#{produtoMB.produto.especie == 1}"> <!-- 1 - Masculino -->
-		                        		Mundo Masculino <i class="fa fa-plus"></i>
-		                        	</c:if>
-		                        	<c:if test="#{produtoMB.produto.especie == 2}"> <!-- 2 - Feminino -->
-		                        		Coisas de Mulher <i class="fa fa-plus"></i>
-		                        	</c:if>
-		                        	<c:if test="#{produtoMB.produto.especie == 3}"> <!-- 3 - Infantil -->
-		                        		Só para Crianças <i class="fa fa-plus"></i>
-		                        	</c:if>
-		                        </a>
-		                        <ul id="produtos" class="collapse collapseItem">
-		                          <li>
-		                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Estojos #{produtoMB.produto.contadorClasse.qtdEstojo}">
-		                          		<f:param name="idClasse" value="1"/>
-		                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
-		                          	</h:commandButton>
-		                          </li>
-		                          <li>
-		                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Escovas #{produtoMB.produto.contadorClasse.qtdEscova}">
-		                          		<f:param name="idClasse" value="3"/>
-		                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
-		                          	</h:commandButton>
-		                          </li>
-		                          <li>
-		                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kits montados #{produtoMB.produto.contadorClasse.qtdKitMontado}">
-		                          		<f:param name="idClasse" value="2"/>
-		                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
-		                          	</h:commandButton>
-		                          </li>
-		                          <li>
-		                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Mostrar tudo #{produtoMB.produto.contadorClasse.qtdTodos}">
-		                          		<f:param name="idClasse" value="null"/>
-		                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
-		                          	</h:commandButton>
-		                          </li>
-		                        </ul>
-                      		</li>
-           				</ul>
-           			</div>	
-           		</div>	
-              </div>
+            
+              <c:if test="#{not produtoMB.bloquearFiltroEspecie}">
+	              <div class="panel panel-default">
+	              
+	           		<div class="panel-heading">Olhe que o temos!</div>
+	           		<div class="panel-body">
+	           			<div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
+	           				<ul class="nav navbar-nav side-nav">
+	      						<li>
+			                        <a href="javascript:;" data-toggle="collapse" data-target="#produtos">
+			                        	<c:if test="#{produtoMB.produto.especie == 1}"> <!-- 1 - Masculino -->
+			                        		Mundo Masculino <i class="fa fa-plus"></i>
+			                        	</c:if>
+			                        	<c:if test="#{produtoMB.produto.especie == 2}"> <!-- 2 - Feminino -->
+			                        		Coisas de Mulher <i class="fa fa-plus"></i>
+			                        	</c:if>
+			                        	<c:if test="#{produtoMB.produto.especie == 3}"> <!-- 3 - Infantil -->
+			                        		Só para Crianças <i class="fa fa-plus"></i>
+			                        	</c:if>
+			                        </a>
+			                        <ul id="produtos" class="collapse collapseItem">
+			                          <li>
+			                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Estojos #{produtoMB.produto.contadorClasse.qtdEstojo}">
+			                          		<f:param name="idClasse" value="1"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandButton>
+			                          </li>
+			                          <li>
+			                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Escovas #{produtoMB.produto.contadorClasse.qtdEscova}">
+			                          		<f:param name="idClasse" value="3"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandButton>
+			                          </li>
+			                          <li>
+			                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kits montados #{produtoMB.produto.contadorClasse.qtdKitMontado}">
+			                          		<f:param name="idClasse" value="2"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandButton>
+			                          </li>
+			                          <li>
+			                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Mostrar tudo #{produtoMB.produto.contadorClasse.qtdTodos}">
+			                          		<f:param name="idClasse" value="null"/>
+			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+			                          	</h:commandButton>
+			                          </li>
+			                        </ul>
+	                      		</li>
+	           				</ul>
+	           			</div>	
+	           		</div>	
+	              </div>
+              </c:if>
               
               <div class="panel panel-default priceRange">
                 <div class="panel-heading">Seu bolso</div>
@@ -157,7 +160,7 @@
 	                      <div class="productMasking">
 	                      	<ul class="list-inline btn-group" role="group">
 	                      	<li>
-		                      	<h:commandLink class="btn viewBtn" action="#{produtoMB.detalharProduto}"><i class="fa fa-eye"></i>
+		                      	<h:commandLink class="btn viewBtn" action="#{produtoMB.detalharProduto}" process="@form" execute="@form"><i class="fa fa-eye"></i>
 		                          	<!-- 
 										<f:param name="idProduto" value="#{produto.id}"/>
 									 		
@@ -181,7 +184,7 @@
 	                      </div>
 	                    </div>
 	                    <div class="productCaption clearfix">
-		                    <h:commandLink action="#{produtoMB.detalharProduto}" process="@formFiltro"><h5><h:outputText escape="false" value="#{prod.titulo}"/></h5>
+		                    <h:commandLink action="#{produtoMB.detalharProduto}" process="@form" execute="@form"><h5><h:outputText escape="false" value="#{prod.titulo}"/></h5>
 						  		<!-- 
 							  		<f:param name="idProduto" value="#{produto.id}"/>
 							  		

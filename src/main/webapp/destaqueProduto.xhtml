@@ -4,9 +4,9 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:icecore="http://www.icefaces.org/icefaces/core"
       xmlns:p="http://primefaces.org/ui">
-            
         <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
             #[request.contextPath}/<DIRETORIO>/..
@@ -29,17 +29,38 @@
 					-->
 		        	<div class="productMasking">
 			        	<ul class="list-inline btn-group" role="group">
-			              <li><a data-toggle="modal" href=".login-modal" class="btn btn-default"><i class="fa fa-heart"></i></a></li>
+			              <li>
+				        	<h:commandLink class="btn viewBtn" action="#{produtoMB.detalharProduto}" process="@form" execute="@form"><i class="fa fa-eye"></i>
+	                          	<!-- 
+									<f:param name="idProduto" value="#{produto.id}"/>
+								 		
+									**
+							  		NOTA: APOS OS TESTES DEVE-SE DESCOMENTAR O CODIGO ACIMA E EXCLUIR A LINHA ABAIXO
+							  		**
+						  		-->
+						  		<f:param name="idProduto" value="be7bd1e3-c603-4437-babc-cde94a6053a5"/>		
+	                        </h:commandLink>
+			              </li>
+			              <!-- 
+			              <a data-toggle="modal" href=".login-modal" class="btn btn-default"><i class="fa fa-heart"></i></a>
 			              <li><a href="cart-page.html" class="btn btn-default"><i class="fa fa-shopping-cart"></i></a></li>
 			              <li><a data-toggle="modal" href=".quick-view" class="btn btn-default"><i class="fa fa-eye"></i></a></li>
+			              -->
 			            </ul>
 			          </div>
 			    </div>
 			    <div class="productCaption clearfix">
-	    	      <a href="single-product.html">
-		            <h5><h:outputText escape="false" value="#{produto.titulo}"/></h5>
-		          </a>
-			          <h3><h:outputText escape="false" value="#{produto.precoFormatado}"/></h3>
+	    	      <h:commandLink action="#{produtoMB.detalharProduto}" process="@form" execute="@form"><h5><h:outputText escape="false" value="#{produto.titulo}"/></h5>
+		          	<!-- 
+				  		<f:param name="idProduto" value="#{produto.id}"/>
+				  		
+				  		**
+				  		NOTA: APOS OS TESTES DEVE-SE DESCOMENTAR O CODIGO ACIMA E EXCLUIR A LINHA ABAIXO
+				  		**
+			  		-->
+			  		<f:param name="idProduto" value="be7bd1e3-c603-4437-babc-cde94a6053a5"/>
+		          </h:commandLink>
+			      <h3><h:outputText escape="false" value="#{produto.precoFormatado}"/></h3>
 		        </div>
 		      </div>
 		     </c:forEach>

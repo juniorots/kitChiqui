@@ -2711,10 +2711,6 @@ body.bodyColor.container {
   transform: translate(-50%, -50%);
 }
 
-.productsContent .productBox .productImage .productMasking ul {
-    left: 72%;
-}
-
 .thumbnail {
   border: none;
   border-radius: 0;
@@ -2751,7 +2747,9 @@ body.bodyColor.container {
 .imageBox .productImage .productMasking ul, .whiteSection .featuredProducts .slide .productImage .productMasking ul, .mainContent .featuredProducts .slide .productImage .productMasking ul, .productsContent .productBox .productImage .productMasking ul {
   width: 157px;
   height: 42px;
+  width: 10%;
 }
+
 
 .imageBox .productImage .productMasking ul li, .whiteSection .featuredProducts .slide .productImage .productMasking ul li, .mainContent .featuredProducts .slide .productImage .productMasking ul li, .productsContent .productBox .productImage .productMasking ul li {
   padding: 0 4px;

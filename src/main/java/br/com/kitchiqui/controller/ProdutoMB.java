@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -47,6 +47,8 @@ public class ProdutoMB implements Serializable {
 	private String segundoFiltro;
 	private String tmpPrimeiro;
 	private String tmpSegundo;
+	
+	private boolean bloquearFiltroEspecie;
 	
 	public ProdutoMB() {
 
@@ -97,6 +99,29 @@ public class ProdutoMB implements Serializable {
 	}
 	
 	/**
+	 * Quando o operador faz uso de texto para pesquisar produtos
+	 */
+	public void filtrarTexto() {
+		@Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+                
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        this.produto = null;
+        listaFiltro.clear();
+        
+        for (Produto p : dao.findByStringField("titulo", getProduto().getTitulo(), false, 1, 50)) {
+        	listaFiltro.add(p);
+        }
+        
+        this.bloquearFiltroEspecie = true;
+        Util.forward(FILTRO_PRODUTO);
+	}
+	
+	/**
 	 * Trabalhando nos filtros de produtos
 	 */
 	public void filtrarProduto() {
@@ -144,6 +169,7 @@ public class ProdutoMB implements Serializable {
         	}
         }
         
+        this.bloquearFiltroEspecie = false;
 		Util.forward(FILTRO_PRODUTO);
 	}
 	
@@ -175,6 +201,14 @@ public class ProdutoMB implements Serializable {
 	}
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public boolean isBloquearFiltroEspecie() {
+		return bloquearFiltroEspecie;
+	}
+
+	public void setBloquearFiltroEspecie(boolean bloquearFiltroEspecie) {
+		this.bloquearFiltroEspecie = bloquearFiltroEspecie;
 	}
 
 	public Collection<Produto> getListaFiltro() {

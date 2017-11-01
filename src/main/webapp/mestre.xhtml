@@ -35,8 +35,10 @@
 	                    <ul class="dropdown-menu dropdown-menu-right">
 	                      <li>
 	                        <span class="input-group">
-	                          <input type="text" class="form-control" placeholder="Procurar…" aria-describedby="basic-addon2"/>
-	                          <button type="submit" class="input-group-addon">Enviar</button>
+	                        	<h:form id="formFiltroTexto">
+		                          <h:inputText id="titulo" class="form-control" placeholder="Procurar…" aria-describedby="basic-addon2" value="#{produtoMB.produto.titulo}"/>
+		                          <h:commandButton class="input-group-addon" value="Enviar" action="#{produtoMB.filtrarTexto}"/>
+	                        	</h:form>
 	                        </span>
 	                      </li>
 	                    </ul>
@@ -67,7 +69,7 @@
 	                      </li>
 	                      <li>
 	                        <div class="btn-group" role="group" aria-label="...">
-	                          <button type="button" class="btn btn-default" onclick="location.href='cart-page.html';">Carrinho de compras</button>
+	                          <button type="button" class="btn btn-default" onclick="location.href='cart-page.html';">Seus pedidos</button>
 	                          <button type="button" class="btn btn-default" onclick="location.href='checkout-step-1.html';">Finalizar</button>
 	                        </div>
 	                      </li>
@@ -153,7 +155,6 @@
 		    <script src="plugins/owl-carousel/owl.carousel.js"></script>
 		    <script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
 		    <script src="plugins/countdown/jquery.syotimer.js"></script>
-		    <script src="js/custom.js"></script>
 
 		 <ui:insert name="centro">
 		 </ui:insert>
