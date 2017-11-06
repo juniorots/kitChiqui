@@ -18,8 +18,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import lombok.Cleanup;
+import br.com.kitchiqui.base.BlogDAO;
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.modelo.Blog;
 import br.com.kitchiqui.modelo.EnumClasseProduto;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Parceiro;
@@ -33,6 +35,8 @@ public class ProdutoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Produto produto = null;
+	private Blog blog = null;
+	
 	private Collection<Produto> listaVitrine = new ArrayList();
 	private Collection<Produto> listaDestaque = new ArrayList();
 	private Collection<Parceiro> listaParceiros = new ArrayList();
@@ -42,6 +46,7 @@ public class ProdutoMB implements Serializable {
 	private static final String DETALHE_PRODUTO = "/detalheProduto.xhtml";
 	private static final String FILTRO_PRODUTO = "/filtroProduto.xhtml";
 	private static final String PAGINA_PRINCIPAL = "/index.xhtml";
+	private static final String KIT_BLOG = "/kitBlog.xhtml";
 	
 	private String primeiroFiltro;
 	private String segundoFiltro;
@@ -79,6 +84,10 @@ public class ProdutoMB implements Serializable {
         }
 	}
 	
+	public void resetarConfig() {
+		this.tmpPrimeiro = "";
+	}
+	
 	/**
 	 * Tratando especificacao do produto
 	 * @return
@@ -110,10 +119,9 @@ public class ProdutoMB implements Serializable {
         entityManager.getTransaction().begin();
                 
         ProdutoDAO dao = new ProdutoDAO(entityManager);
-        this.produto = null;
         listaFiltro.clear();
         
-        for (Produto p : dao.findByStringField("titulo", getProduto().getTitulo(), false, 1, 50)) {
+        for (Produto p : dao.findByStringField("titulo", getProduto().getTitulo(), true, 0, 0)) {
         	listaFiltro.add(p);
         }
         
@@ -189,7 +197,26 @@ public class ProdutoMB implements Serializable {
 		getProduto().setClasse(null);
 	}
 	
+	/**
+	 * Responsavel por direcionar ao blog com assunto especifidado pelo operador
+	 */
+	public void assumirBlog() {
+		
+		@Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        BlogDAO dao = new BlogDAO(entityManager);
+        this.blog = dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("tipoAssunto")));
+		
+		Util.forward(KIT_BLOG);
+	}
+	
 	public void paginaPrincipal(){
+		resetarConfig();
 		Util.forward(PAGINA_PRINCIPAL);
 	}
 	
@@ -272,5 +299,13 @@ public class ProdutoMB implements Serializable {
 
 	public void setTmpSegundo(String tmpSegundo) {
 		this.tmpSegundo = tmpSegundo;
+	}
+
+	public Blog getBlog() {
+		return blog;
+	}
+
+	public void setBlog(Blog blog) {
+		this.blog = blog;
 	}
 }

@@ -232,9 +232,9 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
         Path path = this.getField(root, field);
         if (path != null) {
             if (ignoreCase) {
-                predicates.add(criteriaBuilder.like(criteriaBuilder.upper(path), likes.toUpperCase()));
+                predicates.add(criteriaBuilder.like(criteriaBuilder.upper(path), "%" + likes.toUpperCase() + "%"));
             } else {
-                predicates.add(criteriaBuilder.like(path, likes));
+                predicates.add(criteriaBuilder.like(path, "%" + likes + "%"));
             }
         }
 
