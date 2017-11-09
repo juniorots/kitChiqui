@@ -22,6 +22,7 @@ import br.com.kitchiqui.base.BlogDAO;
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.Blog;
+import br.com.kitchiqui.modelo.EnumAssuntoBlog;
 import br.com.kitchiqui.modelo.EnumClasseProduto;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Parceiro;
@@ -86,6 +87,7 @@ public class ProdutoMB implements Serializable {
 	
 	public void resetarConfig() {
 		this.tmpPrimeiro = "";
+		this.produto.setTitulo("");
 	}
 	
 	/**
@@ -210,7 +212,9 @@ public class ProdutoMB implements Serializable {
         entityManager.getTransaction().begin();
         
         BlogDAO dao = new BlogDAO(entityManager);
-        this.blog = dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("tipoAssunto")));
+        this.blog = null;
+        getBlog().setTipoAssunto(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("tipoAssunto")));
+        this.blog = dao.selectUsingFilter(getBlog()).get(0);
 		
 		Util.forward(KIT_BLOG);
 	}
@@ -302,6 +306,9 @@ public class ProdutoMB implements Serializable {
 	}
 
 	public Blog getBlog() {
+		if (this.blog == null) {
+			blog = new Blog();
+		}
 		return blog;
 	}
 

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <ui:composition template="/WEB-INF/template/mestre.xhtml">
+      <ui:define name="centro">
+            
+      <!--
+      	NOTA: para capturar o caminho relativo do projeto, usa-se:
+        #[request.contextPath}/<DIRETORIO>/..
+      -->
+      <h:form id="formBlog">
+      
+      <section class="lightSection clearfix pageHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="page-title">
+                <h2><h:outputText escape="false" value="#{produtoMB.blog.titulo}"/></h2>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <ol class="breadcrumb pull-right">
+                <li>
+                  <h:commandLink action="#{produtoMB.paginaPrincipal}">INÍCIO</h:commandLink>
+                </li>
+                <li class="active">CONVERSANDO UM POUCO!</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+        
+      <section class="mainContent clearfix blogPage singleBlog">
+        <div class="container">
+        	<div class="row">
+        		<div class="col-xs-12">
+        			<div class="thumbnail">
+        				<!-- img/blog/blog-01.jpg -->
+        				<img src="#{produtoMB.blog.srcImagem}" alt="blog-image"/>
+        				<div class="caption">
+        					<div class="row">
+        						<div class="col-md-3 col-md-push-9 col-sm-4 col-sm-push-4 col-xs-12">
+        							<h5>Autor</h5>
+				                    <ul class="list-unstyled">
+				                    	<li><i class="fa fa-user" aria-hidden="true"></i><h:outputText escape="false" value="#{produtoMB.blog.autor}"/></li>
+				                        <li><i class="fa fa-calendar" aria-hidden="true"></i>
+				                        	<h:outputText escape="false" value="#{produtoMB.blog.dtPublicacao}">
+				                        		<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+				                        	</h:outputText>
+				                        </li>
+				                        <li><i class="fa fa-tags" aria-hidden="true"></i><h:outputText escape="false" value="#{produtoMB.blog.registroProfissional}"/></li>
+				                    </ul>
+        						</div>
+        						<div class="col-md-9 col-md-pull-3 col-sm-8 col-sm-pull-4 col-xs-12">
+                      				<h3><h:outputText escape="false" value="#{produtoMB.blog.subTitulo}"/></h3>
+                      				<h:outputText escape="false" value="#{produtoMB.blog.texto}"/>
+                    			</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+      </section> 
+        
+      </h:form>
+      </ui:define>
+      </ui:composition>
+</html>

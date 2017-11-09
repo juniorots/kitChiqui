@@ -19,5 +19,4 @@ public class BlogDAO extends DaoJpa2<Blog>{
     public BlogDAO(EntityManager entityManager) {
         super(Blog.class, entityManager);
     }
-    
 }

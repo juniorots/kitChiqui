@@ -26,13 +26,43 @@ public class Blog extends DomainObject {
 	
 	private String autor;
 	
+	private String registroProfissional;
+	
 	@Temporal(DATE)
 	private Date dtPublicacao;
 	
 	private String subTitulo;
 	
+	private String srcImagem;
+	
 	@Lob
 	private String texto;
+	
+	private Integer tipoAssunto;
+
+	public String getRegistroProfissional() {
+		return registroProfissional;
+	}
+
+	public void setRegistroProfissional(String registroProfissional) {
+		this.registroProfissional = registroProfissional;
+	}
+
+	public Integer getTipoAssunto() {
+		return tipoAssunto;
+	}
+
+	public void setTipoAssunto(Integer tipoAssunto) {
+		this.tipoAssunto = tipoAssunto;
+	}
+
+	public String getSrcImagem() {
+		return srcImagem;
+	}
+
+	public void setSrcImagem(String srcImagem) {
+		this.srcImagem = srcImagem;
+	}
 
 	public String getTitulo() {
 		return titulo;

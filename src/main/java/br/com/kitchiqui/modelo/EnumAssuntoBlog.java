@@ -6,8 +6,8 @@
 package br.com.kitchiqui.modelo;
 
 public enum EnumAssuntoBlog {
-	ESCOVA(1),
-	FIO_DENTAL(2),
+	TEMPO_ESCOVACAO(1),
+	COMO_HIGIENIZAR(2),
 	PASTA_DENTE(3);
 	
 	private final Integer tipo;
