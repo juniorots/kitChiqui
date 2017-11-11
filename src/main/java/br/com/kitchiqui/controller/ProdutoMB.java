@@ -22,6 +22,7 @@ import br.com.kitchiqui.base.BlogDAO;
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.Blog;
+import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.EnumAssuntoBlog;
 import br.com.kitchiqui.modelo.EnumClasseProduto;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
@@ -31,7 +32,7 @@ import br.com.kitchiqui.util.Util;
 
 @ManagedBean
 @SessionScoped
-public class ProdutoMB implements Serializable {
+public class ProdutoMB extends BaseController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +56,7 @@ public class ProdutoMB implements Serializable {
 	private String tmpSegundo;
 	
 	private boolean bloquearFiltroEspecie;
-	
+
 	public ProdutoMB() {
 
 		/*
@@ -315,4 +316,5 @@ public class ProdutoMB implements Serializable {
 	public void setBlog(Blog blog) {
 		this.blog = blog;
 	}
+	
 }

@@ -22,11 +22,17 @@ import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import lombok.Cleanup;
+
 import org.primefaces.context.RequestContext;
 
+import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.Produto;
 
@@ -283,11 +289,6 @@ public class Util {
         FacesContext fc =   FacesContext.getCurrentInstance();
         HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
         sessao.setAttribute( "CODIGO_CLIENTE", cliente.getId() );
-//        sessao.setAttribute( "NOME_Cliente", cliente.getNome() );
-//        sessao.setAttribute( "NOME_TITULO", cliente.getNomeTitulo() );
-//        sessao.setAttribute( "EMAIL_Cliente", cliente.getEmail() );
-//        sessao.setAttribute( "TELEFONE_Cliente", cliente.getTelefone() );
-//        sessao.setAttribute( "DT_NASCIMENTO_Cliente", cliente.getDtNascimento() );
     }
     
    /*
@@ -299,50 +300,19 @@ public class Util {
         HttpSession sessao = (HttpSession) external.getSession(true);
         
         if ( !isEmpty(sessao.getAttribute("CODIGO_CLIENTE") ) ) {
-            cliente = new Cliente();
-            cliente.setId( (UUID) sessao.getAttribute("CODIGO_CLIENTE") );
-//            cliente.setNome( (String) sessao.getAttribute("NOME_Cliente") );
-//            cliente.setNomeTitulo( (String) sessao.getAttribute("NOME_TITULO") );
-//            cliente.setEmail( (String) sessao.getAttribute("EMAIL_Cliente") );
-//            cliente.setTelefone( (String) sessao.getAttribute("TELEFONE_Cliente") );
-//            cliente.setDtNascimento( (Date) sessao.getAttribute("DT_NASCIMENTO_Cliente") );
+            
+            @Cleanup
+            final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+            
+            @Cleanup
+            final EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+            
+            ClienteDAO dao = new ClienteDAO(entityManager);
+            cliente = dao.selectById( (UUID) sessao.getAttribute("CODIGO_CLIENTE") );
         }
-        
         return cliente;
     }
-    
-    /*
-    * Gravando o Cliente na sessao
-    
-    public static void gravarConcursoSessao(Concurso concurso) {
-        FacesContext fc =   FacesContext.getCurrentInstance();
-        HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
-        sessao.setAttribute( "CODIGO_CONCURSO", concurso.getId() );
-        sessao.setAttribute( "NOME_CONCURSO", concurso.getNomeConcurso());
-        sessao.setAttribute( "URL_IMAGEM", concurso.getUrlImagem());
-        sessao.setAttribute( "URL", concurso.getUrl() );
-    }
-    */
-    
-   /*
-    * Captando o usuário da sessao
-    
-    public static Concurso captarConcursoSessao() {
-        Concurso concurso = null;
-        ExternalContext external =  FacesContext.getCurrentInstance().getExternalContext();
-        HttpSession sessao = (HttpSession) external.getSession(true);
-        
-        if ( !isEmpty(sessao.getAttribute("CODIGO_CONCURSO") ) ) {
-            concurso = new Concurso();
-            concurso.setId( (UUID) sessao.getAttribute("CODIGO_CONCURSO") );
-            concurso.setNomeConcurso( (String) sessao.getAttribute("NOME_CONCURSO") );
-            concurso.setUrlImagem( (String) sessao.getAttribute("URL_IMAGEM") );
-            concurso.setUrl( (String) sessao.getAttribute("URL") );
-        }
-        
-        return concurso;
-    }
-    */
     
     /*
      * Util para limpar dados da sessao

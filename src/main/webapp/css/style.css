@@ -450,10 +450,12 @@ a:hover, a:focus {
   padding: 0 10px;
 }
 
+.fonteCustomizada {
+	color: #FFFFFF;
+}
 .top-right .account-login span a {
   transition: all 0.3s ease-in-out;
 }
-
 .top-right .account-login span a:hover {
   color: rgba(255, 255, 255, 0.5);
 }

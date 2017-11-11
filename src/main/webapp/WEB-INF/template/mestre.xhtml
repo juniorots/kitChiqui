@@ -4,6 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <ui:insert name="head">
@@ -27,19 +28,31 @@
 	                </ul>
 	            	 -->
 	              </div>
-	            
+           		<h:form id="formBarra">
 	              <div class="col-md-6 col-sm-7 col-xs-12">
 	                <ul class="list-inline pull-right top-right">
-	                  <li class="account-login"><span><a data-toggle="modal" href='.login-modal'>Entre</a><small>ou</small><a data-toggle="modal" href='#signup'>Crie sua conta</a></span></li>
+	                  <li class="account-login"> 
+	                  	<c:if test="#{not empty clienteMB.cliente.nome}">
+		          			<span>
+		          				<a data-toggle="modal" href="#status">
+		          					<b>
+			          					<i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+			          					<h:outputText escape="false" value="#{clienteMB.cliente.nome}" class="fonteCustomizada"/>
+		          					</b>
+		          				</a>
+		          			</span>
+	   	        	  	</c:if>
+   		        	  	<c:if test="#{empty clienteMB.cliente.nome}">
+                  			<span><a data-toggle="modal" href='.login-modal'>Entre</a><small>ou</small><a data-toggle="modal" href='#signup'>Crie sua conta</a></span>
+	               		</c:if>
+	                  </li>
 	                  <li class="searchBox">
 	                    <a href="#"><i class="fa fa-search"></i></a>
 	                    <ul class="dropdown-menu dropdown-menu-right">
 	                      <li>
 	                        <span class="input-group">
-	                        	<h:form id="formFiltroTexto">
-		                          <h:inputText id="titulo" class="form-control" placeholder="Procurar…" aria-describedby="basic-addon2" value="#{produtoMB.produto.titulo}"/>
-		                          <h:commandButton class="input-group-addon" value="Enviar" action="#{produtoMB.filtrarTexto}"/>
-	                        	</h:form>
+	                          <h:inputText id="titulo" class="form-control" placeholder="Procurar…" aria-describedby="basic-addon2" value="#{produtoMB.produto.titulo}"/>
+	                          <h:commandButton class="input-group-addon" value="Enviar" action="#{produtoMB.filtrarTexto}"/>
 	                        </span>
 	                      </li>
 	                    </ul>
@@ -78,6 +91,7 @@
 	                  </li>
 	                </ul>
 	              </div>
+	            </h:form>  
 	              
 	            </div>
 	          </div>
@@ -87,26 +101,52 @@
    			<!-- Tratando o menu -->
    	        <ui:include src="menu.xhtml"/> 
    	        
+   	        <!-- Status de conta valida -->
+   	        <div class="modal fade " id="status" tabindex="-1" role="dialog">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		            <h3 class="modal-title">Sobre você!</h3> 
+		          </div>
+		          <div class="modal-body">
+		            <h:form id="formStatus" role="form">
+		              <div class="form-group">
+		                <label for=""><i class="fa fa-envelope fa-2x"></i>&nbsp;&nbsp;<h:outputText escape="false" value="#{clienteMB.cliente.email}" style="font-size:14px"/></label>
+		              </div>
+		              <div class="form-group">
+   		                <label for="">
+   		                	<i class="fa fa-birthday-cake fa-2x"></i>&nbsp;&nbsp;
+   		                	<h:outputText escape="false" value="#{clienteMB.cliente.dtNascimento}" style="font-size:14px"><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></h:outputText>
+   		                </label>
+		              </div>
+		              <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.sairSistema}" value="Ir embora!"/>
+		            </h:form>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+   	        
    	        <!-- Login -->
    	        <div class="modal fade login-modal" id="login" tabindex="-1" role="dialog">
 		      <div class="modal-dialog">
 		        <div class="modal-content">
 		          <div class="modal-header">
 		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		            <h3 class="modal-title">Entrar</h3>
+		            <h3 class="modal-title">Entrar</h3> 
 		          </div>
 		          <div class="modal-body">
 		            <h:form id="formEntrar" role="form">
 		              <div class="form-group">
 		                <label for="">E-mail</label>
-		                <input type="email" class="form-control" id=""/>
+		                <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important"/>
 		              </div>
 		              <div class="form-group">
 		                <label for="">Senha</label>
-		                <input type="password" class="form-control" id=""/>
+		                <h:inputSecret id="senha" class="form-control" value="#{clienteMB.cliente.senha}" />
 		              </div>
-		              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-		              <button type="button" class="btn btn-link btn-block">Perdeu a senha?</button>
+		              <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.validarCliente}" value="Entrar"/>
+		              <h:commandButton class="btn btn-link btn-block" action="#" value="Recuperar senha"/>
 		            </h:form>
 		          </div>
 		        </div>
@@ -134,11 +174,11 @@
 		              </div>	
 		              <div class="form-group">
 		                <label for="">Data de nascimento <span style="color: red">*</span></label>
-		                <p:inputMask id="dtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.dtNascimento}" mask="99/99/9999"/>
+		                <p:inputMask id="dtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.dtNascimento}" mask="99/99/9999" />
 		              </div>
 		              <div class="form-group">
 		                <label for="">E-mail <span style="color: red">*</span></label>
-		                <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" />
+		                <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important"/>
 		              </div>
 		              <div class="form-group">
 		                <label for="">Senha <span style="color: red">*</span></label>

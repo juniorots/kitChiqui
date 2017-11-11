@@ -1,7 +1,11 @@
+/**
+ * Vendas de Kits chiques.
+ * 
+ * @author Jose Alves
+ */
 package br.com.kitchiqui.controller;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -10,7 +14,7 @@ import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -22,49 +26,13 @@ import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.EnviarEmail;
 import br.com.kitchiqui.util.Util;
 
-/**
- *
- * @author Jose Alves
- */
 @ManagedBean
-@RequestScoped
-public class ClienteMB implements Serializable {
+@SessionScoped
+public class ClienteMB extends BaseController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Cliente cliente= null;
     private Collection<Cliente> listaCliente = new ArrayList();
-    private String tmpDtNascimento;
-    
-    /**
-     * Creates a new instance of ClienteMB
-     */
-    public ClienteMB() {
-    	cliente = Util.captarClienteSessao();
-        if ( Util.isEmpty( getCliente() ) ) {
-        	cliente = new Cliente();
-        }
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Collection<Cliente> getListaCliente() {
-        if (listaCliente == null) {
-            return new ArrayList<Cliente>();
-        }
-    
-        return listaCliente;
-    }
-
-    public void setListaCliente(Collection<Cliente> listaCliente) {
-        this.listaCliente = listaCliente;
-    }
-
+   
     /**
      * Responsavel por alterar as informacoes do Cliente logado
      */
@@ -130,12 +98,11 @@ public class ClienteMB implements Serializable {
      * Validando dados inseridos
      */
     public boolean validarDados() {
-    	
-    	if ( ( getCliente().getDtNascimento() == null || getCliente().getDtNascimento().equals("") ) 
-    			|| (getCliente().getNome() == null || getCliente().getNome().trim().equals("") )
-    			|| (getCliente().getEmail() == null || getCliente().getEmail().trim().equals("") )
-    			|| (getCliente().getSenha() == null || getCliente().getSenha().trim().equals("") )
-    			|| (getCliente().getConfirmaSenha() == null || getCliente().getConfirmaSenha().trim().equals("") ) ) {
+    	if ( Util.isEmpty(getCliente().getDtNascimento()) 
+    			|| Util.isEmpty(getCliente().getNome()) 
+    			|| Util.isEmpty(getCliente().getEmail())
+    			|| Util.isEmpty(getCliente().getSenha())
+    			|| Util.isEmpty(getCliente().getConfirmaSenha()) ) {
 //    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório preencher TODOS os campos.");
     		Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Validação de campos", "É obrigatório preencher TODOS os campos.");
             return false; // fail! :-(
@@ -207,7 +174,7 @@ public class ClienteMB implements Serializable {
             setCliente( retornoCliente );
         } else {
             getCliente().setEmail("");
-            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Vixi...", "E-mail ou Senha inválidos.");
+            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha", "E-mail ou Senha inválidos.");
         }
     }
     
@@ -255,7 +222,7 @@ public class ClienteMB implements Serializable {
         } else {
             Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Informações inexistentes em nossa base de dados, favor tentar novamente.");
         }
-        cliente = new Cliente();
+        setCliente(new Cliente());
     }
     
     /**
@@ -267,12 +234,17 @@ public class ClienteMB implements Serializable {
         Util.gravarClienteSessao( getCliente() );
         Util.forward( Constantes.INICIO_SISTEMA );
     }
+    
+    public Collection<Cliente> getListaCliente() {
+        if (listaCliente == null) {
+            return new ArrayList<Cliente>();
+        }
+    
+        return listaCliente;
+    }
 
-	public String getTmpDtNascimento() {
-		return tmpDtNascimento;
-	}
+    public void setListaCliente(Collection<Cliente> listaCliente) {
+        this.listaCliente = listaCliente;
+    }
 
-	public void setTmpDtNascimento(String tmpDtNascimento) {
-		this.tmpDtNascimento = tmpDtNascimento;
-	}
 }
