@@ -35,8 +35,8 @@ public class Constantes {
     */
 //    public static String EMAIL_REMETENTE_GMAIL = "dedoduro.default.user@gmail.com";
 //    public static String SENHA_REMETENTE_GMAIL = "d3d0Dur0123";
-    public static String EMAIL_REMETENTE_GMAIL = "kitchiqui.default@gmail.com";
-    public static String SENHA_REMETENTE_GMAIL = "l@yphy12";
+    public static String EMAIL_REMETENTE_GMAIL = "kitchiqui@gmail.com";
+    public static String SENHA_REMETENTE_GMAIL = "l@yphy334483283";
     
     /**
      * Uteis em threads

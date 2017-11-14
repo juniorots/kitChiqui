@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <ui:composition template="/WEB-INF/template/mestre.xhtml">
+      	<ui:define name="centro">     
+      		<h:form id="formLostPassword"> 
+	    	<!--
+	       		NOTA: para capturar o caminho relativo do projeto, usa-se:
+	          	#[request.contextPath}/<DIRETORIO>/..
+	      	-->
+			<section class="lightSection clearfix pageHeader">
+		        <div class="container">
+		          <div class="row">
+		            <div class="col-xs-6">
+		              <div class="page-title">
+		                <h2>Recuperar Senha</h2>
+		              </div>
+		            </div>
+		            <div class="col-xs-6">
+		              <ol class="breadcrumb pull-right">
+		                <li>
+		                  <h:commandLink action="#{produtoMB.paginaPrincipal}">INÍCIO</h:commandLink>
+		                </li>
+		                <li class="active">Perdeu a senha?</li>
+		              </ol>
+		            </div>
+		          </div>
+		        </div>
+		     </section>	      
+		     
+		     <section class="mainContent clearfix lostPassword">
+		        <div class="container">
+		          <div class="row">
+		            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+		              <div class="panel panel-default">
+		                <div class="panel-heading"><h3>Recuperar Senha</h3></div>
+		                <div class="panel-body">
+		                    <p class="help-block">Informe os dados, para convalidarmos as informações.</p>
+		                    <div class="form-group">
+		                      <label for="">E-mail</label>
+		                      <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important"/>
+		                    </div>
+		                    <div class="form-group">
+		                      <label for="">Data de nascimento</label>
+		                	  <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" />
+		                    </div>
+		                    <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.recuperarConta}" value="Recuperar"/>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </section>
+		      
+	      	  </h:form>	
+	    </ui:define>
+	  </ui:composition>
+</html>

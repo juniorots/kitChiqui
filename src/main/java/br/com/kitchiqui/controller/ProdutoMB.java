@@ -44,12 +44,6 @@ public class ProdutoMB extends BaseController implements Serializable {
 	private Collection<Parceiro> listaParceiros = new ArrayList();
 	private Collection<Produto> listaFiltro = new ArrayList();
 
-	// section forwarding...	
-	private static final String DETALHE_PRODUTO = "/detalheProduto.xhtml";
-	private static final String FILTRO_PRODUTO = "/filtroProduto.xhtml";
-	private static final String PAGINA_PRINCIPAL = "/index.xhtml";
-	private static final String KIT_BLOG = "/kitBlog.xhtml";
-	
 	private String primeiroFiltro;
 	private String segundoFiltro;
 	private String tmpPrimeiro;

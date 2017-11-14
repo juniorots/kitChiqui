@@ -30,7 +30,7 @@ public class EnviarEmail {
         try {
             email.setHostName(Constantes.HOST_NAME_GMAIL);
             email.addTo(Constantes.ADMINISTRADOR_1);
-            email.setFrom(Constantes.EMAIL_REMETENTE_GMAIL, "kitchiqui - Administrador");
+            email.setFrom(Constantes.EMAIL_REMETENTE_GMAIL, "KitChiqui - Administrador");
             
             for (String tmp : emails) {
                 email.addBcc(tmp);

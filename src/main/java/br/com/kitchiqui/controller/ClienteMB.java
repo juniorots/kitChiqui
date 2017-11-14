@@ -6,6 +6,7 @@
 package br.com.kitchiqui.controller;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -62,6 +63,13 @@ public class ClienteMB extends BaseController implements Serializable {
     }
     
     /**
+     * Tratando da recuperacao de conta
+     */
+    public void direcionarRecuperarConta() {
+    	Util.forward(RECUPERA_SENHA);
+    }
+    
+    /**
      * Responsavel por persistir as informacoes digitadas na base
      */
     public void salvarCliente() {
@@ -69,7 +77,8 @@ public class ClienteMB extends BaseController implements Serializable {
         if ( !validarDados() ) return;
         
         if ( !continuarRegistro( getCliente() ) ) {
-            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha no cadastro", "E-mail já registrado no sistema.");
+//            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha no cadastro", "E-mail já registrado no sistema.");
+        	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "E-mail já registrado no sistema.");
             return;
         }
         
@@ -86,11 +95,13 @@ public class ClienteMB extends BaseController implements Serializable {
         entManager.getTransaction().commit();
         
         if ( !Util.isEmpty( usInserido.getId() ) ) {
-            Util.montarMensagemModal(FacesMessage.SEVERITY_INFO, "Sucesso", "Conta criada.");
+//            Util.montarMensagemModal(FacesMessage.SEVERITY_INFO, "Sucesso", "Conta criada.");
+        	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Conta criada.");
             Util.gravarClienteSessao( usInserido );
             setCliente( Util.captarClienteSessao() );
         } else {
-            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha no cadastro", "Problema com o sistema, tente em outro momento");
+//            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha no cadastro", "Problema com o sistema, tente em outro momento");
+        	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Problema com o sistema, tente em outro momento");
         }
     }
     
@@ -98,18 +109,27 @@ public class ClienteMB extends BaseController implements Serializable {
      * Validando dados inseridos
      */
     public boolean validarDados() {
-    	if ( Util.isEmpty(getCliente().getDtNascimento()) 
+    	if ( Util.isEmpty(getCliente().getTmpDtNascimento()) 
     			|| Util.isEmpty(getCliente().getNome()) 
     			|| Util.isEmpty(getCliente().getEmail())
     			|| Util.isEmpty(getCliente().getSenha())
     			|| Util.isEmpty(getCliente().getConfirmaSenha()) ) {
-//    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório preencher TODOS os campos.");
-    		Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Validação de campos", "É obrigatório preencher TODOS os campos.");
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório preencher TODOS os campos.");
+//    		Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Validação de campos", "É obrigatório preencher TODOS os campos.");
             return false; // fail! :-(
     	}
     	
+    	// Tratando campos sensíveis
+    	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    	try {
+    		getCliente().setDtNascimento(format.parse(getCliente().getTmpDtNascimento()));
+    	} catch (Exception e) {
+    		// TODO nothing...
+    	}
+    	
         if ( !getCliente().getSenha().equalsIgnoreCase( getCliente().getConfirmaSenha() )) {
-            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Problema com as senhas", "Oops... Senhas divergentes");
+//            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Problema com as senhas", "Oops... Senhas divergentes");
+        	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Oops... Senhas divergentes");
             return false; // fail! :-(
         }
         
@@ -124,7 +144,8 @@ public class ClienteMB extends BaseController implements Serializable {
      */
     public boolean validarEmail() {
         if ( !Util.validarEmail( getCliente().getEmail() ) ) {
-            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Problema com e-mail", "Oops... E-mail inválido");
+//            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Problema com e-mail", "Oops... E-mail inválido");
+        	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Oops... E-mail inválido");
             return false; // fail! :-(
         }
         return true; // acerto! :-)
@@ -174,8 +195,31 @@ public class ClienteMB extends BaseController implements Serializable {
             setCliente( retornoCliente );
         } else {
             getCliente().setEmail("");
-            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha", "E-mail ou Senha inválidos.");
+//            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha", "E-mail ou Senha inválidos.");
+            Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "E-mail ou Senha inválido.");
         }
+    }
+    
+    /**
+     * Tratando validacao no momento de recuperacao de senhas...
+     * @return
+     */
+    public boolean validarRecuperarSenha() {
+    	if ( Util.isEmpty(getCliente().getTmpDtNascimento())
+    			|| Util.isEmpty(getCliente().getEmail()) )   {
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório preencher TODOS os campos.");
+            return false; // fail! :-(
+    	}
+    	
+    	// Tratando campos sensíveis
+    	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    	try {
+    		getCliente().setDtNascimento(format.parse(getCliente().getTmpDtNascimento()));
+    	} catch (Exception e) {
+    		// TODO nothing...
+    	}
+    	
+    	return true; // sucess! :-)
     }
     
     /**
@@ -184,6 +228,8 @@ public class ClienteMB extends BaseController implements Serializable {
     public void recuperarConta() {
         
         FacesMessage mensagem = null;
+        
+        if ( ! validarRecuperarSenha() ) return;
         
         if ( !validarEmail() ) return;
         
@@ -217,8 +263,7 @@ public class ClienteMB extends BaseController implements Serializable {
             
             EnviarEmail.recuperarSenha(emails, novaSenha);
             
-            Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Uma senha automática fora enviado para o e-mail informado, <br />"
-                    + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;após a sua validação procure alterá-la.");
+            Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Uma senha automática fora enviado para o e-mail informado, após a sua validação procure alterá-la.");
         } else {
             Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Informações inexistentes em nossa base de dados, favor tentar novamente.");
         }

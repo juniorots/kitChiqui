@@ -36,6 +36,8 @@ public class Cliente extends DomainObject {
 	@Temporal(DATE)
     @NotNull
     private Date dtNascimento;
+	
+	private String tmpDtNascimento;
 
 	public String getNome() {
 		return nome;
@@ -75,6 +77,14 @@ public class Cliente extends DomainObject {
 
 	public void setDtNascimento(Date dtNascimento) {
 		this.dtNascimento = dtNascimento;
+	}
+
+	public String getTmpDtNascimento() {
+		return tmpDtNascimento;
+	}
+
+	public void setTmpDtNascimento(String tmpDtNascimento) {
+		this.tmpDtNascimento = tmpDtNascimento;
 	}
 
 }

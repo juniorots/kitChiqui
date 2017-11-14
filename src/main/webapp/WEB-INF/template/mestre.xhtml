@@ -12,6 +12,8 @@
         </ui:insert>
     </h:head>
     <h:body class="body-wrapper">
+    <p:growl id="growl" showDetail="true" sticky="false" life="8000"/>
+    
    	<div class="main-wrapper">
    		<div class="header clearfix">
    			<div class="topBar">
@@ -32,7 +34,7 @@
 	              <div class="col-md-6 col-sm-7 col-xs-12">
 	                <ul class="list-inline pull-right top-right">
 	                  <li class="account-login"> 
-	                  	<c:if test="#{not empty clienteMB.cliente.nome}">
+	                  	<c:if test="#{not empty clienteMB.cliente.id}">
 		          			<span>
 		          				<a data-toggle="modal" href="#status">
 		          					<b>
@@ -42,7 +44,7 @@
 		          				</a>
 		          			</span>
 	   	        	  	</c:if>
-   		        	  	<c:if test="#{empty clienteMB.cliente.nome}">
+   		        	  	<c:if test="#{empty clienteMB.cliente.id}">
                   			<span><a data-toggle="modal" href='.login-modal'>Entre</a><small>ou</small><a data-toggle="modal" href='#signup'>Crie sua conta</a></span>
 	               		</c:if>
 	                  </li>
@@ -146,7 +148,7 @@
 		                <h:inputSecret id="senha" class="form-control" value="#{clienteMB.cliente.senha}" />
 		              </div>
 		              <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.validarCliente}" value="Entrar"/>
-		              <h:commandButton class="btn btn-link btn-block" action="#" value="Recuperar senha"/>
+		              <h:commandButton class="btn btn-link btn-block" action="#{clienteMB.direcionarRecuperarConta}" value="Recuperar senha"/>
 		            </h:form>
 		          </div>
 		        </div>
@@ -163,7 +165,6 @@
 		          </div>
 		          <div class="modal-body">
 		            <h:form id="formCriar" role="form">
-		            <p:growl id="growl" showDetail="true" sticky="true" life="400"/>
 		              
 		              <div class="form-group">
 		                <label for="" style="color: red">(*) Obrigatório</label>
@@ -174,7 +175,7 @@
 		              </div>	
 		              <div class="form-group">
 		                <label for="">Data de nascimento <span style="color: red">*</span></label>
-		                <p:inputMask id="dtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.dtNascimento}" mask="99/99/9999" />
+		                <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" />
 		              </div>
 		              <div class="form-group">
 		                <label for="">E-mail <span style="color: red">*</span></label>
@@ -197,13 +198,14 @@
    	        
 		    <!-- Essenciais -->
 		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		    <script src="plugins/jquery-ui/jquery-ui.js"></script>
 		    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+		    <script src="plugins/jquery-ui/jquery-ui.js"></script>
 		    <script src="plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 		    <script src="plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 		    <script src="plugins/owl-carousel/owl.carousel.js"></script>
 		    <script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
 		    <script src="plugins/countdown/jquery.syotimer.js"></script>
+		    <script src="js/custom.js"></script>
 		    <script src="js/kitDatePicker.js"></script>
 
 		 <ui:insert name="centro">
