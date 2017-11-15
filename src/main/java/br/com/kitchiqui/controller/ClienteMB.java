@@ -70,6 +70,13 @@ public class ClienteMB extends BaseController implements Serializable {
     }
     
     /**
+     * Gerenciando as compras realizadas
+     */
+    public void primeiroPassoCompra() {
+    	Util.forward(PRIMEIRO_PASSO_COMPRAS);
+    }
+    
+    /**
      * Responsavel por persistir as informacoes digitadas na base
      */
     public void salvarCliente() {

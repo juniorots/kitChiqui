@@ -36,9 +36,6 @@ public class ProdutoMB extends BaseController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Produto produto = null;
-	private Blog blog = null;
-	
 	private Collection<Produto> listaVitrine = new ArrayList();
 	private Collection<Produto> listaDestaque = new ArrayList();
 	private Collection<Parceiro> listaParceiros = new ArrayList();
@@ -46,8 +43,6 @@ public class ProdutoMB extends BaseController implements Serializable {
 
 	private String primeiroFiltro;
 	private String segundoFiltro;
-	private String tmpPrimeiro;
-	private String tmpSegundo;
 	
 	private boolean bloquearFiltroEspecie;
 
@@ -80,11 +75,6 @@ public class ProdutoMB extends BaseController implements Serializable {
         }
 	}
 	
-	public void resetarConfig() {
-		this.tmpPrimeiro = "";
-		this.produto.setTitulo("");
-	}
-	
 	/**
 	 * Tratando especificacao do produto
 	 * @return
@@ -99,7 +89,7 @@ public class ProdutoMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
-        this.produto = dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto")));
+        setProduto(dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto"))));
         
 		Util.forward(DETALHE_PRODUTO);
 	}
@@ -118,8 +108,14 @@ public class ProdutoMB extends BaseController implements Serializable {
         ProdutoDAO dao = new ProdutoDAO(entityManager);
         listaFiltro.clear();
         
+        if (Util.isEmpty(getProduto().getTitulo())) {
+        	getProduto().setTitulo("");
+        }
+        
         for (Produto p : dao.findByStringField("titulo", getProduto().getTitulo(), true, 0, 0)) {
-        	listaFiltro.add(p);
+        	if (!p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())){
+        		listaFiltro.add(p);
+        	}
         }
         
         this.bloquearFiltroEspecie = true;
@@ -138,7 +134,7 @@ public class ProdutoMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
                 
         ProdutoDAO dao = new ProdutoDAO(entityManager);
-        this.produto = null;
+        setProduto(null);
 
         Object tmp = null;
         String tmp2 = "";
@@ -146,7 +142,7 @@ public class ProdutoMB extends BaseController implements Serializable {
 		    tmp = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idClasse");
 		    tmp2 = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("especie");
         } catch (Exception e) {
-        	 this.tmpPrimeiro = "";
+        	 setTmpPrimeiro("");
         }
         
         if ( tmp2 != null && !tmp2.equals("null") && !tmp2.equals("") ) {
@@ -165,10 +161,10 @@ public class ProdutoMB extends BaseController implements Serializable {
         }
         	
         Util.tratarRangePreco(getProduto(), this.primeiroFiltro, this.segundoFiltro);
-        this.tmpPrimeiro = this.primeiroFiltro;
-        this.tmpSegundo = this.segundoFiltro;
+        setTmpPrimeiro(this.primeiroFiltro);
+        setTmpSegundo(this.segundoFiltro);
         
-        for (Produto p : dao.selectUsingFilter(this.produto)) {
+        for (Produto p : dao.selectUsingFilter(getProduto())) {
         	if (!p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())){
         		listaFiltro.add(p);
         	}
@@ -207,28 +203,13 @@ public class ProdutoMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         BlogDAO dao = new BlogDAO(entityManager);
-        this.blog = null;
+        setBlog(null);
         getBlog().setTipoAssunto(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("tipoAssunto")));
-        this.blog = dao.selectUsingFilter(getBlog()).get(0);
+        setBlog(dao.selectUsingFilter(getBlog()).get(0));
 		
 		Util.forward(KIT_BLOG);
 	}
 	
-	public void paginaPrincipal(){
-		resetarConfig();
-		Util.forward(PAGINA_PRINCIPAL);
-	}
-	
-	public Produto getProduto() {
-		if (produto == null) {
-			produto = new Produto();
-		}
-		return produto;
-	}
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
 	public boolean isBloquearFiltroEspecie() {
 		return bloquearFiltroEspecie;
 	}
@@ -284,31 +265,4 @@ public class ProdutoMB extends BaseController implements Serializable {
 		this.segundoFiltro = segundoFiltro;
 	}
 
-	public String getTmpPrimeiro() {
-		return tmpPrimeiro;
-	}
-
-	public void setTmpPrimeiro(String tmpPrimeiro) {
-		this.tmpPrimeiro = tmpPrimeiro;
-	}
-
-	public String getTmpSegundo() {
-		return tmpSegundo;
-	}
-
-	public void setTmpSegundo(String tmpSegundo) {
-		this.tmpSegundo = tmpSegundo;
-	}
-
-	public Blog getBlog() {
-		if (this.blog == null) {
-			blog = new Blog();
-		}
-		return blog;
-	}
-
-	public void setBlog(Blog blog) {
-		this.blog = blog;
-	}
-	
 }

@@ -24,6 +24,14 @@ public class Cliente extends DomainObject {
 	@NotNull
 	private String nome;
 	
+	private String nomeCompleto;
+	
+	private String nrCpf;
+	
+	private String nrRG;
+	
+	private String nrTelefone;
+	
 	@NotNull
 	private String email;
 	
@@ -38,6 +46,8 @@ public class Cliente extends DomainObject {
     private Date dtNascimento;
 	
 	private String tmpDtNascimento;
+	
+	private Endereco endereco;
 
 	public String getNome() {
 		return nome;
@@ -87,4 +97,44 @@ public class Cliente extends DomainObject {
 		this.tmpDtNascimento = tmpDtNascimento;
 	}
 
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+
+	public String getNrCpf() {
+		return nrCpf;
+	}
+
+	public void setNrCpf(String nrCpf) {
+		this.nrCpf = nrCpf;
+	}
+
+	public String getNrRG() {
+		return nrRG;
+	}
+
+	public void setNrRG(String nrRG) {
+		this.nrRG = nrRG;
+	}
+
+	public String getNrTelefone() {
+		return nrTelefone;
+	}
+
+	public void setNrTelefone(String nrTelefone) {
+		this.nrTelefone = nrTelefone;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
 }

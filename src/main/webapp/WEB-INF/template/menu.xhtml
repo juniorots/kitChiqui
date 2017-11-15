@@ -14,18 +14,22 @@
             .ui-growl {
             	top: 40px !important;
             	right: 10px !important;
-            	width: 360px !important;
+            	width: 320px !important;
             }
             
             /* configuracoa do conteudo */
             .ui-growl-item {
-            	width: 280px !important;
+            	width: 295px !important;
             	height: 80px !important;
             }
             
+            .col-xs-3 {
+            	width: 33% !important;
+            }
         </style>
         
         <!-- NAVBAR -->
+        <h:form id="formMenu">
         <nav class="navbar navbar-main navbar-default" role="navigation">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,82 +40,34 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <h:form id="formMenu">
-	              <h:commandLink class="navbar-brand" action="#{produtoMB.paginaPrincipal}"><img src="img/kitChiquiLogo01.png" alt="kitChiqui"/></h:commandLink>
-              </h:form>
+              <h:commandLink class="navbar-brand" action="#{produtoMB.paginaPrincipal}"><img src="img/kitChiquiLogo01.png" alt="kitChiqui"/></h:commandLink>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
               <ul class="nav navbar-nav navbar-right">
+                <!-- 
                 <li class="dropdown">
                   <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Início</a>
                   <ul class="dropdown-menu dropdown-menu-left">
                     <li><a href="index.html">Vitrine principal</a></li>
-                    <!-- 
                     <li><a href="index-v2.html">Home Classic</a></li>
                     <li><a href="index-v3.html">Home Deals</a></li>
                     <li><a href="index-v4.html">Home Mega</a></li>
-                     -->
                   </ul>
                 </li>
-                <li class="dropdown megaDropMenu">
-                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true" aria-expanded="false"><b>Vitrines</b></a>
-                  <ul class="dropdown-menu row">
-                    <li class="col-sm-3 col-xs-12">
-                      <ul class="list-unstyled">
-                        <li>Em nossas vitrines</li>
-                        <li><a href="product-grid-left-sidebar.html">Filtrar produtos</a></li>
-                        <li><a href="product-grid-3-col-filter.html">Vitrines largas</a></li>
-                        <!-- 
-                        <li><a href="product-grid-right-sidebar.html">Vitrines largas</a></li>
-                         -->
-                        <!-- 
-                        <li><a href="product-grid-3-col.html">Products 3 Columns V2</a></li>
-                        <li><a href="product-grid-4-col.html">Products 4 Columns</a></li>
-                         -->
-                      </ul>
-                    </li>
-                    <!-- 
-                    <li class="col-sm-3 col-xs-12">
-                      <ul class="list-unstyled">
-                        <li>Checkout</li>
-                        <li><a href="checkout-step-1.html">Step 1 - Address</a></li>
-                        <li><a href="checkout-step-2.html">Step 2 - Shipping</a></li>
-                        <li><a href="checkout-step-3.html">Step 3 - Payment</a></li>
-                        <li><a href="checkout-step-4.html">Step 4 - Payment</a></li>
-                        <li><a href="checkout-complete.html">Order Complete</a></li>
-                      </ul>
-                    </li>
-                     -->
-                    <!-- 
-                    <li class="col-sm-3 col-xs-12">
-                      <ul class="list-unstyled">
-                        <li>Listar Produtos</li>
-                        <li><a href="product-list-left-sidebar.html">Products Sidebar Left</a></li>
-                        <li><a href="product-list-right-sidebar.html">Products Sidebar Right</a></li>
-                        <li class="listHeading">Others</li>
-                        <li><a href="single-product.html">Single Product</a></li>
-                        <li><a href="cart-page.html">Cart Page</a></li>
-                      </ul>
-                    </li>
-                     -->
-                    <!-- 
-                    <li class="col-sm-3 col-xs-12">
-                      <a href="#" class="menu-photo"><img src="img/menu-photo.jpg" alt="menu-img"/></a>
-                    </li>
-                     -->
+                -->
+                <li class="dropdown">
+                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produtos</a>
+                  <ul class="dropdown-menu dropdown-menu-left">
+                    <li><h:commandLink action="#{produtoMB.filtrarTexto}">Vitrine</h:commandLink></li>   
                   </ul>
                 </li>
                 <li class="dropdown active">
                   <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Minha Conta</a>
                   <ul class="dropdown-menu dropdown-menu-right">
-                    <li class="active"><a href="account-dashboard.html">Dashboard</a></li>
-                    <li><a href="account-profile.html">Profile</a></li>
-                    <li><a href="account-all-orders.html">All Orders</a></li>
-                    <li><a href="account-single-order.html">Single Order</a></li>
-                    <li><a href="account-wishlist.html">Wishlist</a></li>
-                    <li><a href="account-address.html">Address</a></li>
+                    <li class="active"><a href="account-dashboard.html">Rever meus dados</a></li>
+                    <li><h:commandLink action="#{clienteMB.primeiroPassoCompra}">As compras</h:commandLink></li>
                   </ul>
                 </li>
                 <!-- 
@@ -164,5 +120,6 @@
             </div><!-- /.navbar-collapse -->
           </div>
         </nav>
+        </h:form>
     </h:body>
 </html>

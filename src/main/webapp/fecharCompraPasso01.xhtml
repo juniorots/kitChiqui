@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/WEB-INF/template/mestre.xhtml">
+    	<ui:define name="centro">
+    	<h:form id="formCompra">
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+        <section class="lightSection clearfix pageHeader">
+	        <div class="container">
+	          <div class="row">
+	            <div class="col-sm-6">
+	              <div class="page-title">
+	                <h2>Fechar a compra</h2>
+	              </div>
+	            </div>
+	            <div class="col-sm-6">
+	              <ol class="breadcrumb">
+	                <li>
+	                  <h:commandLink action="#{clienteMB.paginaPrincipal}">INÍCIO</h:commandLink>
+	                </li>
+	                <li class="active">INFORMAÇÕES DA COMPRA</li>
+	              </ol>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+        
+        <section class="mainContent clearfix stepsWrapper">
+	        <div class="container">
+	          <div class="row">
+	            <div class="col-md-8">
+	              <div class="innerWrapper clearfix stepsPage">
+	                <div class="row progress-wizard" style="border-bottom:0;">
+	              		<div class="col-xs-3 progress-wizard-step active">
+                    		<div class="text-center progress-wizard-stepnum">Dados do Comprador</div>
+                    		<div class="progress"><div class="progress-bar"></div></div>
+                    		<a href="fecharCompraPasso01.xhtml" class="progress-wizard-dot"></a>
+                  		</div>
+		
+                    	<div class="col-xs-3 progress-wizard-step disabled">
+		                    <div class="text-center progress-wizard-stepnum">Meio de Pagamento</div>
+		                    <div class="progress"><div class="progress-bar"></div></div>
+		                    <a href="fecharCompraPasso02.xhtml" class="progress-wizard-dot"></a>
+		                </div>
+		
+		                <div class="col-xs-3 progress-wizard-step disabled">
+		                    <div class="text-center progress-wizard-stepnum">Confirmação</div>
+		                    <div class="progress"><div class="progress-bar"></div></div>
+		                    <a href="fecharCompraPasso03.xhtml" class="progress-wizard-dot"></a>
+		                </div>
+	                </div>
+	                
+	                <div class="col-12">
+	                	<div class="page-header">
+	                      <h4>Dados pessoais</h4>
+	                    </div>
+	                </div>
+                  
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">Nome Completo</label>
+	                    <h:inputText id="nomeCompleto" class="form-control" value="#{clienteMB.cliente.nomeCompleto}" />
+	                </div>
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">CPF</label>
+	                    <h:inputText id="cpf" class="form-control" value="#{clienteMB.cliente.nrCpf}" />
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">RG</label>
+	                    <h:inputText id="rg" class="form-control" value="#{clienteMB.cliente.nrRG}" />
+	                </div>
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">Data de Nascimento</label>
+	                    <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" />
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Telefone (celular)</label>
+	                    <h:inputText id="nrTelefone" class="form-control" value="#{clienteMB.cliente.nrTelefone}" />
+	                </div>
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">E-mail</label>
+	                    <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important" />
+	                </div>
+                  	
+                  	<!-- xx -->
+                  	<div class="col-12">
+	                	<div class="page-header">
+	                      <h4>Dados de entrega</h4>
+	                    </div>
+	                </div>
+                  	
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">CEP</label>
+	                    <h:inputText id="cep" class="form-control" value="#{clienteMB.cliente.endereco.cep}" />
+	                </div>
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">Rua</label>
+	                    <h:inputText id="nomeRua" class="form-control" value="#{clienteMB.cliente.endereco.nomeRua}" />
+	                </div>
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">Número</label>
+	                    <h:inputText id="numero" class="form-control" value="#{clienteMB.cliente.endereco.numero}" />
+	                </div>
+                  	<div class="form-group col-sm-6 col-12">
+	                	<label for="">Complemento</label>
+	                    <h:inputText id="complemento" class="form-control" value="#{clienteMB.cliente.endereco.complemento}" />
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Bairro</label>
+	                    <h:inputText id="bairro" class="form-control" value="#{clienteMB.cliente.endereco.bairro}" />
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Cidade</label>
+	                    <h:inputText id="cidade" class="form-control" value="#{clienteMB.cliente.endereco.cidade}" />
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Estado</label>
+	                    <h:inputText id="estado" class="form-control" value="#{clienteMB.cliente.endereco.estado}" />
+	                </div>
+	                
+	                <div class="row">
+		                <div class="col-sm-12 col-12">
+		                	<div class="page-header">
+		                      <h4>Modo de envio</h4>
+		                    </div>
+		                </div>
+		                
+		                <div class="row checkboxArea">
+		                    <div class="col-12 col-lg-6 mb-4">
+		                      <input id="checkbox1" type="radio" name="freteGratis" value="1" checked="true"/>
+		                      <label for="checkbox1"><span></span>Frete Grátis</label><br />
+		                      <small>Estimativa de 25 a 30 dias para entrega (previsão Correios)</small>
+		                    </div>
+	                    </div>
+		                <div class="col-sm-3 col-12">
+		                	<label for=""><i class="fa fa-info-circle"/>&nbsp;Informações gerais</label>
+		                </div>
+		                <div class="col-sm-6 col-12">
+		                    <label for="">Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso"/> e a <h:commandLink action="#" value="política de privacidade"/>.</label>
+		                </div>
+		                <div class="col-12">
+		                    <div class="well well-lg clearfix">
+		                      <ul class="pager">
+		                        <li class="next "><a class="btn btn-primary btn-default " href="checkout-step-2.html">Continuar <i class="fa fa-angle-right"></i></a></li>
+		                      </ul>
+		                    </div>
+	                  	</div>
+                  	</div>
+                  	
+	              </div>
+                </div>
+                
+                <div class="col-md-4">
+	              <div class="summery-box">
+	                <h4>Resumo da compra</h4>
+		               <p>Olhe o que contabilizamos</p>
+	                <ul class="list-unstyled">
+	                  <li class="d-flex justify-content-between">
+	                    <span class="tag">Subtotal</span>
+	                    <span class="val">$237.00</span>
+	                  </li>
+	                  <li class="d-flex justify-content-between">
+	                    <span class="tag">Taxa de entrega</span>
+	                    <span class="val">$0.00 </span>
+	                  </li>
+	                  <li class="d-flex justify-content-between">
+	                    <span class="tag">Total</span>
+	                    <span class="val">USD  $249.00 </span>
+	                  </li>
+	                </ul>
+	              </div>
+	            </div>
+	            
+              </div>
+            </div>
+         </section>  
+        
+        </h:form>
+		</ui:define>
+    </ui:composition>
+</html>

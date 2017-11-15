@@ -6421,7 +6421,7 @@ body.bodyColor.container {
 /*=== 14. STEPS ===*/
 /*=== 14.1 STEP # 01 ===*/
 .stepsWrapper .innerWrapper {
-  border: 5px solid #f0f0f0;
+  border: 3px solid #f0f0f0;
   display: block;
   padding: 30px 30px 0;
   width: 100%;
@@ -6441,13 +6441,7 @@ body.bodyColor.container {
 
 .stepsWrapper .innerWrapper.stepsPage .cartListInner {
   margin-bottom: 50px;
-  float: left;
   display: block;
-  width: 100%;
-}
-
-.stepsWrapper .innerWrapper.stepsPage .cartListInner .totalAmountArea {
-  border-width: 5px;
 }
 
 .stepsWrapper .innerWrapper .well {
@@ -6455,6 +6449,8 @@ body.bodyColor.container {
   border: none;
   box-shadow: none;
   margin-bottom: 50px;
+  background: #f0f0f0;
+  padding: 20px 30px;
 }
 
 .stepsWrapper .innerWrapper .well .pager {
@@ -6462,47 +6458,28 @@ body.bodyColor.container {
 }
 
 .stepsWrapper .innerWrapper .well .pager li a {
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  height: 45px;
-  line-height: 45px;
-  background-color: #47bac1;
-  color: #ffffff;
   font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 15px;
   transition: all 0.3s ease-in-out;
 }
 
 .stepsWrapper .innerWrapper .well .pager li a:hover {
-  background-color: #47bac1;
-  color: #ffffff;
+  opacity: 0.8;
+}
+
+.stepsWrapper .innerWrapper .well .pager li a i {
+  font-size: 18px;
+  padding-left: 5px;
 }
 
 .stepsWrapper .innerWrapper .well .pager li a.hideContent {
   display: none;
 }
 
-@media (max-width: 479px) {
-  .stepsWrapper .innerWrapper .well .pager li a {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (min-width: 480px) {
-  .stepsWrapper .innerWrapper .well .pager li a {
-    width: 136px;
-    margin: 0;
-  }
-}
-
 .stepsWrapper .innerWrapper .well .pager li.previous a {
   background-color: #dedede;
   color: #252525;
-  margin-bottom: 10px;
 }
 
 .stepsWrapper .innerWrapper .well .pager li.previous a:hover {
@@ -6519,15 +6496,168 @@ body.bodyColor.container {
   float: none;
 }
 
+.stepsWrapper .innerWrapper .step2.checkboxArea {
+  margin-bottom: 25px;
+}
+
+.stepsWrapper .innerWrapper .step2.checkboxArea label {
+  font-size: 13px;
+  color: #797979;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check {
+  width: 100%;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check .form-control {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  height: 44px;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check span.step-drop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check .sbHolder {
+  border: 1px solid #f0f0f0;
+  background: #ffffff;
+  max-width: 48%;
+  height: 44px !important;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check .sbHolder .sbSelector {
+  line-height: 44px !important;
+  background: transparent;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check .input-group-addon {
+  margin-left: -1px;
+  z-index: 5;
+  background: #ffffff;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check ul.sbOptions {
+  margin-top: 0px;
+  z-index: 55;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check ul {
+  margin: 10px 0 0 30px;
+}
+
+.stepsWrapper .innerWrapper .checkboxArea.card-check ul li {
+  margin-right: 5px;
+}
+
+.stepsWrapper .shipping-info {
+  padding: 10px 0 20px;
+}
+
+.stepsWrapper .shipping-info h5 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.stepsWrapper .shipping-info address, .stepsWrapper .shipping-info p {
+  color: #797979;
+  line-height: 24px;
+}
+
+.stepsWrapper .summery-box {
+  border: 3px solid #f0f0f0;
+  padding: 40px 25px;
+  margin-bottom: 50px;
+}
+
+.stepsWrapper .summery-box h4 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: #252525;
+}
+
+.stepsWrapper .summery-box p {
+  font-size: 13px;
+  padding-bottom: 5px;
+  color: #797979;
+}
+
+.stepsWrapper .summery-box li {
+  font-size: 15px;
+  padding-bottom: 20px;
+  color: #797979;
+}
+
+.stepsWrapper .summery-box li:last-child {
+  border-top: 3px solid #f0f0f0;
+  color: #252525;
+  padding: 20px 0 0;
+}
+
+.stepsWrapper .summery-box li:last-child .val {
+  font-weight: 700;
+}
+
+.stepsWrapper .review-inner form {
+  margin: 0px;
+}
+
+.stepsWrapper .review-inner .table-responsive .table thead tr th {
+  border-right: none;
+}
+
+.stepsWrapper .review-inner .table-responsive .table tbody tr td input.quantity {
+  border: none;
+  background: transparent !important;
+}
+
+.stepsWrapper .order-confirm {
+  padding: 60px 0 90px;
+}
+
+.stepsWrapper .order-confirm h2 {
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.stepsWrapper .order-confirm span {
+  display: block;
+  font-size: 13px;
+  color: #797979;
+}
+
+.stepsWrapper .order-confirm p {
+  font-size: 15px;
+  line-height: 30px;
+  color: #797979;
+  margin: 42px 0 50px;
+}
+
+.stepsWrapper .order-confirm .btn {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+
 .progress-wizard .progress-wizard-step .progress-wizard-dot:after, .progress-wizard .progress-wizard-step.disabled .progress-wizard-dot:after {
   content: ' ';
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: #ffffff;
   border-radius: 50%;
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 7px;
+  left: 7px;
 }
 
 .progress-wizard {
@@ -6540,13 +6670,13 @@ body.bodyColor.container {
 }
 
 .progress-wizard .progress-wizard-step .progress-wizard-stepnum {
-  color: #252525;
-  margin-bottom: 5px;
+  color: #797979;
+  padding-bottom: 5px;
 }
 
 @media (max-width: 479px) {
   .progress-wizard .progress-wizard-step .progress-wizard-stepnum {
-    font-size: 10px;
+    font-size: 12px;
     height: 55px;
   }
 }
@@ -6567,7 +6697,7 @@ body.bodyColor.container {
 
 @media (min-width: 992px) {
   .progress-wizard .progress-wizard-step .progress-wizard-stepnum {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -6583,7 +6713,7 @@ body.bodyColor.container {
   display: block;
   background: #47bac1;
   left: 50%;
-  margin-top: -15px;
+  margin-top: -17px;
   margin-left: -15px;
   border-radius: 50%;
 }
@@ -6591,22 +6721,29 @@ body.bodyColor.container {
 @media (min-width: 480px) {
   .progress-wizard .progress-wizard-step .progress-wizard-dot {
     top: 60px;
+    margin-top: -14px;
   }
 }
 
 @media (min-width: 768px) {
   .progress-wizard .progress-wizard-step .progress-wizard-dot {
     top: 43px;
+    margin-top: -10px;
   }
 }
 
 .progress-wizard .progress-wizard-step .progress {
   position: relative;
   border-radius: 0;
-  height: 8px;
+  height: 4px;
   box-shadow: none;
-  margin: 20px 0;
   background-color: #f0f0f0;
+}
+
+@media (min-width: 480px) {
+  .progress-wizard .progress-wizard-step .progress {
+    margin: 23px 0 0px;
+  }
 }
 
 .progress-wizard .progress-wizard-step .progress .progress-bar {
@@ -6642,6 +6779,10 @@ body.bodyColor.container {
 
 .progress-wizard .progress-wizard-step.active .progress .progress-bar {
   width: 50%;
+}
+
+.progress-wizard .progress-wizard-step.active .progress-wizard-stepnum {
+  color: #252525;
 }
 
 .progress-wizard .progress-wizard-step.disabled .progress-wizard-dot {
@@ -6853,8 +6994,8 @@ body.bodyColor.container {
 
 @media (min-width: 768px) {
   .userProfile .btn-group a {
-    font-size: 11px;
-    padding: 0 20px;
+    font-size: 12px;
+    padding: 0 15px;
     margin: 0 5px 0 0;
   }
 }
@@ -6862,6 +7003,7 @@ body.bodyColor.container {
 @media (min-width: 992px) {
   .userProfile .btn-group a {
     font-size: 14px;
+    padding: 0 20px;
   }
 }
 
@@ -6877,8 +7019,8 @@ body.bodyColor.container {
 .userProfile .innerWrapper {
   width: 100%;
   display: block;
-  border: 5px solid #f0f0f0;
-  padding: 30px 30px 0 30px;
+  border: 3px solid #f0f0f0;
+  padding: 30px;
 }
 
 @media (min-width: 480px) {
@@ -6896,6 +7038,14 @@ body.bodyColor.container {
 .userProfile .innerWrapper .alert {
   border: none;
   border-radius: 0;
+  font-size: 15px;
+  color: #252525;
+  padding: 25px 30px;
+  margin-bottom: 40px;
+}
+
+.userProfile .innerWrapper .alert .close {
+  padding: 5px 12px;
 }
 
 .userProfile .innerWrapper h3 {
@@ -7053,6 +7203,18 @@ body.bodyColor.container {
   }
 }
 
+.userProfile .innerWrapper.singleOrder .panel-title {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 40px;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+}
+
+.userProfile .innerWrapper.singleOrder .panel-body {
+  padding: 30px 40px;
+}
+
 .orderBox {
   display: block;
   margin-bottom: 50px;
@@ -7062,6 +7224,14 @@ body.bodyColor.container {
   font-weight: 400;
   text-transform: capitalize;
   font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.orderBox h2 {
+  font-size: 30px;
+  margin-bottom: 25px;
+  text-transform: capitalize;
 }
 
 .orderBox .table-responsive {
@@ -7087,6 +7257,10 @@ body.bodyColor.container {
 .orderBox .table-responsive .table thead tr {
   border-left: 3px solid #47bac1;
   border-right: 3px solid #47bac1;
+}
+
+.orderBox .table-responsive .table thead tr th {
+  border-width: 0px;
 }
 
 @media (max-width: 479px) {
@@ -7119,32 +7293,29 @@ body.bodyColor.container {
 }
 
 .orderBox .table-responsive .table tbody tr td {
+  text-transform: capitalize;
   padding-left: 20px;
   font-weight: 400;
 }
 
-.orderBox .table-responsive .table tbody tr td .btn-default {
-  box-shadow: none;
-  border-radius: 0;
-  border: 1px solid #d0d0d0;
-  padding: 15px 20px;
-  display: inline-block;
-  font-size: 12px;
+.orderBox .table-responsive .table tbody tr td .btn-sm {
+  font-size: 13px;
+  padding: 0px;
+  width: 80px;
   font-weight: 700;
-  color: #252525;
-  transition: all 0.3s ease-in-out;
-  text-transform: uppercase;
+  height: 40px;
+  line-height: 40px;
 }
 
-.orderBox .table-responsive .table tbody tr td .btn-default:hover {
+.orderBox .table-responsive .table tbody tr td .btn-sm:hover {
   background-color: #47bac1;
   color: #ffffff;
   border-color: #47bac1;
 }
 
 .orderBox .table-responsive .table tbody tr td:last-child {
-  text-align: center;
-  padding-left: 10px;
+  text-align: right;
+  padding-right: 20px;
 }
 
 .orderBox .table-responsive .table tbody tr td:first-child {
@@ -7155,17 +7326,30 @@ body.bodyColor.container {
   color: #252525 !important;
 }
 
-.orderBox .table-responsive .table tbody tr td .label {
-  border-radius: 0;
-  font-size: 12px;
+.orderBox .table-responsive .table tbody tr td span.badge {
+  font-size: 11px;
+  border-radius: 0px;
+  padding: 5px 10px;
+}
+
+.orderBox .table-responsive .table tbody tr td span.badge.badge-primary {
+  background: #337ab7;
 }
 
 .orderBox.myAddress {
   margin-bottom: 10px;
 }
 
+.orderBox.myAddress .table-responsive .table thead tr th {
+  font-size: 16px;
+}
+
 .orderBox.myAddress .table-responsive .table tbody tr {
   border: none;
+}
+
+.orderBox.myAddress .table-responsive .table tbody tr td {
+  font-size: 13px;
 }
 
 .orderBox.myAddress .table-responsive .table tbody tr td:first-child {
@@ -7173,8 +7357,10 @@ body.bodyColor.container {
 }
 
 .orderBox.myAddress .table-responsive .table tbody tr td .btn-default {
-  padding: 10px 14px;
+  padding: 13px 14px;
   border: none;
+  background: transparent;
+  color: #252525;
 }
 
 .orderBox.myAddress .table-responsive .table tbody tr:last-child td {
@@ -7199,13 +7385,17 @@ body.bodyColor.container {
   }
 }
 
+.orderBox.myAddress.wishList .table-responsive .table tbody tr td {
+  font-size: 16px;
+}
+
 .orderBox.myAddress.wishList .table-responsive .table tbody tr td:nth-child(4) {
   color: #47bac1;
 }
 
-.orderBox.myAddress.wishList .table-responsive .table tbody tr td .btn-default {
-  border: 1px solid #d0d0d0;
-  padding: 15px 20px;
+.orderBox.myAddress.wishList .table-responsive .table tbody tr td .btn-sm {
+  width: auto;
+  padding: 0 20px;
 }
 
 @media (max-width: 479px) {
@@ -7231,7 +7421,9 @@ body.bodyColor.container {
   height: 45px;
   font-weight: 700;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 0 15px;
   border-radius: 0;
   background-color: #47bac1;
   border: none;
@@ -7240,10 +7432,11 @@ body.bodyColor.container {
 
 .profile .thumbnail .caption .btn-primary:hover, .profile .form-horizontal .form-group .btn-primary:hover {
   opacity: .8;
+  border: 0px !important;
 }
 
 .profile .orderBox {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .profile .thumbnail img {
@@ -7251,37 +7444,41 @@ body.bodyColor.container {
 }
 
 .profile .thumbnail .caption .btn-primary {
-  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 40px;
   line-height: 45px;
 }
 
 @media (min-width: 480px) {
   .profile .form-horizontal .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
 }
 
 @media (min-width: 768px) {
   .profile .form-horizontal .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
   }
 }
 
 .profile .form-horizontal .form-group .control-label {
+  font-size: 13px;
   padding-top: 0;
-}
-
-@media (min-width: 480px) {
-  .profile .form-horizontal .form-group .control-label {
-    height: 25px;
-    line-height: 25px;
-  }
+  font-weight: 700;
+  margin-top: 3px;
 }
 
 @media (min-width: 768px) {
   .profile .form-horizontal .form-group .control-label {
-    height: 50px;
-    line-height: 50px;
+    padding-left: 30px;
+    text-align: right;
+  }
+}
+
+@media (min-width: 992px) {
+  .profile .form-horizontal .form-group .control-label {
+    padding-left: 0px;
+    margin-top: 10px;
   }
 }
 

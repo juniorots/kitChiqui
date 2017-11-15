@@ -17,6 +17,7 @@
 	<class>br.com.kitchiqui.modelo.ImagemGrandeProduto</class>
 	<class>br.com.kitchiqui.modelo.ImagemPequenoProduto</class>
 	<class>br.com.kitchiqui.modelo.Blog</class>
+	<class>br.com.kitchiqui.modelo.Endereco</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>  
     
     <properties>
