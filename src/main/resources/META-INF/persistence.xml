@@ -7,9 +7,9 @@
   <persistence-unit name="databaseDefault" transaction-type="RESOURCE_LOCAL">
 
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <jta-data-source>java:/jdbc/kitchiqui</jta-data-source>
     
 	<!-- SECAO PARA USO DE TESTES JUNIT
+    <jta-data-source>java:/jdbc/kitchiqui</jta-data-source>
 	-->
 	<class>br.com.kitchiqui.modelo.Produto</class>
 	<class>br.com.kitchiqui.modelo.Parceiro</class>
