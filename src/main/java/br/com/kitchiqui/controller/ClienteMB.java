@@ -77,6 +77,26 @@ public class ClienteMB extends BaseController implements Serializable {
     }
     
     /**
+     * Gerenciando as compras realizadas
+     */
+    public void segundoPassoCompra() {
+    	// Tratando campos 
+    	getCliente().getEndereco().setNomeRua(getTmpRua());
+    	getCliente().getEndereco().setNomeCidade(getTmpCidade());
+    	getCliente().getEndereco().setBairro(getTmpBairro());
+    	getCliente().getEndereco().setEstado(getTmpEstado());
+    	
+    	Util.forward(SEGUNDO_PASSO_COMPRAS);
+    }
+    
+    /**
+     * Gerenciando as compras realizadas
+     */
+    public void terceiroPassoCompra() {
+    	Util.forward(TERCEIRO_PASSO_COMPRAS);
+    }
+    
+    /**
      * Responsavel por persistir as informacoes digitadas na base
      */
     public void salvarCliente() {

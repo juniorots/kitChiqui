@@ -13,6 +13,12 @@ import br.com.kitchiqui.framework.persistence.DomainObject;
 public class Endereco extends DomainObject {
 	private static final long serialVersionUID = 1L;
 	
+	/*
+	 * Dos modos de envio:
+	 * 01 - Frete Gratis
+	 */
+	private Integer modoEnvio;
+	
 	// obrigatorio
 	private String cep;
 
@@ -87,6 +93,14 @@ public class Endereco extends DomainObject {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public Integer getModoEnvio() {
+		return modoEnvio;
+	}
+
+	public void setModoEnvio(Integer modoEnvio) {
+		this.modoEnvio = modoEnvio;
 	}
 	
 }

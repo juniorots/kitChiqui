@@ -29,6 +29,8 @@ public class BaseController {
 	protected static final String KIT_BLOG = "/kitBlog.xhtml";
 	protected static final String RECUPERA_SENHA = "/recuperaSenha.xhtml";
 	protected static final String PRIMEIRO_PASSO_COMPRAS = "/fecharCompraPasso01.xhtml";
+	protected static final String SEGUNDO_PASSO_COMPRAS = "/fecharCompraPasso02.xhtml";
+	protected static final String TERCEIRO_PASSO_COMPRAS = "/fecharCompraPasso03.xhtml";
 	
 	private Cliente cliente= null;
 	private Produto produto = null;
@@ -36,7 +38,14 @@ public class BaseController {
 	private String tmpPrimeiro;
 	private String tmpSegundo;
 	
+	private String tmpRua;
+	private String tmpBairro;
+	private String tmpEstado;
+	private String tmpCidade;
+	
 	private Map<String, String> estados = new HashMap();
+	private Map<String, String> listaMes = new HashMap();
+	private Map<String, String> listaAno = new HashMap();
 	
 	public void resetarConfig() {
 		try {
@@ -99,6 +108,32 @@ public class BaseController {
 		this.tmpSegundo = tmpSegundo;
 	}
 
+	public Map<String, String> getListaMes() {
+		return listaMes;
+	}
+
+	public void setListaMes(Map<String, String> listaMes) {
+		String tmp = "0";
+		for (int i = 1; i <= 12; i++) {
+			if (i < 10)
+				listaMes.put(tmp+i, tmp+i);
+			else
+				listaMes.put(String.valueOf(i), String.valueOf(i));
+		}
+		this.listaMes = listaMes;
+	}
+
+	public Map<String, String> getListaAno() {
+		for (int i = 2018; i <= 2040; i++) 
+			listaAno.put(String.valueOf(i), String.valueOf(i));
+		
+		return listaAno;
+	}
+
+	public void setListaAno(Map<String, String> listaAno) {
+		this.listaAno = listaAno;
+	}
+
 	public Map<String, String> getEstados() {
 		estados.put("", "");
 		estados.put("AC", "AC");
@@ -135,6 +170,38 @@ public class BaseController {
 		this.estados = estados;
 	}
 	
+	public String getTmpRua() {
+		return tmpRua;
+	}
+
+	public void setTmpRua(String tmpRua) {
+		this.tmpRua = tmpRua;
+	}
+
+	public String getTmpBairro() {
+		return tmpBairro;
+	}
+
+	public void setTmpBairro(String tmpBairro) {
+		this.tmpBairro = tmpBairro;
+	}
+
+	public String getTmpEstado() {
+		return tmpEstado;
+	}
+
+	public void setTmpEstado(String tmpEstado) {
+		this.tmpEstado = tmpEstado;
+	}
+
+	public String getTmpCidade() {
+		return tmpCidade;
+	}
+
+	public void setTmpCidade(String tmpCidade) {
+		this.tmpCidade = tmpCidade;
+	}
+
 	/*
 	 * Realiza a procura de endereco a partir do CEP informado
 	 */
@@ -143,27 +210,34 @@ public class BaseController {
 	        Document doc = Jsoup.connect(Constantes.BASE_PROCURA_CEP+getCliente().getEndereco().getCep()).timeout(120000).get();
 	        Elements urlPesquisa = doc.select("span[itemprop=streetAddress]");
 	        for (Element urlEndereco : urlPesquisa) {
-	        	getCliente().getEndereco().setNomeRua(urlEndereco.text());
+	        	setTmpRua(urlEndereco.text());
 	        }
 	        
 	        urlPesquisa = doc.select("td:gt(1)");
-	        for (Element urlEndereco : urlPesquisa) {
-	        	getCliente().getEndereco().setBairro(urlEndereco.text());
-	        }
+	        setTmpBairro(urlPesquisa.get(0).text());
 	        
 	        urlPesquisa = doc.select("span[itemprop=addressLocality]");
 	        for (Element urlEndereco : urlPesquisa) {
-	        	getCliente().getEndereco().setNomeCidade(urlEndereco.text());
+	        	setTmpCidade(urlEndereco.text());
 	        }
 	        
 	        urlPesquisa = doc.select("span[itemprop=addressRegion]");
 	        for (Element urlEndereco : urlPesquisa) {
-	        	getCliente().getEndereco().setEstado(urlEndereco.text());
+	        	setTmpEstado(urlEndereco.text());
+	        }
+	        
+	        if (Util.isEmpty(getCliente().getEndereco().getCep())) {
+	        	setTmpRua("");
+	        	setTmpBairro("");
+	        	setTmpCidade("");
+	        	setTmpEstado("");
 	        }
         } catch (Exception e) {
-        	// TODO nothing
+        	setTmpRua("");
+        	setTmpBairro("");
+        	setTmpCidade("");
+        	setTmpEstado("");
         }
-		Util.forward(PRIMEIRO_PASSO_COMPRAS);
 	}
 	
 	/**

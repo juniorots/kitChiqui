@@ -50,6 +50,9 @@ public class Cliente extends DomainObject {
 	
 	@OneToOne
 	private Endereco endereco;
+	
+	@OneToOne
+	private Pagamento pagamento;
 
 	public String getNome() {
 		return nome;
@@ -141,5 +144,12 @@ public class Cliente extends DomainObject {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
 }
