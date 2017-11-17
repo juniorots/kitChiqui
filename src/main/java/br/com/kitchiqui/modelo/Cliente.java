@@ -10,6 +10,7 @@ import static javax.persistence.TemporalType.DATE;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -47,6 +48,7 @@ public class Cliente extends DomainObject {
 	
 	private String tmpDtNascimento;
 	
+	@OneToOne
 	private Endereco endereco;
 
 	public String getNome() {
@@ -130,6 +132,9 @@ public class Cliente extends DomainObject {
 	}
 
 	public Endereco getEndereco() {
+		if (endereco == null) {
+			this.endereco = new Endereco();
+		}
 		return endereco;
 	}
 

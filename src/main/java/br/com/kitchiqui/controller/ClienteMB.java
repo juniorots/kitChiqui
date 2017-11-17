@@ -298,5 +298,5 @@ public class ClienteMB extends BaseController implements Serializable {
     public void setListaCliente(Collection<Cliente> listaCliente) {
         this.listaCliente = listaCliente;
     }
-
+    
 }

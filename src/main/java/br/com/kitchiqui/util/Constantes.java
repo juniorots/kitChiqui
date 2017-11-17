@@ -38,6 +38,9 @@ public class Constantes {
     public static String EMAIL_REMETENTE_GMAIL = "kitchiqui@gmail.com";
     public static String SENHA_REMETENTE_GMAIL = "l@yphy334483283";
     
+    //Util para o preenchimento do endereco, no fechamento de compra
+    public static String BASE_PROCURA_CEP = "http://www.qualocep.com/busca-cep/";
+    
     /**
      * Uteis em threads
      */

@@ -5,10 +5,20 @@
  */
 package br.com.kitchiqui.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import br.com.kitchiqui.modelo.Blog;
 import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.Produto;
+import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.Util;
+
 
 public class BaseController {
 	
@@ -25,6 +35,8 @@ public class BaseController {
 	private Blog blog = null;
 	private String tmpPrimeiro;
 	private String tmpSegundo;
+	
+	private Map<String, String> estados = new HashMap();
 	
 	public void resetarConfig() {
 		try {
@@ -86,5 +98,122 @@ public class BaseController {
 	public void setTmpSegundo(String tmpSegundo) {
 		this.tmpSegundo = tmpSegundo;
 	}
+
+	public Map<String, String> getEstados() {
+		estados.put("", "");
+		estados.put("AC", "AC");
+		estados.put("AL", "AL");
+		estados.put("AP", "AP");
+		estados.put("AM", "AM");
+		estados.put("BA", "BA");
+		estados.put("CE", "CE");
+		estados.put("DF", "DF");
+		estados.put("ES", "ES");
+		estados.put("GO", "GO");
+		estados.put("MA", "MA");
+		estados.put("MT", "MT");
+		estados.put("MS", "MS");
+		estados.put("MG", "MG");
+		estados.put("PA", "PA");
+		estados.put("PB", "PB");
+		estados.put("PR", "PR");
+		estados.put("PE", "PE");
+		estados.put("PI", "PI");
+		estados.put("RJ", "RJ");
+		estados.put("RN", "RN");
+		estados.put("RS", "RS");
+		estados.put("RO", "RO");
+		estados.put("RR", "RR");
+		estados.put("SC", "SC");
+		estados.put("SP", "SP");
+		estados.put("SE", "SE");
+		estados.put("TO", "TO");
+		return estados;
+	}
+
+	public void setEstados(Map<String, String> estados) {
+		this.estados = estados;
+	}
 	
+	/*
+	 * Realiza a procura de endereco a partir do CEP informado
+	 */
+	public void procuraPorCEP() {
+		try{
+	        Document doc = Jsoup.connect(Constantes.BASE_PROCURA_CEP+getCliente().getEndereco().getCep()).timeout(120000).get();
+	        Elements urlPesquisa = doc.select("span[itemprop=streetAddress]");
+	        for (Element urlEndereco : urlPesquisa) {
+	        	getCliente().getEndereco().setNomeRua(urlEndereco.text());
+	        }
+	        
+	        urlPesquisa = doc.select("td:gt(1)");
+	        for (Element urlEndereco : urlPesquisa) {
+	        	getCliente().getEndereco().setBairro(urlEndereco.text());
+	        }
+	        
+	        urlPesquisa = doc.select("span[itemprop=addressLocality]");
+	        for (Element urlEndereco : urlPesquisa) {
+	        	getCliente().getEndereco().setNomeCidade(urlEndereco.text());
+	        }
+	        
+	        urlPesquisa = doc.select("span[itemprop=addressRegion]");
+	        for (Element urlEndereco : urlPesquisa) {
+	        	getCliente().getEndereco().setEstado(urlEndereco.text());
+	        }
+        } catch (Exception e) {
+        	// TODO nothing
+        }
+		Util.forward(PRIMEIRO_PASSO_COMPRAS);
+	}
+	
+	/**
+	 * PARA TRABALHAR COM LATITUDE E LONGITUDE FAÇA-SE USO DO METODO ABAIXO
+	   public String getLatLong(String CEP) throws Exception {
+
+	        // ***************************************************
+	        try {
+	            if (CEP.contains("-")) {
+	                Document doc = Jsoup
+	                        .connect(
+	                                "http://maps.googleapis.com/maps/api/geocode/xml?address="
+	                                        + CEP + "&language=pt-BR&sensor=true")
+	                        .timeout(120000).get();
+	                Elements lat = doc.select("geometry").select("location")
+	                        .select("lat");
+	                Elements lng = doc.select("geometry").select("location")
+	                        .select("lng");
+	                for (Element Latitude : lat) {
+	                    for (Element Longitude : lng) {
+	                        return Latitude.text() + "," + Longitude.text();
+	                    }
+	                }
+	            } else {
+
+	                StringBuilder cepHif = new StringBuilder(CEP);  
+	                cepHif.insert(CEP.length() - 3, '-');
+
+	                Document doc = Jsoup
+	                        .connect(
+	                                "http://maps.googleapis.com/maps/api/geocode/xml?address="
+	                                        + cepHif + "&language=pt-BR&sensor=true")
+	                        .timeout(120000).get();
+	                Elements lat = doc.select("geometry").select("location")
+	                        .select("lat");
+	                Elements lng = doc.select("geometry").select("location")
+	                        .select("lng");
+	                for (Element Latitude : lat) {
+	                    for (Element Longitude : lng) {
+	                        return Latitude.text() + "," + Longitude.text();
+	                    }
+	                }
+	            }
+
+	        } catch (SocketTimeoutException e) {
+
+	        } catch (HttpStatusException w) {
+
+	        }
+	        return CEP;
+	    }
+	    */
 }

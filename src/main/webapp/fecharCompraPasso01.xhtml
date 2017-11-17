@@ -4,10 +4,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 	<ui:composition template="/WEB-INF/template/mestre.xhtml">
     	<ui:define name="centro">
-    	<h:form id="formCompra">
+    	<h:form id="formCompra" role="form" >
         <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
             #[request.contextPath}/<DIRETORIO>/..
@@ -31,7 +32,7 @@
 	          </div>
 	        </div>
 	    </section>
-        
+	    
         <section class="mainContent clearfix stepsWrapper">
 	        <div class="container">
 	          <div class="row">
@@ -57,6 +58,10 @@
 		                </div>
 	                </div>
 	                
+	                <div class="form-group col-sm-12 col-12">
+	                	<small style="color: red">(*) Obrigatório</small>
+	                </div>
+	                
 	                <div class="col-12">
 	                	<div class="page-header">
 	                      <h4>Dados pessoais</h4>
@@ -64,28 +69,34 @@
 	                </div>
                   
                   	<div class="form-group col-sm-6 col-12">
-	                	<label for="">Nome Completo</label>
-	                    <h:inputText id="nomeCompleto" class="form-control" value="#{clienteMB.cliente.nomeCompleto}" />
+	                	<label for="">Nome Completo</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputText id="nomeCompleto" class="form-control" value="#{clienteMB.cliente.nomeCompleto}" required="true" requiredMessage="Nome Completo obrigatório"/>
+	                    <p:message for="nomeCompleto" display="text"/>
 	                </div>
                   	<div class="form-group col-sm-6 col-12">
-	                	<label for="">CPF</label>
-	                    <h:inputText id="cpf" class="form-control" value="#{clienteMB.cliente.nrCpf}" />
+	                	<label for="">CPF</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputMask id="cpf" class="form-control" value="#{clienteMB.cliente.nrCpf}" required="true" requiredMessage="CPF obrigatório" mask="999.999.999-99"/>
+	                    <p:message for="cpf" display="text"/>
 	                </div>
 	                <div class="form-group col-sm-6 col-12">
-	                	<label for="">RG</label>
-	                    <h:inputText id="rg" class="form-control" value="#{clienteMB.cliente.nrRG}" />
+	                	<label for="">RG</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputText id="rg" class="form-control" value="#{clienteMB.cliente.nrRG}" required="true" requiredMessage="RG obrigatório"/>
+	                    <p:message for="rg" display="text"/>
 	                </div>
                   	<div class="form-group col-sm-6 col-12">
-	                	<label for="">Data de Nascimento</label>
-	                    <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" />
+	                	<label for="">Data de Nascimento</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" required="true" requiredMessage="Data de nascimento obrigatório"/>
+	                    <p:message for="tmpDtNascimento" display="text"/>
 	                </div>
 	                <div class="form-group col-sm-6 col-12">
-	                	<label for="">Telefone (celular)</label>
-	                    <h:inputText id="nrTelefone" class="form-control" value="#{clienteMB.cliente.nrTelefone}" />
+	                	<label for="">Telefone (celular)</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputMask id="nrTelefone" class="form-control" value="#{clienteMB.cliente.nrTelefone}" mask="(99) 99999-9999"/>
+	                    <p:message for="nrTelefone" display="text"/>
 	                </div>
                   	<div class="form-group col-sm-6 col-12">
-	                	<label for="">E-mail</label>
-	                    <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important" />
+	                	<label for="">E-mail</label>&nbsp;<span style="color: red">*</span>
+	                    <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important" required="true" requiredMessage="E-mail obrigatório"/>
+	                    <p:message for="email" display="text"/>
 	                </div>
                   	
                   	<!-- xx -->
@@ -96,32 +107,44 @@
 	                </div>
                   	
                   	<div class="form-group col-sm-6 col-12">
-	                	<label for="">CEP</label>
-	                    <h:inputText id="cep" class="form-control" value="#{clienteMB.cliente.endereco.cep}" />
+	                	<label for="">CEP</label>&nbsp;<span style="color: red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank" style="color: #00008B !important"><small>Não sei meu CEP</small></a>
+	                    <p:inputMask id="cep" class="form-control" value="#{clienteMB.cliente.endereco.cep}" mask="99999-999" >
+	                    	<p:ajax event="blur" listener="#{clienteMB.procuraPorCEP}" render="nomeRua cidade estdo bairro"/>
+	                    </p:inputMask>
+	                    <p:message for="cep" display="text"/>
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Rua</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputText id="nomeRua" class="form-control" value="#{clienteMB.cliente.endereco.nomeRua}" required="true" requiredMessage="Rua obrigatório"/>
+	                    <p:message for="nomeRua" display="text"/>
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Cidade</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputText id="cidade" class="form-control" value="#{clienteMB.cliente.endereco.nomeCidade}" required="true" requiredMessage="Cidade obrigatório"/>
+	                    <p:message for="cidade" display="text"/>
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Estado</label>&nbsp;<span style="color: red">*</span>
+	                	<h:selectOneMenu id="estdo" value="#{clienteMB.cliente.endereco.estado}" class="form-control" required="true" requiredMessage="Estado obrigatório">
+	                		<c:forEach var="estado" items="#{clienteMB.estados}">
+	                			<f:selectItem itemValue="#{estado.key}" itemLabel="#{estado.value}"/>
+	                		</c:forEach>
+	                	</h:selectOneMenu>
+	                	<p:message for="estdo" display="text"/>
+	                </div>
+	                <div class="form-group col-sm-6 col-12">
+	                	<label for="">Bairro</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputText id="bairro" class="form-control" value="#{clienteMB.cliente.endereco.bairro}" required="true" requiredMessage="Bairro obrigatório"/>
+	                    <p:message for="bairro" display="text"/>
 	                </div>
                   	<div class="form-group col-sm-6 col-12">
-	                	<label for="">Rua</label>
-	                    <h:inputText id="nomeRua" class="form-control" value="#{clienteMB.cliente.endereco.nomeRua}" />
-	                </div>
-                  	<div class="form-group col-sm-6 col-12">
-	                	<label for="">Número</label>
-	                    <h:inputText id="numero" class="form-control" value="#{clienteMB.cliente.endereco.numero}" />
+	                	<label for="">Número</label>&nbsp;<span style="color: red">*</span>
+	                    <p:inputText id="numero" class="form-control" value="#{clienteMB.cliente.endereco.numero}" required="true" requiredMessage="Número obrigatório"/>
+	                    <p:message for="numero" display="text"/>
 	                </div>
                   	<div class="form-group col-sm-6 col-12">
 	                	<label for="">Complemento</label>
 	                    <h:inputText id="complemento" class="form-control" value="#{clienteMB.cliente.endereco.complemento}" />
-	                </div>
-	                <div class="form-group col-sm-6 col-12">
-	                	<label for="">Bairro</label>
-	                    <h:inputText id="bairro" class="form-control" value="#{clienteMB.cliente.endereco.bairro}" />
-	                </div>
-	                <div class="form-group col-sm-6 col-12">
-	                	<label for="">Cidade</label>
-	                    <h:inputText id="cidade" class="form-control" value="#{clienteMB.cliente.endereco.cidade}" />
-	                </div>
-	                <div class="form-group col-sm-6 col-12">
-	                	<label for="">Estado</label>
-	                    <h:inputText id="estado" class="form-control" value="#{clienteMB.cliente.endereco.estado}" />
 	                </div>
 	                
 	                <div class="row">
@@ -131,26 +154,24 @@
 		                    </div>
 		                </div>
 		                
-		                <div class="row checkboxArea">
-		                    <div class="col-12 col-lg-6 mb-4">
-		                      <input id="checkbox1" type="radio" name="freteGratis" value="1" checked="true"/>
-		                      <label for="checkbox1"><span></span>Frete Grátis</label><br />
-		                      <small>Estimativa de 25 a 30 dias para entrega (previsão Correios)</small>
-		                    </div>
-	                    </div>
-		                <div class="col-sm-3 col-12">
-		                	<label for=""><i class="fa fa-info-circle"/>&nbsp;Informações gerais</label>
+		                <div class="form-group col-12 col-sm-12 mb-5">
+	                    	<input id="freteGratis" type="radio" name="freteGratis" value="1" checked="true"/>
+	                      	<label for="freteGratis"><span></span>Frete Grátis</label><br />
+	                      	<small>Estimativa de 25 a 30 dias para entrega (previsão Correios)</small>
 		                </div>
-		                <div class="col-sm-6 col-12">
-		                    <label for="">Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso"/> e a <h:commandLink action="#" value="política de privacidade"/>.</label>
-		                </div>
-		                <div class="col-12">
-		                    <div class="well well-lg clearfix">
-		                      <ul class="pager">
-		                        <li class="next "><a class="btn btn-primary btn-default " href="checkout-step-2.html">Continuar <i class="fa fa-angle-right"></i></a></li>
-		                      </ul>
-		                    </div>
+
+		                <div class="col-12 cols-sm-12 mb-5">
+	                    	<ul class="pager">
+	                        	<li class="next "><a class="btn btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-2.html">Continuar <i class="fa fa-angle-right"></i></a></li>
+	                      	</ul>
 	                  	</div>
+	                  	
+		                <div class="col-sm-12 col-12">
+		                	<small><i class="fa fa-info-circle"/>&nbsp;Informações gerais</small>
+		                </div>
+		                <div class="col-sm-12 col-12">
+		                    <small>Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso" style="color: #00008B !important"/> e a <h:commandLink action="#" value="política de privacidade" style="color: #00008B !important"/>.</small>
+		                </div>
                   	</div>
                   	
 	              </div>
