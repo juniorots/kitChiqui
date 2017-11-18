@@ -5,7 +5,14 @@
  */
 package br.com.kitchiqui.modelo;
 
-public class Pagamento {
+import javax.persistence.Entity;
+
+import br.com.kitchiqui.framework.persistence.DomainObject;
+
+@Entity
+public class Pagamento extends DomainObject {
+	private static final long serialVersionUID = 1L;
+
 	/*
 	 * Dos tipos de pagamento:
 	 * 01 - PayPayl;
