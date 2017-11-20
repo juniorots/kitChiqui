@@ -59,7 +59,7 @@ public class BlogDAOTest {
         b1.setSrcImagem("img/blog/blog-01.jpg");
         b1.setAutor("Fabiana Almeida");
         b1.setDtPublicacao(Calendar.getInstance().getTime());
-        b1.setRegistroProfissional("CRO-1234");
+        b1.setRegistroProfissional("CRO GO-11108");
         b1.setTitulo("Qual o melhor tempo?");
         b1.setSubTitulo("A importância do tempo de escovação.");
         b1.setTipoAssunto(EnumAssuntoBlog.TEMPO_ESCOVACAO.getTipo());
@@ -77,7 +77,7 @@ public class BlogDAOTest {
         b2.setSrcImagem("img/blog/blog-01.jpg");
         b2.setAutor("Fabiana Almeida");
         b2.setDtPublicacao(Calendar.getInstance().getTime());
-        b2.setRegistroProfissional("CRO-1234");
+        b2.setRegistroProfissional("CRO GO-11108");
         b2.setTitulo("A melhor maneira de higienizar");
         b2.setSubTitulo("Você sabe fazer higiene bucal?");
         b2.setTipoAssunto(EnumAssuntoBlog.COMO_HIGIENIZAR.getTipo());
