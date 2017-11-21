@@ -146,6 +146,10 @@ public class Cliente extends DomainObject {
 	}
 
 	public Pagamento getPagamento() {
+		if (pagamento == null) {
+			pagamento = new Pagamento();
+		}
+			
 		return pagamento;
 	}
 

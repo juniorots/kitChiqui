@@ -6,9 +6,11 @@
 package br.com.kitchiqui.modelo;
 
 public enum EnumClasseProduto {
-	ESTOJO(1),
-	KIT_MONTADO(2),
-	ESCOVA(3);
+	KIT_STANDART(1),
+	KIT_ORTODONTICO(2),
+	KIT_PERIODONTAL(3),
+	KIT_POSCIRURGICO(4),
+	KIT_ESCOLAR(5);
 	
 	private final Integer classe;
 	

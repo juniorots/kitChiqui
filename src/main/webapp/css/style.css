@@ -9117,3 +9117,13 @@ a.list-group-item .list-group-item-heading, button.list-group-item .list-group-i
     margin: 0 15px 30px;
   }
 }
+
+.img-card {
+	background-image: url(../img/products/img-cardSmall.png);
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 40px;
+    position: absolute;
+    top: 28px;
+    left: 63%;
+}

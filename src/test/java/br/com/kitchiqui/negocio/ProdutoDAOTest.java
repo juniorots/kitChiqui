@@ -336,7 +336,7 @@ public class ProdutoDAOTest {
       prod4.setPreco(new Double(75));
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod4.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod4.setClasse(EnumClasseProduto.ESCOVA.getClasse());
+      prod4.setClasse(EnumClasseProduto.KIT_STANDART.getClasse());
       
    // Tratando secao de detalhe
       ImagemGrandeProduto imgG13 = new ImagemGrandeProduto();
@@ -371,7 +371,7 @@ public class ProdutoDAOTest {
       imgP16.setSrcImagem("img/products/signle-product/product-slide-small-P04.jpg");
       imgP16.setProduto(prod4);
       
-      prod4.setTituloDescritivo("Kit Standart - O que você mais precisa em todas as horas");
+      prod4.setTituloDescritivo("Kit Standart - Fundamental a qualquer momento");
       prod4.setPreco(50D);
       prod4.setAnotacaoPrincipalDescritivo("Todos possui a necessidade de higienização diária, com Kit Standart montamos o que você precisa. "
     		+ "Com elementos fundamentais a sua saúde bucal, pensamos na melhor composição a sua felicidade, "
@@ -418,7 +418,7 @@ public class ProdutoDAOTest {
       prod5.setPreco(new Double(300));
       prod5.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod5.setClasse(EnumClasseProduto.ESCOVA.getClasse());
+//      prod5.setClasse(EnumClasseProduto.ESCOVA.getClasse());
       dao.insert(prod5);
       
       Produto prod6 = new Produto();   
@@ -428,7 +428,7 @@ public class ProdutoDAOTest {
       prod6.setPreco(new Double(750));
       prod6.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod6.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
-      prod6.setClasse(EnumClasseProduto.ESCOVA.getClasse());
+//      prod6.setClasse(EnumClasseProduto.ESCOVA.getClasse());
       dao.insert(prod6);
       
       Produto prod7 = new Produto();   
@@ -438,7 +438,7 @@ public class ProdutoDAOTest {
       prod7.setPreco(new Double(350));
       prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod7.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod7.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
+//      prod7.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod7);
       
       Produto prod8 = new Produto();   
@@ -448,7 +448,7 @@ public class ProdutoDAOTest {
       prod8.setPreco(new Double(90));
       prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod8.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
-      prod8.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
+//      prod8.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod8);
       
       Produto prod9 = new Produto();   
@@ -458,7 +458,7 @@ public class ProdutoDAOTest {
       prod9.setPreco(new Double(500));
       prod9.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod9.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
-      prod9.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
+//      prod9.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod9);
       
       Produto prod10 = new Produto();   
@@ -468,7 +468,7 @@ public class ProdutoDAOTest {
       prod10.setPreco(new Double(105));
       prod10.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod10.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod10.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
+//      prod10.setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
       dao.insert(prod10);
       
       Produto prod11 = new Produto();   
@@ -478,7 +478,7 @@ public class ProdutoDAOTest {
       prod11.setPreco(new Double(1500));
       prod11.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod11.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
-      prod11.setClasse(EnumClasseProduto.ESTOJO.getClasse());
+//      prod11.setClasse(EnumClasseProduto.ESTOJO.getClasse());
       dao.insert(prod11);
       
       entityManager.getTransaction().commit();

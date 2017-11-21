@@ -65,27 +65,33 @@
 			                        </a>
 			                        <ul id="produtos" class="collapse collapseItem">
 			                          <li>
-			                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Standard #{produtoMB.produto.contadorClasse.qtdEstojo}">
+			                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Standard #{produtoMB.produto.contadorClasse.qtdKitStandart}">
 			                          		<f:param name="idClasse" value="1"/>
 			                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
 			                          	</h:commandButton>
 			                          </li>
-			                          <c:if test="#{produtoMB.produto.especie != 3}"> <!-- 3 - Infantil -->
+			                          <c:if test="#{produtoMB.produto.especie != 3}"> 
 				                          <li>
-				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Ortodontico #{produtoMB.produto.contadorClasse.qtdEscova}">
-				                          		<f:param name="idClasse" value="3"/>
-				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
-				                          	</h:commandButton>
-				                          </li>
-				                          <li>
-				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Periodontal #{produtoMB.produto.contadorClasse.qtdKitMontado}">
+				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Ortodontico #{produtoMB.produto.contadorClasse.qtdKitOrtodontico}">
 				                          		<f:param name="idClasse" value="2"/>
 				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
 				                          	</h:commandButton>
 				                          </li>
 				                          <li>
-				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Pós-cirurgico #{produtoMB.produto.contadorClasse.qtdTodos}">
-				                          		<f:param name="idClasse" value="null"/>
+				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Periodontal #{produtoMB.produto.contadorClasse.qtdKitPeriodontal}">
+				                          		<f:param name="idClasse" value="3"/>
+				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+				                          	</h:commandButton>
+				                          </li>
+				                          <li>
+				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Pós-cirurgico #{produtoMB.produto.contadorClasse.qtdKitPosCirurgico}">
+				                          		<f:param name="idClasse" value="4"/>
+				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+				                          	</h:commandButton>
+				                          </li>
+				                          <li>
+				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Todos #{produtoMB.produto.contadorClasse.qtdTodosAdulto}">
+				                          		<f:param name="idClasse" value="4"/>
 				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
 				                          	</h:commandButton>
 				                          </li>
@@ -93,11 +99,17 @@
 			                          
 			                          <c:if test="#{produtoMB.produto.especie == 3}"> <!-- 3 - Infantil -->
 			                          	<li>
-				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Escolar #{produtoMB.produto.contadorClasse.qtdTodos}">
-				                          		<f:param name="idClasse" value="null"/>
+				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Escolar #{produtoMB.produto.contadorClasse.qtdKitEscolar}">
+				                          		<f:param name="idClasse" value="5"/>
 				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
 				                          	</h:commandButton>
-				                          </li>
+				                        </li>
+				                        <li>
+				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Todos #{produtoMB.produto.contadorClasse.qtdTodosInfantil}">
+				                          		<f:param name="idClasse" value="4"/>
+				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
+				                          	</h:commandButton>
+				                        </li>
 			                          </c:if>
 			                        </ul>
 	                      		</li>

@@ -6,43 +6,69 @@
 package br.com.kitchiqui.modelo;
 
 public class ContadorClasseProduto {
-	private Integer qtdEstojo;
+	private Integer qtdKitStandart;
 	
-	private Integer qtdEscova;
+	private Integer qtdKitOrtodontico;
 	
-	private Integer qtdKitMontado;
+	private Integer qtdKitPeriodontal;
+	
+	private Integer qtdKitPosCirurgico;
+	
+	private Integer qtdKitEscolar;
 	
 	public ContadorClasseProduto() {
-		qtdEstojo = 0;
-		qtdEscova = 0;
-		qtdKitMontado = 0;
+		qtdKitStandart = 0;
+		qtdKitOrtodontico = 0;
+		qtdKitPeriodontal = 0;
+		qtdKitPosCirurgico = 0;
+		qtdKitEscolar = 0;
 	}
 	
-	public Integer getQtdTodos() {
-		return qtdEstojo + qtdEscova + qtdKitMontado;
+	public Integer getQtdTodosAdulto() {
+		return qtdKitStandart + qtdKitOrtodontico + qtdKitPeriodontal + qtdKitPosCirurgico;
+	}
+	
+	public Integer getQtdTodosInfantil() {
+		return qtdKitStandart + qtdKitEscolar;
 	}
 
-	public Integer getQtdEstojo() {
-		return qtdEstojo;
+	public Integer getQtdKitStandart() {
+		return qtdKitStandart;
 	}
 
-	public void setQtdEstojo(Integer qtdEstojo) {
-		this.qtdEstojo = qtdEstojo;
+	public void setQtdKitStandart(Integer qtdKitStandart) {
+		this.qtdKitStandart = qtdKitStandart;
 	}
 
-	public Integer getQtdEscova() {
-		return qtdEscova;
+	public Integer getQtdKitOrtodontico() {
+		return qtdKitOrtodontico;
 	}
 
-	public void setQtdEscova(Integer qtdEscova) {
-		this.qtdEscova = qtdEscova;
+	public void setQtdKitOrtodontico(Integer qtdKitOrtodontico) {
+		this.qtdKitOrtodontico = qtdKitOrtodontico;
 	}
 
-	public Integer getQtdKitMontado() {
-		return qtdKitMontado;
+	public Integer getQtdKitPeriodontal() {
+		return qtdKitPeriodontal;
 	}
 
-	public void setQtdKitMontado(Integer qtdKitMontado) {
-		this.qtdKitMontado = qtdKitMontado;
+	public void setQtdKitPeriodontal(Integer qtdKitPeriodontal) {
+		this.qtdKitPeriodontal = qtdKitPeriodontal;
+	}
+
+	public Integer getQtdKitPosCirurgico() {
+		return qtdKitPosCirurgico;
+	}
+
+	public void setQtdKitPosCirurgico(Integer qtdKitPosCirurgico) {
+		this.qtdKitPosCirurgico = qtdKitPosCirurgico;
+	}
+
+	public Integer getQtdKitEscolar() {
+		return qtdKitEscolar;
+	}
+
+	public void setQtdKitEscolar(Integer qtdKitEscolar) {
+		this.qtdKitEscolar = qtdKitEscolar;
 	}
 }

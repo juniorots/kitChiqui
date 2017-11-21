@@ -15,9 +15,9 @@ public class Endereco extends DomainObject {
 	
 	/*
 	 * Dos modos de envio:
-	 * 01 - Frete Gratis
+	 * 01 - Frete Gratis - DEFAULT
 	 */
-	private Integer modoEnvio;
+	private Integer modoEnvio = 1;
 	
 	// obrigatorio
 	private String cep;

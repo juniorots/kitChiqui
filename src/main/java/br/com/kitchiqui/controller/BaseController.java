@@ -7,6 +7,8 @@ package br.com.kitchiqui.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -18,6 +20,7 @@ import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.Util;
+import br.com.kitchiqui.util.ValidarCartao;
 
 
 public class BaseController {
@@ -43,9 +46,12 @@ public class BaseController {
 	private String tmpEstado;
 	private String tmpCidade;
 	
+	private String msgCartao;
+	private boolean problemaCartao;
+	
 	private Map<String, String> estados = new HashMap();
-	private Map<String, String> listaMes = new HashMap();
-	private Map<String, String> listaAno = new HashMap();
+	private Map<Integer, Integer> listaMes = new HashMap();
+	private Map<Integer, Integer> listaAno = new HashMap();
 	
 	public void resetarConfig() {
 		try {
@@ -108,30 +114,33 @@ public class BaseController {
 		this.tmpSegundo = tmpSegundo;
 	}
 
-	public Map<String, String> getListaMes() {
+	public Map<Integer, Integer> getListaMes() {
+		for (int i = 1; i <= 12; i++) 
+			listaMes.put(i, i);
 		return listaMes;
 	}
 
-	public void setListaMes(Map<String, String> listaMes) {
-		String tmp = "0";
-		for (int i = 1; i <= 12; i++) {
-			if (i < 10)
-				listaMes.put(tmp+i, tmp+i);
-			else
-				listaMes.put(String.valueOf(i), String.valueOf(i));
-		}
+	public void setListaMes(Map<Integer, Integer> listaMes) {
 		this.listaMes = listaMes;
 	}
 
-	public Map<String, String> getListaAno() {
+	public Map<Integer, Integer> getListaAno() {
 		for (int i = 2018; i <= 2040; i++) 
-			listaAno.put(String.valueOf(i), String.valueOf(i));
+			listaAno.put(i, i);
 		
 		return listaAno;
 	}
 
-	public void setListaAno(Map<String, String> listaAno) {
+	public void setListaAno(Map<Integer, Integer> listaAno) {
 		this.listaAno = listaAno;
+	}
+
+	public boolean isProblemaCartao() {
+		return problemaCartao;
+	}
+
+	public void setProblemaCartao(boolean problemaCartao) {
+		this.problemaCartao = problemaCartao;
 	}
 
 	public Map<String, String> getEstados() {
@@ -202,6 +211,14 @@ public class BaseController {
 		this.tmpCidade = tmpCidade;
 	}
 
+	public String getMsgCartao() {
+		return msgCartao;
+	}
+
+	public void setMsgCartao(String msgCartao) {
+		this.msgCartao = msgCartao;
+	}
+
 	/*
 	 * Realiza a procura de endereco a partir do CEP informado
 	 */
@@ -238,6 +255,18 @@ public class BaseController {
         	setTmpCidade("");
         	setTmpEstado("");
         }
+	}
+	
+	/**
+	 * Tratativa para o numero do cartao
+	 */
+	public void validarNumeroCartao() {
+		setMsgCartao("");
+		setProblemaCartao(false);
+		if (!(ValidarCartao.getCardID(getCliente().getPagamento().getNumeroCartao().replace(" ", "")) > -1)) {
+			setMsgCartao("Número do cartão inválido");
+			setProblemaCartao(true);
+		}
 	}
 	
 	/**

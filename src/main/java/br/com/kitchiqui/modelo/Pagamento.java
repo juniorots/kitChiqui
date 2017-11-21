@@ -11,14 +11,15 @@ import br.com.kitchiqui.framework.persistence.DomainObject;
 
 @Entity
 public class Pagamento extends DomainObject {
+
 	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Dos tipos de pagamento:
-	 * 01 - PayPayl;
+	 * 01 - PayPayl DEFAULT;
 	 * 02 - Cartao de Credito
 	 */
-	private Integer tipoPagamento;
+	private Integer tipoPagamento = 1;
 	
 	private String nomeContidoCartao;
 	

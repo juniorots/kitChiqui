@@ -21,9 +21,6 @@ import lombok.Cleanup;
 import br.com.kitchiqui.base.BlogDAO;
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
-import br.com.kitchiqui.modelo.Blog;
-import br.com.kitchiqui.modelo.Cliente;
-import br.com.kitchiqui.modelo.EnumAssuntoBlog;
 import br.com.kitchiqui.modelo.EnumClasseProduto;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Parceiro;
@@ -178,15 +175,20 @@ public class ProdutoMB extends BaseController implements Serializable {
 	 * Responsavel por classificar os produtos, conforme sua tipificacao, ex: conjuntos de estojos, escovas, kits montados entre outros
 	 */
 	public void contabilizarClasseProduto(ProdutoDAO dao) {
-		getProduto().setClasse(EnumClasseProduto.ESCOVA.getClasse());
-		getProduto().getContadorClasse().setQtdEscova(dao.selectUsingFilter(getProduto()).size());
+		getProduto().setClasse(EnumClasseProduto.KIT_STANDART.getClasse());
+		getProduto().getContadorClasse().setQtdKitStandart(dao.selectUsingFilter(getProduto()).size());
 		
-		getProduto().setClasse(EnumClasseProduto.ESTOJO.getClasse());
-		getProduto().getContadorClasse().setQtdEstojo(dao.selectUsingFilter(getProduto()).size());
+		getProduto().setClasse(EnumClasseProduto.KIT_ORTODONTICO.getClasse());
+		getProduto().getContadorClasse().setQtdKitOrtodontico(dao.selectUsingFilter(getProduto()).size());
 		
-		getProduto().setClasse(EnumClasseProduto.KIT_MONTADO.getClasse());
-		getProduto().getContadorClasse().setQtdKitMontado(dao.selectUsingFilter(getProduto()).size());
+		getProduto().setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
+		getProduto().getContadorClasse().setQtdKitPeriodontal(dao.selectUsingFilter(getProduto()).size());
 		
+		getProduto().setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
+		getProduto().getContadorClasse().setQtdKitPosCirurgico(dao.selectUsingFilter(getProduto()).size());
+		
+		getProduto().setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
+		getProduto().getContadorClasse().setQtdKitEscolar(dao.selectUsingFilter(getProduto()).size());
 		getProduto().setClasse(null);
 	}
 	

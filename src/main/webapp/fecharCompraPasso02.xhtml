@@ -45,7 +45,7 @@
                     		<h:commandLink action="#{clienteMB.primeiroPassoCompra}" class="progress-wizard-dot"/>
                   		</div>
 		
-                    	<div class="col-xs-3 progress-wizard-step disabled">
+                    	<div class="col-xs-3 progress-wizard-step active">
 		                    <div class="text-center progress-wizard-stepnum">Meio de Pagamento</div>
 		                    <div class="progress"><div class="progress-bar"></div></div>
 		                    <h:commandLink action="#{clienteMB.segundoPassoCompra}" class="progress-wizard-dot"/>
@@ -66,11 +66,20 @@
 	                  <div class="col-6">
 	                    <h5>Endereço para Entrega</h5>
 	                    <address>
+	                    <!-- 
 	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.cep}"/><br />
 	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeRua}"/><br />
+	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.numero}"/><br />
+	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.bairro}"/><br />
 	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeCidade}"/> - <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
 	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
-	                    </address>
+	                     -->
+	                     70743-510 <br />
+	                     SCLN 107 BLOCO A <br />
+	                     108 <br />
+	                     Asa Norte <br />
+	                     Brasília - DF <br />
+	                    </address> 
 	                  </div>
 	                  <div class="col-6">
 	                    <h5>Modo de Envio</h5>
@@ -93,62 +102,62 @@
                   
                   	<div class=" checkboxArea card-check">
                   		<div class="col-sm-12 mb-2">
-	                  		<h:selectOneRadio value="#{clienteMB.cliente.pagamento.tipoPagamento}">
-		                		<f:selectItem itemValue="1" itemLabel="Pagamento com PayPal">
-		                		</f:selectItem>
+	                  		<h:selectOneRadio value="#{clienteMB.cliente.pagamento.tipoPagamento}" layout="pageDirection">
+		                		<f:selectItem itemValue="1" itemLabel="&nbsp;Pagamento com PayPal"/>
+		                		<f:selectItem itemValue="2" itemLabel="&nbsp;Cartão de Crédito"/>
 		                	</h:selectOneRadio>
                   		</div>
                   	
 	                  	<div class="col-sm-12 mb-2">
-	                  		<h:selectOneRadio value="#{clienteMB.cliente.pagamento.tipoPagamento}">
-		                		<f:selectItem itemValue="2" itemLabel="Cartão de Crédito">
-		                			<small class="mb-2 d-block">Aceitamos os seguintes cartões</small>
-		                			<ul class="list-unstyled list-inline">
-				                    	<li><img src="img/products/card1.jpg" alt=""/><!--  --></li>
-				                        <li><img src="img/products/card2.jpg" alt=""/><!--  --></li>
-				                        <li><img src="img/products/card3.jpg" alt=""/><!--  --></li>
-				                        <li><img src="img/products/card4.jpg" alt=""/><!--  --></li>
-				                    </ul>
-				                    
-				                    <div class="form-group row my-3 ml-3">
-				                    	<div class="col-md-6">
-				                    		<label for="" class="col-form-label">Nome do Titular</label>&nbsp;<span style="color: red">*</span>
-				                    		<p:inputText id="nomeTitular" class="form-control" value="#{clienteMB.cliente.pagamento.nomeTitular}" style="text-transform: uppercase !important" required="true" requiredMessage="Nome Titular obrigatório"/>
-		                    				<p:message for="nomeTitular" display="text"/>
-				                    	</div>
-				                    	<div class="col-md-6">
-				                          <label for="" class="col-form-label">Número do Cartão</label>
-				                          <p:inputMask id="numeroCartao" class="form-control" value="#{clienteMB.cliente.pagamento.numeroCartao}" required="true" requiredMessage="Número Cartão obrigatório" mask="9999 9999 9999 9999"/>
-				                          <p:message for="numeroCartao" display="text"/>
-				                        </div>
-				                        <div class="col-md-6 col-12 mb-4 mb-md-0">
-				                        	<label for="">Validade do Cartão</label>
-				                        	<span class="step-drop">
-				                        	<h:selectOneMenu id="mesValidade" value="#{clienteMB.cliente.pagamento.mesValidadeCartao}" class="form-control" required="true" requiredMessage="Mês obrigatório">
-						                		<c:forEach var="mes" items="#{clienteMB.listaMes}">
-						                			<f:selectItem itemValue="#{mes.key}" itemLabel="#{mes.value}"/>
-						                		</c:forEach>
-						                	</h:selectOneMenu>
-						                	<p:message for="mesValidade" display="text"/>
-						                	<h:selectOneMenu id="anoValidade" value="#{clienteMB.cliente.pagamento.anoValidadeCartao}" class="form-control" required="true" requiredMessage="Ano obrigatório">
-						                		<c:forEach var="ano" items="#{clienteMB.listaAno}">
-						                			<f:selectItem itemValue="#{ano.key}" itemLabel="#{ano.value}"/>
-						                		</c:forEach>
-						                	</h:selectOneMenu>
-						                	<p:message for="anoValidade" display="text"/>
-						                	</span>
-				                        </div>
-				                        
-				                        <div class="col-md-6">
-				                        	<label for="" class="">Código de Segurança</label>
-				                        	<div class="input-group">
-				                        		<p:inputMask id="codigoSeguranca" class="form-control" value="#{clienteMB.cliente.pagamento.codigoSeguranca}" required="true" requiredMessage="Código de Segurança obrigatório" mask="999"/>
-				                        		<p:message for="codigoSeguranca" display="text"/>
-				                        	</div>	
-				                        </div>
-				                    </div>
-		                		</f:selectItem>
-		                	</h:selectOneRadio>
+                			<small class="mb-2 d-block">Aceitamos os seguintes cartões</small>
+                			<ul class="list-unstyled list-inline">
+		                    	<li><img src="img/products/card1.jpg" alt=""/><!--  --></li>
+		                    	<!-- 
+		                        	<li><img src="img/products/card2.jpg" alt=""/><! - -   - - ></li>
+		                    	-->
+		                        <li><img src="img/products/card3.jpg" alt=""/><!--  --></li>
+		                        <li><img src="img/products/card4.jpg" alt=""/><!--  --></li>
+		                    </ul>
+		                    <br />
+		                    <div class="form-group row my-3 ml-3">
+		                    	<div class="form-group col-md-6">
+		                    		<label for="" class="col-form-label">Nome do Titular</label>&nbsp;<span style="color: red">*</span>
+		                    		<p:inputText id="nomeTitular" class="form-control" value="#{clienteMB.cliente.pagamento.nomeTitular}" style="text-transform: uppercase !important" required="true" requiredMessage="Nome Titular obrigatório"/>
+                    				<p:message for="nomeTitular" display="text"/>
+		                    	</div>
+		                    	<div class="form-group col-md-6">
+		                          <label for="" class="col-form-label">Número do Cartão</label>&nbsp;<span style="color: red">*</span>&nbsp;&nbsp;<h:outputText escape="false" id="tmpMsgCartao" value="#{clienteMB.msgCartao}" style="color: red; font-weight: bold"/>
+		                          <p:inputMask id="numeroCartao" class="form-control" value="#{clienteMB.cliente.pagamento.numeroCartao}" required="true" requiredMessage="Número Cartão obrigatório" mask="9999 9999 9999 9999">
+		                          	<f:ajax event="blur" listener="#{clienteMB.validarNumeroCartao}" render="tmpMsgCartao"/>
+		                          </p:inputMask>
+		                          <p:message for="numeroCartao" display="text"/>
+		                        </div>
+		                        <div class="form-group col-md-6 col-12 mb-4 mb-md-0">
+		                        	<label for="">Validade do Cartão</label>&nbsp;<span style="color: red">*</span>
+		                        	<span class="step-drop">
+		                        	<h:selectOneMenu id="mesValidade" value="#{clienteMB.cliente.pagamento.mesValidadeCartao}" class="form-control" required="true" requiredMessage="Mês obrigatório">
+				                		<c:forEach var="mes" items="#{clienteMB.listaMes}">
+				                			<f:selectItem itemValue="#{mes.key}" itemLabel="#{mes.value}"/>
+				                		</c:forEach>
+				                	</h:selectOneMenu>
+				                	<p:message for="mesValidade" display="text"/>
+				                	<h:selectOneMenu id="anoValidade" value="#{clienteMB.cliente.pagamento.anoValidadeCartao}" class="form-control" required="true" requiredMessage="Ano obrigatório">
+				                		<c:forEach var="ano" items="#{clienteMB.listaAno}">
+				                			<f:selectItem itemValue="#{ano.key}" itemLabel="#{ano.value}"/>
+				                		</c:forEach>
+				                	</h:selectOneMenu>
+				                	<p:message for="anoValidade" display="text"/>
+				                	</span>
+		                        </div>
+		                        
+		                        <div class="form-group col-md-6">
+		                        	<label for="" class="">Código de Segurança</label>&nbsp;<span style="color: red">*</span>
+		                        	<div class="input-group">
+		                        		<p:inputMask id="codigoSeguranca" class="form-control" value="#{clienteMB.cliente.pagamento.codigoSeguranca}" required="true" requiredMessage="Código de Segurança obrigatório" mask="999?9" maxlength="4"/>
+		                        		<p:message for="codigoSeguranca" display="text"/>
+		                        	</div>	
+		                        </div>
+		                    </div>
 	                  	</div>
                   	</div>
                   	

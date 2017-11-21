@@ -234,7 +234,7 @@ public class ClienteMB extends BaseController implements Serializable {
     public boolean validarRecuperarSenha() {
     	if ( Util.isEmpty(getCliente().getTmpDtNascimento())
     			|| Util.isEmpty(getCliente().getEmail()) )   {
-    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório preencher TODOS os campos.");
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório o preenchimento de TODOS os campos.");
             return false; // fail! :-(
     	}
     	
