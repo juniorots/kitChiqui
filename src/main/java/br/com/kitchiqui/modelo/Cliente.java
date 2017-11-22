@@ -8,12 +8,19 @@ package br.com.kitchiqui.modelo;
 import static javax.persistence.TemporalType.DATE;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
 
@@ -53,6 +60,10 @@ public class Cliente extends DomainObject {
 	
 	@OneToOne
 	private Pagamento pagamento;
+	
+	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Fetch (FetchMode.SELECT)
+	private List<Produto> listaCarrinho;
 
 	public String getNome() {
 		return nome;
@@ -155,5 +166,13 @@ public class Cliente extends DomainObject {
 
 	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
+	}
+
+	public List<Produto> getListaCarrinho() {
+		return listaCarrinho;
+	}
+
+	public void setListaCarrinho(List<Produto> listaCarrinho) {
+		this.listaCarrinho = listaCarrinho;
 	}
 }

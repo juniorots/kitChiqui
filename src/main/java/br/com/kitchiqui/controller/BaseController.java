@@ -31,9 +31,9 @@ public class BaseController {
 	protected static final String PAGINA_PRINCIPAL = "/index.xhtml";
 	protected static final String KIT_BLOG = "/kitBlog.xhtml";
 	protected static final String RECUPERA_SENHA = "/recuperaSenha.xhtml";
-	protected static final String PRIMEIRO_PASSO_COMPRAS = "/fecharCompraPasso01.xhtml";
-	protected static final String SEGUNDO_PASSO_COMPRAS = "/fecharCompraPasso02.xhtml";
-	protected static final String TERCEIRO_PASSO_COMPRAS = "/fecharCompraPasso03.xhtml";
+	protected static final String PRIMEIRO_PASSO_COMPRAS = "/compraDadosUsuario.xhtml";
+	protected static final String SEGUNDO_PASSO_COMPRAS = "/usuarioMeioPagamento.xhtml";
+	protected static final String TERCEIRO_PASSO_COMPRAS = "/resumoDadosCompra.xhtml";
 	
 	private Cliente cliente= null;
 	private Produto produto = null;

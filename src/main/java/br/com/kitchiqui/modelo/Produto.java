@@ -13,7 +13,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -83,6 +85,12 @@ public class Produto extends DomainObject {
 	private Double primeiroFiltroPreco;
 	
 	private Double segundoFiltroPreco;
+	
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
+	
+	private String srcImagemCarrinho;
 	
 	public ContadorClasseProduto getContadorClasse() {
 		return contadorClasse;
@@ -249,4 +257,24 @@ public class Produto extends DomainObject {
 		this.classe = classe;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public String getSrcImagemCarrinho() {
+		return srcImagemCarrinho;
+	}
+
+	public void setSrcImagemCarrinho(String srcImagemCarrinho) {
+		this.srcImagemCarrinho = srcImagemCarrinho;
+	}
+	
+	public String getSubTotal() {
+		NumberFormat nf = new DecimalFormat("###,##0.00");
+		return "R$ " + nf.format(preco * quantidade);
+	}
 }

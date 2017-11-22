@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-	<ui:composition template="/WEB-INF/template/mestre.xhtml">
-    	<ui:define name="centro">
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template/mestre.xhtml">
+   	<ui:define name="centro">
     	<h:form id="formCompra02" role="form" >
         <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
@@ -39,8 +39,8 @@
 	            <div class="col-md-8">
 	              <div class="innerWrapper clearfix stepsPage">
 	                <div class="row progress-wizard" style="border-bottom:0;">
-	              		<div class="col-xs-3 progress-wizard-step">
-                    		<div class="text-center progress-wizard-step complete fullBar">Dados do Comprador</div>
+	              		<div class="col-xs-3 progress-wizard-step complete fullBar">
+                    		<div class="text-center progress-wizard-stepnum">Dados do Comprador</div>
                     		<div class="progress"><div class="progress-bar"></div></div>
                     		<h:commandLink action="#{clienteMB.primeiroPassoCompra}" class="progress-wizard-dot"/>
                   		</div>
@@ -72,7 +72,6 @@
 	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.numero}"/><br />
 	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.bairro}"/><br />
 	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeCidade}"/> - <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
-	                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
 	                     -->
 	                     70743-510 <br />
 	                     SCLN 107 BLOCO A <br />
@@ -151,9 +150,9 @@
 		                        </div>
 		                        
 		                        <div class="form-group col-md-6">
-		                        	<label for="" class="">Código de Segurança</label>&nbsp;<span style="color: red">*</span>
+		                        	<label for="" class="">Código de Segurança</label>&nbsp;<span style="color: red">*</span>&nbsp;<div class="img-card"/>
 		                        	<div class="input-group">
-		                        		<p:inputMask id="codigoSeguranca" class="form-control" value="#{clienteMB.cliente.pagamento.codigoSeguranca}" required="true" requiredMessage="Código de Segurança obrigatório" mask="999?9" maxlength="4"/>
+		                        		<p:inputMask id="codigoSeguranca" class="form-control" value="#{clienteMB.cliente.pagamento.codigoSeguranca}" required="true" requiredMessage="Código obrigatório" mask="999?9" maxlength="4"/>
 		                        		<p:message for="codigoSeguranca" display="text"/>
 		                        	</div>	
 		                        </div>
@@ -199,4 +198,3 @@
         </h:form>
 		</ui:define>
     </ui:composition>
-</html>
