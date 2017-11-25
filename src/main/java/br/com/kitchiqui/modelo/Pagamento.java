@@ -99,4 +99,12 @@ public class Pagamento extends DomainObject {
 		this.nomeTitular = nomeTitular;
 	}
 	
+	public String getFinalCartaoCredito() {
+		try {
+			return this.numeroCartao.substring((this.numeroCartao.length()-4), this.numeroCartao.length());
+		} catch (Exception e) {
+			return "****";
+		}
+	}
+	
 }

@@ -96,6 +96,10 @@ public class ClienteMB extends BaseController implements Serializable {
     	Util.forward(TERCEIRO_PASSO_COMPRAS);
     }
     
+    public void quartoPassoCompra() {
+    	Util.forward(QUARTO_PASSO_COMPRAS);
+    }
+    
     /**
      * Responsavel por persistir as informacoes digitadas na base
      */

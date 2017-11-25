@@ -61,7 +61,7 @@ public class Cliente extends DomainObject {
 	@OneToOne
 	private Pagamento pagamento;
 	
-	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch (FetchMode.SELECT)
 	private List<Produto> listaCarrinho;
 

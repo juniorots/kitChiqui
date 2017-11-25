@@ -34,6 +34,7 @@ public class BaseController {
 	protected static final String PRIMEIRO_PASSO_COMPRAS = "/compraDadosUsuario.xhtml";
 	protected static final String SEGUNDO_PASSO_COMPRAS = "/usuarioMeioPagamento.xhtml";
 	protected static final String TERCEIRO_PASSO_COMPRAS = "/resumoDadosCompra.xhtml";
+	protected static final String QUARTO_PASSO_COMPRAS = "/confirmaCompraCliente.xhtml";
 	
 	private Cliente cliente= null;
 	private Produto produto = null;

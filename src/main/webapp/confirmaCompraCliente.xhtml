@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template/mestre.xhtml">
+   	<ui:define name="centro">
+    	<h:form id="formCompra" role="form" >
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+        <section class="lightSection clearfix pageHeader">
+	        <div class="container">
+	          <div class="row">
+	            <div class="col-sm-6">
+	              <div class="page-title">
+	                <h2>Compra finalizada</h2>
+	              </div>
+	            </div>
+	            <div class="col-sm-6">
+	              <ol class="breadcrumb">
+	                <li>
+	                  <h:commandLink action="#{clienteMB.paginaPrincipal}">INÍCIO</h:commandLink>
+	                </li>
+	                <li class="active">COMPRA FINALIZADA</li>
+	              </ol>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+	    
+        <section class="mainContent clearfix stepsWrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="innerWrapper clearfix stepsPage">
+                <div class="row justify-content-center order-confirm">
+                  <div class="col-md-6 text-center">
+                    <h2>Estamos quase lá!</h2>
+                    <span>Estaremos analisando sua compra, você receberá notificações sobre o status do seu pedido.</span>
+                    <p class="">
+                      Fique ligado, por esse e-mail que estaremos lhe passando atualizações: <h:outputText escape="false" value="#{clienteMB.cliente.email}"/> <br />
+                      Endereço para entrega do produto: <br />
+                      <!-- 
+                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.cep}"/><br />
+                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeRua}"/><br />
+                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.numero}"/><br />
+                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.bairro}"/><br />
+                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeCidade}"/> - <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
+                     -->
+                     70743-510 <br />
+                     SCLN 107 BLOCO A <br />
+                     108 <br />
+                     Asa Norte <br />
+                     Brasília - DF <br />
+                    </p>
+                    <h:commandLink class="btn btn-primary btn-default" action="#{clienteMB.paginaPrincipal}">Voltar à loja</h:commandLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        
+        </h:form>
+		</ui:define>
+    </ui:composition>

@@ -76,20 +76,17 @@
 		                        </thead>
 	                		</table>
 	                		<tbody>
-	                			<c:forEachar var="produto" items="#{clienteMB.cliente.listaCarrinho}">
+	                			<c:forEach var="produto" items="#{clienteMB.cliente.listaCarrinho}">
 	                        	<tr>
 		                            <td class="">
-		                              <!-- 
-										  <span class="cartImage"><img src="#{produto.srcImagemCarrinho}" alt="image"/></span>		
-		                              -->
-			                              <span class="cartImage"><img src="img/products/cart-image1.jpg" alt="image"/></span>
+										<span class="cartImage"><img src="#{produto.srcImagemCarrinho}" alt="image"/></span>		
 		                            </td>
 		                            <td class=""><h:outputText escape="false" value="#{produto.titulo}"/></td>
 		                            <td class=""></td>
 		                            <td class="count-input"><h:outputText escape="false" value="#{produto.contador}"/></td>
 		                            <td class=""><h:outputText escape="false" value="#{produto.subTotal}"/></td>
 	                        	</tr>
-	                        	</c:forEachar>
+	                        	</c:forEach>
                           	</tbody>
 	                	</div>
 	                </div>
@@ -98,33 +95,56 @@
                   		<div class="col-md-4">
                     		<h5>Endereço de Entrega</h5>
                     		<address>
-		                    	Sn Dalim <br>                          
-		                    	Shamoli, Dhaka 120, Bangladesh <br>
-		                    	415-555-2671 <br>
-		                    	example78@gmail.com <br>
+		                    	<!-- 
+			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.cep}"/><br />
+			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeRua}"/><br />
+			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.numero}"/><br />
+			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.bairro}"/><br />
+			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeCidade}"/> - <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
+			                     -->
+			                     70743-510 <br />
+			                     SCLN 107 BLOCO A <br />
+			                     108 <br />
+			                     Asa Norte <br />
+			                     Brasília - DF <br />
                    			</address>
                   		</div>
 	                  	<div class="col-md-4">
 	                    	<h5>Meio de Envio</h5>
 	                    	<p>
-	                      		Standard Ground (USPS) - $7.50 <br>
-	                      		Delivered in 8-12 business days.
+	                      		<c:if test="#{clienteMB.cliente.endereco.modoEnvio == 1}">
+			                    	Frete Grátis<br />
+			                      	Estimativa de 25 a 30 dias para entrega (previsão Correios)
+								</c:if>
 	                    	</p>
-	                  	</div>
+	                  	</div><br />
 	                  	<div class="col-md-4">
 	                    	<h5>Meio de Pagamento</h5>
 	                    	<p>
-	                      		Credit Card: <br>
-	                      		**** **** **** 2641
+	                    		<c:if test="#{clienteMB.cliente.pagamento.tipoPagamento == 1}">
+	                      			PayPal
+	                      		</c:if>
+	                    		
+	                    		<c:if test="#{clienteMB.cliente.pagamento.tipoPagamento == 1}">
+	                      			Cartão de crédito: 
+	                      			**** **** **** <h:outputText escape="false" value="#{clienteMB.cliente.pagamento.finalCartaoCredito}"/>
+	                      		</c:if>
 	                    	</p>
 	                  	</div>
                 	</div>
                 
                   	<div class="col-sm-12">
                     	<ul class="pager">
-                      		<li class="previous float-left"><a class="btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-1.html"><i class="fa fa-angle-left"></i> Voltar</a></li>
-                        	<li class="next "><a class="btn btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-2.html">Continuar <i class="fa fa-angle-right"></i></a></li>
+                      		<li class="previous float-left"><h:commandLink class="btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-1.html" action="#{clienteMB.segundoPassoCompra}"><i class="fa fa-angle-left"></i> Voltar</h:commandLink></li>
+                        	<li class="next "><h:commandLink class="btn btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-2.html" action="#{clienteMB.confirmarCompra}">Continuar <i class="fa fa-angle-right"></i></h:commandLink></li>
                       	</ul>
+	                </div>
+	                
+	                <div class="col-sm-12 col-12">
+	                	<small><i class="fa fa-info-circle"/>&nbsp;Informações gerais</small>
+	                </div>
+	                <div class="col-sm-12 col-12">
+	                    <small>Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso" style="color: #00008B !important"/> e a <h:commandLink action="#" value="política de privacidade" style="color: #00008B !important"/>.</small>
 	                </div>
 	                
 	              </div>
