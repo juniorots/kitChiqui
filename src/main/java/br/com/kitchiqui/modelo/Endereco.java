@@ -19,6 +19,8 @@ public class Endereco extends DomainObject {
 	 */
 	private Integer modoEnvio = 1;
 	
+	private Double precoModoEnvio;
+	
 	// obrigatorio
 	private String cep;
 
@@ -102,5 +104,12 @@ public class Endereco extends DomainObject {
 	public void setModoEnvio(Integer modoEnvio) {
 		this.modoEnvio = modoEnvio;
 	}
-	
+
+	public Double getPrecoModoEnvio() {
+		return precoModoEnvio;
+	}
+
+	public void setPrecoModoEnvio(Double precoModoEnvio) {
+		this.precoModoEnvio = precoModoEnvio;
+	}
 }

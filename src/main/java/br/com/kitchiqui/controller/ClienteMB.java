@@ -6,6 +6,8 @@
 package br.com.kitchiqui.controller;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,6 +25,8 @@ import javax.persistence.Persistence;
 import lombok.Cleanup;
 import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.modelo.Cliente;
+import br.com.kitchiqui.modelo.EnumEnvio;
+import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.EnviarEmail;
 import br.com.kitchiqui.util.Util;
@@ -85,6 +89,10 @@ public class ClienteMB extends BaseController implements Serializable {
     	getCliente().getEndereco().setNomeCidade(getTmpCidade());
     	getCliente().getEndereco().setBairro(getTmpBairro());
     	getCliente().getEndereco().setEstado(getTmpEstado());
+    	
+    	if (getCliente().getEndereco().getModoEnvio().equals(EnumEnvio.TAXA_GRATIS.getTipo())) {
+    		getCliente().getEndereco().setPrecoModoEnvio(0.0D);
+    	}
     	
     	Util.forward(SEGUNDO_PASSO_COMPRAS);
     }
@@ -321,6 +329,53 @@ public class ClienteMB extends BaseController implements Serializable {
 
     public void setListaCliente(Collection<Cliente> listaCliente) {
         this.listaCliente = listaCliente;
+    }
+    
+    /**
+     * Com a responsabilidade de capturar todos os valores
+     * comprados pelo cliente
+     * @return
+     */
+    public String getResumoSubtotal() {
+    	String retorno = "0,00";
+    	Double tmp = 0.0;
+    	try {
+	    	for (Produto p : getCliente().getListaCarrinho()) {
+	    		tmp += p.getPreco() * p.getQuantidade();
+	    	}
+	    	NumberFormat nf = new DecimalFormat("###,##0.00");
+			retorno = nf.format(tmp);
+    	} catch (Exception e) {
+    		retorno = "0,00";
+    	}
+    	return "R$ " + retorno;
+    }
+    
+    public String getResumoCustoEntrega() {
+    	String retorno = "0,00";
+    	try {
+	    	NumberFormat nf = new DecimalFormat("###,##0.00");
+			retorno = nf.format(getCliente().getEndereco().getPrecoModoEnvio());
+    	} catch (Exception e) {
+    		retorno = "0,00";
+    	}
+    	return "R$ " + retorno;
+    }
+    
+    public String getResumoTotal() {
+    	String retorno = "0,00";
+    	Double tmp = 0.0;
+    	try {
+    		for (Produto p : getCliente().getListaCarrinho()) {
+	    		tmp += p.getPreco() * p.getQuantidade();
+	    	}
+    		tmp += getCliente().getEndereco().getPrecoModoEnvio();
+    		NumberFormat nf = new DecimalFormat("###,##0.00");
+			retorno = nf.format(tmp);
+    	} catch (Exception e) {
+    		retorno = "0,00";
+    	}
+    	return "R$ " + retorno;
     }
     
 }

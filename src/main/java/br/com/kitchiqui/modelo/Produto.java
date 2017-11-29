@@ -42,6 +42,10 @@ public class Produto extends DomainObject {
 	
 	private Integer quantidade;
 	
+	/**
+	 * PRODUTO_VITRINE = 1;
+	 * PRODUTO_DESTAQUE = 2;
+	 */
 	@NotNull
 	private Integer tipo;
 	
