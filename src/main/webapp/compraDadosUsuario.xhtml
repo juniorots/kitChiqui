@@ -74,8 +74,10 @@
 	                    <p:message for="nomeCompleto" display="text"/>
 	                </div>
                   	<div class="form-group col-sm-6 col-12">
-	                	<label for="">CPF</label>&nbsp;<span style="color: red">*</span>
-	                    <p:inputMask id="cpf" class="form-control" value="#{clienteMB.cliente.nrCpf}" required="true" requiredMessage="CPF obrigatório" mask="999.999.999-99"/>
+	                	<label for="">CPF</label>&nbsp;<span style="color: red">*</span>&nbsp;&nbsp;<h:outputText escape="false" id="tmpMsgCPF" value="#{clienteMB.msgCPF}" style="color: red; font-weight: bold"/>
+	                    <p:inputMask id="cpf" class="form-control" value="#{clienteMB.cliente.nrCpf}" required="true" requiredMessage="CPF obrigatório" mask="999.999.999-99">
+	                    	<f:ajax event="blur" listener="#{clienteMB.validarNumeroCPF}" render="tmpMsgCPF"/>
+	                    </p:inputMask>
 	                    <p:message for="cpf" display="text"/>
 	                </div>
 	                <div class="form-group col-sm-6 col-12">
@@ -176,7 +178,7 @@
 		                	<small><i class="fa fa-info-circle"/>&nbsp;Informações gerais</small>
 		                </div>
 		                <div class="col-sm-12 col-12">
-		                    <small>Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso" style="color: #00008B !important"/> e a <h:commandLink action="#" value="política de privacidade" style="color: #00008B !important"/>.</small>
+		                    <small>Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso" style="color: #00008B !important"/> e a <h:commandLink action="#{clienteMB.politicaPrivacidade}" value="política de privacidade" style="color: #00008B !important"/>.</small>
 		                </div>
                   	</div>
                   	

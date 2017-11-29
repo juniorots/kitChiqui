@@ -77,6 +77,10 @@ public class ClienteMB extends BaseController implements Serializable {
      * Gerenciando as compras realizadas
      */
     public void primeiroPassoCompra() {
+    	
+    	if ( isProblemaCartao() )
+    		return;
+    	
     	Util.forward(PRIMEIRO_PASSO_COMPRAS);
     }
     
@@ -90,6 +94,10 @@ public class ClienteMB extends BaseController implements Serializable {
     	getCliente().getEndereco().setBairro(getTmpBairro());
     	getCliente().getEndereco().setEstado(getTmpEstado());
     	
+    	// validacoes
+    	if ( isProblemaDados() )
+    		return;
+    	
     	if (getCliente().getEndereco().getModoEnvio().equals(EnumEnvio.TAXA_GRATIS.getTipo())) {
     		getCliente().getEndereco().setPrecoModoEnvio(0.0D);
     	}
@@ -101,6 +109,9 @@ public class ClienteMB extends BaseController implements Serializable {
      * Gerenciando as compras realizadas
      */
     public void terceiroPassoCompra() {
+    	if ( isProblemaCartao() )
+    		return;
+    	
     	Util.forward(TERCEIRO_PASSO_COMPRAS);
     }
     

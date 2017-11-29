@@ -35,6 +35,8 @@ public class BaseController {
 	protected static final String SEGUNDO_PASSO_COMPRAS = "/usuarioMeioPagamento.xhtml";
 	protected static final String TERCEIRO_PASSO_COMPRAS = "/resumoDadosCompra.xhtml";
 	protected static final String QUARTO_PASSO_COMPRAS = "/confirmaCompraCliente.xhtml";
+	protected static final String POLITICA_PRIVACIDADE = "/politicaPrivacidade.xhtml";
+	protected static final String TERMOS_USO = "/termoUso.xhtml";
 	
 	private Cliente cliente= null;
 	private Produto produto = null;
@@ -48,7 +50,13 @@ public class BaseController {
 	private String tmpCidade;
 	
 	private String msgCartao;
+	private String msgCPF;
 	private boolean problemaCartao;
+	private boolean problemaDados;
+	
+	private String buscarCNPJ;
+	private String buscarEndereco;
+	private String buscarSiteKitChiqui;
 	
 	private Map<String, String> estados = new HashMap();
 	private Map<Integer, Integer> listaMes = new HashMap();
@@ -63,10 +71,20 @@ public class BaseController {
 		}
 	}
 	
+	// section forwarding...
 	public void paginaPrincipal(){
 		resetarConfig();
 		Util.forward(PAGINA_PRINCIPAL);
 	}
+	
+	public void politicaPrivacidade() {
+		Util.forward(POLITICA_PRIVACIDADE);
+	}
+	
+	public void termoUso() {
+		Util.forward(TERMOS_USO);
+	}
+	// section forwarding...
 	
 	public Produto getProduto() {
 		if (produto == null) {
@@ -219,6 +237,22 @@ public class BaseController {
 	public void setMsgCartao(String msgCartao) {
 		this.msgCartao = msgCartao;
 	}
+	
+	public String getMsgCPF() {
+		return msgCPF;
+	}
+
+	public void setMsgCPF(String msgCPF) {
+		this.msgCPF = msgCPF;
+	}
+
+	public boolean isProblemaDados() {
+		return problemaDados;
+	}
+
+	public void setProblemaDados(boolean problemaDados) {
+		this.problemaDados = problemaDados;
+	}
 
 	/*
 	 * Realiza a procura de endereco a partir do CEP informado
@@ -268,6 +302,30 @@ public class BaseController {
 			setMsgCartao("Número do cartão inválido");
 			setProblemaCartao(true);
 		}
+	}
+	
+	/**
+	 * Responsabilitando o numero de CPF correto.
+	 */
+	public void validarNumeroCPF() {
+		setMsgCPF("");
+		setProblemaDados(false);
+		if ( !(Util.isCPF( getCliente().getNrCpf() )) ) {
+			setMsgCPF("Número do CPF inválido");
+			setProblemaDados(true);
+		}
+	}
+	
+	public String getBuscarCNPJ() {
+		return Constantes.CNPJ_KITCHIQUI;
+	}
+	
+	public String getBuscarEndereco() {
+		return Constantes.ENDERECO_KITCHIQUI;
+	}
+	
+	public String getBuscarSiteKitChiqui() {
+		return Constantes.SITE_KITCHIQUI;
 	}
 	
 	/**

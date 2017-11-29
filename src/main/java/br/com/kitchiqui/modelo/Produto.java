@@ -51,6 +51,8 @@ public class Produto extends DomainObject {
 	
 	private Double preco;
 	
+	private Boolean disponivel;
+	
 	/*
 	 * Secao de informacoes utilizadas no descritivo detalhado do produto
 	 */
@@ -280,5 +282,13 @@ public class Produto extends DomainObject {
 	public String getSubTotal() {
 		NumberFormat nf = new DecimalFormat("###,##0.00");
 		return "R$ " + nf.format(preco * quantidade);
+	}
+
+	public Boolean getDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(Boolean disponivel) {
+		this.disponivel = disponivel;
 	}
 }

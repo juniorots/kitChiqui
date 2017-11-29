@@ -60,35 +60,31 @@
 	                    </ul>
 	                  </li>
 	                  <li class="dropdown cart-dropdown">
-	                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i>$0</a>
+	                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><h:outputText escape="false" value="#{clienteMB.resumoSubtotal}"/></a>
 	                    <ul class="dropdown-menu dropdown-menu-right">
-	                      <li>Itens selecionados</li>
-	                      <li>
-	                        <a href="single-product.html">
-	                          <div class="media">
-	                            <img class="media-left media-object" src="img/home/cart-items/cart-item-01.jpg" alt="cart-Image"/>
-	                            <div class="media-body">
-	                              <h5 class="media-heading">INCIDIDUNT UT <br /><span>2 X $199</span></h5>
-	                            </div>
-	                          </div>
-	                        </a>
-	                      </li>
-	                      <li>
-	                        <a href="single-product.html">
-	                          <div class="media">
-	                            <img class="media-left media-object" src="img/home/cart-items/cart-item-01.jpg" alt="cart-Image"/>
-	                            <div class="media-body">
-	                              <h5 class="media-heading">INCIDIDUNT UT <br /><span>2 X $199</span></h5>
-	                            </div>
-	                          </div>
-	                        </a>
-	                      </li>
-	                      <li>
-	                        <div class="btn-group" role="group" aria-label="...">
-	                          <button type="button" class="btn btn-default" onclick="location.href='cart-page.html';">Seus pedidos</button>
-	                          <button type="button" class="btn btn-default" onclick="location.href='checkout-step-1.html';">Finalizar</button>
-	                        </div>
-	                      </li>
+						  <c:if test="#{not empty clienteMB.cliente.listaCarrinho}">
+		                      <li>O que há no seu carrinho</li>
+		                      <c:forEach var="produto" items="#{clienteMB.cliente.listaCarrinho}">
+			                      <li>
+			                        <a href="single-product.html">
+			                          <div class="media">
+			                            <img class="media-left media-object" src="#{produto.srcImagemCarrinho}" alt="cart-Image"/>
+			                            <div class="media-body">
+			                              <h5 class="media-heading"><h:outputText escape="false" value="#{produto.titulo}"/> <br /><span><h:outputText escape="false" value="#{produto.quantidade}"/> X <h:outputText escape="false" value="#{produto.precoFormatado}"/></span></h5>
+			                            </div>
+			                          </div>
+			                        </a>
+			                      </li>
+		                      </c:forEach>
+		                      <li>
+		                        <div class="btn-group" role="group" aria-label="...">
+		                          <h:commandButton class="btn btn-default" action="#{clienteMB.primeiroPassoCompra}">Finalizar</h:commandButton>
+		                        </div>
+		                      </li>
+						  </c:if>	
+						  <c:if test="#{empty clienteMB.cliente.listaCarrinho}">
+						  	<li>Hum... Tô vendo que ainda não comprou nada!</li>
+						  </c:if>	                      
 	                    </ul>
 	                  </li>
 	                </ul>

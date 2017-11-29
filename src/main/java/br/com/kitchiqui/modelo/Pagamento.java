@@ -18,6 +18,7 @@ public class Pagamento extends DomainObject {
 	 * Dos tipos de pagamento:
 	 * 01 - PayPayl DEFAULT;
 	 * 02 - Cartao de Credito
+	 * 03 - Cartao de Débito
 	 */
 	private Integer tipoPagamento = 1;
 	

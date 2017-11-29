@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template/mestre.xhtml">
+      <ui:define name="centro">
+		<h:form id="formPolitica" role="form" > 
+	    <!--
+	     NOTA: para capturar o caminho relativo do projeto, usa-se:
+	        #[request.contextPath}/<DIRETORIO>/..
+	    -->
+        <section class="lightSection clearfix pageHeader">
+	        <div class="container">
+	          <div class="row">
+	            <div class="col-sm-6">
+	              <div class="page-title">
+	                <h2>POLÍTICA DE PRIVACIDADE</h2>
+	              </div>
+	            </div>
+	            <div class="col-sm-6">
+	              <ol class="breadcrumb float-right">
+	                <li>
+	                  <h:commandLink action="#{produtoMB.paginaPrincipal}">INÍCIO</h:commandLink>
+	                </li>
+	                <li class="active">POLÍTICA DE PRIVACIDADE</li>
+	              </ol>
+	            </div>
+	          </div>
+	        </div>
+      	</section>
+        <div id="typography" class="element_single">
+	        <div class="display-single_element">
+				<p class="typo" style="margin: 5% 35px 10% 35px; text-align: justify">
+					O KitChiqui (kitchiqui.com e respectivos aplicativos discriminados nos termos de uso) tem o compromisso com a 
+					privacidade de seus clientes, garantindo total sigilo de seus dados cadastrais.
+					<br /><br />
+					O KitChiqui utiliza cookies e informações de sua navegação em seus respectivos portais de venda, 
+					com o objetivo de traçar um perfil do público que visita o site e aperfeiçoar sempre seus serviços, 
+					produtos e conteúdos, garantindo as	melhores ofertas e promoções para os clientes de maneira automática 
+					e/ou estatística, sem exibir nenhum dado de maneira específica. 
+					Durante todo este processo,	as informações são mantidas em sigilo absoluto.	Todos os dados são registrados pelo 
+					KitChiqui de forma automatizada, dispensando manipulação humana. 
+					Dados para compra (cartão de crédito, dados bancários, etc.) não são explicitamente armazenados nos sistemas 
+					do KitChiqui, e todas as transações financeiras são executadas através de autenticação eletrônica com os meios de 
+					pagamento, garantindo total segurança e privacidade dos dados dos clientes.
+					<br /><br />
+					Para que estes dados permaneçam intactos, aconselhamos que não sejam divulgados os dados de login e dados cadastrais a 
+					terceiros, mesmo a amigos e parentes.
+					<br /><br />
+					As alterações sobre esta política de privacidade serão devidamente atualizadas e divulgadas neste espaço.
+					<br /><br />
+					O KitChiqui está de acordo com todas as regras dispostas na legislação brasileira, tais como o 
+					Marco Civil da Internet (LEI Nº 12.965, DE 23 DE ABRIL DE 2014) e o 
+					Código de Defesa do Consumidor (LEI Nº 8.078, DE 11 DE SETEMBRO DE 1990), e se compromete a cumprir ordens judiciais.
+				</p>
+	        </div>
+        </div>
+		</h:form>
+	</ui:define>
+</ui:composition>

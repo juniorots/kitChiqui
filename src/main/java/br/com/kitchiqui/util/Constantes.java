@@ -48,4 +48,8 @@ public class Constantes {
     public static int UM_MINUTO = 60 * UM_SEGUNDO;
     public static int UMA_HORA = 60 * UM_MINUTO;
     
+    public static String CNPJ_KITCHIQUI = "00.000.000/0000-00";
+    public static String ENDERECO_KITCHIQUI = "ENDERECO_KITCHIQUI AQUI";
+    public static String SITE_KITCHIQUI = "www.kitchiqui.com";
+    
 }

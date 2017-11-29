@@ -125,8 +125,13 @@
 	                      			PayPal
 	                      		</c:if>
 	                    		
-	                    		<c:if test="#{clienteMB.cliente.pagamento.tipoPagamento == 1}">
+	                    		<c:if test="#{clienteMB.cliente.pagamento.tipoPagamento == 2}">
 	                      			Cartão de crédito: 
+	                      			**** **** **** <h:outputText escape="false" value="#{clienteMB.cliente.pagamento.finalCartaoCredito}"/>
+	                      		</c:if>
+	                      		
+	                      		<c:if test="#{clienteMB.cliente.pagamento.tipoPagamento == 3}">
+	                      			Cartão de débito: 
 	                      			**** **** **** <h:outputText escape="false" value="#{clienteMB.cliente.pagamento.finalCartaoCredito}"/>
 	                      		</c:if>
 	                    	</p>
@@ -136,7 +141,7 @@
                   	<div class="col-sm-12">
                     	<ul class="pager">
                       		<li class="previous float-left"><h:commandLink class="btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-1.html" action="#{clienteMB.segundoPassoCompra}"><i class="fa fa-angle-left"></i> Voltar</h:commandLink></li>
-                        	<li class="next "><h:commandLink class="btn btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-2.html" action="#{clienteMB.confirmarCompra}">Continuar <i class="fa fa-angle-right"></i></h:commandLink></li>
+                        	<li class="next "><h:commandLink class="btn btn-lg btn-primary btn-pill" style="color: #337ab7 !important" href="checkout-step-2.html" action="#{clienteMB.quartoPassoCompra}">Continuar <i class="fa fa-angle-right"></i></h:commandLink></li>
                       	</ul>
 	                </div>
 	                
@@ -144,7 +149,7 @@
 	                	<small><i class="fa fa-info-circle"/>&nbsp;Informações gerais</small>
 	                </div>
 	                <div class="col-sm-12 col-12">
-	                    <small>Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso" style="color: #00008B !important"/> e a <h:commandLink action="#" value="política de privacidade" style="color: #00008B !important"/>.</small>
+	                    <small>Ao comprar CONCORDO com os <h:commandLink action="#" value="termos de uso" style="color: #00008B !important"/> e a <h:commandLink action="#{clienteMB.politicaPrivacidade}" value="política de privacidade" style="color: #00008B !important"/>.</small>
 	                </div>
 	                
 	              </div>
@@ -157,15 +162,15 @@
 	                <ul class="list-unstyled">
 	                  <li class="d-flex justify-content-between">
 	                    <span class="tag">Subtotal</span>
-	                    <span class="val">$237.00</span>
+	                    <span class="val"><h:outputText escape="false" value="#{clienteMB.resumoSubtotal}"/></span>
 	                  </li>
 	                  <li class="d-flex justify-content-between">
 	                    <span class="tag">Taxa de entrega</span>
-	                    <span class="val">$0.00 </span>
+	                    <span class="val"><h:outputText escape="false" value="#{clienteMB.resumoCustoEntrega}"/></span>
 	                  </li>
 	                  <li class="d-flex justify-content-between">
 	                    <span class="tag">Total</span>
-	                    <span class="val">USD  $249.00 </span>
+	                    <span class="val"><h:outputText escape="false" value="#{clienteMB.resumoTotal}"/></span>
 	                  </li>
 	                </ul>
 	              </div>
