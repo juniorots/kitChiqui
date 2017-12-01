@@ -7,6 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       template="/WEB-INF/template/mestre.xhtml">
       <ui:define name="centro">
+      <h:form id="formDetalhe">
         <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
             #[request.contextPath}/<DIRETORIO>/..
@@ -23,9 +24,7 @@
 		       <div class="col-xs-6">
 		         <ol class="breadcrumb pull-right">
 		           <li>
-		             <h:form id="formDetalhe01">
-			             <h:commandLink id="linkInicio" actionListener="#{produtoMB.paginaPrincipal}">Início</h:commandLink>
-		             </h:form>
+		             <h:commandLink id="linkInicio" actionListener="#{produtoMB.paginaPrincipal}">Início</h:commandLink>
 		           </li>
 		           <li class="active">Detalhe do produto</li>
 		         </ol>
@@ -80,9 +79,7 @@
 							<div class="media-body">
 								<ul class="list-inline">
 				                    <li>
-				                    	<h:form id="formDetalhe02" method="post">
-				                    		<h:commandLink action="#{produtoMB.paginaPrincipal}"><i class="fa fa-reply" aria-hidden="true"></i>Continuar Comprando</h:commandLink>
-				                    	</h:form>
+			                    		<h:commandLink action="#{produtoMB.paginaPrincipal}"><i class="fa fa-reply" aria-hidden="true"></i>Continuar Comprando</h:commandLink>
 				                    </li>
 				                    <!-- 
 				                    <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li>
@@ -93,6 +90,16 @@
                   				<p>
                   					<h:outputText escape="false" value="#{produtoMB.produto.anotacaoPrincipalDescritivo}"/>
                   				</p>
+                  				<c:if test="#{produtoMB.produto.disponivel}">
+					                <span class="quick-drop">
+					                    <select name="guiest_id4" id="guiest_id4" class="select-drop">
+					                      <option value="0">Quantidade</option>
+					                      <option value="1">1</option>
+					                      <option value="2">2</option>
+					                      <option value="3">3</option>
+					                    </select>
+					                </span>
+                  				<!--  
                   				<span class="quick-drop">
 				                    <select name="guiest_id3" id="guiest_id3" class="select-drop">
 				                      <option value="0">Tamanho</option>
@@ -101,17 +108,23 @@
 				                      <option value="3">Grande</option>
 				                    </select>
 				                </span>
-				                <span class="quick-drop">
-				                    <select name="guiest_id4" id="guiest_id4" class="select-drop">
-				                      <option value="0">Quantidade</option>
-				                      <option value="1">1</option>
-				                      <option value="2">2</option>
-				                      <option value="3">3</option>
-				                    </select>
-				                </span>
-				                <div class="btn-area">
-				                    <a href="cart-page.html" class="btn btn-primary btn-block">Comprar <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-				                </div>
+                  				-->
+					                <div class="btn-area">
+					                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;">
+					                    	<i class="fa fa-shopping-cart" aria-hidden="true"></i> Por no Carrinho
+					                    </h:commandLink>
+					                    &nbsp;
+					                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;">
+					                    	Comprar <i class="fa fa-angle-right" aria-hidden="true"/>
+					                    </h:commandLink>
+					                </div>
+                  				</c:if>
+                  				
+                  				<c:if test="#{not produtoMB.produto.disponivel}">
+                  					<div class="alert alert-danger fade in">
+					                  <strong>Hum!</strong> Infelizmente estamos sem este produto no momento.
+					                </div>
+                  				</c:if>
                   				<div class="tabArea">
                   					<ul class="nav nav-tabs">
 				                      <li class="active"><a data-toggle="tab" href="#detalhes">detalhes</a></li>
@@ -151,10 +164,9 @@
 					</div>
 				</div>
 	
-				<h:form>
-					<ui:include src="destaqueProduto.xhtml"/>
-				</h:form>	
+				<ui:include src="destaqueProduto.xhtml"/>
 		 	</div>
 		 </section>
+		</h:form>
 	</ui:define>
     </ui:composition>

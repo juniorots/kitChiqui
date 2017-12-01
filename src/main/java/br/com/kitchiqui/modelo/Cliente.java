@@ -8,6 +8,7 @@ package br.com.kitchiqui.modelo;
 import static javax.persistence.TemporalType.DATE;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -64,7 +65,20 @@ public class Cliente extends DomainObject {
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch (FetchMode.SELECT)
 	private List<Produto> listaCarrinho;
+	
+	@Transient
+	private int itensCarrinho;
 
+	public int getItensCarrinho() {
+		
+		try {
+			itensCarrinho = getListaCarrinho().size();
+		} catch (Exception e) {
+			this.itensCarrinho = 0;
+		}
+		return this.itensCarrinho;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -169,6 +183,9 @@ public class Cliente extends DomainObject {
 	}
 
 	public List<Produto> getListaCarrinho() {
+		if (listaCarrinho == null) {
+			listaCarrinho = new LinkedList<>();
+		}
 		return listaCarrinho;
 	}
 
