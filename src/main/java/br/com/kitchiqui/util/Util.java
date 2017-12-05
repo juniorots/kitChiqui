@@ -63,6 +63,22 @@ public class Util {
     }
    
     /**
+     * Verificando equivalencia entre produtos
+     * @param p1
+     * @param p2
+     * @return
+     */
+    public static boolean equalsProduto(Produto p1, Produto p2) {
+    	if (p1.getTitulo().equals(p2.getTitulo())
+    			&& p1.getSubTitulo().equals(p2.getSubTitulo())
+    			&& p1.getDescritivo().equals(p2.getDescritivo())
+    			&& p1.getPreco().equals(p2.getPreco())) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    /**
      * Util para o tratamento de conversao dos valores do range
      * @param produto
      * @param primeiroValor

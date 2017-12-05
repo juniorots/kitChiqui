@@ -93,7 +93,6 @@
                   				<c:if test="#{produtoMB.produto.disponivel}">
 					                <span class="quick-drop">
 					                    <select name="guiest_id4" id="guiest_id4" class="select-drop">
-					                      <option value="0">Quantidade</option>
 					                      <option value="1">1</option>
 					                      <option value="2">2</option>
 					                      <option value="3">3</option>
@@ -110,7 +109,7 @@
 				                </span>
                   				-->
 					                <div class="btn-area">
-					                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;">
+					                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;" action="#{clienteMB.adicionarCarrinho}">
 					                    	<i class="fa fa-shopping-cart" aria-hidden="true"></i> Por no Carrinho
 					                    </h:commandLink>
 					                    &nbsp;

@@ -27,7 +27,7 @@ import br.com.kitchiqui.modelo.Parceiro;
 import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Util;
 
-@ManagedBean
+@ManagedBean(name="produtoMB")
 @SessionScoped
 public class ProdutoMB extends BaseController implements Serializable {
 

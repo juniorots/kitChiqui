@@ -15,8 +15,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,13 +33,16 @@ import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.EnviarEmail;
 import br.com.kitchiqui.util.Util;
 
-@ManagedBean
+@ManagedBean(name="clienteMB")
 @SessionScoped
 public class ClienteMB extends BaseController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
     private Collection<Cliente> listaCliente = new ArrayList();
    
+    @ManagedProperty(value="#{produtoMB}")
+    private ProdutoMB produtoMB;
+    
     /**
      * Responsavel por alterar as informacoes do Cliente logado
      */
@@ -71,6 +76,24 @@ public class ClienteMB extends BaseController implements Serializable {
      */
     public void direcionarRecuperarConta() {
     	Util.forward(RECUPERA_SENHA);
+    }
+    
+    /**
+     * Tratando da insercao do produto novo no carrinho
+     */
+    @PostConstruct
+    public void adicionarCarrinho() {
+    	
+    	for (Produto p : getCliente().getListaCarrinho()) {
+    		if (!Util.equalsProduto(p, this.produtoMB.getProduto())) {
+    			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
+    		}
+    	}
+    	
+    	if (Util.isEmpty(getCliente().getListaCarrinho())) 
+    		if (!Util.isEmpty(this.produtoMB.getProduto()))
+    			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
+    	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Ok, colocamos no seu carrinho!");
     }
     
     /**

@@ -7,8 +7,6 @@ package br.com.kitchiqui.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,7 +19,6 @@ import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.Util;
 import br.com.kitchiqui.util.ValidarCartao;
-
 
 public class BaseController {
 	
