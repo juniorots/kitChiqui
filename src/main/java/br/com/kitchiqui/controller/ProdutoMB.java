@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -19,6 +20,7 @@ import javax.persistence.Persistence;
 
 import lombok.Cleanup;
 import br.com.kitchiqui.base.BlogDAO;
+import br.com.kitchiqui.base.MalaDiretaDAO;
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.EnumClasseProduto;

@@ -26,6 +26,7 @@ import javax.persistence.Persistence;
 
 import lombok.Cleanup;
 import br.com.kitchiqui.base.ClienteDAO;
+import br.com.kitchiqui.base.MalaDiretaDAO;
 import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.EnumEnvio;
 import br.com.kitchiqui.modelo.Produto;
@@ -47,8 +48,6 @@ public class ClienteMB extends BaseController implements Serializable {
      * Responsavel por alterar as informacoes do Cliente logado
      */
     public void alterarCliente() {
-        FacesMessage mensagem = null;
-        
         if ( !validarDados() ) return;
         
         @Cleanup
@@ -82,24 +81,43 @@ public class ClienteMB extends BaseController implements Serializable {
      * Tratando da insercao do produto novo no carrinho
      */
     @PostConstruct
-    public void adicionarCarrinho() {
+    public void adicionarCarrinho(String... origem) {
+    	
+    	boolean adicionado = false;
     	
     	for (Produto p : getCliente().getListaCarrinho()) {
     		if (!Util.equalsProduto(p, this.produtoMB.getProduto())) {
     			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
+    			adicionado = true;
+    		} else {
+    			if (!p.getQuantidade().equals(this.produtoMB.getProduto().getQuantidade())) {
+					p.setQuantidade(this.produtoMB.getProduto().getQuantidade());
+					adicionado = true;
+    			}
     		}
     	}
     	
     	if (Util.isEmpty(getCliente().getListaCarrinho())) 
-    		if (!Util.isEmpty(this.produtoMB.getProduto()))
+    		if (!Util.isEmpty(this.produtoMB.getProduto().getId())) {
     			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
-    	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Ok, colocamos no seu carrinho!");
+    			adicionado = true;
+    		}
+
+    	// last actions...
+    	if (adicionado)
+    		if (origem.length == 0 || !origem[0].equals("botaoComprar"))
+    			Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Ok, colocamos no seu carrinho!");
     }
     
     /**
      * Gerenciando as compras realizadas
      */
     public void primeiroPassoCompra() {
+    	
+    	/*
+    	 * Com o parametro abaixo, desconsidera-se a mensagem informativa ao operador
+    	 */
+    	adicionarCarrinho("botaoComprar");
     	
     	if ( isProblemaCartao() )
     		return;
@@ -296,6 +314,27 @@ public class ClienteMB extends BaseController implements Serializable {
     }
     
     /**
+     * Quando o usuario apresenta interesse em 
+     * receber noticias de produtos, especifica-se com
+     * a mala direta
+     */
+    public void tratarMalaDireta() {
+    	@Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        MalaDiretaDAO dao = new MalaDiretaDAO(entityManager);
+        if (Util.isEmpty(dao.findByStringField("email", getMalaDireta().getEmail(), true, 0, 1))) {
+        	dao.insert( getMalaDireta() );
+        	entityManager.getTransaction().commit();
+        }
+        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "OK, pegamos o seu e-mail. Havendo novidade te contamos.");
+    }
+    
+    /**
      * Tratando da solicitacao de recuperacao de conta
      */
     public void recuperarConta() {
@@ -411,5 +450,12 @@ public class ClienteMB extends BaseController implements Serializable {
     	}
     	return "R$ " + retorno;
     }
-    
+
+	public ProdutoMB getProdutoMB() {
+		return produtoMB;
+	}
+
+	public void setProdutoMB(ProdutoMB produtoMB) {
+		this.produtoMB = produtoMB;
+	}
 }

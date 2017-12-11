@@ -42,7 +42,7 @@ public class Produto extends DomainObject {
 	
 	private Integer quantidade;
 	
-	/**
+	/*
 	 * PRODUTO_VITRINE = 1;
 	 * PRODUTO_DESTAQUE = 2;
 	 */
@@ -151,8 +151,12 @@ public class Produto extends DomainObject {
 	}
 
 	public String getPrecoFormatado() {
-		NumberFormat nf = new DecimalFormat("###,##0.00");
-		return "R$ " + nf.format(preco);
+		try {
+			NumberFormat nf = new DecimalFormat("###,##0.00");
+			return "R$ " + nf.format(preco);
+		} catch (Exception e) {
+			return "R$ 0,00";
+		}
 	}
 	
 	public void setPreco(Double preco) {

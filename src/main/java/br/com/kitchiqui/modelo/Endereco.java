@@ -106,6 +106,9 @@ public class Endereco extends DomainObject {
 	}
 
 	public Double getPrecoModoEnvio() {
+		if (this.precoModoEnvio == null) {
+			return 0.0;
+		}
 		return precoModoEnvio;
 	}
 

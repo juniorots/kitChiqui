@@ -15,6 +15,7 @@ import org.jsoup.select.Elements;
 
 import br.com.kitchiqui.modelo.Blog;
 import br.com.kitchiqui.modelo.Cliente;
+import br.com.kitchiqui.modelo.MalaDireta;
 import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.Util;
@@ -38,6 +39,7 @@ public class BaseController {
 	private Cliente cliente= null;
 	private Produto produto = null;
 	private Blog blog = null;
+	private MalaDireta malaDireta = null;
 	private String tmpPrimeiro;
 	private String tmpSegundo;
 	
@@ -323,6 +325,17 @@ public class BaseController {
 	
 	public String getBuscarSiteKitChiqui() {
 		return Constantes.SITE_KITCHIQUI;
+	}
+
+	public MalaDireta getMalaDireta() {
+		if (this.malaDireta == null) {
+			this.malaDireta = new MalaDireta();
+		}
+		return malaDireta;
+	}
+
+	public void setMalaDireta(MalaDireta malaDireta) {
+		this.malaDireta = malaDireta;
 	}
 	
 	/**

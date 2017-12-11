@@ -67,8 +67,8 @@
 		                <h3>Notificação automática</h3>
 		                <p>Informe seu e-mail para notícias. Relaxa, também não curtimos Spams!</p>
 		                <div class="input-group">
-		                  <input type="text" class="form-control" placeholder="seu e-mail" aria-describedby="basic-addon2"/>
-		                  <a href="#" class="input-group-addon" id="basic-addon2">Enviar <i class="glyphicon glyphicon-chevron-right"></i></a>
+		                  <h:inputText class="form-control" placeholder="seu e-mail" aria-describedby="basic-addon2" id="email" value="#{clienteMB.malaDireta.email}" style="text-transform: lowercase !important" />
+		                  <h:commandLink class="input-group-addon" id="basic-addon2" action="#{clienteMB.tratarMalaDireta}">Enviar <i class="glyphicon glyphicon-chevron-right"></i></h:commandLink>
 		                </div>
 		              </div>
 		            </div>
