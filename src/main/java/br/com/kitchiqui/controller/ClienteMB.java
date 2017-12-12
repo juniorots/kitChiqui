@@ -71,6 +71,27 @@ public class ClienteMB extends BaseController implements Serializable {
     }
     
     /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoais() {
+    	Util.forward(DADOS_PESSOAIS_CLIENTE);
+    }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoaisEndereco() {
+    	Util.forward(DADOS_PESSOAIS_CLIENTE_ENDERECO);
+    }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoaisPedidos() {
+    	Util.forward(DADOS_PESSOAIS_CLIENTE_PEDIDOS);
+    }
+    
+    /**
      * Tratando da recuperacao de conta
      */
     public void direcionarRecuperarConta() {

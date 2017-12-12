@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template/mestre.xhtml">
+   	<ui:define name="centro">
+    	<h:form id="formDadosPessoais" role="form" >
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+        <section class="lightSection clearfix pageHeader">
+	    	<div class="container">
+	          <div class="row">
+	            <div class="col-xs-6">
+	              <div class="page-title">
+	                <h2>MEUS DADOS</h2>
+	              </div>
+	            </div>
+	            <div class="col-xs-6">
+	              <ol class="breadcrumb pull-right">
+	                <li>
+	                  <h:commandLink action="#{clienteMB.paginaPrincipal}">INÍCIO</h:commandLink>
+	                </li>
+	                <li class="active">DADOS PESSOAIS</li>
+	              </ol>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+        
+	    <section class="mainContent clearfix userProfile">
+	    	<div class="container">
+	    		<div class="row">
+	            	<div class="col-xs-12">
+	            		<div class="btn-group" role="group" aria-label="...">
+	            			<h:commandLink class="btn btn-default active" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>
+	            		</div>
+	            	</div>
+            	</div>
+            	
+            	<div class="row">
+            		<div class="col-xs-12">
+            			<div class="innerWrapper profile">
+			                <div class="row">
+			                	<div class="form-group col-sm-12 col-12">
+				                	<small style="color: red">(*) Obrigatório</small>
+				                </div>
+				                
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Nome Completo</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <h:inputText class="form-control" id="nomeCompleto" value="#{clienteMB.cliente.nomeCompleto}" required="true" requiredMessage="Nome Completo obrigatório"/>
+			                            <p:message for="nomeCompleto" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;CPF</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:outputText escape="false" id="tmpMsgCPF" value="#{clienteMB.msgCPF}" style="color: red; font-weight: bold"/>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputMask id="cpf" class="form-control" value="#{clienteMB.cliente.nrCpf}" required="true" requiredMessage="CPF obrigatório" mask="999.999.999-99">
+					                    	<f:ajax event="blur" listener="#{clienteMB.validarNumeroCPF}" render="tmpMsgCPF"/>
+					                    </p:inputMask>
+					                    <p:message for="cpf" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;RG</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputText id="rg" class="form-control" value="#{clienteMB.cliente.nrRG}" required="true" requiredMessage="RG obrigatório"/>
+                   						<p:message for="rg" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Data de Nascimento</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" required="true" requiredMessage="Data de Nascimento obrigatório"/>
+	                   					<p:message for="tmpDtNascimento" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Telefone (celular)</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputMask id="nrTelefone" class="form-control" value="#{clienteMB.cliente.nrTelefone}" mask="(99) 99999-9999" required="true" requiredMessage="Telefone obrigatório"/>
+	                    				<p:message for="nrTelefone" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;E-mail</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important" required="true" requiredMessage="E-mail obrigatório"/>
+	                    				<p:message for="email" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <div class="col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3">
+			                            <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
+			                          </div>
+			                        </div>
+		                        
+								</div>			                
+			                </div> 
+			            </div>
+            		</div>
+            	</div>
+	    	</div>
+	    </section>
+        
+        </h:form>
+		</ui:define>
+    </ui:composition>

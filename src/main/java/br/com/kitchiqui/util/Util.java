@@ -279,7 +279,7 @@ public class Util {
     	if (Util.isEmpty(CPF)) 
     		return false;
     	
-    	CPF.replaceAll("[.]", "").replaceAll("[,]", "").replaceAll("[-]", "");
+    	CPF = CPF.replaceAll("[.]", "").replaceAll("[,]", "").replaceAll("[-]", "");
     	
 	    if (CPF.equals("00000000000") || CPF.equals("11111111111") ||
 	        CPF.equals("22222222222") || CPF.equals("33333333333") ||

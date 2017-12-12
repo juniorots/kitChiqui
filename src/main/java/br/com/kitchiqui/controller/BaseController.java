@@ -35,6 +35,9 @@ public class BaseController {
 	protected static final String QUARTO_PASSO_COMPRAS = "/confirmaCompraCliente.xhtml";
 	protected static final String POLITICA_PRIVACIDADE = "/politicaPrivacidade.xhtml";
 	protected static final String TERMOS_USO = "/termoUso.xhtml";
+	protected static final String DADOS_PESSOAIS_CLIENTE = "/dadosPessoaisCliente.xhtml";
+	protected static final String DADOS_PESSOAIS_CLIENTE_ENDERECO = "/dadosPessoaisEnderecoCliente.xhtml";
+	protected static final String DADOS_PESSOAIS_CLIENTE_PEDIDOS = "/dadosPessoaisClientePedidos.xhtml";
 	
 	private Cliente cliente= null;
 	private Produto produto = null;

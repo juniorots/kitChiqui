@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template/mestre.xhtml">
+   	<ui:define name="centro">
+    	<h:form id="formDadosPessoais" role="form" >
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+        <section class="lightSection clearfix pageHeader">
+	    	<div class="container">
+	          <div class="row">
+	            <div class="col-xs-6">
+	              <div class="page-title">
+	                <h2>MEUS DADOS</h2>
+	              </div>
+	            </div>
+	            <div class="col-xs-6">
+	              <ol class="breadcrumb pull-right">
+	                <li>
+	                  <h:commandLink action="#{clienteMB.paginaPrincipal}">INÍCIO</h:commandLink>
+	                </li>
+	                <li class="active">DADOS PESSOAIS</li>
+	              </ol>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+        
+	    <section class="mainContent clearfix userProfile">
+	    	<div class="container">
+	    		<div class="row">
+	            	<div class="col-xs-12">
+	            		<div class="btn-group" role="group" aria-label="...">
+	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
+                			<h:commandLink class="btn btn-default active" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>
+	            		</div>
+	            	</div>
+            	</div>
+            	
+            	<div class="row">
+            		<div class="col-xs-12">
+            			<div class="innerWrapper profile">
+			                <div class="row">
+			                	<div class="form-group col-sm-12 col-12">
+				                	<small style="color: red">(*) Obrigatório</small>
+				                </div>
+				                
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;CEP</label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank" style="color: #00008B !important"><small>Não sei meu CEP</small></a>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputMask id="cep" class="form-control" value="#{clienteMB.cliente.endereco.cep}" mask="99999-999" required="true" requiredMessage="CEP obrigatório">
+					                    	<f:ajax event="blur" listener="#{clienteMB.procuraPorCEP}" render="tmpRua tmpCidade tmpEstado tmpBairro"/>
+					                    </p:inputMask>
+					                    <p:message for="cep" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Rua</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputText id="tmpRua" class="form-control" value="#{clienteMB.tmpRua}" required="true" requiredMessage="Rua obrigatório"/>
+	                    				<p:message for="tmpRua" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Cidade</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputText id="tmpCidade" class="form-control" value="#{clienteMB.tmpCidade}" required="true" requiredMessage="Cidade obrigatório"/>
+	                    				<p:message for="tmpCidade" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Bairro</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputText id="tmpBairro" class="form-control" value="#{clienteMB.tmpBairro}" required="true" requiredMessage="Bairro obrigatório"/>
+	                    				<p:message for="tmpBairro" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Estado</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <h:selectOneMenu id="tmpEstado" value="#{clienteMB.tmpEstado}" class="form-control" required="true" requiredMessage="Estado obrigatório">
+					                		<c:forEach var="estado" items="#{clienteMB.estados}">
+					                			<f:selectItem itemValue="#{estado.key}" itemLabel="#{estado.value}"/>
+					                		</c:forEach>
+					                	</h:selectOneMenu>
+					                	<p:message for="tmpEstado" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Número</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <p:inputText id="numero" class="form-control" value="#{clienteMB.cliente.endereco.numero}" required="true" requiredMessage="Número obrigatório"/>
+	                    				<p:message for="numero" display="text"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label">Complemento</label>
+			                          <div class="col-md-10 col-sm-9">
+			                            <h:inputText id="complemento" class="form-control" value="#{clienteMB.cliente.endereco.complemento}" maxlength="200"/>
+			                          </div>
+			                        </div>
+			                        <div style="height: 30px;"/>
+			                        <div class="form-group">
+			                          <div class="col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3">
+			                            <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
+			                          </div>
+			                        </div>
+		                        
+								</div>			                
+			                </div> 
+			            </div>
+            		</div>
+            	</div>
+	    	</div>
+	    </section>
+        
+        </h:form>
+		</ui:define>
+    </ui:composition>

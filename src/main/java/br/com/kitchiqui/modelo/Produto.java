@@ -83,7 +83,7 @@ public class Produto extends DomainObject {
 	 */
 	private Integer especie;
 	
-	private Integer classe; // Especificar o tipo do produto vendido: Escova, Kit montado, Estojo
+	private Integer classe; // Especificar o tipo do produto vendido: Kit ortodontico, Kit periodontal, Kit infantil, Kit standard
 	
 	@Transient
 	private ContadorClasseProduto contadorClasse = new ContadorClasseProduto();
@@ -97,6 +97,8 @@ public class Produto extends DomainObject {
 	private Cliente cliente;
 	
 	private String srcImagemCarrinho;
+	
+	private CompraProduto compraProduto;
 	
 	public ContadorClasseProduto getContadorClasse() {
 		return contadorClasse;
@@ -294,5 +296,16 @@ public class Produto extends DomainObject {
 
 	public void setDisponivel(Boolean disponivel) {
 		this.disponivel = disponivel;
+	}
+
+	public CompraProduto getCompraProduto() {
+		if ( compraProduto == null ) {
+			compraProduto = new CompraProduto();
+		}
+		return compraProduto;
+	}
+
+	public void setCompraProduto(CompraProduto compraProduto) {
+		this.compraProduto = compraProduto;
 	}
 }
