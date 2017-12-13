@@ -49,7 +49,7 @@ public class Constantes {
     public static int UMA_HORA = 60 * UM_MINUTO;
     
     public static String CNPJ_KITCHIQUI = "00.000.000/0000-00";
-    public static String ENDERECO_KITCHIQUI = "ENDERECO_KITCHIQUI AQUI";
+    public static String ENDERECO_KITCHIQUI = "Rua Luiz de Matos, Qd 193, Lote 07 S/N Casa 02 Setor Sudoeste CEP: 74303-010";
     public static String SITE_KITCHIQUI = "www.kitchiqui.com";
     
 }

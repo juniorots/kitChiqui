@@ -91,7 +91,7 @@
 			                        <div class="form-group">
 			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Telefone (celular)</label>
 			                          <div class="col-md-10 col-sm-9">
-			                            <p:inputMask id="nrTelefone" class="form-control" value="#{clienteMB.cliente.nrTelefone}" mask="(99) 99999-9999" required="true" requiredMessage="Telefone obrigatório"/>
+			                            <p:inputMask id="nrTelefone" class="form-control" value="#{clienteMB.cliente.nrTelefone}" mask="(99) 99999-999?9" required="true" requiredMessage="Telefone obrigatório"/>
 	                    				<p:message for="nrTelefone" display="text"/>
 			                          </div>
 			                        </div>
@@ -106,7 +106,7 @@
 			                        <div style="height: 30px;"/>
 			                        <div class="form-group">
 			                          <div class="col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3">
-			                            <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
+			                            <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.alterarCliente}" value="Atualizar"/>
 			                          </div>
 			                        </div>
 		                        

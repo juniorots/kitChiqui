@@ -64,6 +64,8 @@ public class BaseController {
 	private Map<Integer, Integer> listaMes = new HashMap();
 	private Map<Integer, Integer> listaAno = new HashMap();
 	
+	private boolean usuarioLogado;
+	
 	public void resetarConfig() {
 		try {
 			tmpPrimeiro = "";
@@ -339,6 +341,14 @@ public class BaseController {
 
 	public void setMalaDireta(MalaDireta malaDireta) {
 		this.malaDireta = malaDireta;
+	}
+
+	public boolean isUsuarioLogado() {
+		return !Util.isEmpty(Util.captarClienteSessao());
+	}
+
+	public void setUsuarioLogado(boolean usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 	}
 	
 	/**

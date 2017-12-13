@@ -10,7 +10,8 @@ public enum EnumStatusCompra {
 	FINALIZADO(2),
 	CANCELADO(3),
 	PENDENTE(4),
-	EM_ESPERA(5);
+	EM_ESPERA(5),
+	SOLICITADO(6);
 	
 	private final Integer tipo;
 
@@ -32,8 +33,10 @@ public enum EnumStatusCompra {
 				return "Cancelado";
 			case 4:
 				return "Pendente";
+			case 5:
+				return "Em espera";	
 			default:
-				return "Em espera";
+				return "Solicitado";
 		}
 	}
 	

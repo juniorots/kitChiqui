@@ -39,24 +39,17 @@
             <div class="col-sm-12">
               <div class="innerWrapper clearfix stepsPage">
                 <div class="row justify-content-center order-confirm">
-                  <div class="col-md-6 text-center">
+                  <div class="col-md-12 text-center">
                     <h2>Estamos quase lá!</h2>
                     <span>Estaremos analisando sua compra, você receberá notificações sobre o status do seu pedido.</span>
                     <p class="">
-                      Fique ligado, por esse e-mail que estaremos lhe passando atualizações: <h:outputText escape="false" value="#{clienteMB.cliente.email}"/> <br />
+                      Fique ligado, por esse e-mail que estaremos lhe passando atualizações: <strong><h:outputText escape="false" value="#{clienteMB.cliente.email}"/></strong> <br />
                       Endereço para entrega do produto: <br />
-                      <!-- 
                       <h:outputText escape="false" value="#{clienteMB.cliente.endereco.cep}"/><br />
                       <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeRua}"/><br />
                       <h:outputText escape="false" value="#{clienteMB.cliente.endereco.numero}"/><br />
                       <h:outputText escape="false" value="#{clienteMB.cliente.endereco.bairro}"/><br />
                       <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeCidade}"/> - <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
-                     -->
-                     70743-510 <br />
-                     SCLN 107 BLOCO A <br />
-                     108 <br />
-                     Asa Norte <br />
-                     Brasília - DF <br />
                     </p>
                     <h:commandLink class="btn btn-primary btn-default" action="#{clienteMB.paginaPrincipal}">Voltar à loja</h:commandLink>
                   </div>

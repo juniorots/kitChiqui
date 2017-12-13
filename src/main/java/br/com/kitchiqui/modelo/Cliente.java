@@ -56,10 +56,8 @@ public class Cliente extends DomainObject {
 	
 	private String tmpDtNascimento;
 	
-	@OneToOne
 	private Endereco endereco;
 	
-	@OneToOne
 	private Pagamento pagamento;
 	
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

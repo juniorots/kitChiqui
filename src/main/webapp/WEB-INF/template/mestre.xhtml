@@ -34,7 +34,7 @@
 	              <div class="col-md-6 col-sm-7 col-xs-12">
 	                <ul class="list-inline pull-right top-right">
 	                  <li class="account-login"> 
-	                  	<c:if test="#{not empty clienteMB.cliente.id}">
+	                  	<c:if test="#{clienteMB.usuarioLogado}">
 		          			<span>
 		          				<a data-toggle="modal" href="#status">
 		          					<b>
@@ -44,7 +44,7 @@
 		          				</a>
 		          			</span>
 	   	        	  	</c:if>
-   		        	  	<c:if test="#{empty clienteMB.cliente.id}">
+   		        	  	<c:if test="#{not clienteMB.usuarioLogado}">
                   			<span><a data-toggle="modal" href='.login-modal'>Entre</a><small>ou</small><a data-toggle="modal" href='#signup'>Crie sua conta</a></span>
 	               		</c:if>
 	                  </li>
@@ -65,6 +65,7 @@
 	                    <ul class="dropdown-menu dropdown-menu-right" style="background-color: #FFFAFA">
 		                      <li>O que há no seu carrinho</li>
 		                      <c:forEach var="produto" items="#{clienteMB.cliente.listaCarrinho}">
+		                      	<c:if test="#{produto.compraProduto.codCompra == 6}"> <!-- SOLICITADO -->
 			                      <li>
 			                          <div class="media">
 			                            <img class="media-left media-object" src="#{produto.srcImagemCarrinho}" alt="cart-Image"/>
@@ -73,6 +74,7 @@
 			                            </div>
 			                          </div>
 			                      </li>
+			                    </c:if>  
 		                      </c:forEach>
 		                      <li>
 		                      	<div class="media">

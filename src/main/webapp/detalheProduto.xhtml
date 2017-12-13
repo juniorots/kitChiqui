@@ -116,15 +116,22 @@
 				                    </select>
 				                </span>
                   				-->
-					                <div class="btn-area">
-					                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;" action="#{clienteMB.adicionarCarrinho}">
-					                    	<i class="fa fa-shopping-cart" aria-hidden="true"></i> Por no Carrinho
-					                    </h:commandLink>
-					                    &nbsp;
-					                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;" action="#{clienteMB.primeiroPassoCompra}">
-					                    	Comprar <i class="fa fa-angle-right" aria-hidden="true"/>
-					                    </h:commandLink>
-					                </div>
+                  					<c:if test="#{clienteMB.usuarioLogado}">
+						                <div class="btn-area">
+						                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;" action="#{clienteMB.adicionarCarrinho}">
+						                    	<i class="fa fa-shopping-cart" aria-hidden="true"></i> Por no Carrinho
+						                    </h:commandLink>
+						                    &nbsp;
+						                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;" action="#{clienteMB.primeiroPassoCompra}">
+						                    	Comprar <i class="fa fa-angle-right" aria-hidden="true"/>
+						                    </h:commandLink>
+						                </div>
+					                </c:if>
+					                <c:if test="#{not clienteMB.usuarioLogado}">
+					                	<div class="alert alert-info fade in">
+					                  		<strong>Ops...</strong> Vimos que não entrou no sistema, precisamos que faça isso antes.
+					                	</div>
+					                </c:if>
                   				</c:if>
                   				
                   				<c:if test="#{not produtoMB.produto.disponivel}">

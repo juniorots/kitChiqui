@@ -73,7 +73,42 @@
 				                        			</td>
 				                      				<td><h:outputText escape="false" value="#{produto.quantidade}"/></td>
 				                      				<td><h:outputText escape="false" value="#{produto.precoFormatado}"/></td>
-				                      				<td><h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/></td>
+				                      				<td>
+				                      					<!-- PROCESSANDO -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 1}">
+				                      						<span class="label label-primary">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- FINALIZADO -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 2}">
+				                      						<span class="label label-success">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- CANCELADO -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 3}">
+				                      						<span class="label label-danger">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- PENDENTE -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 4}">
+				                      						<span class="label label-warning">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- EM ESPERA -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 5}">
+				                      						<span class="label label-info">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      				</td>
 				                      			</tr>
 				                      		</c:forEach>
 				                      	</tbody>

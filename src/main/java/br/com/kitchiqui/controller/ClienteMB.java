@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,8 +28,11 @@ import javax.persistence.Persistence;
 import lombok.Cleanup;
 import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.base.MalaDiretaDAO;
+import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.Cliente;
+import br.com.kitchiqui.modelo.CompraProduto;
 import br.com.kitchiqui.modelo.EnumEnvio;
+import br.com.kitchiqui.modelo.EnumStatusCompra;
 import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.EnviarEmail;
@@ -47,9 +51,7 @@ public class ClienteMB extends BaseController implements Serializable {
     /**
      * Responsavel por alterar as informacoes do Cliente logado
      */
-    public void alterarCliente() {
-        if ( !validarDados() ) return;
-        
+    public void alterarCliente( String... origem ) {
         @Cleanup
         final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
         
@@ -58,13 +60,21 @@ public class ClienteMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
-        getCliente().setSenha( Util.cifrar( getCliente().getSenha() ) );
         Cliente usAlterado = dao.update( getCliente() );
+        
+//        if (origem.length > 0 && origem[0].equals("fecharCompra")) {
+//        	ProdutoDAO prodDAO = new ProdutoDAO(entityManager);
+//        	for (Produto p : getCliente().getListaCarrinho()) {
+//        		prodDAO.insert(p);
+//        	}
+//        }
+        
         entityManager.getTransaction().commit();
         
-        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Dados alterados com sucesso.");
+        if (origem.length == 0 || !origem[0].equals("fecharCompra")) 
+        	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Dados atualizados");
         Util.gravarClienteSessao( usAlterado );
-        setCliente ( Util.captarClienteSessao() );
+//        setCliente ( Util.captarClienteSessao() );
         
 //        mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Hum...", "descritivo aqui...");
 //        RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
@@ -105,9 +115,12 @@ public class ClienteMB extends BaseController implements Serializable {
     public void adicionarCarrinho(String... origem) {
     	
     	boolean adicionado = false;
+    	CompraProduto cp = new CompraProduto();
+    	cp.setCodCompra(EnumStatusCompra.SOLICITADO.getTipo());
     	
     	for (Produto p : getCliente().getListaCarrinho()) {
     		if (!Util.equalsProduto(p, this.produtoMB.getProduto())) {
+    			this.produtoMB.getProduto().setCompraProduto(cp);
     			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
     			adicionado = true;
     		} else {
@@ -120,6 +133,7 @@ public class ClienteMB extends BaseController implements Serializable {
     	
     	if (Util.isEmpty(getCliente().getListaCarrinho())) 
     		if (!Util.isEmpty(this.produtoMB.getProduto().getId())) {
+    			this.produtoMB.getProduto().setCompraProduto(cp);
     			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
     			adicionado = true;
     		}
@@ -143,6 +157,8 @@ public class ClienteMB extends BaseController implements Serializable {
     	if ( isProblemaCartao() )
     		return;
     	
+    	procuraPorCEP();
+    	
     	Util.forward(PRIMEIRO_PASSO_COMPRAS);
     }
     
@@ -155,6 +171,11 @@ public class ClienteMB extends BaseController implements Serializable {
     	getCliente().getEndereco().setNomeCidade(getTmpCidade());
     	getCliente().getEndereco().setBairro(getTmpBairro());
     	getCliente().getEndereco().setEstado(getTmpEstado());
+    	
+    	// Tratando da seguridade das informacoes do cartao
+    	getCliente().getPagamento().setNomeTitular("");
+    	getCliente().getPagamento().setNumeroCartao("");
+    	getCliente().getPagamento().setCodigoSeguranca(null);
     	
     	// validacoes
     	if ( isProblemaDados() )
@@ -177,7 +198,18 @@ public class ClienteMB extends BaseController implements Serializable {
     	Util.forward(TERCEIRO_PASSO_COMPRAS);
     }
     
+    /**
+     * Finalizando de fato a compra
+     */
     public void quartoPassoCompra() {
+    	
+    	for ( Produto p: getCliente().getListaCarrinho() ) {
+    		p.getCompraProduto().setCodCompra(EnumStatusCompra.PROCESSANDO.getTipo());
+    		p.getCompraProduto().setDtCompra(Calendar.getInstance().getTime());
+    	}
+    	
+    	alterarCliente("fecharCompra");
+    	
     	Util.forward(QUARTO_PASSO_COMPRAS);
     }
     
@@ -208,7 +240,7 @@ public class ClienteMB extends BaseController implements Serializable {
         
         if ( !Util.isEmpty( usInserido.getId() ) ) {
 //            Util.montarMensagemModal(FacesMessage.SEVERITY_INFO, "Sucesso", "Conta criada.");
-        	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Conta criada.");
+        	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Conta criada");
             Util.gravarClienteSessao( usInserido );
             setCliente( Util.captarClienteSessao() );
         } else {
@@ -308,7 +340,7 @@ public class ClienteMB extends BaseController implements Serializable {
         } else {
             getCliente().setEmail("");
 //            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Falha", "E-mail ou Senha inválidos.");
-            Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "E-mail ou Senha inválido.");
+            Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "E-mail ou Senha inválido");
         }
     }
     
@@ -319,7 +351,7 @@ public class ClienteMB extends BaseController implements Serializable {
     public boolean validarRecuperarSenha() {
     	if ( Util.isEmpty(getCliente().getTmpDtNascimento())
     			|| Util.isEmpty(getCliente().getEmail()) )   {
-    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório o preenchimento de TODOS os campos.");
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "É obrigatório o preenchimento de TODOS os campos");
             return false; // fail! :-(
     	}
     	
@@ -435,6 +467,9 @@ public class ClienteMB extends BaseController implements Serializable {
     	Double tmp = 0.0;
     	try {
 	    	for (Produto p : getCliente().getListaCarrinho()) {
+	    		if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
+	    			continue;
+	    		
 	    		tmp += p.getPreco() * p.getQuantidade();
 	    	}
 	    	NumberFormat nf = new DecimalFormat("###,##0.00");
@@ -461,6 +496,9 @@ public class ClienteMB extends BaseController implements Serializable {
     	Double tmp = 0.0;
     	try {
     		for (Produto p : getCliente().getListaCarrinho()) {
+    			if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
+	    			continue;
+    			
 	    		tmp += p.getPreco() * p.getQuantidade();
 	    	}
     		tmp += getCliente().getEndereco().getPrecoModoEnvio();

@@ -63,6 +63,7 @@
 	                </div>
 	
 	                <div class="cartListInner review-inner row">
+	                <div class="col-sm-12">
 	                	<div class="table-responsive">
 	                		<table class="table">
 	                			<thead>
@@ -71,10 +72,9 @@
 		                            <th>Produto</th>
 		                            <th></th>
 		                            <th>Quantidade</th>
-		                            <th>Preço</th>
+		                            <th>Preço Unitário</th>
 		                          </tr>
 		                        </thead>
-	                		</table>
 	                		<tbody>
 	                			<c:forEach var="produto" items="#{clienteMB.cliente.listaCarrinho}">
 	                        	<tr>
@@ -83,30 +83,25 @@
 		                            </td>
 		                            <td class=""><h:outputText escape="false" value="#{produto.titulo}"/></td>
 		                            <td class=""></td>
-		                            <td class="count-input"><h:outputText escape="false" value="#{produto.contador}"/></td>
-		                            <td class=""><h:outputText escape="false" value="#{produto.subTotal}"/></td>
+		                            <td class="count-input"><h:outputText escape="false" value="#{produto.quantidade}"/></td>
+		                            <td class=""><h:outputText escape="false" value="#{produto.precoFormatado}"/></td>
 	                        	</tr>
 	                        	</c:forEach>
                           	</tbody>
+                          	</table>
 	                	</div>
+	                </div>	
 	                </div>
                   	
                   	<div class="row shipping-info">
                   		<div class="col-md-4">
                     		<h5>Endereço de Entrega</h5>
                     		<address>
-		                    	<!-- 
 			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.cep}"/><br />
 			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeRua}"/><br />
 			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.numero}"/><br />
 			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.bairro}"/><br />
 			                      <h:outputText escape="false" value="#{clienteMB.cliente.endereco.nomeCidade}"/> - <h:outputText escape="false" value="#{clienteMB.cliente.endereco.estado}"/><br />
-			                     -->
-			                     70743-510 <br />
-			                     SCLN 107 BLOCO A <br />
-			                     108 <br />
-			                     Asa Norte <br />
-			                     Brasília - DF <br />
                    			</address>
                   		</div>
 	                  	<div class="col-md-4">
@@ -117,7 +112,7 @@
 			                      	Estimativa de 25 a 30 dias para entrega (previsão Correios)
 								</c:if>
 	                    	</p>
-	                  	</div><br />
+	                  	</div>
 	                  	<div class="col-md-4">
 	                    	<h5>Meio de Pagamento</h5>
 	                    	<p>
@@ -126,12 +121,12 @@
 	                      		</c:if>
 	                    		
 	                    		<c:if test="#{clienteMB.cliente.pagamento.tipoPagamento == 2}">
-	                      			Cartão de crédito: 
+	                      			Cartão de crédito: <br />
 	                      			**** **** **** <h:outputText escape="false" value="#{clienteMB.cliente.pagamento.finalCartaoCredito}"/>
 	                      		</c:if>
 	                      		
 	                      		<c:if test="#{clienteMB.cliente.pagamento.tipoPagamento == 3}">
-	                      			Cartão de débito: 
+	                      			Cartão de débito: <br /> 
 	                      			**** **** **** <h:outputText escape="false" value="#{clienteMB.cliente.pagamento.finalCartaoCredito}"/>
 	                      		</c:if>
 	                    	</p>
@@ -161,15 +156,15 @@
 		               <p>Olhe o que contabilizamos</p>
 	                <ul class="list-unstyled">
 	                  <li class="d-flex justify-content-between">
-	                    <span class="tag">Subtotal</span>
+	                    <span class="tag">Subtotal:</span>
 	                    <span class="val"><h:outputText escape="false" value="#{clienteMB.resumoSubtotal}"/></span>
 	                  </li>
 	                  <li class="d-flex justify-content-between">
-	                    <span class="tag">Taxa de entrega</span>
+	                    <span class="tag">Taxa de entrega:</span>
 	                    <span class="val"><h:outputText escape="false" value="#{clienteMB.resumoCustoEntrega}"/></span>
 	                  </li>
 	                  <li class="d-flex justify-content-between">
-	                    <span class="tag">Total</span>
+	                    <span class="tag">Total:</span>
 	                    <span class="val"><h:outputText escape="false" value="#{clienteMB.resumoTotal}"/></span>
 	                  </li>
 	                </ul>
