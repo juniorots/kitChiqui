@@ -14,7 +14,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
@@ -56,21 +58,34 @@ public class Cliente extends DomainObject {
 	
 	private String tmpDtNascimento;
 	
+	@OneToOne (cascade = CascadeType.ALL )
 	private Endereco endereco;
 	
+	@OneToOne (cascade = CascadeType.ALL )
 	private Pagamento pagamento;
 	
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name="cliente_has_produtos", joinColumns=
+			{@JoinColumn(name="cliente_id")}, inverseJoinColumns=
+				{@JoinColumn(name="produtos_id")})
 	@Fetch (FetchMode.SELECT)
 	private List<Produto> listaCarrinho;
 	
 	@Transient
 	private int itensCarrinho;
 
+	private boolean carrinhoVazio;
+	
 	public int getItensCarrinho() {
-		
+		int cont = 0;
 		try {
-			itensCarrinho = getListaCarrinho().size();
+			for (Produto p : getListaCarrinho()) {
+				if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo())) 
+					continue;
+				cont++;
+			}
+				
+			itensCarrinho = cont;
 		} catch (Exception e) {
 			this.itensCarrinho = 0;
 		}
@@ -189,5 +204,22 @@ public class Cliente extends DomainObject {
 
 	public void setListaCarrinho(List<Produto> listaCarrinho) {
 		this.listaCarrinho = listaCarrinho;
+	}
+
+	public void setItensCarrinho(int itensCarrinho) {
+		this.itensCarrinho = itensCarrinho;
+	}
+
+	public boolean isCarrinhoVazio() {
+		boolean vazio = true;
+		for (Produto p : getListaCarrinho()) {
+			if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
+				vazio = false;
+		}
+		return vazio;
+	}
+
+	public void setCarrinhoVazio(boolean carrinhoVazio) {
+		this.carrinhoVazio = carrinhoVazio;
 	}
 }

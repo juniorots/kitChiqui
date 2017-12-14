@@ -43,11 +43,13 @@
 		                    <p class="help-block">Informe os dados, para convalidarmos as informações.</p>
 		                    <div class="form-group">
 		                      <label for="">E-mail</label>
-		                      <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important"/>
+		                      <h:inputText id="email" class="form-control" value="#{clienteMB.cliente.email}" style="text-transform: lowercase !important" required="true" requiredMessage="E-mail obrigatório"/>
+		                      <p:message for="email" display="text"/>
 		                    </div>
 		                    <div class="form-group">
 		                      <label for="">Data de nascimento</label>
-		                	  <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" />
+		                	  <p:inputMask id="tmpDtNascimento" class="form-control datepicker" value="#{clienteMB.cliente.tmpDtNascimento}" mask="99/99/9999" required="true" requiredMessage="Data de Nascimento obrigatório"/>
+		                	  <p:message for="tmpDtNascimento" display="text"/>
 		                    </div>
 		                    <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.recuperarConta}" value="Recuperar"/>
 		                </div>

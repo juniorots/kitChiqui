@@ -28,7 +28,6 @@ import javax.persistence.Persistence;
 import lombok.Cleanup;
 import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.base.MalaDiretaDAO;
-import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.CompraProduto;
 import br.com.kitchiqui.modelo.EnumEnvio;
@@ -62,13 +61,6 @@ public class ClienteMB extends BaseController implements Serializable {
         ClienteDAO dao = new ClienteDAO(entityManager);
         Cliente usAlterado = dao.update( getCliente() );
         
-//        if (origem.length > 0 && origem[0].equals("fecharCompra")) {
-//        	ProdutoDAO prodDAO = new ProdutoDAO(entityManager);
-//        	for (Produto p : getCliente().getListaCarrinho()) {
-//        		prodDAO.insert(p);
-//        	}
-//        }
-        
         entityManager.getTransaction().commit();
         
         if (origem.length == 0 || !origem[0].equals("fecharCompra")) 
@@ -80,11 +72,45 @@ public class ClienteMB extends BaseController implements Serializable {
 //        RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
     }
     
+    /*
+     * Quando o operador deseja alterar a senha
+     */
+    public void alterarSenha() {
+    	
+    	if (!getCliente().getSenha().equals(getCliente().getConfirmaSenha())) {
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Ops... Senhas diferentes");
+    		return;
+    	}
+    	
+    	@Cleanup
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+        
+        @Cleanup
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        
+        ClienteDAO dao = new ClienteDAO(entityManager);
+        getCliente().setSenha(Util.cifrar(getCliente().getSenha()));
+        Cliente usAlterado = dao.update( getCliente() );
+        
+        entityManager.getTransaction().commit();
+        
+    	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Senha alterada com sucesso");
+        Util.gravarClienteSessao( usAlterado );
+    }
+    
     /**
      * Secao de configuracoes das informacoes base do cliente
      */
     public void verificarDadosPessoais() {
     	Util.forward(DADOS_PESSOAIS_CLIENTE);
+    }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoaisAlteraSenha() {
+    	Util.forward(DADOS_PESSOAIS_CLIENTE_ALTERA_SENHA);
     }
     
     /**
@@ -204,6 +230,10 @@ public class ClienteMB extends BaseController implements Serializable {
     public void quartoPassoCompra() {
     	
     	for ( Produto p: getCliente().getListaCarrinho() ) {
+    		if (p.getCompraProduto() == null) {
+    			CompraProduto cp = new CompraProduto();
+    			p.setCompraProduto(cp);
+    		}
     		p.getCompraProduto().setCodCompra(EnumStatusCompra.PROCESSANDO.getTipo());
     		p.getCompraProduto().setDtCompra(Calendar.getInstance().getTime());
     	}
@@ -271,9 +301,9 @@ public class ClienteMB extends BaseController implements Serializable {
     		// TODO nothing...
     	}
     	
-        if ( !getCliente().getSenha().equalsIgnoreCase( getCliente().getConfirmaSenha() )) {
+        if ( !getCliente().getSenha().equals( getCliente().getConfirmaSenha() )) {
 //            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Problema com as senhas", "Oops... Senhas divergentes");
-        	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Oops... Senhas divergentes");
+        	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Oops... Senhas diferentes");
             return false; // fail! :-(
         }
         

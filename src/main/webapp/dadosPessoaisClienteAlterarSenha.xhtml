@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template/mestre.xhtml">
+   	<ui:define name="centro">
+    	<h:form id="formDadosPessoais" role="form" >
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+        <section class="lightSection clearfix pageHeader">
+	    	<div class="container">
+	          <div class="row">
+	            <div class="col-xs-6">
+	              <div class="page-title">
+	                <h2>MEUS DADOS</h2>
+	              </div>
+	            </div>
+	            <div class="col-xs-6">
+	              <ol class="breadcrumb pull-right">
+	                <li>
+	                  <h:commandLink action="#{clienteMB.paginaPrincipal}">INÍCIO</h:commandLink>
+	                </li>
+	                <li class="active">DADOS PESSOAIS</li>
+	              </ol>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+        
+	    <section class="mainContent clearfix userProfile">
+	    	<div class="container">
+	    		<div class="row">
+	            	<div class="col-xs-12">
+	            		<div class="btn-group" role="group" aria-label="...">
+	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>
+	            			<h:commandLink class="btn btn-default active" action="#{clienteMB.verificarDadosPessoaisAlteraSenha}"><i class="fa fa-key" aria-hidden="true"></i>Alteração de Senha</h:commandLink>
+	            		</div>
+	            	</div>
+            	</div>
+            	
+            	<div class="row">
+            		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+            			<div class="panel panel-default">
+							<div class="panel panel-default">
+				                	<div class="form-group">
+					                	<small style="color: red">(*) Obrigatório</small>
+					                </div>
+				                    <div class="form-group">
+				                      <label for=""><span style="color: red">*</span>&nbsp;Senha</label>
+				                      <h:inputSecret id="senha" class="form-control" value="#{clienteMB.cliente.senha}" required="true" requiredMessage="Senha obrigatório"/>
+                					  <p:message for="senha" display="text"/>
+				                    </div>
+				                    <div class="form-group">
+				                      <label for=""><span style="color: red">*</span>&nbsp;Confirme a senha</label>
+				                	  <h:inputSecret id="confirmaSenha" class="form-control" value="#{clienteMB.cliente.confirmaSenha}" required="true" requiredMessage="Confirmação de Senha obrigatório"/>
+	                				  <p:message for="confirmaSenha" display="text"/>
+				                    </div>
+				                    <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.alterarSenha}" value="Alterar"/>
+			              	</div>
+						</div>		
+                	</div> 
+	            </div>
+       		</div>
+	    </section>
+        
+        </h:form>
+		</ui:define>
+    </ui:composition>

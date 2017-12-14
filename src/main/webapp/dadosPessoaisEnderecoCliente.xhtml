@@ -41,6 +41,7 @@
 	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
                 			<h:commandLink class="btn btn-default active" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
                 			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisAlteraSenha}"><i class="fa fa-key" aria-hidden="true"></i>Alteração de Senha</h:commandLink>
 	            		</div>
 	            	</div>
             	</div>
@@ -61,9 +62,14 @@
 					                    	<f:ajax event="blur" listener="#{clienteMB.procuraPorCEP}" render="tmpRua tmpCidade tmpEstado tmpBairro"/>
 					                    </p:inputMask>
 					                    <p:message for="cep" display="text"/>
+					                    <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>
+					                    <p:dialog modal="true" widgetVar="statusDialog" header="Procurando endereço"   
+								    		draggable="false" closable="false" style="width: 10% !important;">  
+										    <p:graphicImage value="img/waitingProcess.gif"/>
+										</p:dialog>
 			                          </div>
 			                        </div>
-			                        <div style="height: 30px;"/>
+			                        <div style="height: 80px;"/>
 			                        <div class="form-group">
 			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Rua</label>
 			                          <div class="col-md-10 col-sm-9">
@@ -71,7 +77,7 @@
 	                    				<p:message for="tmpRua" display="text"/>
 			                          </div>
 			                        </div>
-			                        <div style="height: 30px;"/>
+			                        <div style="height: 50px;"/>
 			                        <div class="form-group">
 			                          <label for="" class="col-md-2 col-sm-3 control-label"><span style="color: red">*</span>&nbsp;Cidade</label>
 			                          <div class="col-md-10 col-sm-9">
@@ -120,7 +126,6 @@
 			                            <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.alterarCliente}" value="Atualizar"/>
 			                          </div>
 			                        </div>
-		                        
 								</div>			                
 			                </div> 
 			            </div>

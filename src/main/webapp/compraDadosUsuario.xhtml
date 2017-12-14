@@ -114,6 +114,11 @@
 	                    	<f:ajax event="blur" listener="#{clienteMB.procuraPorCEP}" render="tmpRua tmpCidade tmpEstado tmpBairro"/>
 	                    </p:inputMask>
 	                    <p:message for="cep" display="text"/>
+	                    <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>
+	                    <p:dialog modal="true" widgetVar="statusDialog" header="Procurando endereço"   
+				    		draggable="false" closable="false" style="width: 10% !important;">  
+						    <p:graphicImage value="img/waitingProcess.gif"/>
+						</p:dialog>
 	                </div>
 	                <div class="form-group col-sm-6 col-12">
 	                	<label for="">Rua</label>&nbsp;<span style="color: red">*</span>

@@ -56,11 +56,11 @@ public class Produto extends DomainObject {
 	/*
 	 * Secao de informacoes utilizadas no descritivo detalhado do produto
 	 */
-	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@Fetch (FetchMode.SELECT)
 	private List<ImagemGrandeProduto> listaGrandeProduto;
 	
-	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@Fetch (FetchMode.SELECT)
 	private List<ImagemPequenoProduto> listaPequenoProduto;
 	
@@ -91,10 +91,6 @@ public class Produto extends DomainObject {
 	private Double primeiroFiltroPreco;
 	
 	private Double segundoFiltroPreco;
-	
-	@ManyToOne
-	@JoinColumn(name="cliente_id")
-	private Cliente cliente;
 	
 	private String srcImagemCarrinho;
 	
@@ -269,14 +265,6 @@ public class Produto extends DomainObject {
 		this.classe = classe;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public String getSrcImagemCarrinho() {
 		return srcImagemCarrinho;
 	}
@@ -299,9 +287,6 @@ public class Produto extends DomainObject {
 	}
 
 	public CompraProduto getCompraProduto() {
-		if ( compraProduto == null ) {
-			compraProduto = new CompraProduto();
-		}
 		return compraProduto;
 	}
 

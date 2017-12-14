@@ -164,12 +164,11 @@ public class ProdutoMB extends BaseController implements Serializable {
         setTmpSegundo(this.segundoFiltro);
         
         for (Produto p : dao.selectUsingFilter(getProduto())) {
-        	if (!p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())){
+        	if (!p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo()))
         		listaFiltro.add(p);
-        	}
         }
         
-        this.bloquearFiltroEspecie = false;
+        this.bloquearFiltroEspecie = Util.isEmpty(getProduto().getEspecie());
 		Util.forward(FILTRO_PRODUTO);
 	}
 	
