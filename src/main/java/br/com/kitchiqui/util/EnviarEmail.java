@@ -6,11 +6,15 @@
 
 package br.com.kitchiqui.util;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
+
+import br.com.kitchiqui.modelo.EnumTipoEmail;
 
 /**
  *
@@ -24,7 +28,7 @@ public class EnviarEmail {
      * @param assunto
      * @param conteudo 
      */
-    public static void tratarEnvio(ArrayList<String> emails, String assunto, String conteudo) {
+    public static void tratarEnvio(ArrayList<String> emails, String assunto, String conteudo, Integer tipoEmail) {
         HtmlEmail email = new HtmlEmail();
         
         try {
@@ -39,10 +43,77 @@ public class EnviarEmail {
             email.setSubject(assunto);
             
             // Trabalhando com imagem...
-//            URL url = new URL ("http://<ENDERECO DA IMAGEM AQUI...>");
-//            String idImg = email.embed(url, "logo");
+            URL url = new URL (Constantes.SITE_KITCHIQUI+"/img/tituloEmailKitChiqui.png");
+            String idImg = email.embed(url, "titulo");
             
+            conteudo += idImg;
             email.setHtmlMsg(conteudo);
+            
+            if (tipoEmail.equals(EnumTipoEmail.RECUPERACAO_SENHA.getTipo())) {
+            	URL url2 = new URL (Constantes.SITE_KITCHIQUI+"/img/barraEmail.png");
+                String idImg2 = email.embed(url2, "rodape");
+                conteudo += idImg2;
+            }
+            
+            // Especificando rodape do e-mail de compra do produto
+            if (tipoEmail.equals(EnumTipoEmail.COMPRA_PRODUTO.getTipo())) {
+            	conteudo += "<div style='background-color: #D3D3D3; margin-bottom: 20px;'>"
+            					+ "<small>"
+            						+ "	<strong><span style='font-size: 12px;'>Observações importantes:</span></strong>"
+            						+ "<br /><br />"
+            						+ "<strong>Sobre a compra</strong>"
+            						+ "<br /><br />"
+            						+ "- Para sua segurança, as informações contidas em seu cadastro são passíveis de confirmação, "
+            						+ "que poderá ser feita através de contato telefônico. Na necessidade de confirmação dos "
+            						+ "dados informados o prazo para entrega do seu pedido pode sofrer alguma alteração."
+            						+ "<br />"
+            						+ "- Caso exista algum produto em seu pedido que não possa ser entregue por questões de "
+            						+ "indisponibilidade momentânea, decorrente de uma demanda superior àquela "
+            						+ "estimada no momento da compra, a "+ Constantes.SITE_KITCHIQUI +" devolverá a quantia paga "
+       								+ "pelo produto, assim como o valor proporcional do frete (quando esse efetuado)."
+   									+ "<br /><br />"
+   									+ "<strong>Alteração de pedido</strong>"
+   									+ "<br /><br />"
+   									+ "- Após o fechamento da compra não será possível alterar o endereço do destinatário, "
+   									+ "incluir ou substituir produtos do pedido, ou os serviços de entrega e a "
+   									+ "modalidade de pagamento."
+   									+ "<br />"
+   									+ "- O envio de produtos para pedidos com mais de um item/quantidade poderá ser "
+   									+ "parcial dependendo da disponibilidade em nossos estoques e de "
+   									+ "fornecedores, sem alterar o valor total do frete."
+   									+ "<br /><br />"
+   									+ "<strong>Sobre a entrega</strong>"
+   									+ "<br /><br />"
+   									+ "- Para contagem do prazo de entrega consideramos como dias úteis de segunda a sexta-feira, "
+   									+ "das 8h às 18h, exceto feriados."
+   									+ "<br />"
+   									+ "- Sua encomenda será entregue apenas a uma pessoa habilitada, "
+   									+ "pois nossos portadores não poderão deixar o pedido sem a assinatura do protocolo."
+   									+ "<br />"
+   									+ "- Para pedidos com mais de um produto e com diferentes prazos de entrega, "
+   									+ "prevalecerá o prazo mais longo."
+   									+ "<br />"
+   									+ "- Faremos 3 tentativas para entrega do seu pedido. No caso de não conseguirmos, "
+   									+ "o pedido volta para a KitChiqui e será providenciada a devolução do valor pago pelo produto."
+   									+ "<br />"
+   									+ "- Na impossibilidade da entrega do pedido no endereço indicado pelo cliente, por força "
+   									+ "maior e/ou caso furto, a KitChiqui fará contato telefônico para agendar nova entrega."
+   									+ "<br />"
+   									+ "- Em virtude do Protocolo ICMS nº 21, de 1º de abril de 2011, "
+   									+ "assinado pelos Estados AC, AL, AP, BA, CE, ES, GO, MA, MT, MS, PA, PB, PE, PI, "
+   									+ "RN, RR, RO e SE e o DF, os produtos adquiridos via comércio eletrônico "
+   									+ "destinados aos mencionados Estados poderão demorar alguns dias "
+   									+ "além do previsto, em razão de problemas de cobrança de ICMS nas "
+   									+ "fronteiras desses Estados. Para minimizar esse "
+   									+ "problema já tomamos as medidas judiciais cabíveis para afastar a "
+   									+ "incidência desse Protocolo e esperamos resolver a questão com brevidade."
+   									+ "<br /><br />"
+   									+ "Atenciosamente,"
+   									+ "<br />"
+   									+ "<strong><span style='font-size: 12px'>KitChiqui Serviços Ltda.</span></strong>"
+            					+ "</small>"
+            				+ "</div>";
+            }
             
             // Tratando mensagem alternativa
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
@@ -56,7 +127,10 @@ public class EnviarEmail {
             
         } catch (EmailException e) {
             e.printStackTrace();
+        } catch (MalformedURLException me) {
+        	me.getMessage();
         }
+        
     }
     
     /**
@@ -66,7 +140,7 @@ public class EnviarEmail {
     public static void recuperarSenha(ArrayList<String> emails, String adicionalConteudo) {
         
         String assunto = "[kitchiqui] - Recuperação de Senha.";
-        String conteudo = "<html><head><title>Recuperação de senha - Smart Taco.</title></head>"
+        String conteudo = "<html><head><title>Recuperação de senha - KitChiqui.</title></head>"
                 + "<body><br /><br />Olá! Recebemos uma solicitação de alteração de senha.<br /><br />"
                 + "Assim acreditamos que sendo uma petição realizada por você, geramos uma nova senha! <br />"
                 + "No entanto, caso essa solicitação não tenha sido gerada por favor,<br />" 
@@ -76,7 +150,7 @@ public class EnviarEmail {
                 + "<b>[ - POR FAVOR, NÃO RESPONDA ESSE E-MAIL. - ]</b><br />"
                 + "</body></html>";
         
-        tratarEnvio(emails, assunto, conteudo);
+        tratarEnvio(emails, assunto, conteudo, EnumTipoEmail.RECUPERACAO_SENHA.getTipo());
     }
 }
 

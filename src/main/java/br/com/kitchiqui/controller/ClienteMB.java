@@ -14,13 +14,15 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -117,6 +119,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * Secao de configuracoes das informacoes base do cliente
      */
     public void verificarDadosPessoaisEndereco() {
+    	procuraPorCEP();
     	Util.forward(DADOS_PESSOAIS_CLIENTE_ENDERECO);
     }
     
@@ -137,7 +140,7 @@ public class ClienteMB extends BaseController implements Serializable {
     /**
      * Tratando da insercao do produto novo no carrinho
      */
-    @PostConstruct
+//    @PostConstruct
     public void adicionarCarrinho(String... origem) {
     	
     	boolean adicionado = false;
@@ -153,6 +156,12 @@ public class ClienteMB extends BaseController implements Serializable {
     			if (!p.getQuantidade().equals(this.produtoMB.getProduto().getQuantidade())) {
 					p.setQuantidade(this.produtoMB.getProduto().getQuantidade());
 					adicionado = true;
+    			}
+    			if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.CANCELADO.getTipo())
+    				|| p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.FINALIZADO.getTipo()) ) {
+    				this.produtoMB.getProduto().setCompraProduto(cp);
+        			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
+        			adicionado = true;
     			}
     		}
     	}
@@ -180,6 +189,11 @@ public class ClienteMB extends BaseController implements Serializable {
     	 */
     	adicionarCarrinho("botaoComprar");
     	
+    	if (getCliente().isCarrinhoVazio()) {
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Ops... Vimos que seu carrinho está vazio!");
+    		return;
+    	}
+    	
     	if ( isProblemaCartao() )
     		return;
     	
@@ -192,6 +206,12 @@ public class ClienteMB extends BaseController implements Serializable {
      * Gerenciando as compras realizadas
      */
     public void segundoPassoCompra() {
+    	
+    	if (getCliente().isCarrinhoVazio()) {
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Ops... Vimos que seu carrinho está vazio!");
+    		return;
+    	}
+    	
     	// Tratando campos 
     	getCliente().getEndereco().setNomeRua(getTmpRua());
     	getCliente().getEndereco().setNomeCidade(getTmpCidade());
@@ -221,6 +241,11 @@ public class ClienteMB extends BaseController implements Serializable {
     	if ( isProblemaCartao() )
     		return;
     	
+    	if (getCliente().isCarrinhoVazio()) {
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Ops... Vimos que seu carrinho está vazio!");
+    		return;
+    	}
+    	
     	Util.forward(TERCEIRO_PASSO_COMPRAS);
     }
     
@@ -228,6 +253,11 @@ public class ClienteMB extends BaseController implements Serializable {
      * Finalizando de fato a compra
      */
     public void quartoPassoCompra() {
+    	
+    	if (getCliente().isCarrinhoVazio()) {
+    		Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Ops... Vimos que seu carrinho está vazio!");
+    		return;
+    	}
     	
     	for ( Produto p: getCliente().getListaCarrinho() ) {
     		if (p.getCompraProduto() == null) {
@@ -241,6 +271,21 @@ public class ClienteMB extends BaseController implements Serializable {
     	alterarCliente("fecharCompra");
     	
     	Util.forward(QUARTO_PASSO_COMPRAS);
+    }
+    
+    /**
+     * Trando da remocao de um item que ainda esta em modo
+     * de analise
+     */
+    public void retirarProdutoCarrinho() {
+    	List<Produto> tmpList = new ArrayList();
+    	for (Produto p : getCliente().getListaCarrinho()) {
+    		if (!p.getId().equals(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto")))) {
+    			tmpList.add(p);
+    		}
+    	}
+    	getCliente().getListaCarrinho().clear();
+    	getCliente().getListaCarrinho().addAll(tmpList);
     }
     
     /**
@@ -493,51 +538,30 @@ public class ClienteMB extends BaseController implements Serializable {
      * @return
      */
     public String getResumoSubtotal() {
-    	String retorno = "0,00";
     	Double tmp = 0.0;
-    	try {
-	    	for (Produto p : getCliente().getListaCarrinho()) {
-	    		if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
-	    			continue;
-	    		
-	    		tmp += p.getPreco() * p.getQuantidade();
-	    	}
-	    	NumberFormat nf = new DecimalFormat("###,##0.00");
-			retorno = nf.format(tmp);
-    	} catch (Exception e) {
-    		retorno = "0,00";
+    	for (Produto p : getCliente().getListaCarrinho()) {
+    		if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
+    			continue;
+    		
+    		tmp += p.getPreco() * p.getQuantidade();
     	}
-    	return "R$ " + retorno;
+    	return "R$ " + Util.formatarValorMoeda(tmp);
     }
     
     public String getResumoCustoEntrega() {
-    	String retorno = "0,00";
-    	try {
-	    	NumberFormat nf = new DecimalFormat("###,##0.00");
-			retorno = nf.format(getCliente().getEndereco().getPrecoModoEnvio());
-    	} catch (Exception e) {
-    		retorno = "0,00";
-    	}
-    	return "R$ " + retorno;
+    	return "R$ " + Util.formatarValorMoeda(getCliente().getEndereco().getPrecoModoEnvio());
     }
     
     public String getResumoTotal() {
-    	String retorno = "0,00";
     	Double tmp = 0.0;
-    	try {
-    		for (Produto p : getCliente().getListaCarrinho()) {
-    			if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
-	    			continue;
-    			
-	    		tmp += p.getPreco() * p.getQuantidade();
-	    	}
-    		tmp += getCliente().getEndereco().getPrecoModoEnvio();
-    		NumberFormat nf = new DecimalFormat("###,##0.00");
-			retorno = nf.format(tmp);
-    	} catch (Exception e) {
-    		retorno = "0,00";
+		for (Produto p : getCliente().getListaCarrinho()) {
+			if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
+    			continue;
+			
+    		tmp += p.getPreco() * p.getQuantidade();
     	}
-    	return "R$ " + retorno;
+		tmp += getCliente().getEndereco().getPrecoModoEnvio();
+    	return "R$ " + Util.formatarValorMoeda(tmp);
     }
 
 	public ProdutoMB getProdutoMB() {

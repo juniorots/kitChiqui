@@ -24,6 +24,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
+import br.com.kitchiqui.util.Util;
 
 @Entity 
 public class Produto extends DomainObject {
@@ -149,12 +150,7 @@ public class Produto extends DomainObject {
 	}
 
 	public String getPrecoFormatado() {
-		try {
-			NumberFormat nf = new DecimalFormat("###,##0.00");
-			return "R$ " + nf.format(preco);
-		} catch (Exception e) {
-			return "R$ 0,00";
-		}
+		return Util.formatarValorMoeda(this.preco);
 	}
 	
 	public void setPreco(Double preco) {
@@ -274,8 +270,7 @@ public class Produto extends DomainObject {
 	}
 	
 	public String getSubTotal() {
-		NumberFormat nf = new DecimalFormat("###,##0.00");
-		return "R$ " + nf.format(preco * quantidade);
+		return "R$ " + Util.formatarValorMoeda(preco * quantidade);
 	}
 
 	public Boolean getDisponivel() {

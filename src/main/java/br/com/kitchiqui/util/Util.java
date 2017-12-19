@@ -9,6 +9,8 @@ package br.com.kitchiqui.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -217,6 +219,23 @@ public class Util {
             pe.printStackTrace();
         }
         return data;
+    }
+    
+    public static String formataData ( Date data ) {
+    	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    	return formato.format(data);
+    }
+    
+    /*
+     * Tratando formatacao para valor de moeda
+     */
+    public static String formatarValorMoeda(Double valor) {
+    	try {
+	    	NumberFormat nf = new DecimalFormat("###,##0.00");
+			return nf.format(valor);
+    	} catch (Exception e) {
+    		return "0,00";
+    	}
     }
     
     public static String cifrar(String texto) {

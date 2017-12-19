@@ -62,7 +62,7 @@
 	                  <li class="dropdown cart-dropdown">
 	                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i>(<h:outputText escape="false" value="#{clienteMB.cliente.itensCarrinho}"/>)</a>
 						<c:if test="#{not clienteMB.cliente.carrinhoVazio}">
-	                    <ul class="dropdown-menu dropdown-menu-right" style="background-color: #FFFAFA">
+	                    <ul class="dropdown-menu dropdown-menu-right" style="background-color: #FFFAFA; width: 320px;">
 		                      <li>O que há no seu carrinho</li>
 		                      <c:forEach var="produto" items="#{clienteMB.cliente.listaCarrinho}">
 		                      	<c:if test="#{produto.compraProduto.codCompra == 6}"> <!-- SOLICITADO -->
@@ -70,7 +70,13 @@
 			                          <div class="media">
 			                            <img class="media-left media-object" src="#{produto.srcImagemCarrinho}" alt="cart-Image"/>
 			                            <div class="media-body">
-			                              <h5 class="media-heading"><h:outputText escape="false" value="#{produto.titulo}"/> <br /><span><h:outputText escape="false" value="#{produto.quantidade}"/> X <h:outputText escape="false" value="#{produto.precoFormatado}"/></span></h5>
+			                              <h5 class="media-heading"><h:outputText escape="false" value="#{produto.titulo}"/> <br /><span><h:outputText escape="false" value="#{produto.quantidade}"/> X <h:outputText escape="false" value="#{produto.precoFormatado}"/></span>
+			                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			                              
+					                      	<h:commandLink action="#{clienteMB.retirarProdutoCarrinho}">
+					                        	<img src="img/redClose.png"/>
+				                            </h:commandLink>
+				                          </h5>  
 			                            </div>
 			                          </div>
 			                      </li>

@@ -72,7 +72,7 @@
 			                          </li>
 			                          <c:if test="#{produtoMB.produto.especie != 3}"> 
 				                          <li>
-				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Ortodontico #{produtoMB.produto.contadorClasse.qtdKitOrtodontico}">
+				                          	<i class="fa fa-caret-right" aria-hidden="true"></i><h:commandButton action="#{produtoMB.filtrarProduto}" class="btn btn-link" value="Kit Ortodôntico #{produtoMB.produto.contadorClasse.qtdKitOrtodontico}">
 				                          		<f:param name="idClasse" value="2"/>
 				                          		<f:param name="especie" value="#{produtoMB.produto.especie}"/>
 				                          	</h:commandButton>
@@ -200,14 +200,7 @@
 	                    </div>
 	                    <div class="productCaption clearfix">
 		                    <h:commandLink action="#{produtoMB.detalharProduto}" process="@form" execute="@form"><h5><h:outputText escape="false" value="#{prod.titulo}"/></h5>
-						  		<!-- 
-							  		<f:param name="idProduto" value="#{produto.id}"/>
-							  		
-							  		**
-							  		NOTA: APOS OS TESTES DEVE-SE DESCOMENTAR O CODIGO ACIMA E EXCLUIR A LINHA ABAIXO
-							  		**
-						  		-->
-						  		<f:param name="idProduto" value="be7bd1e3-c603-4437-babc-cde94a6053a5"/>
+						  		<f:param name="idProduto" value="#{prod.id}"/>
 						  	</h:commandLink>
 	                      <h3><h:outputText escape="false" value="#{prod.precoFormatado}"/></h3>
 	                    </div>

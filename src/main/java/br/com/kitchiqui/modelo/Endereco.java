@@ -8,6 +8,7 @@ package br.com.kitchiqui.modelo;
 import javax.persistence.Entity;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
+import br.com.kitchiqui.util.Util;
 
 @Entity
 public class Endereco extends DomainObject {
@@ -110,6 +111,10 @@ public class Endereco extends DomainObject {
 			return 0.0;
 		}
 		return precoModoEnvio;
+	}
+	
+	public String getPrecoModoEnvioFormatado() {
+		return "R$ " + Util.formatarValorMoeda( getPrecoModoEnvio() );
 	}
 
 	public void setPrecoModoEnvio(Double precoModoEnvio) {
