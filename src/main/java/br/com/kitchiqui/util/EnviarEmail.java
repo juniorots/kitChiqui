@@ -43,14 +43,15 @@ public class EnviarEmail {
             email.setSubject(assunto);
             
             // Trabalhando com imagem...
-            URL url = new URL (Constantes.SITE_KITCHIQUI+"/img/tituloEmailKitChiqui.png");
+//            URL url = new URL (Constantes.SITE_KITCHIQUI+"/img/tituloEmailKitChiqui.png");
+            URL url = new URL ("http://localhost:8080/kitchiqui-1/img/tituloEmailKitChiqui.png");
             String idImg = email.embed(url, "titulo");
             
             conteudo += idImg;
             email.setHtmlMsg(conteudo);
             
             if (tipoEmail.equals(EnumTipoEmail.RECUPERACAO_SENHA.getTipo())) {
-            	URL url2 = new URL (Constantes.SITE_KITCHIQUI+"/img/barraEmail.png");
+            	URL url2 = new URL ("http://localhost:8080/kitchiqui-1/img/barraEmail.png");
                 String idImg2 = email.embed(url2, "rodape");
                 conteudo += idImg2;
             }

@@ -64,7 +64,7 @@ public class Cliente extends DomainObject {
 	@OneToOne (cascade = CascadeType.ALL )
 	private Pagamento pagamento;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name="cliente_has_produtos", joinColumns=
 			{@JoinColumn(name="cliente_id")}, inverseJoinColumns=
 				{@JoinColumn(name="produtos_id")})
