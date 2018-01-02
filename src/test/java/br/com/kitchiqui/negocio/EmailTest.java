@@ -63,12 +63,11 @@ public class EmailTest {
     	return "R$ " + Util.formatarValorMoeda(tmp);
     }
     
-    @Test
+//    @Test
     public void model() {
-        
     }
     
-//    @Test
+    @Test
     public void testarEnvio() {
     	 @Cleanup
          final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
@@ -109,6 +108,9 @@ public class EmailTest {
          }
          
          tmp.delete(0, tmp.length());
+         
+         tmp.append("<img src='http://localhost:8080/kitchiqui-1/img/tituloEmailKitChiqui.png'/> <br />");
+         
          tmp.append("<div style='margin-top: 20px;'>"
          		+ "<strong><span style='font-size: 16px'>Pedido Recebido</span></strong>"
          		+ "<br /><br />"

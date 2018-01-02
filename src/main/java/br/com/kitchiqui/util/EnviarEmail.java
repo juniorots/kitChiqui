@@ -34,6 +34,7 @@ public class EnviarEmail {
         try {
             email.setHostName(Constantes.HOST_NAME_GMAIL);
             email.addTo(Constantes.ADMINISTRADOR_1);
+            email.addTo(Constantes.ADMINISTRADOR_2);
             email.setFrom(Constantes.EMAIL_REMETENTE_GMAIL, "KitChiqui - Administrador");
             
             for (String tmp : emails) {
@@ -48,13 +49,12 @@ public class EnviarEmail {
             String idImg = email.embed(url, "titulo");
             
             conteudo += idImg;
-            email.setHtmlMsg(conteudo);
-            
-            if (tipoEmail.equals(EnumTipoEmail.RECUPERACAO_SENHA.getTipo())) {
-            	URL url2 = new URL ("http://localhost:8080/kitchiqui-1/img/barraEmail.png");
-                String idImg2 = email.embed(url2, "rodape");
-                conteudo += idImg2;
-            }
+//            
+//            if (tipoEmail.equals(EnumTipoEmail.RECUPERACAO_SENHA.getTipo())) {
+//            	URL url2 = new URL ("http://localhost:8080/kitchiqui-1/img/barraEmail.png");
+//                String idImg2 = email.embed(url2, "rodape");
+//                conteudo += idImg2;
+//            }
             
             // Especificando rodape do e-mail de compra do produto
             if (tipoEmail.equals(EnumTipoEmail.COMPRA_PRODUTO.getTipo())) {
@@ -116,6 +116,8 @@ public class EnviarEmail {
             				+ "</div>";
             }
             
+            email.setHtmlMsg(conteudo);
+            
             // Tratando mensagem alternativa
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
 
@@ -128,8 +130,8 @@ public class EnviarEmail {
             
         } catch (EmailException e) {
             e.printStackTrace();
-        } catch (MalformedURLException me) {
-        	me.getMessage();
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
         
     }

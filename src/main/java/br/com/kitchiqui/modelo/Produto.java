@@ -57,11 +57,11 @@ public class Produto extends DomainObject {
 	/*
 	 * Secao de informacoes utilizadas no descritivo detalhado do produto
 	 */
-	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch (FetchMode.SELECT)
 	private List<ImagemGrandeProduto> listaGrandeProduto;
 	
-	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch (FetchMode.SELECT)
 	private List<ImagemPequenoProduto> listaPequenoProduto;
 	
