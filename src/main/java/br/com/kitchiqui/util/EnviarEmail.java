@@ -49,7 +49,7 @@ public class EnviarEmail {
             
             // Especificando rodape do e-mail de compra do produto
             if (tipoEmail.equals(EnumTipoEmail.COMPRA_PRODUTO.getTipo())) {
-            	conteudo += "<br /><div style='background-color: #D3D3D3; margin-bottom: 20px; width: 80%; text-align: justify'>"
+            	conteudo += "<br /><br /><div style='background-color: #D3D3D3; margin-bottom: 20px; width: 80%; text-align: justify'>"
             					+ "<small>"
             						+ "	<strong><span style='font-size: 12px;'>Observações importantes:</span></strong>"
             						+ "<br /><br />"
