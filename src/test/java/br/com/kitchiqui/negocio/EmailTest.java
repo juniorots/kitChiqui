@@ -86,7 +86,7 @@ public class EmailTest {
 
          String produtos = "";
          for (Produto p : retorno.get(0).getListaCarrinho()) {
-        	if (p.getCompraProduto().getStatusCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))  
+        	if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))  
 				produtos += "<tr>"
 						+ "<td>"+p.getTitulo()+"</td>"
 						+ "<td>"+p.getQuantidade()+"</td>"
@@ -112,12 +112,11 @@ public class EmailTest {
          tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
          tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
          tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
-         tmp.append("<br />");
          
          tmp.append("<div style='margin-top: 20px;'>"
          		+ "<strong><span style='font-size: 16px'>Pedido Recebido</span></strong>"
          		+ "<br /><br />"
-         		+ "Olá <strong>"+retorno.get(0).getNomeCompleto()+"</strong>"
+         		+ "Olá <strong>"+retorno.get(0).getNomeCompleto()+"</strong>,"
          		+ "<br />"
          		+ "Obrigado por comprar na KitChiqui!"
          		+ "<br />"
