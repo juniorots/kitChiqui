@@ -108,8 +108,11 @@ public class EmailTest {
          }
          
          tmp.delete(0, tmp.length());
-         
-         tmp.append("<img src='http://localhost:8080/kitchiqui-1/img/tituloEmailKitChiqui.png'/> <br />");
+
+         tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
+         tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
+         tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
+         tmp.append("<br />");
          
          tmp.append("<div style='margin-top: 20px;'>"
          		+ "<strong><span style='font-size: 16px'>Pedido Recebido</span></strong>"

@@ -43,22 +43,13 @@ public class EnviarEmail {
             
             email.setSubject(assunto);
             
-            // Trabalhando com imagem...
-//            URL url = new URL (Constantes.SITE_KITCHIQUI+"/img/tituloEmailKitChiqui.png");
-            URL url = new URL ("http://localhost:8080/kitchiqui-1/img/tituloEmailKitChiqui.png");
-            String idImg = email.embed(url, "titulo");
-            
-            conteudo += idImg;
-//            
-//            if (tipoEmail.equals(EnumTipoEmail.RECUPERACAO_SENHA.getTipo())) {
-//            	URL url2 = new URL ("http://localhost:8080/kitchiqui-1/img/barraEmail.png");
-//                String idImg2 = email.embed(url2, "rodape");
-//                conteudo += idImg2;
-//            }
+            if (tipoEmail.equals(EnumTipoEmail.RECUPERACAO_SENHA.getTipo())) {
+                conteudo += "<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>";
+            }
             
             // Especificando rodape do e-mail de compra do produto
             if (tipoEmail.equals(EnumTipoEmail.COMPRA_PRODUTO.getTipo())) {
-            	conteudo += "<div style='background-color: #D3D3D3; margin-bottom: 20px;'>"
+            	conteudo += "<br /><div style='background-color: #D3D3D3; margin-bottom: 20px;'>"
             					+ "<small>"
             						+ "	<strong><span style='font-size: 12px;'>Observações importantes:</span></strong>"
             						+ "<br /><br />"
@@ -115,6 +106,7 @@ public class EnviarEmail {
             					+ "</small>"
             				+ "</div>";
             }
+            System.out.println(conteudo);
             
             email.setHtmlMsg(conteudo);
             
