@@ -85,7 +85,7 @@ public class EmailTest {
          StringBuilder tmp = new StringBuilder();
 
          String produtos = "";
-         for (Produto p : cliente.getListaCarrinho()) {
+         for (Produto p : retorno.get(0).getListaCarrinho()) {
         	if (p.getCompraProduto().getStatusCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))  
 				produtos += "<tr>"
 						+ "<td>"+p.getTitulo()+"</td>"
@@ -121,10 +121,10 @@ public class EmailTest {
          		+ "<br />"
          		+ "Obrigado por comprar na KitChiqui!"
          		+ "<br />"
-         		+ "O seu pedido no valor de " + resumoTotal(cliente) + ", "
+         		+ "O seu pedido no valor de " + resumoTotal(retorno.get(0)) + ", "
    				+ "realizado em " + Util.formataData(Calendar.getInstance().getTime())
    				+ " foi recebido com sucesso!"
-   				+ "<br /><br /><br /><br />"
+   				+ "<br /><br />"
    				+ "</div>"
    				
    				// Produtos...
@@ -142,10 +142,10 @@ public class EmailTest {
    					+ "<tbody>"
    					+ produtos
    					+ "<tr rowspan='4' style='font-weight: bold; text-align: right'>"
-   					+ "<td>Frete: "+ cliente.getEndereco().getPrecoModoEnvioFormatado() +"</td>"
+   					+ "<td>Frete: "+ retorno.get(0).getEndereco().getPrecoModoEnvioFormatado() +"</td>"
    					+ "</tr>"
    					+ "<tr rowspan='4' style='font-weight: bold; text-align: right; font-size: 14px;'>"
-   					+ "<td>Valor total: "+ resumoTotal(cliente) +"</td>"
+   					+ "<td>Valor total: "+ resumoTotal(retorno.get(0)) +"</td>"
    					+ "</tr>"
    					+ "</tbody>"
    				+ "</table>"
@@ -164,7 +164,7 @@ public class EmailTest {
 					+ "<tbody>"
 					+ "<tr>"
 						+ "<td>"+ tipoPagamento +"</td>"
-						+ "<td>"+ resumoTotal(cliente) +"</td>"
+						+ "<td>"+ resumoTotal(retorno.get(0)) +"</td>"
 					+ "</tr>"
 					+ "</tbody>"
 				+ "</table>"
@@ -185,11 +185,11 @@ public class EmailTest {
 					+ "</thead>"
 					+ "<tbody>"
 					+ "<tr>"
-						+ "<td>"+ cliente.getNomeCompleto() +"</td>"
-						+ "<td>"+ cliente.getEndereco().getNomeRua() +"</td>"
-						+ "<td>"+ cliente.getEndereco().getBairro() +"</td>"
-						+ "<td>"+ cliente.getEndereco().getNomeCidade() + " - " + cliente.getEndereco().getEstado() +"</td>"
-						+ "<td>"+ cliente.getEndereco().getCep() +"</td>"
+						+ "<td>"+ retorno.get(0).getNomeCompleto() +"</td>"
+						+ "<td>"+ retorno.get(0).getEndereco().getNomeRua() +"</td>"
+						+ "<td>"+ retorno.get(0).getEndereco().getBairro() +"</td>"
+						+ "<td>"+ retorno.get(0).getEndereco().getNomeCidade() + " - " + retorno.get(0).getEndereco().getEstado() +"</td>"
+						+ "<td>"+ retorno.get(0).getEndereco().getCep() +"</td>"
 					+ "</tr>"
 					+ "</tbody>"
 				+ "</table>"
