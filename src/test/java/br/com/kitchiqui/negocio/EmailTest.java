@@ -24,6 +24,7 @@ import org.junit.Test;
 import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.EnumStatusCompra;
+import br.com.kitchiqui.modelo.EnumStatusEnvio;
 import br.com.kitchiqui.modelo.EnumTipoEmail;
 import br.com.kitchiqui.modelo.EnumTipoPagamento;
 import br.com.kitchiqui.modelo.Produto;
@@ -51,18 +52,6 @@ public class EmailTest {
     public void tearDown() {
     }
 
-    public String resumoTotal(Cliente cliente) {
-    	Double tmp = 0.0;
-		for (Produto p : cliente.getListaCarrinho()) {
-			if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))
-    			continue;
-			
-    		tmp += p.getPreco() * p.getQuantidade();
-    	}
-		tmp += cliente.getEndereco().getPrecoModoEnvio();
-    	return "R$ " + Util.formatarValorMoeda(tmp);
-    }
-    
 //    @Test
     public void model() {
     }
@@ -81,121 +70,6 @@ public class EmailTest {
          cliente.setEmail("juniorots@gmail.com");
          List<Cliente> retorno = dao.findByStringField("email", cliente.getEmail(), true, 0, 1);
          
-         ArrayList<String> email = new ArrayList<>();
-         StringBuilder tmp = new StringBuilder();
-
-         String produtos = "";
-         for (Produto p : retorno.get(0).getListaCarrinho()) {
-        	if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))  
-				produtos += "<tr>"
-						+ "<td>"+p.getTitulo()+"</td>"
-						+ "<td>"+p.getQuantidade()+"</td>"
-						+ "<td>"+p.getPrecoFormatado()+"</td>"
-						+ "<td>"+Util.formatarValorMoeda(p.getPreco() * p.getQuantidade())+"</td>"
-						+ "</tr>";
-         }
-         
-         String tipoPagamento = "";
-         switch (cliente.getPagamento().getTipoPagamento()) {
-         	case  1:
-         		tipoPagamento = "Pay Pal";
-         		break;
-         	case 2:
-         		tipoPagamento = "Cartão de crédito";
-         		break;
-         	default:
-         		tipoPagamento = "Cartão de débito";
-         }
-         
-         tmp.delete(0, tmp.length());
-
-         tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
-         tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
-         tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
-         
-         tmp.append("<div style='margin-top: 20px;'>"
-         		+ "<strong><span style='font-size: 16px'>Pedido Recebido</span></strong>"
-         		+ "<br /><br />"
-         		+ "Olá <strong>"+retorno.get(0).getNomeCompleto()+"</strong>,"
-         		+ "<br />"
-         		+ "Obrigado por comprar na KitChiqui!"
-         		+ "<br />"
-         		+ "O seu pedido no valor de " + resumoTotal(retorno.get(0)) + ", "
-   				+ "realizado em " + Util.formataData(Calendar.getInstance().getTime())
-   				+ " foi recebido com sucesso!"
-   				+ "<br /><br />"
-   				+ "</div>"
-   				
-   				// Produtos...
-   				+ "<div style='margin-top: 20px;'>"
-   				+ "<strong><span style='font-size: 12px'>Dados do pedido:</span></strong>"
-   				+ "<table style='width: 80%'>"
-   					+ "<thead>"
-   					+ "<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>"
-   						+"<th>Produto</th>"
-   						+"<th>Quantidade</th>"
-   						+"<th>Preço Unitário</th>"
-   						+"<th>Valor Total</th>"
-   					+ "</tr>"
-   					+ "</thead>"
-   					+ "<tbody>"
-   					+ produtos
-   					+ "<tr style='font-weight: bold; text-align: right'>"
-   					+ "<td colspan='4'>Frete: "+ retorno.get(0).getEndereco().getPrecoModoEnvioFormatado() +"</td>"
-   					+ "</tr>"
-   					+ "<tr style='font-weight: bold; text-align: right; font-size: 14px;'>"
-   					+ "<td colspan='4'>Valor total: "+ resumoTotal(retorno.get(0)) +"</td>"
-   					+ "</tr>"
-   					+ "</tbody>"
-   				+ "</table>"
-         		+ "</div>"
-   				
-         		// Meio de pagamento...
-				+ "<div style='margin-top: 20px;'>"
-				+ "<strong><span style='font-size: 12px'>Dados do pagamento:</span></strong>"
-				+ "<table style='width: 80%'>"
-					+ "<thead>"
-					+ "<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>"
-						+"<th>Forma de Pagamento</th>"
-						+"<th>Valor</th>"
-					+ "</tr>"
-					+ "</thead>"
-					+ "<tbody>"
-					+ "<tr>"
-						+ "<td>"+ tipoPagamento +"</td>"
-						+ "<td>"+ resumoTotal(retorno.get(0)) +"</td>"
-					+ "</tr>"
-					+ "</tbody>"
-				+ "</table>"
-				+ "</div>"
-				 
-				//Meio de pagamento...
-				+ "<div style='margin-top: 20px;'>"
-				+ "<strong><span style='font-size: 12px'>Dados da entrega:</span></strong>"
-				+ "<table style='width: 80%'>"
-					+ "<thead>"
-					+ "<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>"
-						+"<th>Destinatário</th>"
-						+"<th>Endereço</th>"
-						+"<th>Bairro</th>"
-						+"<th>Cidade</th>"
-						+"<th>CEP</th>"
-					+ "</tr>"
-					+ "</thead>"
-					+ "<tbody>"
-					+ "<tr>"
-						+ "<td>"+ retorno.get(0).getNomeCompleto() +"</td>"
-						+ "<td>"+ retorno.get(0).getEndereco().getNomeRua() +"</td>"
-						+ "<td>"+ retorno.get(0).getEndereco().getBairro() +"</td>"
-						+ "<td>"+ retorno.get(0).getEndereco().getNomeCidade() + " - " + retorno.get(0).getEndereco().getEstado() +"</td>"
-						+ "<td>"+ retorno.get(0).getEndereco().getCep() +"</td>"
-					+ "</tr>"
-					+ "</tbody>"
-				+ "</table>"
-				+ "</div>"
-        	);
-         
-         EnviarEmail.tratarEnvio(email, "Pedido Recebido - KitChiqui.com.br (Comercial)", tmp.toString(), 
-        		 EnumTipoEmail.COMPRA_PRODUTO.getTipo());
+         EnviarEmail.enviarEmailComercial(retorno.get(0), EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo());
     }
 }

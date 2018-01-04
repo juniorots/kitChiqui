@@ -6,15 +6,18 @@
 
 package br.com.kitchiqui.util;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
+import br.com.kitchiqui.modelo.Cliente;
+import br.com.kitchiqui.modelo.EnumStatusCompra;
+import br.com.kitchiqui.modelo.EnumStatusEnvio;
 import br.com.kitchiqui.modelo.EnumTipoEmail;
+import br.com.kitchiqui.modelo.Produto;
 
 /**
  *
@@ -33,12 +36,12 @@ public class EnviarEmail {
         
         try {
             email.setHostName(Constantes.HOST_NAME_GMAIL);
-            email.addTo(Constantes.ADMINISTRADOR_1);
-            email.addTo(Constantes.ADMINISTRADOR_2);
+            email.addBcc(Constantes.ADMINISTRADOR_1);
+            email.addBcc(Constantes.ADMINISTRADOR_2);
             email.setFrom(Constantes.EMAIL_REMETENTE_GMAIL, "KitChiqui - Administrador");
             
             for (String tmp : emails) {
-                email.addBcc(tmp);
+                email.addTo(tmp);
             }
             
             email.setSubject(assunto);
@@ -108,8 +111,6 @@ public class EnviarEmail {
             }
             email.setHtmlMsg(conteudo);
             
-System.out.println(conteudo);
-            
             // Tratando mensagem alternativa
             email.setTextMsg("Seu servidor de e-mail não suporta mensagem HTML... :-(");
 
@@ -126,6 +127,151 @@ System.out.println(conteudo);
         	e.printStackTrace();
         }
         
+    }
+    
+    /**
+     * Util para o caso do cliente efetuar uma compra no site ou notifica-lo do status do pedido
+     * @param cliente
+     */
+    public static void enviarEmailComercial(Cliente cliente, Integer statusEnvio) {
+    	ArrayList<String> email = new ArrayList<>();
+        StringBuilder tmp = new StringBuilder();
+        StringBuilder assunto =  new StringBuilder();
+
+email.add("juniormsd@gmail.com");
+//		email.add(cliente.getEmail());
+        
+        String produtos = "";
+        for (Produto p : cliente.getListaCarrinho()) {
+       	if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))  
+				produtos += "<tr>"
+						+ "<td>"+p.getTitulo()+"</td>"
+						+ "<td>"+p.getQuantidade()+"</td>"
+						+ "<td>"+p.getPrecoFormatado()+"</td>"
+						+ "<td>"+Util.formatarValorMoeda(p.getPreco() * p.getQuantidade())+"</td>"
+						+ "</tr>";
+        }
+        
+        String tipoPagamento = "";
+        switch (cliente.getPagamento().getTipoPagamento()) {
+        	case  1:
+        		tipoPagamento = "Pay Pal";
+        		break;
+        	case 2:
+        		tipoPagamento = "Cartão de crédito";
+        		break;
+        	default:
+        		tipoPagamento = "Cartão de débito";
+        }
+        
+        tmp.delete(0, tmp.length());
+
+        tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
+        tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
+        tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
+        
+        tmp.append("<div style='margin-top: 20px;'>"
+        		+ "<strong><span style='font-size: 16px'>Pedido Recebido</span></strong>"
+        		+ "<br /><br />"
+        		+ "Olá <strong>"+cliente.getNomeCompleto()+"</strong>,"
+        		+ "<br />"
+        		+ "Obrigado por comprar na <strong>KitChiqui</strong>!"
+        		+ "<br />"
+        		+ "O seu pedido no valor de " + resumoTotal(cliente) + ", "
+  				+ "realizado em " + Util.formataData(Calendar.getInstance().getTime())
+  				+ " foi recebido com sucesso!"
+  				+ " <br /><br />");
+        
+        if (statusEnvio.equals(EnumStatusEnvio.AGUARDANDO_PAGAMENTO.getTipo())) {
+       	 tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Estamos aguardando a confirmação do pagamento.</span></strong>");
+       	 assunto.append("Pedido Recebido - KitChiqui.com.br (Comercial)");
+        }
+        
+        if (statusEnvio.equals(EnumStatusEnvio.PREPARANDO_ENVIO.getTipo())) { 
+       	 tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Seu pedido foi aprovado, estamos preparando o envio do(s) produto(s).</span></strong>");
+       	 assunto.append("Pedido Aprovado - KitChiqui.com.br (Comercial)");
+        }
+        
+        if (statusEnvio.equals(EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo())) {
+       	 tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Fomos notificados que seu produto foi entregue! :-)</span></strong>");
+       	 tmp.append("<br />Caso haja algum problema com sua entrega, favor entrar em contato informando o ocorrido pelo canal: <strong>kitchiqui@gmail.com</strong>");
+       	 tmp.append("<br />A omissão por informações durante <strong>7 (sete) dias</strong>, nos faz acreditar que o produto foi entrege corretamente.");
+       	 assunto.append("Notificação de Entrega - KitChiqui.com.br (Comercial)");
+        }
+
+        tmp.append("<br /><br />"
+  				+ "</div>"
+  				
+  				// Produtos...
+  				+ "<div style='margin-top: 20px;'>"
+  				+ "<strong><span style='font-size: 12px'>Dados do pedido:</span></strong>"
+  				+ "<table style='width: 80%'>"
+  					+ "<thead>"
+  					+ "<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>"
+  						+"<th>Produto</th>"
+  						+"<th>Quantidade</th>"
+  						+"<th>Preço Unitário</th>"
+  						+"<th>Valor Total</th>"
+  					+ "</tr>"
+  					+ "</thead>"
+  					+ "<tbody>"
+  					+ produtos
+  					+ "<tr style='font-weight: bold; text-align: right'>"
+  					+ "<td colspan='4'>Frete: "+ cliente.getEndereco().getPrecoModoEnvioFormatado() +"</td>"
+  					+ "</tr>"
+  					+ "<tr style='font-weight: bold; text-align: right; font-size: 14px;'>"
+  					+ "<td colspan='4'>Valor total: "+ resumoTotal(cliente) +"</td>"
+  					+ "</tr>"
+  					+ "</tbody>"
+  				+ "</table>"
+        		+ "</div>"
+  				
+        		// Meio de pagamento...
+				+ "<div style='margin-top: 20px;'>"
+				+ "<strong><span style='font-size: 12px'>Dados do pagamento:</span></strong>"
+				+ "<table style='width: 80%'>"
+					+ "<thead>"
+					+ "<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>"
+						+"<th>Forma de Pagamento</th>"
+						+"<th>Valor</th>"
+					+ "</tr>"
+					+ "</thead>"
+					+ "<tbody>"
+					+ "<tr>"
+						+ "<td>"+ tipoPagamento +"</td>"
+						+ "<td>"+ resumoTotal(cliente) +"</td>"
+					+ "</tr>"
+					+ "</tbody>"
+				+ "</table>"
+				+ "</div>"
+				 
+				//Meio de pagamento...
+				+ "<div style='margin-top: 20px;'>"
+				+ "<strong><span style='font-size: 12px'>Dados da entrega:</span></strong>"
+				+ "<table style='width: 80%'>"
+					+ "<thead>"
+					+ "<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>"
+						+"<th>Destinatário</th>"
+						+"<th>Endereço</th>"
+						+"<th>Bairro</th>"
+						+"<th>Cidade</th>"
+						+"<th>CEP</th>"
+					+ "</tr>"
+					+ "</thead>"
+					+ "<tbody>"
+					+ "<tr>"
+						+ "<td>"+ cliente.getNomeCompleto() +"</td>"
+						+ "<td>"+ cliente.getEndereco().getNomeRua() +"</td>"
+						+ "<td>"+ cliente.getEndereco().getBairro() +"</td>"
+						+ "<td>"+ cliente.getEndereco().getNomeCidade() + " - " + cliente.getEndereco().getEstado() +"</td>"
+						+ "<td>"+ cliente.getEndereco().getCep() +"</td>"
+					+ "</tr>"
+					+ "</tbody>"
+				+ "</table>"
+				+ "</div>"
+       	);
+        
+        EnviarEmail.tratarEnvio(email, assunto.toString(), tmp.toString(), EnumTipoEmail.COMPRA_PRODUTO.getTipo());
     }
     
     /**
@@ -146,6 +292,23 @@ System.out.println(conteudo);
                 + "</body></html>";
         
         tratarEnvio(emails, assunto, conteudo, EnumTipoEmail.RECUPERACAO_SENHA.getTipo());
+    }
+    
+    /**
+     * Util para o caso de envio do e-mail comercial ao cliente
+     * @param cliente
+     * @return
+     */
+    public static String resumoTotal(Cliente cliente) {
+    	Double tmp = 0.0;
+		for (Produto p : cliente.getListaCarrinho()) {
+			if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))
+    			continue;
+			
+    		tmp += p.getPreco() * p.getQuantidade();
+    	}
+		tmp += cliente.getEndereco().getPrecoModoEnvio();
+    	return "R$ " + Util.formatarValorMoeda(tmp);
     }
 }
 
