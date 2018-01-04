@@ -244,7 +244,7 @@ public class EnviarEmail {
 				+ "</table>"
 				+ "</div>"
 				 
-				//Meio de pagamento...
+				//Meio de entrega...
 				+ "<div style='margin-top: 20px;'>"
 				+ "<strong><span style='font-size: 12px'>Dados da entrega:</span></strong>"
 				+ "<table style='width: 80%'>"
@@ -279,18 +279,35 @@ public class EnviarEmail {
      */
     public static void recuperarSenha(ArrayList<String> emails, String adicionalConteudo) {
         
-        String assunto = "[kitchiqui] - Recuperação de Senha.";
-        String conteudo = "<html><head><title>Recuperação de senha - KitChiqui.</title></head>"
-                + "<body><br /><br />Olá! Recebemos uma solicitação de alteração de senha.<br /><br />"
-                + "Assim acreditamos que sendo uma petição realizada por você, geramos uma nova senha! <br />"
-                + "No entanto, caso essa solicitação não tenha sido gerada por favor,<br />" 
-                + "solicitamos o quanto antes que altere-a, prezando pela segurança dos seus dados. <br /><br /><br />"
-                + "Tome nota da sua nova senha: <h1>"
-                + "<strong><span style='background-color: #F0FFF0'>" +adicionalConteudo+ "</span></strongs></h1><br />"
-                + "<b>[ - POR FAVOR, NÃO RESPONDA ESSE E-MAIL. - ]</b><br />"
-                + "</body></html>";
+        String assunto = "Recuperação de senha - KitChiqui.com.br (Segurança)";
+        StringBuilder tmp = new StringBuilder();
+        tmp.delete(0, tmp.length());
         
-        tratarEnvio(emails, assunto, conteudo, EnumTipoEmail.RECUPERACAO_SENHA.getTipo());
+        tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
+        tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
+        tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
+        
+        tmp.append("<br />Olá! Recebemos uma solicitação de alteração de senha.");
+        tmp.append("<br /><br />Nova senha: ");
+        tmp.append("<strong><span style='color: #191970; font-size: 18px;'>" + adicionalConteudo + "</span></strong>");
+        tmp.append("<br /><br /><div style='background-color: #D3D3D3; margin-bottom: 10px; width: 80%; text-align: justify'>");
+        tmp.append("<small>"
+        		+ "<br />&nbsp;Caso essa solicitação não tenha sido gerada por você, por favor, solicitamos o quanto antes que altere-a, prezando "
+        		+ "pela segurança dos seus dados."
+        		+ "<br /><br />&nbsp;<strong> - ESTE É UM E-MAIL AUTOMÁTICO, POR ISSO NÃO É NECESSÁRIO RESPONDÊ-LO - </strong>");
+        tmp.append("</small></div><br />");
+        
+//        String conteudo = "<html><head><title>Recuperação de senha - KitChiqui.</title></head>"
+//                + "<body><br /><br />Olá! Recebemos uma solicitação de alteração de senha.<br /><br />"
+//                + "Assim acreditamos que sendo uma petição realizada por você, geramos uma nova senha! <br />"
+//                + "No entanto, caso essa solicitação não tenha sido gerada por favor,<br />" 
+//                + "solicitamos o quanto antes que altere-a, prezando pela segurança dos seus dados. <br /><br /><br />"
+//                + "Tome nota da sua nova senha: <h1>"
+//                + "<strong><span style='background-color: #F0FFF0'>" +adicionalConteudo+ "</span></strongs></h1><br />"
+//                + "<b>[ - POR FAVOR, NÃO RESPONDA ESSE E-MAIL. - ]</b><br />"
+//                + "</body></html>";
+        
+        tratarEnvio(emails, assunto, tmp.toString(), EnumTipoEmail.RECUPERACAO_SENHA.getTipo());
     }
     
     /**
@@ -310,5 +327,3 @@ public class EnviarEmail {
     	return "R$ " + Util.formatarValorMoeda(tmp);
     }
 }
-
-    

@@ -70,6 +70,10 @@ public class EmailTest {
          cliente.setEmail("juniorots@gmail.com");
          List<Cliente> retorno = dao.findByStringField("email", cliente.getEmail(), true, 0, 1);
          
-         EnviarEmail.enviarEmailComercial(retorno.get(0), EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo());
+         ArrayList<String> emails = new ArrayList<>();
+         
+         emails.add("juniormsd@gmail.com");
+//         EnviarEmail.enviarEmailComercial(retorno.get(0), EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo());
+         EnviarEmail.recuperarSenha(emails, "SENHA_FAKE");
     }
 }
