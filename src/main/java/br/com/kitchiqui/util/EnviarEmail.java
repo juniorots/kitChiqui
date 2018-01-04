@@ -294,7 +294,9 @@ public class EnviarEmail {
         tmp.append("<small>"
         		+ "<br />&nbsp;Caso essa solicitação não tenha sido gerada por você, por favor, solicitamos o quanto antes que altere-a, prezando "
         		+ "pela segurança dos seus dados."
-        		+ "<br /><br />&nbsp;<strong> - ESTE É UM E-MAIL AUTOMÁTICO, POR ISSO NÃO É NECESSÁRIO RESPONDÊ-LO - </strong>");
+        		+ "<br /><br />&nbsp;<strong> - ESTE É UM E-MAIL AUTOMÁTICO, POR ISSO NÃO É NECESSÁRIO RESPONDÊ-LO - </strong>"
+        		+ "<br /><br />Atenciosamente,"
+        		+ "<br /> <strong>KitChiqui Serviços Ltda.</strong>");
         tmp.append("</small></div><br />");
         
 //        String conteudo = "<html><head><title>Recuperação de senha - KitChiqui.</title></head>"
