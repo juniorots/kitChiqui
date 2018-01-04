@@ -138,8 +138,7 @@ public class EnviarEmail {
         StringBuilder tmp = new StringBuilder();
         StringBuilder assunto =  new StringBuilder();
 
-email.add("juniormsd@gmail.com");
-//		email.add(cliente.getEmail());
+		email.add(cliente.getEmail());
         
         String produtos = "";
         for (Produto p : cliente.getListaCarrinho()) {
@@ -183,20 +182,20 @@ email.add("juniormsd@gmail.com");
   				+ " <br /><br />");
         
         if (statusEnvio.equals(EnumStatusEnvio.AGUARDANDO_PAGAMENTO.getTipo())) {
-       	 tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Estamos aguardando a confirmação do pagamento.</span></strong>");
-       	 assunto.append("Pedido Recebido - KitChiqui.com.br (Comercial)");
+	       	tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Estamos aguardando a confirmação do pagamento.</span></strong>");
+	       	assunto.append("Pedido Recebido - KitChiqui.com.br (Comercial)");
         }
         
         if (statusEnvio.equals(EnumStatusEnvio.PREPARANDO_ENVIO.getTipo())) { 
-       	 tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Seu pedido foi aprovado, estamos preparando o envio do(s) produto(s).</span></strong>");
-       	 assunto.append("Pedido Aprovado - KitChiqui.com.br (Comercial)");
+	       	tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Seu pedido foi aprovado, estamos preparando o envio do(s) produto(s).</span></strong>");
+	       	assunto.append("Pedido Aprovado - KitChiqui.com.br (Comercial)");
         }
         
         if (statusEnvio.equals(EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo())) {
-       	 tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Fomos notificados que seu produto foi entregue! :-)</span></strong>");
-       	 tmp.append("<br />Caso haja algum problema com sua entrega, favor entrar em contato informando o ocorrido pelo canal: <strong>kitchiqui@gmail.com</strong>");
-       	 tmp.append("<br />A omissão por informações durante <strong>7 (sete) dias</strong>, nos faz acreditar que o produto foi entrege corretamente.");
-       	 assunto.append("Notificação de Entrega - KitChiqui.com.br (Comercial)");
+	       	tmp.append("<strong><span style='color: #191970; font-size: 18px;'>Fomos notificados que seu produto foi entregue! :-)</span></strong>");
+	       	tmp.append("<br />Caso haja algum problema com sua entrega, favor entrar em contato informando o ocorrido pelo canal: <strong>kitchiqui@gmail.com</strong>");
+	       	tmp.append("<br />A omissão por informações durante <strong>7 (sete) dias</strong>, nos faz acreditar que o produto foi entrege corretamente.");
+	       	assunto.append("Notificação de Entrega - KitChiqui.com.br (Comercial)");
         }
 
         tmp.append("<br /><br />"
