@@ -34,6 +34,7 @@ import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.CompraProduto;
 import br.com.kitchiqui.modelo.EnumEnvio;
 import br.com.kitchiqui.modelo.EnumStatusCompra;
+import br.com.kitchiqui.modelo.EnumStatusEnvio;
 import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.EnviarEmail;
@@ -269,6 +270,9 @@ public class ClienteMB extends BaseController implements Serializable {
     	}
     	
     	alterarCliente("fecharCompra");
+    	
+    	// Enviar notificacao da compra
+    	EnviarEmail.enviarEmailComercial(getCliente(), EnumStatusEnvio.AGUARDANDO_PAGAMENTO.getTipo());
     	
     	Util.forward(QUARTO_PASSO_COMPRAS);
     }
