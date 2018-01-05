@@ -54,11 +54,12 @@ public class ClienteMB extends BaseController implements Serializable {
      * Responsavel por alterar as informacoes do Cliente logado
      */
     public void alterarCliente( String... origem ) {
-        @Cleanup
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
-        @Cleanup
-        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+//      @Cleanup
+//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+      
+    	@Cleanup
+//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
@@ -85,11 +86,12 @@ public class ClienteMB extends BaseController implements Serializable {
     		return;
     	}
     	
-    	@Cleanup
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
+//      @Cleanup
+//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+      
         @Cleanup
-        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
@@ -305,11 +307,12 @@ public class ClienteMB extends BaseController implements Serializable {
             return;
         }
         
+//      @Cleanup
+//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+      
         @Cleanup
-        final EntityManagerFactory entityFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
-        @Cleanup
-        final EntityManager entManager = entityFactory.createEntityManager();
+//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityManager entManager = getInstanceEntity();
         entManager.getTransaction().begin();
         ClienteDAO dao = new ClienteDAO(entManager);
         
@@ -381,11 +384,12 @@ public class ClienteMB extends BaseController implements Serializable {
      */
     private boolean continuarRegistro(Cliente cliente) {
         
+//      @Cleanup
+//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+      
         @Cleanup
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
-        @Cleanup
-        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
@@ -397,11 +401,12 @@ public class ClienteMB extends BaseController implements Serializable {
      */
     public void validarCliente() {
 
+//      @Cleanup
+//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+      
         @Cleanup
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
-        @Cleanup
-        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
@@ -451,11 +456,12 @@ public class ClienteMB extends BaseController implements Serializable {
      * a mala direta
      */
     public void tratarMalaDireta() {
-    	@Cleanup
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
+//      @Cleanup
+//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+      
         @Cleanup
-        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
         MalaDiretaDAO dao = new MalaDiretaDAO(entityManager);
@@ -477,11 +483,12 @@ public class ClienteMB extends BaseController implements Serializable {
         
         if ( !validarEmail() ) return;
         
+//      @Cleanup
+//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+      
         @Cleanup
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
-        @Cleanup
-        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);

@@ -8,6 +8,10 @@ package br.com.kitchiqui.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -66,6 +70,26 @@ public class BaseController {
 	private Map<Integer, Integer> listaAno = new HashMap();
 	
 	private boolean usuarioLogado;
+	
+	private static EntityManagerFactory entityManagerFactory;
+	
+	/**
+	 * Reaproveitando instancia de conexao com a base
+	 * @return
+	 */
+	public static EntityManager getInstanceEntity() {
+		try {
+			if (entityManagerFactory.isOpen()) {
+				return entityManagerFactory.createEntityManager();
+			} else {
+				entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+				return entityManagerFactory.createEntityManager();
+			}
+		} catch (NullPointerException ne) {
+			entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+			return entityManagerFactory.createEntityManager();
+		}
+	}
 	
 	public void resetarConfig() {
 		try {
@@ -151,7 +175,6 @@ public class BaseController {
 	public Map<Integer, Integer> getListaAno() {
 		for (int i = 2018; i <= 2040; i++) 
 			listaAno.put(i, i);
-		
 		return listaAno;
 	}
 
