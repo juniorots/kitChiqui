@@ -143,7 +143,6 @@ public class ClienteMB extends BaseController implements Serializable {
     /**
      * Tratando da insercao do produto novo no carrinho
      */
-//    @PostConstruct
     public void adicionarCarrinho(String... origem) {
     	
     	boolean adicionado = false;
@@ -181,7 +180,7 @@ public class ClienteMB extends BaseController implements Serializable {
     		if (origem.length == 0 || !origem[0].equals("botaoComprar"))
     			Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Ok, colocamos no seu carrinho!");
     }
-    
+
     /**
      * Gerenciando as compras realizadas
      */

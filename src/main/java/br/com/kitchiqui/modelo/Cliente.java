@@ -68,7 +68,7 @@ public class Cliente extends DomainObject {
 	@JoinTable(name="cliente_has_produtos", joinColumns=
 			{@JoinColumn(name="cliente_id")}, inverseJoinColumns=
 				{@JoinColumn(name="produtos_id")})
-	@Fetch (FetchMode.SELECT)
+	@Fetch (FetchMode.JOIN)
 	private List<Produto> listaCarrinho;
 	
 	@Transient

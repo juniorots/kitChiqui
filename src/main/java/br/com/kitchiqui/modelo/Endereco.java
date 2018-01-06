@@ -34,7 +34,7 @@ public class Endereco extends DomainObject {
 	private String complemento;
 	
 	// obrigatorio
-	private String Bairro;
+	private String bairro;
 	
 	// obrigatorio
 	private String nomeCidade;
@@ -75,11 +75,11 @@ public class Endereco extends DomainObject {
 	}
 
 	public String getBairro() {
-		return Bairro;
+		return bairro;
 	}
 
 	public void setBairro(String bairro) {
-		Bairro = bairro;
+		bairro = bairro;
 	}
 
 	public String getNomeCidade() {
