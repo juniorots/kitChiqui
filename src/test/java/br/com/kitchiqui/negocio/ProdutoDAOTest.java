@@ -58,12 +58,12 @@ public class ProdutoDAOTest {
       @Cleanup
       final EntityManager entityManager = entityManagerFactory.createEntityManager();
       entityManager.getTransaction().begin();
-//
+
       Produto prod = new Produto();    
       ProdutoDAO dao = new ProdutoDAO(entityManager);
       ImagemGrandeProdutoDAO imgDAO = new ImagemGrandeProdutoDAO(entityManager);
       ImagemPequenoProdutoDAO imgPeqDAO = new ImagemPequenoProdutoDAO(entityManager);
-//      
+      
       prod.setSrcImagem("img/home/banner-slider/shoe1.png");
       prod.setSrcImagemCarrinho("img/products/cart-image1.jpg");
       prod.setTitulo("KIT ORTODÔNTICO");
@@ -423,6 +423,7 @@ public class ProdutoDAOTest {
       prod5.setSrcImagem("img/home/featured-product/product-02.jpg");
       prod5.setSrcImagemCarrinho("img/products/cart-image3.jpg");
       prod5.setTitulo("Kit Infantil - Escolar");
+      prod5.setPreco(120D);
       prod5.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       prod4.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());

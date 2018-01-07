@@ -476,8 +476,6 @@ public class ClienteMB extends BaseController implements Serializable {
      */
     public void recuperarConta() {
         
-        FacesMessage mensagem = null;
-        
         if ( ! validarRecuperarSenha() ) return;
         
         if ( !validarEmail() ) return;
@@ -492,8 +490,8 @@ public class ClienteMB extends BaseController implements Serializable {
         
         ClienteDAO dao = new ClienteDAO(entityManager);
         
-        HashMap<String, String> campos = new HashMap();
-        HashMap<String, Date> campoData = new HashMap();
+        HashMap<String, String> campos = new HashMap<>();
+        HashMap<String, Date> campoData = new HashMap<>();
         campos.put("email", getCliente().getEmail() );
         campoData.put("dtNascimento", getCliente().getDtNascimento() );
         
@@ -508,7 +506,7 @@ public class ClienteMB extends BaseController implements Serializable {
             dao.update( retorno );
             entityManager.getTransaction().commit();
             
-            ArrayList emails = new ArrayList();
+            ArrayList<String> emails = new ArrayList<>();
             emails.add( retorno.getEmail() );
             
             EnviarEmail.recuperarSenha(emails, novaSenha);

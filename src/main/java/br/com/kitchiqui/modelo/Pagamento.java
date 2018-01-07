@@ -6,6 +6,7 @@
 package br.com.kitchiqui.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
 
@@ -35,6 +36,9 @@ public class Pagamento extends DomainObject {
 	private Integer nrParcelas;
 	
 	private String nomeTitular;
+	
+	@OneToOne (optional = false)
+	private Cliente cliente;
 
 	public Integer getTipoPagamento() {
 		return tipoPagamento;
@@ -107,5 +111,12 @@ public class Pagamento extends DomainObject {
 			return "****";
 		}
 	}
-	
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 }

@@ -24,6 +24,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
 
@@ -58,17 +60,19 @@ public class Cliente extends DomainObject {
 	
 	private String tmpDtNascimento;
 	
-	@OneToOne (cascade = CascadeType.ALL )
+	@OneToOne (fetch = FetchType.LAZY, mappedBy = "cliente", optional = true, cascade = CascadeType.ALL )
+	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private Endereco endereco;
 	
-	@OneToOne (cascade = CascadeType.ALL )
+	@OneToOne (fetch = FetchType.LAZY, mappedBy = "cliente", optional = true, cascade = CascadeType.ALL )
+	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private Pagamento pagamento;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name="cliente_has_produtos", joinColumns=
 			{@JoinColumn(name="cliente_id")}, inverseJoinColumns=
-				{@JoinColumn(name="produtos_id")})
-	@Fetch (FetchMode.JOIN)
+				{@JoinColumn(name="produto_id")})
+	@Fetch (FetchMode.SUBSELECT)
 	private List<Produto> listaCarrinho;
 	
 	@Transient

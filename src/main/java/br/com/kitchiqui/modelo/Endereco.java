@@ -6,6 +6,7 @@
 package br.com.kitchiqui.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
 import br.com.kitchiqui.util.Util;
@@ -41,6 +42,9 @@ public class Endereco extends DomainObject {
 	
 	// obrigatorio
 	private String estado;
+	
+	@OneToOne (optional = false)
+	private Cliente cliente;
 
 	public String getCep() {
 		return cep;
@@ -119,5 +123,13 @@ public class Endereco extends DomainObject {
 
 	public void setPrecoModoEnvio(Double precoModoEnvio) {
 		this.precoModoEnvio = precoModoEnvio;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 }
