@@ -116,7 +116,7 @@
 				                    </select>
 				                </span>
                   				-->
-                  					<c:if test="#{clienteMB.usuarioLogado}">
+                  					<c:if test="#{usuarioNaSessao}">
 						                <div class="btn-area">
 						                    <h:commandLink class="btn btn-primary btn-block" style="margin-top: 0px;" action="#{clienteMB.adicionarCarrinho}">
 						                    	<i class="fa fa-shopping-cart" aria-hidden="true"></i> Por no Carrinho
@@ -127,7 +127,7 @@
 						                    </h:commandLink>
 						                </div>
 					                </c:if>
-					                <c:if test="#{not clienteMB.usuarioLogado}">
+					                <c:if test="#{not usuarioNaSessao}">
 					                	<div class="alert alert-info fade in">
 					                  		<strong>Ops...</strong> Vimos que não entrou no site, precisamos que faça isso antes.
 					                	</div>

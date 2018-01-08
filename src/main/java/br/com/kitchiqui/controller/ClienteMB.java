@@ -54,11 +54,8 @@ public class ClienteMB extends BaseController implements Serializable {
      * Responsavel por alterar as informacoes do Cliente logado
      */
     public void alterarCliente( String... origem ) {
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
       
     	@Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
@@ -86,11 +83,7 @@ public class ClienteMB extends BaseController implements Serializable {
     		return;
     	}
     	
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
         @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
@@ -306,11 +299,7 @@ public class ClienteMB extends BaseController implements Serializable {
             return;
         }
         
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
         @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entManager = getInstanceEntity();
         entManager.getTransaction().begin();
         ClienteDAO dao = new ClienteDAO(entManager);
@@ -368,7 +357,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * @return 
      */
     public boolean validarEmail() {
-        if ( !Util.validarEmail( getCliente().getEmail() ) ) {
+        if ( !Util.validarEmail( getCliente().getEmail().toLowerCase() ) ) {
 //            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Problema com e-mail", "Oops... E-mail inválido");
         	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Oops... E-mail inválido");
             return false; // fail! :-(
@@ -383,11 +372,7 @@ public class ClienteMB extends BaseController implements Serializable {
      */
     private boolean continuarRegistro(Cliente cliente) {
         
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
         @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
@@ -399,12 +384,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * Credenciando Cliente
      */
     public void validarCliente() {
-
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
         @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
@@ -455,11 +435,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * a mala direta
      */
     public void tratarMalaDireta() {
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
         @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
@@ -480,11 +456,7 @@ public class ClienteMB extends BaseController implements Serializable {
         
         if ( !validarEmail() ) return;
         
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
         @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
@@ -523,8 +495,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * @return 
      */
     public void sairSistema() {
-        setCliente( new Cliente() );
-        Util.gravarClienteSessao( getCliente() );
+        Util.gravarClienteSessao( null );
         Util.forward( Constantes.INICIO_SISTEMA );
     }
     

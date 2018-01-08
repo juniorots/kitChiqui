@@ -14,6 +14,8 @@
     <h:body class="body-wrapper">
     <p:growl id="growl" showDetail="true" sticky="false" life="8000"/>
     
+    <c:set var="usuarioNaSessao" value="#{clienteMB.usuarioLogado}"/>
+    
    	<div class="main-wrapper">
    		<div class="header clearfix">
    			<div class="topBar">
@@ -34,19 +36,21 @@
 	              <div class="col-md-6 col-sm-7 col-xs-12">
 	                <ul class="list-inline pull-right top-right">
 	                  <li class="account-login"> 
-	                  	<c:if test="#{clienteMB.usuarioLogado}">
-		          			<span>
-		          				<a data-toggle="modal" href="#status">
-		          					<b>
-			          					<i class="fa fa-user" aria-hidden="true"></i>&nbsp;
-			          					<h:outputText escape="false" value="#{clienteMB.cliente.nome}" class="fonteCustomizada"/>
-		          					</b>
-		          				</a>
-		          			</span>
-	   	        	  	</c:if>
-   		        	  	<c:if test="#{not clienteMB.usuarioLogado}">
-                  			<span><a data-toggle="modal" href='.login-modal'>Entre</a><small>ou</small><a data-toggle="modal" href='#signup'>Crie sua conta</a></span>
-	               		</c:if>
+	                  	<c:choose>
+	                  		<c:when test="#{usuarioNaSessao}">
+			          			<span>
+			          				<a data-toggle="modal" href="#status">
+			          					<b>
+				          					<i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+				          					<h:outputText escape="false" value="#{clienteMB.cliente.nome}" class="fonteCustomizada"/>
+			          					</b>
+			          				</a>
+			          			</span>
+	                  		</c:when>
+	                  		<c:otherwise>
+	                  			<span><a data-toggle="modal" href='.login-modal'>Entre</a><small>ou</small><a data-toggle="modal" href='#signup'>Crie sua conta</a></span>
+	                  		</c:otherwise>
+	                  	</c:choose>
 	                  </li>
 	                  <li class="searchBox">
 	                    <a href="#"><i class="fa fa-search"></i></a>

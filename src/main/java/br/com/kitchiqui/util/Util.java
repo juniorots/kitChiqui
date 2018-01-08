@@ -371,7 +371,7 @@ public class Util {
     public static void gravarClienteSessao(Cliente cliente) {
         FacesContext fc =   FacesContext.getCurrentInstance();
         HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
-        sessao.setAttribute( "CODIGO_CLIENTE", cliente.getId() );
+        sessao.setAttribute( "CLIENTE", cliente );
     }
     
    /*
@@ -382,18 +382,8 @@ public class Util {
         ExternalContext external =  FacesContext.getCurrentInstance().getExternalContext();
         HttpSession sessao = (HttpSession) external.getSession(true);
         
-        if ( !isEmpty(sessao.getAttribute("CODIGO_CLIENTE") ) ) {
-            
-            @Cleanup
-            final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-            
-            @Cleanup
-            final EntityManager entityManager = entityManagerFactory.createEntityManager();
-            entityManager.getTransaction().begin();
-            
-            ClienteDAO dao = new ClienteDAO(entityManager);
-            cliente = dao.selectById( (UUID) sessao.getAttribute("CODIGO_CLIENTE") );
-        }
+        if ( !isEmpty(sessao.getAttribute("CLIENTE") ) )
+        	cliente = (Cliente) sessao.getAttribute("CLIENTE"); 
         return cliente;
     }
     
@@ -403,15 +393,6 @@ public class Util {
     public static void limparClienteSessao() {
        FacesContext fc =   FacesContext.getCurrentInstance();
         HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
-        sessao.setAttribute("CODIGO_CLIENTE", "");
-    }
-    
-    /*
-     * Util para limpar dados da sessao
-     */
-    public static void limparConcursoSessao() {
-       FacesContext fc =   FacesContext.getCurrentInstance();
-        HttpSession sessao = (HttpSession) fc.getExternalContext().getSession(false);
-        sessao.setAttribute("CODIGO_CONCURSO", "");
+        sessao.setAttribute("CLIENTE", null);
     }
 }

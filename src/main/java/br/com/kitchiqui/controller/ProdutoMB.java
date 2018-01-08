@@ -50,11 +50,7 @@ public class ProdutoMB extends BaseController implements Serializable {
 		/*
          * Trabalhando no conteudo...
          */
-//        @Cleanup
-//        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-        
         @Cleanup
-//        final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
@@ -81,13 +77,9 @@ public class ProdutoMB extends BaseController implements Serializable {
 	 */
 	public void detalharProduto() {
 		
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
       @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
-        entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();	
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
         setProduto(dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto"))));
@@ -99,11 +91,7 @@ public class ProdutoMB extends BaseController implements Serializable {
 	 * Quando o operador faz uso de texto para pesquisar produtos
 	 */
 	public void filtrarTexto() {
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
         @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
                 
@@ -128,11 +116,7 @@ public class ProdutoMB extends BaseController implements Serializable {
 	 * Trabalhando nos filtros de produtos
 	 */
 	public void filtrarProduto() {
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
       @Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
                 
@@ -201,12 +185,7 @@ public class ProdutoMB extends BaseController implements Serializable {
 	 * Responsavel por direcionar ao blog com assunto especifidado pelo operador
 	 */
 	public void assumirBlog() {
-		
-//      @Cleanup
-//      final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-      
 		@Cleanup
-//      final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         

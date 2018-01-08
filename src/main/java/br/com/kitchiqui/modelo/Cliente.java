@@ -28,6 +28,7 @@ import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
+import br.com.kitchiqui.util.Util;
 
 @Entity
 public class Cliente extends DomainObject {
@@ -68,16 +69,16 @@ public class Cliente extends DomainObject {
 	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private Pagamento pagamento;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name="cliente_has_produtos", joinColumns=
 			{@JoinColumn(name="cliente_id")}, inverseJoinColumns=
 				{@JoinColumn(name="produto_id")})
-	@Fetch (FetchMode.SUBSELECT)
-	private List<Produto> listaCarrinho;
+	private List<Produto> listaCarrinho = new LinkedList<>();
 	
 	@Transient
 	private int itensCarrinho;
 
+	@Transient
 	private boolean carrinhoVazio;
 	
 	public int getItensCarrinho() {
@@ -200,14 +201,15 @@ public class Cliente extends DomainObject {
 	}
 
 	public List<Produto> getListaCarrinho() {
-		if (listaCarrinho == null) {
-			listaCarrinho = new LinkedList<>();
-		}
 		return listaCarrinho;
 	}
 
 	public void setListaCarrinho(List<Produto> listaCarrinho) {
-		this.listaCarrinho = listaCarrinho;
+		if (Util.isEmpty(listaCarrinho)) {
+			this.listaCarrinho.clear();
+		} else { 
+			this.listaCarrinho = listaCarrinho;
+		}
 	}
 
 	public void setItensCarrinho(int itensCarrinho) {
