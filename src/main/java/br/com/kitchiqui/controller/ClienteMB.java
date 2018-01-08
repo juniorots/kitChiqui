@@ -357,7 +357,8 @@ public class ClienteMB extends BaseController implements Serializable {
      * @return 
      */
     public boolean validarEmail() {
-        if ( !Util.validarEmail( getCliente().getEmail().toLowerCase() ) ) {
+    	getCliente().setEmail(getCliente().getEmail().toLowerCase());
+        if ( !Util.validarEmail( getCliente().getEmail() ) ) {
 //            Util.montarMensagemModal(FacesMessage.SEVERITY_ERROR, "Problema com e-mail", "Oops... E-mail inválido");
         	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Oops... E-mail inválido");
             return false; // fail! :-(

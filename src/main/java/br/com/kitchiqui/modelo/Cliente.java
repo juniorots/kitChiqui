@@ -61,11 +61,11 @@ public class Cliente extends DomainObject {
 	
 	private String tmpDtNascimento;
 	
-	@OneToOne (fetch = FetchType.LAZY, mappedBy = "cliente", optional = true, cascade = CascadeType.ALL )
+	@OneToOne (fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL )
 	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private Endereco endereco;
 	
-	@OneToOne (fetch = FetchType.LAZY, mappedBy = "cliente", optional = true, cascade = CascadeType.ALL )
+	@OneToOne (fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL )
 	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private Pagamento pagamento;
 	

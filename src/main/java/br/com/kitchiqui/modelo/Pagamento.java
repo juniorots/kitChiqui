@@ -37,9 +37,6 @@ public class Pagamento extends DomainObject {
 	
 	private String nomeTitular;
 	
-	@OneToOne (optional = false)
-	private Cliente cliente;
-
 	public Integer getTipoPagamento() {
 		return tipoPagamento;
 	}
@@ -110,13 +107,5 @@ public class Pagamento extends DomainObject {
 		} catch (Exception e) {
 			return "****";
 		}
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
 	}
 }

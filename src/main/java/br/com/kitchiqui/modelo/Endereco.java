@@ -43,9 +43,6 @@ public class Endereco extends DomainObject {
 	// obrigatorio
 	private String estado;
 	
-	@OneToOne (optional = false)
-	private Cliente cliente;
-
 	public String getCep() {
 		return cep;
 	}
@@ -123,13 +120,5 @@ public class Endereco extends DomainObject {
 
 	public void setPrecoModoEnvio(Double precoModoEnvio) {
 		this.precoModoEnvio = precoModoEnvio;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
 	}
 }

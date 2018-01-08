@@ -426,7 +426,7 @@ public class ProdutoDAOTest {
       prod5.setPreco(120D);
       prod5.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
-      prod4.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
+      prod5.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
       prod5.setDisponivel(true);
       
       // Tratando secao de detalhe
