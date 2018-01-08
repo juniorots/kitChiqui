@@ -60,6 +60,7 @@ public class ClienteMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
+        tratarAdicionaisEndereco();
         Cliente usAlterado = dao.update( getCliente() );
         
         entityManager.getTransaction().commit();
@@ -208,10 +209,7 @@ public class ClienteMB extends BaseController implements Serializable {
     	}
     	
     	// Tratando campos 
-    	getCliente().getEndereco().setNomeRua(getTmpRua());
-    	getCliente().getEndereco().setNomeCidade(getTmpCidade());
-    	getCliente().getEndereco().setBairro(getTmpBairro());
-    	getCliente().getEndereco().setEstado(getTmpEstado());
+    	tratarAdicionaisEndereco();
     	
     	// Tratando da seguridade das informacoes do cartao
     	getCliente().getPagamento().setNomeTitular("");
@@ -510,6 +508,25 @@ public class ClienteMB extends BaseController implements Serializable {
 
     public void setListaCliente(Collection<Cliente> listaCliente) {
         this.listaCliente = listaCliente;
+    }
+    
+    /**
+     * Util para capturar os valores que forem
+     * buscados automaticamente pelo sistema e inserindo tais
+     * valores no objeto correspondente ao endereco
+     */
+    public void tratarAdicionaisEndereco() {
+    	if (!Util.isEmpty(getTmpRua())) 
+    		getCliente().getEndereco().setNomeRua(getTmpRua());
+    	
+    	if (!Util.isEmpty(getTmpCidade()))
+    		getCliente().getEndereco().setNomeCidade(getTmpCidade());
+    	
+    	if (!Util.isEmpty(getTmpBairro()))
+    		getCliente().getEndereco().setBairro(getTmpBairro());
+    	
+    	if (!Util.isEmpty(getTmpEstado()))
+    		getCliente().getEndereco().setEstado(getTmpEstado());
     }
     
     /**

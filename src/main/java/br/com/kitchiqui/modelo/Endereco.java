@@ -80,7 +80,7 @@ public class Endereco extends DomainObject {
 	}
 
 	public void setBairro(String bairro) {
-		bairro = bairro;
+		this.bairro = bairro;
 	}
 
 	public String getNomeCidade() {
