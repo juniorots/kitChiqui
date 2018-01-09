@@ -43,6 +43,7 @@ public class BaseController {
 	protected static final String DADOS_PESSOAIS_CLIENTE_ENDERECO = "/dadosPessoaisEnderecoCliente.xhtml";
 	protected static final String DADOS_PESSOAIS_CLIENTE_PEDIDOS = "/dadosPessoaisClientePedidos.xhtml";
 	protected static final String DADOS_PESSOAIS_CLIENTE_ALTERA_SENHA = "/dadosPessoaisClienteAlterarSenha.xhtml";
+	protected static final String GERENCIAR_CLIENTE = "/dadosPessoaisGerenciar.xhtml";
 	
 	private Cliente cliente= null;
 	private Produto produto = null;

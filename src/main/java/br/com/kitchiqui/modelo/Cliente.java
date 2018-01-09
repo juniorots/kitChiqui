@@ -61,6 +61,12 @@ public class Cliente extends DomainObject {
 	
 	private String tmpDtNascimento;
 	
+	@Transient
+	private String nomeFiltro;
+	
+	@Transient
+	private String emailFiltro;
+	
 	@OneToOne (fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL )
 	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private Endereco endereco;
@@ -228,4 +234,21 @@ public class Cliente extends DomainObject {
 	public void setCarrinhoVazio(boolean carrinhoVazio) {
 		this.carrinhoVazio = carrinhoVazio;
 	}
+
+	public String getNomeFiltro() {
+		return nomeFiltro;
+	}
+
+	public void setNomeFiltro(String nomeFiltro) {
+		this.nomeFiltro = nomeFiltro;
+	}
+
+	public String getEmailFiltro() {
+		return emailFiltro;
+	}
+
+	public void setEmailFiltro(String emailFiltro) {
+		this.emailFiltro = emailFiltro;
+	}
+	
 }

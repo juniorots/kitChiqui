@@ -74,6 +74,50 @@ public class ClienteMB extends BaseController implements Serializable {
 //        RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
     }
     
+    /**
+     * Util para carregar uma lista de nomes a serem
+     * exibidos em um auto-complete
+     * @param nome
+     * @return
+     */
+    public List<String> hotListaNome(String nome) {
+    	
+    	@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        ArrayList<String> retorno = new ArrayList<>();
+        
+        ClienteDAO dao = new ClienteDAO(entityManager);
+
+        ArrayList<Cliente> tmp = (ArrayList<Cliente>) dao.selectAll();
+        for (Cliente c : tmp) {
+        	retorno.add(c.getNomeCompleto());
+        }
+        return retorno;
+    }
+    
+    /**
+     * Util para carregar uma lista de emails a serem
+     * exibidos em um auto-complete
+     * @param nome
+     * @return
+     */
+    public List<String> hotListaEmail(String email) {
+    	
+    	@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        ArrayList<String> retorno = new ArrayList<>();
+        
+        ClienteDAO dao = new ClienteDAO(entityManager);
+
+        ArrayList<Cliente> tmp = (ArrayList<Cliente>) dao.selectAll();
+        for (Cliente c : tmp) {
+        	retorno.add(c.getEmail());
+        }
+        return retorno;
+    }
+    
     /*
      * Quando o operador deseja alterar a senha
      */
@@ -96,6 +140,13 @@ public class ClienteMB extends BaseController implements Serializable {
         
     	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Senha alterada com sucesso");
         Util.gravarClienteSessao( usAlterado );
+    }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void tratarGerenciamentoCliente() {
+    	Util.forward(GERENCIAR_CLIENTE);
     }
     
     /**
