@@ -49,6 +49,7 @@ public class ClienteMB extends BaseController implements Serializable {
    
     @ManagedProperty(value="#{produtoMB}")
     private ProdutoMB produtoMB;
+    private List<Cliente> hotListaCliente = new ArrayList<>();
     
     /**
      * Responsavel por alterar as informacoes do Cliente logado
@@ -80,20 +81,15 @@ public class ClienteMB extends BaseController implements Serializable {
      * @param nome
      * @return
      */
-    public List<String> hotListaNome(String nome) {
+    public List<Cliente> obterHotListaCliente() {
     	
     	@Cleanup
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
-        ArrayList<String> retorno = new ArrayList<>();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
-
-        ArrayList<Cliente> tmp = (ArrayList<Cliente>) dao.selectAll();
-        for (Cliente c : tmp) {
-        	retorno.add(c.getNomeCompleto());
-        }
-        return retorno;
+        List<Cliente> tmp = (ArrayList<Cliente>) dao.selectAll();
+        return tmp;
     }
     
     /**
@@ -618,5 +614,13 @@ public class ClienteMB extends BaseController implements Serializable {
 
 	public void setProdutoMB(ProdutoMB produtoMB) {
 		this.produtoMB = produtoMB;
+	}
+
+	public List<Cliente> getHotListaCliente() {
+		return hotListaCliente;
+	}
+
+	public void setHotListaCliente(List<Cliente> hotListaCliente) {
+		this.hotListaCliente = hotListaCliente;
 	}
 }

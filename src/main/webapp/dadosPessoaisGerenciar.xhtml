@@ -55,7 +55,13 @@
 									<div class="form-group">
 			                          <label for="" class="col-md-2 col-sm-3 control-label">Nome</label>
 			                          <div class="col-md-10 col-sm-9">
-			                          	<p:autoComplete id="nomeFiltro" value="#{clienteMB.cliente.nomeFiltro}" completeMethod="#{clienteMB.hotListaNome}" />
+			                          	<p:selectOneMenu id="nomeFiltro" value="#{clienteMB.cliente.nomeFiltro}" converter="clienteConverter" panelStyle="width:100%"
+								                         effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+								            <f:selectItems value="#{clienteMB.hotListaCliente}" var="tmp" itemLabel="#{tmp.nomeCompleto}" itemValue="#{tmp}" />
+								            <p:column>
+								                <h:outputText value="#{t.nomeCompleto}" />
+								            </p:column>
+								        </p:selectOneMenu>
 			                          </div>
 			                        </div>
 			                        <div style="height: 30px;"/>
