@@ -617,6 +617,7 @@ public class ClienteMB extends BaseController implements Serializable {
 	}
 
 	public List<Cliente> getHotListaCliente() {
+		hotListaCliente = obterHotListaCliente();
 		return hotListaCliente;
 	}
 
