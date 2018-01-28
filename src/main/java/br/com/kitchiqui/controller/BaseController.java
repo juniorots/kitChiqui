@@ -96,6 +96,7 @@ public class BaseController {
 		try {
 			tmpPrimeiro = "";
 			getProduto().setTitulo("");
+			getMalaDireta().setEmail("");
 		} catch (Exception e) {
 			// TODO nothing...
 		}

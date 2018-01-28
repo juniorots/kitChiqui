@@ -189,21 +189,30 @@ public class ClienteMB extends BaseController implements Serializable {
     	boolean adicionado = false;
     	CompraProduto cp = new CompraProduto();
     	cp.setCodCompra(EnumStatusCompra.SOLICITADO.getTipo());
+    	List<Produto> listTmp = new ArrayList<>();
+    	listTmp.clear();
     	
     	for (Produto p : getCliente().getListaCarrinho()) {
+
     		if (!Util.equalsProduto(p, this.produtoMB.getProduto())) {
     			this.produtoMB.getProduto().setCompraProduto(cp);
-    			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
+    			listTmp.add(this.produtoMB.getProduto());
     			adicionado = true;
     		} else {
+    			
+    			if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo())) {
+    				Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Ops, já estamos processando esse pedido!");
+    				return;
+				}
+    			
     			if (!p.getQuantidade().equals(this.produtoMB.getProduto().getQuantidade())) {
 					p.setQuantidade(this.produtoMB.getProduto().getQuantidade());
 					adicionado = true;
     			}
     			if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.CANCELADO.getTipo())
-    				|| p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.FINALIZADO.getTipo()) ) {
+    				|| p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.FINALIZADO.getTipo())) {
     				this.produtoMB.getProduto().setCompraProduto(cp);
-        			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
+    				listTmp.add(this.produtoMB.getProduto());
         			adicionado = true;
     			}
     		}
@@ -215,7 +224,19 @@ public class ClienteMB extends BaseController implements Serializable {
     			getCliente().getListaCarrinho().add(this.produtoMB.getProduto());
     			adicionado = true;
     		}
-
+    	
+    	if (!Util.isEmpty(listTmp)) {
+    		boolean contido = false;
+			for (Produto p1 : listTmp) {
+				for (Produto p2 : getCliente().getListaCarrinho()) {
+					if (Util.equalsProduto(p1, p2))
+						contido = true;
+				}
+				if (!contido)
+					getCliente().getListaCarrinho().add(p1);
+			}
+    	}
+    	
     	// last actions...
     	if (adicionado)
     		if (origem.length == 0 || !origem[0].equals("botaoComprar"))
@@ -321,7 +342,8 @@ public class ClienteMB extends BaseController implements Serializable {
      * de analise
      */
     public void retirarProdutoCarrinho() {
-    	List<Produto> tmpList = new ArrayList();
+    	List<Produto> tmpList = new ArrayList<>();
+    	tmpList.clear();
     	for (Produto p : getCliente().getListaCarrinho()) {
     		if (!p.getId().equals(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto")))) {
     			tmpList.add(p);
@@ -491,6 +513,7 @@ public class ClienteMB extends BaseController implements Serializable {
         	entityManager.getTransaction().commit();
         }
         Util.montarMensagem(FacesMessage.SEVERITY_INFO, "OK, pegamos o seu e-mail. Havendo novidade te contamos.");
+        getMalaDireta().setEmail(null);
     }
     
     /**
@@ -541,6 +564,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * @return 
      */
     public void sairSistema() {
+    	setCliente(null);
         Util.gravarClienteSessao( null );
         Util.forward( Constantes.INICIO_SISTEMA );
     }
