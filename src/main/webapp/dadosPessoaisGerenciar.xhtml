@@ -67,12 +67,110 @@
 			                        </div>
 			                        <div style="height: 30px;"/>
 			                        <div class="form-group">
-			                          <div class="col-md-2 col-sm-3">
+			                          <div class="col-md-2 col-sm-3 col-xs-4">
 			                            <h:commandButton class="btn btn-primary btn-block" action="#" value="Pesquisar"/>
 			                          </div>
 			                        </div>
-		                        
-								</div>			                
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-12" style="border:1px; border-style:solid; margin-top: 20px;">
+									<div class="panel panel-default">
+			                      		<div class="form-group">
+					                      <label for="">Nome Completo:</label>
+					                      <label for="">NOME COMPLETO AQUI</label>
+			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">E-mail:</label>
+					                      <label for="">E-MAIL AQUI</label>
+			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">Data de Nascimento:</label>
+					                      <label for="">DATA NASCIMENTO AQUI</label>
+			                    		</div>
+		                    			<div class="form-group">
+					                      <label for="">Enviar E-mail Notificando:</label>
+					                      <h:selectOneMenu id="tmpStatusEnvio" value="#{clienteMB.clienteGestao}" class="form-control" style="width: 30%;">
+				                			<f:selectItem itemValue="0" itemLabel=""/>
+				                			<f:selectItem itemValue="1" itemLabel="Estamos aguardando o pagamento"/>
+				                			<f:selectItem itemValue="2" itemLabel="Preparando o envio do produto"/>
+				                			<f:selectItem itemValue="3" itemLabel="Confirmando a entrega"/>
+					                	  </h:selectOneMenu>
+					                	  <h:commandButton class="btn btn-primary btn-block" action="#" value="Enviar E-mail" style="width: 15%; margin-top: 5px;"/>
+			                    		</div>
+			                    		<div class="form-group">
+					                      	<table class="table">
+					                    	<thead>
+						                        <tr>
+						                        	<th>Item</th>
+						                          	<th>Data</th>
+						                          	<th>Quantidade</th>
+						                          	<th>Preço unitário</th>
+						                          	<th>Status</th>
+						                          	<th></th>
+						                        </tr>
+					                      	</thead>
+					                      	<tbody>
+				                      			<c:forEach var="produto" items="#{clienteMB.clienteGestao.listaCarrinho}">
+				                      			<tr>
+				                      				<td><h:outputText escape="false" value="#{produto.titulo}"/></td>
+				                      				<td>
+				                      					<h:outputText escape="false" value="#{produto.compraProduto.dtCompra}">
+					                        				<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+				                        				</h:outputText>
+				                        			</td>
+				                      				<td><h:outputText escape="false" value="#{produto.quantidade}"/></td>
+				                      				<td><h:outputText escape="false" value="#{produto.precoFormatado}"/></td>
+				                      				<td>
+				                      					<!-- PROCESSANDO -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 1}">
+				                      						<span class="label label-primary">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- FINALIZADO -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 2}">
+				                      						<span class="label label-success">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- CANCELADO -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 3}">
+				                      						<span class="label label-danger">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- PENDENTE -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 4}">
+				                      						<span class="label label-warning">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					
+				                      					<!-- EM ESPERA -->
+				                      					<c:if test="#{produto.compraProduto.codCompra == 5}">
+				                      						<span class="label label-info">
+					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
+					                      					</span>
+				                      					</c:if>
+				                      					<h:selectOneMenu id="tmpStatusPedido" value="#{clienteMB.clienteGestao}" class="form-control" style="width: 30%;">
+								                			<f:selectItem itemValue="1" itemLabel="Processando"/>
+								                			<f:selectItem itemValue="2" itemLabel="Finalizado"/>
+								                			<f:selectItem itemValue="3" itemLabel="Cancelado"/>
+								                			<f:selectItem itemValue="3" itemLabel="Pendente"/>
+								                			<f:selectItem itemValue="3" itemLabel="Em espera"/>
+									                	</h:selectOneMenu>
+									                	<h:commandButton class="btn btn-xs btn-danger btn-pill" action="#"><i class="fa fa-check"/></h:commandButton>
+				                      				</td>
+					                      		</tr>
+					                      		</c:forEach>
+					                      	</tbody>
+					                      	</table>
+			                    		</div>
+									</div>			
+																	                
+								</div>
 			                </div> 
 			            </div>
             		</div>

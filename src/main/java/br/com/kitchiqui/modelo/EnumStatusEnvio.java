@@ -19,22 +19,4 @@ public enum EnumStatusEnvio {
 	public Integer getTipo() {
 		return tipo;
 	}
-	
-	public static String descricaoStatus(Integer cod) {
-		switch (cod) {
-			case 1:
-				return "Processando";
-			case 2:
-				return "Finalizado";
-			case 3:
-				return "Cancelado";
-			case 4:
-				return "Pendente";
-			case 5:
-				return "Em espera";	
-			default:
-				return "Solicitado";
-		}
-	}
-	
 }

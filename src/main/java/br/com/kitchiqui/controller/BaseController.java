@@ -46,6 +46,7 @@ public class BaseController {
 	protected static final String GERENCIAR_CLIENTE = "/dadosPessoaisGerenciar.xhtml";
 	
 	private Cliente cliente= null;
+	private Cliente clienteGestao= null;
 	private Produto produto = null;
 	private Blog blog = null;
 	private MalaDireta malaDireta = null;
@@ -61,6 +62,9 @@ public class BaseController {
 	private String msgCPF;
 	private boolean problemaCartao;
 	private boolean problemaDados;
+	
+	private String tmpStatusEnvio;
+	private String tmpStatusPedido;
 	
 	private String buscarCNPJ;
 	private String buscarEndereco;
@@ -128,9 +132,8 @@ public class BaseController {
 	}
 	
 	public Cliente getCliente() {
-	   if ( Util.isEmpty( this.cliente ) ) {
+	   if ( Util.isEmpty( this.cliente ) ) 
 		   this.cliente = new Cliente();
-	   }
 	   	return this.cliente;
 	  }
 
@@ -375,6 +378,32 @@ public class BaseController {
 
 	public void setUsuarioLogado(boolean usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
+	}
+
+	public Cliente getClienteGestao() {
+		if ( Util.isEmpty( this.clienteGestao ) ) 
+			   this.clienteGestao = new Cliente();
+		return clienteGestao;
+	}
+
+	public void setClienteGestao(Cliente clienteGestao) {
+		this.clienteGestao = clienteGestao;
+	}
+
+	public String getTmpStatusEnvio() {
+		return tmpStatusEnvio;
+	}
+
+	public void setTmpStatusEnvio(String tmpStatusEnvio) {
+		this.tmpStatusEnvio = tmpStatusEnvio;
+	}
+
+	public String getTmpStatusPedido() {
+		return tmpStatusPedido;
+	}
+
+	public void setTmpStatusPedido(String tmpStatusPedido) {
+		this.tmpStatusPedido = tmpStatusPedido;
 	}
 	
 	/**
