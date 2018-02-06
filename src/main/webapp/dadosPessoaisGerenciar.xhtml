@@ -68,7 +68,7 @@
 			                        <div style="height: 30px;"/>
 			                        <div class="form-group">
 			                          <div class="col-md-2 col-sm-3 col-xs-4">
-			                            <h:commandButton class="btn btn-primary btn-block" action="#" value="Pesquisar"/>
+			                            <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.pesquisarCliente}" value="Pesquisar"/>
 			                          </div>
 			                        </div>
 								</div>
@@ -76,19 +76,23 @@
 									<div class="panel panel-default">
 			                      		<div class="form-group">
 					                      <label for="">Nome Completo:</label>
-					                      <label for="">NOME COMPLETO AQUI</label>
+					                      <label for=""><h:outputText escape="false" value="#{clienteMB.clienteGestao.nomeCompleto}"/></label>
 			                    		</div>
 			                    		<div class="form-group">
 					                      <label for="">E-mail:</label>
-					                      <label for="">E-MAIL AQUI</label>
+					                      <label for=""><h:outputText escape="false" value="#{clienteMB.clienteGestao.email}"/></label>
 			                    		</div>
 			                    		<div class="form-group">
 					                      <label for="">Data de Nascimento:</label>
-					                      <label for="">DATA NASCIMENTO AQUI</label>
+					                      <label for="">
+					                      	<h:outputText escape="false" value="#{clienteMB.clienteGestao.dtNascimento}">
+						                      <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+						                    </h:outputText>
+					                      </label>
 			                    		</div>
 		                    			<div class="form-group">
 					                      <label for="">Enviar E-mail Notificando:</label>
-					                      <h:selectOneMenu id="tmpStatusEnvio" value="#{clienteMB.clienteGestao}" class="form-control" style="width: 30%;">
+					                      <h:selectOneMenu id="tmpStatusEnvio" value="#{clienteMB.tmpStatusEnvio}" class="form-control" style="width: 30%;">
 				                			<f:selectItem itemValue="0" itemLabel=""/>
 				                			<f:selectItem itemValue="1" itemLabel="Estamos aguardando o pagamento"/>
 				                			<f:selectItem itemValue="2" itemLabel="Preparando o envio do produto"/>

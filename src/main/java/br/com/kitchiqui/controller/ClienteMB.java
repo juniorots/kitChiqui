@@ -97,6 +97,24 @@ public class ClienteMB extends BaseController implements Serializable {
         return retorno;
     }
     
+    /*
+     * Util na secao de gerenciamento de cliente, pesquisa conforme filtro especificado
+     */
+    public void pesquisarCliente() {
+    	
+    	@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ClienteDAO dao = new ClienteDAO(entityManager);
+        
+        Cliente tmpCliente = new Cliente();
+        tmpCliente.setNomeCompleto(getCliente().getNomeFiltro());
+        tmpCliente.setEmail(getCliente().getEmailFiltro());
+        
+        setClienteGestao(dao.selectUsingFilter(tmpCliente).get(0));
+    }
+    
     /**
      * Util para carregar uma lista de emails a serem
      * exibidos em um auto-complete
