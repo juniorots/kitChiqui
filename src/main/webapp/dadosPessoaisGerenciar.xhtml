@@ -75,23 +75,24 @@
 								<div class="col-md-12 col-sm-12 col-xs-12" style="border:1px; border-style:solid; margin-top: 20px;">
 									<div class="panel panel-default">
 			                      		<div class="form-group">
-					                      <label for="">Nome Completo:</label>
+			                      		  <br />
+					                      <label for=""><i class="fa fa-user"/>&nbsp;&nbsp;</label>
 					                      <label for=""><h:outputText escape="false" value="#{clienteMB.clienteGestao.nomeCompleto}"/></label>
 			                    		</div>
 			                    		<div class="form-group">
-					                      <label for="">E-mail:</label>
+					                      <label for=""><i class="fa fa-envelope"/>&nbsp;&nbsp;</label>
 					                      <label for=""><h:outputText escape="false" value="#{clienteMB.clienteGestao.email}"/></label>
 			                    		</div>
 			                    		<div class="form-group">
-					                      <label for="">Data de Nascimento:</label>
+					                      <label for=""><i class="fa fa-birthday-cake"/>&nbsp;&nbsp;</label>
 					                      <label for="">
 					                      	<h:outputText escape="false" value="#{clienteMB.clienteGestao.dtNascimento}">
-						                      <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+						                      <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
 						                    </h:outputText>
 					                      </label>
 			                    		</div>
 		                    			<div class="form-group">
-					                      <label for="">Enviar E-mail Notificando:</label>
+					                      <label for="">Assunto do E-mail:</label>
 					                      <h:selectOneMenu id="tmpStatusEnvio" value="#{clienteMB.tmpStatusEnvio}" class="form-control" style="width: 30%;">
 				                			<f:selectItem itemValue="0" itemLabel=""/>
 				                			<f:selectItem itemValue="1" itemLabel="Estamos aguardando o pagamento"/>
@@ -108,8 +109,7 @@
 						                          	<th>Data</th>
 						                          	<th>Quantidade</th>
 						                          	<th>Preço unitário</th>
-						                          	<th>Status</th>
-						                          	<th></th>
+						                          	<th width="45%">Status</th>
 						                        </tr>
 					                      	</thead>
 					                      	<tbody>
@@ -158,14 +158,14 @@
 					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
 					                      					</span>
 				                      					</c:if>
-				                      					<h:selectOneMenu id="tmpStatusPedido" value="#{clienteMB.clienteGestao}" class="form-control" style="width: 30%;">
+				                      					<h:selectOneMenu id="tmpStatusPedido" value="#{clienteMB.tmpStatusPedido}" class="form-control" style="width: 30%;">
 								                			<f:selectItem itemValue="1" itemLabel="Processando"/>
 								                			<f:selectItem itemValue="2" itemLabel="Finalizado"/>
 								                			<f:selectItem itemValue="3" itemLabel="Cancelado"/>
 								                			<f:selectItem itemValue="3" itemLabel="Pendente"/>
 								                			<f:selectItem itemValue="3" itemLabel="Em espera"/>
-									                	</h:selectOneMenu>
-									                	<h:commandButton class="btn btn-xs btn-danger btn-pill" action="#"><i class="fa fa-check"/></h:commandButton>
+									                	</h:selectOneMenu><br />
+									                	<h:commandButton class="btn btn-sm btn-warning btn-pill" action="#" value="Atualizar"/>
 				                      				</td>
 					                      		</tr>
 					                      		</c:forEach>

@@ -108,11 +108,11 @@ public class ClienteMB extends BaseController implements Serializable {
         
         ClienteDAO dao = new ClienteDAO(entityManager);
         
-        Cliente tmpCliente = new Cliente();
-        tmpCliente.setNomeCompleto(getCliente().getNomeFiltro());
-        tmpCliente.setEmail(getCliente().getEmailFiltro());
+        HashMap<String, String> campos = new HashMap<>();
+        campos.put("nomeCompleto", getCliente().getNomeCompleto() );
+        campos.put("email", getCliente().getEmail() );
         
-        setClienteGestao(dao.selectUsingFilter(tmpCliente).get(0));
+        setClienteGestao(dao.findByStringFields(campos, true, 0, 1).get(0));
     }
     
     /**
@@ -166,8 +166,16 @@ public class ClienteMB extends BaseController implements Serializable {
      * Secao de configuracoes das informacoes base do cliente
      */
     public void tratarGerenciamentoCliente() {
+    	limparClienteGestao();
     	Util.forward(GERENCIAR_CLIENTE);
     }
+
+    public void limparClienteGestao() {
+    	setClienteGestao(null);
+    	getCliente().setNomeFiltro(null);
+    	getCliente().setEmailFiltro(null);
+    }
+    
     
     /**
      * Secao de configuracoes das informacoes base do cliente

@@ -69,11 +69,11 @@ public class Cliente extends DomainObject {
 	
 	@OneToOne (fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL )
 	@LazyToOne (LazyToOneOption.NO_PROXY)
-	private Endereco endereco;
+	private Endereco endereco = new Endereco();
 	
 	@OneToOne (fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL )
 	@LazyToOne (LazyToOneOption.NO_PROXY)
-	private Pagamento pagamento;
+	private Pagamento pagamento = new Pagamento();
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name="cliente_has_produtos", joinColumns=
@@ -184,9 +184,6 @@ public class Cliente extends DomainObject {
 	}
 
 	public Endereco getEndereco() {
-		if (endereco == null) {
-			this.endereco = new Endereco();
-		}
 		return endereco;
 	}
 
@@ -195,10 +192,6 @@ public class Cliente extends DomainObject {
 	}
 
 	public Pagamento getPagamento() {
-		if (pagamento == null) {
-			pagamento = new Pagamento();
-		}
-			
 		return pagamento;
 	}
 
