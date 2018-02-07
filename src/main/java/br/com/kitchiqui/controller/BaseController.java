@@ -75,6 +75,7 @@ public class BaseController {
 	private Map<Integer, Integer> listaAno = new HashMap();
 	
 	private boolean usuarioLogado;
+	private boolean clientePesquisado = true;
 	
 	private static EntityManagerFactory entityManagerFactory;
 	
@@ -405,7 +406,15 @@ public class BaseController {
 	public void setTmpStatusPedido(String tmpStatusPedido) {
 		this.tmpStatusPedido = tmpStatusPedido;
 	}
-	
+
+	public boolean isClientePesquisado() {
+		return clientePesquisado;
+	}
+
+	public void setClientePesquisado(boolean clientePesquisado) {
+		this.clientePesquisado = clientePesquisado;
+	}
+
 	/**
 	 * PARA TRABALHAR COM LATITUDE E LONGITUDE FAÇA-SE USO DO METODO ABAIXO
 	   public String getLatLong(String CEP) throws Exception {

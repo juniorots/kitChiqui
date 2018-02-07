@@ -108,11 +108,22 @@ public class ClienteMB extends BaseController implements Serializable {
         
         ClienteDAO dao = new ClienteDAO(entityManager);
         
+        if (Util.isEmpty(getCliente().getNomeFiltro()) 
+        	&& Util.isEmpty(getCliente().getEmailFiltro()) ) {
+        	setClientePesquisado(true);
+        	setClienteGestao(null);
+        	return;
+        }
+        
         HashMap<String, String> campos = new HashMap<>();
-        campos.put("nomeCompleto", getCliente().getNomeCompleto() );
-        campos.put("email", getCliente().getEmail() );
+        if (!Util.isEmpty(getCliente().getNomeFiltro()))
+        	campos.put("nomeCompleto", getCliente().getNomeFiltro() );
+
+        if (!Util.isEmpty(getCliente().getEmailFiltro()))
+        	campos.put("email", getCliente().getEmailFiltro() );
         
         setClienteGestao(dao.findByStringFields(campos, true, 0, 1).get(0));
+        setClientePesquisado(Util.isEmpty(getClienteGestao()));
     }
     
     /**
@@ -174,6 +185,7 @@ public class ClienteMB extends BaseController implements Serializable {
     	setClienteGestao(null);
     	getCliente().setNomeFiltro(null);
     	getCliente().setEmailFiltro(null);
+    	setClientePesquisado(true);
     }
     
     
