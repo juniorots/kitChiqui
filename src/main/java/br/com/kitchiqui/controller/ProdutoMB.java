@@ -24,6 +24,7 @@ import br.com.kitchiqui.base.MalaDiretaDAO;
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.EnumClasseProduto;
+import br.com.kitchiqui.modelo.EnumStatusCompra;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Parceiro;
 import br.com.kitchiqui.modelo.Produto;

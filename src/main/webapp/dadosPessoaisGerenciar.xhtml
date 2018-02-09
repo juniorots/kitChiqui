@@ -40,7 +40,7 @@
 	    		<div class="row">
 	            	<div class="col-xs-12">
 	            		<div class="btn-group" role="group" aria-label="...">
-	            			<h:commandLink class="btn btn-default active" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar cliente</h:commandLink>
+	            			<h:commandLink class="btn btn-default active" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar Cliente</h:commandLink>
 	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
                 			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
                 			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>
@@ -162,17 +162,21 @@
 					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
 					                      					</span>
 				                      					</c:if>
-				                      					<h:selectOneMenu id="tmpStatusPedido" value="#{clienteMB.tmpStatusPedido}" class="form-control">
-								                			<f:selectItem itemValue="1" itemLabel="Processando"/>
-								                			<f:selectItem itemValue="2" itemLabel="Finalizado"/>
-								                			<f:selectItem itemValue="3" itemLabel="Cancelado"/>
-								                			<f:selectItem itemValue="3" itemLabel="Pendente"/>
-								                			<f:selectItem itemValue="3" itemLabel="Em espera"/>
-									                	</h:selectOneMenu><br />
-									                	<h:commandButton class="btn btn-sm btn-warning btn-pill" action="#" value="Atualizar"/>
+				                      					
+									                	<h:commandButton class="btn btn-sm btn-warning btn-pill" action="#{clienteMB.atualizarStatusPedido}" value="Atualizar">
+									                		<f:param name="idProduto" value="#{produto.id}"/>
+									                	</h:commandButton>
 				                      				</td>
 					                      		</tr>
 					                      		</c:forEach>
+					                      		<h:selectOneMenu id="tmpStatusPedido" value="#{clienteMB.tmpStatusPedido}" class="form-control">
+								                			<f:selectItem itemValue="0" itemLabel=""/>
+								                			<f:selectItem itemValue="1" itemLabel="Processando"/>
+								                			<f:selectItem itemValue="2" itemLabel="Finalizado"/>
+								                			<f:selectItem itemValue="3" itemLabel="Cancelado"/>
+								                			<f:selectItem itemValue="4" itemLabel="Pendente"/>
+								                			<f:selectItem itemValue="5" itemLabel="Em espera"/>
+									                	</h:selectOneMenu><br />
 					                      	</tbody>
 					                      	</table>
 			                    		</div>

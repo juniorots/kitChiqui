@@ -6,6 +6,7 @@
 package br.com.kitchiqui.modelo;
 
 public enum EnumStatusCompra {
+	INEXISTENTE(0),
 	PROCESSANDO(1),
 	FINALIZADO(2),
 	CANCELADO(3),

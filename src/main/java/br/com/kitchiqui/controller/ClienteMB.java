@@ -30,6 +30,7 @@ import javax.persistence.Persistence;
 import lombok.Cleanup;
 import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.base.MalaDiretaDAO;
+import br.com.kitchiqui.base.ProdutoDAO;
 import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.CompraProduto;
 import br.com.kitchiqui.modelo.EnumEnvio;
@@ -623,6 +624,27 @@ public class ClienteMB extends BaseController implements Serializable {
 
     public void setListaCliente(Collection<Cliente> listaCliente) {
         this.listaCliente = listaCliente;
+    }
+    
+    /**
+     * No gerenciamento do produto, util quando o operador for atualizar o status do pedido.
+     */
+    public void atualizarStatusPedido() {
+    	
+    	@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+System.out.println(getTmpStatusPedido());        
+        if (Util.isEmpty(getTmpStatusPedido()) 
+        		|| getTmpStatusPedido().equals(EnumStatusCompra.INEXISTENTE.getTipo().toString()))
+        	return;
+        
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+//        setProduto(dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto"))));
+//        getProduto().getCompraProduto().setCodCompra(Integer.parseInt(getTmpStatusPedido()));        
+//        
+//        dao.update(getProduto());
+//        entityManager.getTransaction().commit();
     }
     
     /**
