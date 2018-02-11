@@ -162,21 +162,21 @@
 					                      						<h:outputText escape="false" value="#{produto.compraProduto.statusCompra}"/>
 					                      					</span>
 				                      					</c:if>
-				                      					
-									                	<h:commandButton class="btn btn-sm btn-warning btn-pill" action="#{clienteMB.atualizarStatusPedido}" value="Atualizar">
-									                		<f:param name="idProduto" value="#{produto.id}"/>
-									                	</h:commandButton>
-				                      				</td>
-					                      		</tr>
-					                      		</c:forEach>
-					                      		<h:selectOneMenu id="tmpStatusPedido" value="#{clienteMB.tmpStatusPedido}" class="form-control">
+				                      					<h:selectOneMenu id="tmpStatusPedido" value="#{clienteMB.tmpStatusPedido}" class="form-control">
 								                			<f:selectItem itemValue="0" itemLabel=""/>
 								                			<f:selectItem itemValue="1" itemLabel="Processando"/>
 								                			<f:selectItem itemValue="2" itemLabel="Finalizado"/>
 								                			<f:selectItem itemValue="3" itemLabel="Cancelado"/>
 								                			<f:selectItem itemValue="4" itemLabel="Pendente"/>
 								                			<f:selectItem itemValue="5" itemLabel="Em espera"/>
+								                			<f:ajax listener="#{clienteMB.tratarSelecaoStatusPedido}" render="result"/>
 									                	</h:selectOneMenu><br />
+									                	<h:commandButton class="btn btn-sm btn-warning btn-pill" action="#{clienteMB.atualizarStatusPedido}" value="Atualizar">
+									                		<f:param name="idProduto" value="#{produto.id}"/>
+									                	</h:commandButton>
+				                      				</td>
+					                      		</tr>
+					                      		</c:forEach>
 					                      	</tbody>
 					                      	</table>
 			                    		</div>

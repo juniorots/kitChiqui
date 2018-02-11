@@ -626,6 +626,10 @@ public class ClienteMB extends BaseController implements Serializable {
         this.listaCliente = listaCliente;
     }
     
+    public void tratarSelecaoStatusPedido() {
+    	setTmpUltimoStatusPedido(getTmpStatusPedido()); 
+    }
+    
     /**
      * No gerenciamento do produto, util quando o operador for atualizar o status do pedido.
      */
@@ -634,9 +638,8 @@ public class ClienteMB extends BaseController implements Serializable {
     	@Cleanup
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
-System.out.println(getTmpStatusPedido());        
-        if (Util.isEmpty(getTmpStatusPedido()) 
-        		|| getTmpStatusPedido().equals(EnumStatusCompra.INEXISTENTE.getTipo().toString()))
+        if (Util.isEmpty(getTmpUltimoStatusPedido()) 
+        		|| getTmpUltimoStatusPedido().equals(EnumStatusCompra.INEXISTENTE.getTipo().toString()))
         	return;
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);

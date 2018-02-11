@@ -65,6 +65,7 @@ public class BaseController {
 	
 	private String tmpStatusEnvio;
 	private String tmpStatusPedido;
+	private String tmpUltimoStatusPedido;
 	
 	private String buscarCNPJ;
 	private String buscarEndereco;
@@ -415,6 +416,14 @@ public class BaseController {
 		this.clientePesquisado = clientePesquisado;
 	}
 
+	public String getTmpUltimoStatusPedido() {
+		return tmpUltimoStatusPedido;
+	}
+
+	public void setTmpUltimoStatusPedido(String tmpUltimoStatusPedido) {
+		this.tmpUltimoStatusPedido = tmpUltimoStatusPedido;
+	}
+	
 	/**
 	 * PARA TRABALHAR COM LATITUDE E LONGITUDE FAÇA-SE USO DO METODO ABAIXO
 	   public String getLatLong(String CEP) throws Exception {
