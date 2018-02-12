@@ -76,6 +76,7 @@ public class BaseController {
 	private Map<Integer, Integer> listaAno = new HashMap();
 	
 	private boolean usuarioLogado;
+	private boolean usuarioAdministrador;
 	private boolean clientePesquisado = true;
 	
 	private static EntityManagerFactory entityManagerFactory;
@@ -377,7 +378,7 @@ public class BaseController {
 	public boolean isUsuarioLogado() {
 		return !Util.isEmpty(Util.captarClienteSessao());
 	}
-
+	
 	public void setUsuarioLogado(boolean usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 	}
@@ -422,6 +423,21 @@ public class BaseController {
 
 	public void setTmpUltimoStatusPedido(String tmpUltimoStatusPedido) {
 		this.tmpUltimoStatusPedido = tmpUltimoStatusPedido;
+	}
+
+	public boolean isUsuarioAdministrador() {
+		Cliente c = (Cliente) Util.captarClienteSessao();
+		if (c.getEmail().equals(Constantes.ADMINISTRADOR_1)
+				|| c.getEmail().equals(Constantes.ADMINISTRADOR_2)) {
+			usuarioAdministrador = true;
+		} else {
+			usuarioAdministrador = false;
+		}
+		return usuarioAdministrador;
+	}
+
+	public void setUsuarioAdministrador(boolean usuarioAdministrador) {
+		this.usuarioAdministrador = usuarioAdministrador;
 	}
 	
 	/**

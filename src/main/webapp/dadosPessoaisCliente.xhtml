@@ -38,7 +38,9 @@
 	    		<div class="row">
 	            	<div class="col-xs-12">
 	            		<div class="btn-group" role="group" aria-label="...">
-	            			<h:commandLink class="btn btn-default" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar Cliente</h:commandLink>
+	            			<c:if test="#{usuarioAdministrador}">
+	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar Cliente</h:commandLink>
+	            			</c:if>
 	            			<h:commandLink class="btn btn-default active" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
                 			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
                 			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>

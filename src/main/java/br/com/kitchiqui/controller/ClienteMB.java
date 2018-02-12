@@ -118,7 +118,8 @@ public class ClienteMB extends BaseController implements Serializable {
         
         List<Cliente> tmp = (ArrayList<Cliente>) dao.selectAll();
         for (Cliente c : tmp) {
-        	if (c.getNomeCompleto().toLowerCase().contains(nome))
+        	if (!Util.isEmpty(c.getNomeCompleto()) 
+        			&& c.getNomeCompleto().toLowerCase().contains(nome))
         		retorno.add(c.getNomeCompleto());
         }
         return retorno;
