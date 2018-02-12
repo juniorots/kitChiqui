@@ -191,42 +191,6 @@ public class ClienteMB extends BaseController implements Serializable {
     
     
     /**
-     * Secao de configuracoes das informacoes base do cliente
-     */
-    public void verificarDadosPessoais() {
-    	Util.forward(DADOS_PESSOAIS_CLIENTE);
-    }
-    
-    /**
-     * Secao de configuracoes das informacoes base do cliente
-     */
-    public void verificarDadosPessoaisAlteraSenha() {
-    	Util.forward(DADOS_PESSOAIS_CLIENTE_ALTERA_SENHA);
-    }
-    
-    /**
-     * Secao de configuracoes das informacoes base do cliente
-     */
-    public void verificarDadosPessoaisEndereco() {
-    	procuraPorCEP();
-    	Util.forward(DADOS_PESSOAIS_CLIENTE_ENDERECO);
-    }
-    
-    /**
-     * Secao de configuracoes das informacoes base do cliente
-     */
-    public void verificarDadosPessoaisPedidos() {
-    	Util.forward(DADOS_PESSOAIS_CLIENTE_PEDIDOS);
-    }
-    
-    /**
-     * Tratando da recuperacao de conta
-     */
-    public void direcionarRecuperarConta() {
-    	Util.forward(RECUPERA_SENHA);
-    }
-    
-    /**
      * Tratando da insercao do produto novo no carrinho
      */
     public void adicionarCarrinho(String... origem) {
@@ -371,6 +335,7 @@ public class ClienteMB extends BaseController implements Serializable {
     			p.setCompraProduto(cp);
     		}
     		p.getCompraProduto().setCodCompra(EnumStatusCompra.PROCESSANDO.getTipo());
+    		p.getCompraProduto().setStatusCompra(EnumStatusCompra.descricaoStatus(p.getCompraProduto().getCodCompra()));
     		p.getCompraProduto().setDtCompra(Calendar.getInstance().getTime());
     	}
     	
@@ -614,22 +579,6 @@ public class ClienteMB extends BaseController implements Serializable {
         Util.forward( Constantes.INICIO_SISTEMA );
     }
     
-    public Collection<Cliente> getListaCliente() {
-        if (listaCliente == null) {
-            return new ArrayList<Cliente>();
-        }
-    
-        return listaCliente;
-    }
-
-    public void setListaCliente(Collection<Cliente> listaCliente) {
-        this.listaCliente = listaCliente;
-    }
-    
-    public void tratarSelecaoStatusPedido() {
-    	setTmpUltimoStatusPedido(getTmpStatusPedido()); 
-    }
-    
     /**
      * No gerenciamento do produto, util quando o operador for atualizar o status do pedido.
      */
@@ -643,11 +592,15 @@ public class ClienteMB extends BaseController implements Serializable {
         	return;
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
-//        setProduto(dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto"))));
-//        getProduto().getCompraProduto().setCodCompra(Integer.parseInt(getTmpStatusPedido()));        
-//        
-//        dao.update(getProduto());
-//        entityManager.getTransaction().commit();
+        setProduto(dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto"))));
+        getProduto().getCompraProduto().setCodCompra(Integer.parseInt(getTmpUltimoStatusPedido()));        
+        getProduto().getCompraProduto().setStatusCompra(EnumStatusCompra.descricaoStatus(getProduto().getCompraProduto().getCodCompra()));
+        
+        dao.update(getProduto());
+        entityManager.getTransaction().commit();
+        
+        // update search...
+        pesquisarCliente();
     }
     
     /**
@@ -708,4 +661,56 @@ public class ClienteMB extends BaseController implements Serializable {
 	public void setProdutoMB(ProdutoMB produtoMB) {
 		this.produtoMB = produtoMB;
 	}
+	
+	/**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoais() {
+    	Util.forward(DADOS_PESSOAIS_CLIENTE);
+    }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoaisAlteraSenha() {
+    	Util.forward(DADOS_PESSOAIS_CLIENTE_ALTERA_SENHA);
+    }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoaisEndereco() {
+    	procuraPorCEP();
+    	Util.forward(DADOS_PESSOAIS_CLIENTE_ENDERECO);
+    }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void verificarDadosPessoaisPedidos() {
+    	Util.forward(DADOS_PESSOAIS_CLIENTE_PEDIDOS);
+    }
+    
+    /**
+     * Tratando da recuperacao de conta
+     */
+    public void direcionarRecuperarConta() {
+    	Util.forward(RECUPERA_SENHA);
+    }
+    
+    public Collection<Cliente> getListaCliente() {
+        if (listaCliente == null) {
+            return new ArrayList<Cliente>();
+        }
+    
+        return listaCliente;
+    }
+
+    public void setListaCliente(Collection<Cliente> listaCliente) {
+        this.listaCliente = listaCliente;
+    }
+    
+    public void tratarSelecaoStatusPedido() {
+    	setTmpUltimoStatusPedido(getTmpStatusPedido()); 
+    }
 }

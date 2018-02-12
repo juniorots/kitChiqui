@@ -13,11 +13,14 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
 import br.com.kitchiqui.util.Util;
@@ -91,6 +94,8 @@ public class Produto extends DomainObject {
 	
 	private String srcImagemCarrinho;
 	
+	@OneToOne (fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL )
+	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private CompraProduto compraProduto;
 	
 	public ContadorClasseProduto getContadorClasse() {
