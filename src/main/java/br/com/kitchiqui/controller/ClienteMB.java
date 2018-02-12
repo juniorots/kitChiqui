@@ -51,6 +51,32 @@ public class ClienteMB extends BaseController implements Serializable {
     @ManagedProperty(value="#{produtoMB}")
     private ProdutoMB produtoMB;
     
+    /*
+     * Atualizando informativo ao usuario
+     */
+    public void notificarCliente() {
+    	boolean status = false;
+    	if (getTmpStatusEnvio().equals(EnumStatusEnvio.SEM_ACAO.getTipo().toString())) 
+    		return;
+    	
+    	if (!Util.isEmpty(getClienteGestao())) {
+    		if (getTmpStatusEnvio().equals(EnumStatusEnvio.AGUARDANDO_PAGAMENTO.getTipo().toString()))
+    			status = EnviarEmail.enviarEmailComercial(getClienteGestao(), EnumStatusEnvio.AGUARDANDO_PAGAMENTO.getTipo());
+    		
+    		if (getTmpStatusEnvio().equals(EnumStatusEnvio.PREPARANDO_ENVIO.getTipo().toString()))
+    			status = EnviarEmail.enviarEmailComercial(getClienteGestao(), EnumStatusEnvio.PREPARANDO_ENVIO.getTipo());
+    		
+    		if (getTmpStatusEnvio().equals(EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo().toString()))
+    			status = EnviarEmail.enviarEmailComercial(getClienteGestao(), EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo());
+    		
+    		if (status == true) {
+    			Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Um E-mail foi enviado ao cliente :-)");
+    		} else {
+    			Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Encontramos um problema no envio do E-mail :-(");
+    		}
+    	}
+    }
+    
     /**
      * Responsavel por alterar as informacoes do Cliente logado
      */

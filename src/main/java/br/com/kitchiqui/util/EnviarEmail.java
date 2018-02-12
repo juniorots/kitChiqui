@@ -133,7 +133,7 @@ public class EnviarEmail {
      * Util para o caso do cliente efetuar uma compra no site ou notifica-lo do status do pedido
      * @param cliente
      */
-    public static void enviarEmailComercial(Cliente cliente, Integer statusEnvio) {
+    public static boolean enviarEmailComercial(Cliente cliente, Integer statusEnvio) {
     	ArrayList<String> email = new ArrayList<>();
         StringBuilder tmp = new StringBuilder();
         StringBuilder assunto =  new StringBuilder();
@@ -141,15 +141,24 @@ public class EnviarEmail {
 		email.add(cliente.getEmail());
         
         String produtos = "";
+        boolean hasProduto = false;
         for (Produto p : cliente.getListaCarrinho()) {
-       	if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo()))  
+	       	if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo())) {  
 				produtos += "<tr>"
 						+ "<td>"+p.getTitulo()+"</td>"
 						+ "<td>"+p.getQuantidade()+"</td>"
 						+ "<td>"+p.getPrecoFormatado()+"</td>"
 						+ "<td>"+Util.formatarValorMoeda(p.getPreco() * p.getQuantidade())+"</td>"
 						+ "</tr>";
+				hasProduto = true;
+	       	}
         }
+
+        /**
+         * Verificando se ha algum produto com a situacao: PROCESSANDO	
+         */
+        if (!hasProduto) 
+        	return false;
         
         String tipoPagamento = "";
         switch (cliente.getPagamento().getTipoPagamento()) {
@@ -271,6 +280,7 @@ public class EnviarEmail {
        	);
         
         EnviarEmail.tratarEnvio(email, assunto.toString(), tmp.toString(), EnumTipoEmail.COMPRA_PRODUTO.getTipo());
+        return true; // sucess...
     }
     
     /**
