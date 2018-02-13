@@ -105,7 +105,10 @@
 				                			<f:selectItem itemValue="2" itemLabel="Preparando o envio do produto"/>
 				                			<f:selectItem itemValue="3" itemLabel="Confirmando a entrega"/>
 					                	  </h:selectOneMenu>
-					                	  <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.notificarCliente}" value="Enviar E-mail" style="width: 15%; margin-top: 5px;"/>
+					                	  <input type="button" id="btnNotificar" class="btn btn-primary btn-block" value="Enviar E-mail" style="width: 15%; margin-top: 5px;"/>
+					                	  <h:commandLink id="lnkNotificar" style="display:none" action="#{clienteMB.notificarCliente}">
+					                	  	<f:ajax/>
+					                	  </h:commandLink>
 			                    		</div>
 			                    		<div class="form-group">
 					                      	<table class="table">
@@ -193,7 +196,26 @@
             	</div>
 	    	</div>
 	    </section>
-        
+		<script type="text/javascript">
+	        $('#btnNotificar').click(function() {
+				$.confirm({
+					title: 'Confirmar envio',
+					content: 'Confirma o envio do e-mail?',
+					buttons: {
+						sim: {
+							text: "Sim",
+							action: function() {
+								$('lnkNotificar').click();
+							}
+						},	
+						nao: {
+							text: "Não"
+						}
+					}	
+				});
+			});
+        </script>
+       
         </h:form>
 		</ui:define>
     </ui:composition>

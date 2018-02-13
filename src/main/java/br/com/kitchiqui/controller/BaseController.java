@@ -427,7 +427,8 @@ public class BaseController {
 
 	public boolean isUsuarioAdministrador() {
 		Cliente c = (Cliente) Util.captarClienteSessao();
-		if (c.getEmail().equals(Constantes.ADMINISTRADOR_1)
+		if (!Util.isEmpty(c) 
+				&& c.getEmail().equals(Constantes.ADMINISTRADOR_1)
 				|| c.getEmail().equals(Constantes.ADMINISTRADOR_2)) {
 			usuarioAdministrador = true;
 		} else {
