@@ -106,9 +106,7 @@
 				                			<f:selectItem itemValue="3" itemLabel="Confirmando a entrega"/>
 					                	  </h:selectOneMenu>
 					                	  <input type="button" id="btnNotificar" class="btn btn-primary btn-block" value="Enviar E-mail" style="width: 15%; margin-top: 5px;"/>
-					                	  <h:commandLink id="lnkNotificar" style="display:none" action="#{clienteMB.notificarCliente}">
-					                	  	<f:ajax/>
-					                	  </h:commandLink>
+					                	  <h:commandLink id="lnkNotificar" action="#{clienteMB.notificarCliente}" style="display:none"/>
 			                    		</div>
 			                    		<div class="form-group">
 					                      	<table class="table">
@@ -199,13 +197,16 @@
 		<script type="text/javascript">
 	        $('#btnNotificar').click(function() {
 				$.confirm({
-					title: 'Confirmar envio',
+					theme: 'supervan',
+					title: 'Notificar cliente',
 					content: 'Confirma o envio do e-mail?',
 					buttons: {
 						sim: {
 							text: "Sim",
+							//btnClass: 'btn-blue',
+							keys: ['enter'],
 							action: function() {
-								$('lnkNotificar').click();
+								$('#formDadosPessoais\\:lnkNotificar').click();
 							}
 						},	
 						nao: {
