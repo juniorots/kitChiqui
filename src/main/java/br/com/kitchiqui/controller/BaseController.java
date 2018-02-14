@@ -46,7 +46,7 @@ public class BaseController {
 	protected static final String GERENCIAR_CLIENTE = "/dadosPessoaisGerenciar.xhtml";
 	
 	private Cliente cliente= null;
-	private Cliente clienteGestao= null;
+	private Cliente clienteGestao = new Cliente();
 	private Produto produto = null;
 	private Blog blog = null;
 	private MalaDireta malaDireta = null;
@@ -384,8 +384,6 @@ public class BaseController {
 	}
 
 	public Cliente getClienteGestao() {
-		if ( Util.isEmpty( this.clienteGestao ) ) 
-			   this.clienteGestao = new Cliente();
 		return clienteGestao;
 	}
 

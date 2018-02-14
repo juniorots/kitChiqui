@@ -133,6 +133,7 @@ public class ClienteMB extends BaseController implements Serializable {
     	@Cleanup
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
+        List<Cliente> tmp = new ArrayList<>();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
         
@@ -143,6 +144,7 @@ public class ClienteMB extends BaseController implements Serializable {
         	return;
         }
         
+        setClienteGestao(null);
         HashMap<String, String> campos = new HashMap<>();
         if (!Util.isEmpty(getCliente().getNomeFiltro()))
         	campos.put("nomeCompleto", getCliente().getNomeFiltro() );
@@ -150,7 +152,10 @@ public class ClienteMB extends BaseController implements Serializable {
         if (!Util.isEmpty(getCliente().getEmailFiltro()))
         	campos.put("email", getCliente().getEmailFiltro() );
         
-        setClienteGestao(dao.findByStringFields(campos, true, 0, 1).get(0));
+        tmp = dao.findByStringFields(campos, true, 0, 1);
+        if (!Util.isEmpty(tmp)) 
+        	setClienteGestao(tmp.get(0));
+        
         setClientePesquisado(Util.isEmpty(getClienteGestao()));
     }
     

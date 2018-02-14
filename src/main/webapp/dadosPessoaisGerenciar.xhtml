@@ -59,14 +59,18 @@
 									<div class="form-group">
 			                          <label for="" class="col-md-2 col-sm-3 control-label">Nome</label>
 			                          <div class="col-md-10 col-sm-9">
-								        <p:autoComplete id="nomeFiltro" value="#{clienteMB.cliente.nomeFiltro}" completeMethod="#{clienteMB.hotListaCliente}" style="text-transform: lowercase !important"/>
+								        <p:autoComplete id="nomeFiltro" value="#{clienteMB.cliente.nomeFiltro}" 
+								        	completeMethod="#{clienteMB.hotListaCliente}" style="text-transform: lowercase !important"
+								        		onkeypress="if (event.keyCode == 13) return;"/>
 			                          </div>
 			                        </div>
 			                        <div style="height: 30px;"/>
 			                        <div class="form-group">
 			                          <label for="" class="col-md-2 col-sm-3 control-label">E-mail</label>
 			                          <div class="col-md-10 col-sm-9">
-			                          <p:autoComplete id="emailFiltro" value="#{clienteMB.cliente.emailFiltro}" completeMethod="#{clienteMB.hotListaEmail}" style="text-transform: lowercase !important"/>
+			                          <p:autoComplete id="emailFiltro" value="#{clienteMB.cliente.emailFiltro}" 
+			                          	completeMethod="#{clienteMB.hotListaEmail}" style="text-transform: lowercase !important"
+			                          		onkeypress="if (event.keyCode == 13) return;"/>
 			                          </div>
 			                        </div>
 			                        <div style="height: 30px;"/>
