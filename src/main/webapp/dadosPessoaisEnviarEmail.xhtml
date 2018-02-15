@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template/mestre.xhtml">
+   	<ui:define name="centro">
+    	<h:form id="formDadosPessoais" role="form" >
+    	<c:set var="clientePesquisado" value="#{clienteMB.clientePesquisado}"/>
+    	
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+        <section class="lightSection clearfix pageHeader">
+	    	<div class="container">
+	          <div class="row">
+	            <div class="col-xs-6">
+	              <div class="page-title">
+	                <h2>MEUS DADOS</h2>
+	              </div>
+	            </div>
+	            <div class="col-xs-6">
+	              <ol class="breadcrumb pull-right">
+	                <li>
+	                  <h:commandLink action="#{clienteMB.paginaPrincipal}">INÍCIO</h:commandLink>
+	                </li>
+	                <li class="active">DADOS PESSOAIS</li>
+	              </ol>
+	            </div>
+	          </div>
+	        </div>
+	    </section>
+        
+	    <section class="mainContent clearfix userProfile">
+	    	<div class="container">
+	    		<div class="row">
+	            	<div class="col-xs-12">
+	            		<div class="btn-group" role="group" aria-label="...">
+	            			<c:if test="#{usuarioAdministrador}">
+	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar Cliente</h:commandLink>
+	            				<h:commandLink class="btn btn-default active" action="#{clienteMB.tratarEmailPersonalizado}"><i class="fa fa-envelope" aria-hidden="true"></i>E-mail</h:commandLink>
+	            			</c:if>
+	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
+                			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>
+	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisAlteraSenha}"><i class="fa fa-key" aria-hidden="true"></i>Alteração de Senha</h:commandLink>
+	            		</div>
+	            	</div>
+            	</div>
+            	
+            	<div class="row">
+            		<div class="col-xs-12">
+            			<div class="innerWrapper profile">
+			                <div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+			                        <div class="form-group">
+			                          <label for="" class="col-md-2 col-sm-3 control-label">E-mail</label>
+			                          <div class="col-md-10 col-sm-9">
+			                          <p:autoComplete id="emailFiltro" value="#{clienteMB.cliente.emailFiltro}" 
+			                          	completeMethod="#{clienteMB.hotListaEmail}" style="text-transform: lowercase !important"
+			                          		onkeypress="if (event.keyCode == 13) return;"/>
+			                          </div>
+			                        </div>
+								</div>
+								
+								<div id="resultado" class="col-md-12 col-sm-12 col-xs-12" style="border:1px; border-style:solid; border-color: #47BAC1; margin-top: 20px;">
+									<div class="panel panel-default">
+										<div class="form-group">
+											<p:textEditor widgetVar="editor2" value="#{editorView.text2}" height="300" style="margin-bottom:10px" placeholder="Digite o texto do e-mail...">
+										        <f:facet name="toolbar">
+										             <span class="ql-formats">
+										                <button class="ql-bold"></button>
+										                <button class="ql-italic"></button>
+										                <button class="ql-underline"></button>
+										                <button class="ql-strike"></button>
+										            </span>
+										            <span class="ql-formats">
+										                <select class="ql-font"></select>
+										                <select class="ql-size"></select>
+										            </span>
+										        </f:facet>
+										    </p:textEditor>
+									    </div>
+									    <div style="height: 30px;"/>
+			                        	<div class="form-group">
+				                          <div class="col-md-2 col-sm-3 col-xs-4">
+				                            <h:commandButton id="btnPesquisar" class="btn btn-primary btn-block" action="#{clienteMB.pesquisarCliente}" value="Pesquisar"/>
+				                          </div>
+				                        </div>
+									</div>			
+								</div>
+								
+			                </div> 
+			            </div>
+            		</div>
+            	</div>
+	    	</div>
+	    </section>
+       
+        </h:form>
+		</ui:define>
+    </ui:composition>

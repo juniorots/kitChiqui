@@ -40,6 +40,7 @@
 	            		<div class="btn-group" role="group" aria-label="...">
 	            			<c:if test="#{usuarioAdministrador}">
 	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar Cliente</h:commandLink>
+	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarEmailPersonalizado}"><i class="fa fa-envelope" aria-hidden="true"></i>E-mail</h:commandLink>
 	            			</c:if>
 	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
                 			<h:commandLink class="btn btn-default active" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
