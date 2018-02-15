@@ -57,12 +57,15 @@
             			<div class="innerWrapper profile">
 			                <div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+					                	<small style="color: red">(*) Obrigatório</small>
+					                </div>
 			                        <div class="form-group">
-			                          <label for="" class="col-md-2 col-sm-2 control-label">E-mail</label>
+			                          <label for="" class="col-md-2 col-sm-2 control-label"><span style="color: red">*</span>&nbsp;E-mail</label>
 			                          <div class="col-md-10 col-sm-9">
 			                          <p:autoComplete id="emailFiltro" value="#{clienteMB.cliente.emailFiltro}" 
 			                          	completeMethod="#{clienteMB.hotListaEmail}" style="text-transform: lowercase !important"
-			                          		onkeypress="if (event.keyCode == 13) return;"/>
+			                          		onkeypress="if (event.keyCode == 13) return;" required="true" requiredMessage="E-mail obrigatório"/>
 			                          </div>
 			                        </div>
 								</div>

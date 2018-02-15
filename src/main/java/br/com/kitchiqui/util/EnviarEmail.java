@@ -130,6 +130,43 @@ public class EnviarEmail {
     }
     
     /**
+     * Quando o operador deseja enviar um e-mail com conteúdo
+     * diferente do padrao, necessario conforme a necessidade especifica
+     * do caso.
+     * @param conteudo
+     * @return
+     */
+    public static boolean enviarEmailCustomizado(String email, String conteudo) {
+    	ArrayList<String> tmpEmail = new ArrayList<>();
+    	StringBuilder tmp = new StringBuilder();
+    	StringBuilder assunto = new StringBuilder();
+    	
+    	tmpEmail.add(email);
+    	
+    	tmp.delete(0, tmp.length());
+    	assunto.delete(0, tmp.length());
+
+        tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
+        tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
+        tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
+        tmp.append("<div style='margin-top: 20px; margin-left: 15px;'>");
+        tmp.append(conteudo);
+        tmp.append("</div>");
+        tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
+        tmp.append("<br /><div style='background-color: #D3D3D3; margin-bottom: 10px; width: 80%; text-align: justify'>");
+        tmp.append("Visite-nos: " + Constantes.SITE_KITCHIQUI);
+        tmp.append("<br /><br />Atenciosamente,");
+        tmp.append("<br />");
+        tmp.append("<strong><span style='font-size: 12px'>KitChiqui Serviços Ltda.</span></strong>");
+        tmp.append("</div>");
+        
+        assunto.append("Informativo - KitChiqui.com.br (Notificação)");
+        EnviarEmail.tratarEnvio(tmpEmail, assunto.toString(), tmp.toString(), EnumTipoEmail.NOTIFICACAO_ADMINISTRADOR.getTipo());
+    	
+    	return true;
+    }
+    
+    /**
      * Util para o caso do cliente efetuar uma compra no site ou notifica-lo do status do pedido
      * @param cliente
      */

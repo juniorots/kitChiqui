@@ -51,8 +51,19 @@ public class ClienteMB extends BaseController implements Serializable {
     @ManagedProperty(value="#{produtoMB}")
     private ProdutoMB produtoMB;
     
+    /**
+     * Tratativa para envio do e-mail customizado
+     */
     public void enviarEmailCustomizado() {
-    	// TODO: Implementar...
+    	boolean status = false;
+    	
+    	status = EnviarEmail.enviarEmailCustomizado(getCliente().getEmailFiltro(), getTmpCorpoEmail());
+    	
+    	if (status) {
+			Util.montarMensagem(FacesMessage.SEVERITY_INFO, "E-mail enviado :-)");
+		} else {
+			Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Encontramos um problema no envio do E-mail :-(");
+		}
     }
     
     /*
@@ -73,8 +84,8 @@ public class ClienteMB extends BaseController implements Serializable {
     		if (getTmpStatusEnvio().equals(EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo().toString()))
     			status = EnviarEmail.enviarEmailComercial(getClienteGestao(), EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo());
     		
-    		if (status == true) {
-    			Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Um E-mail foi enviado ao cliente :-)");
+    		if (status) {
+    			Util.montarMensagem(FacesMessage.SEVERITY_INFO, "E-mail enviado com sucesso :-)");
     		} else {
     			Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Encontramos um problema no envio do E-mail :-(");
     		}
@@ -702,6 +713,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * Secao de configuracoes das informacoes base do cliente
      */
     public void tratarEmailPersonalizado() {
+    	setTmpCorpoEmail(null);
     	Util.forward(DADOS_PESSOAIS_EMAIL);
     }
 	
