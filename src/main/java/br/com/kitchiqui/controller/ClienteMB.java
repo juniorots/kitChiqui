@@ -51,6 +51,10 @@ public class ClienteMB extends BaseController implements Serializable {
     @ManagedProperty(value="#{produtoMB}")
     private ProdutoMB produtoMB;
     
+    public void enviarEmailCustomizado() {
+    	// TODO: Implementar...
+    }
+    
     /*
      * Atualizando informativo ao usuario
      */
@@ -693,6 +697,13 @@ public class ClienteMB extends BaseController implements Serializable {
 	public void setProdutoMB(ProdutoMB produtoMB) {
 		this.produtoMB = produtoMB;
 	}
+	
+	/**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void tratarEmailPersonalizado() {
+    	Util.forward(DADOS_PESSOAIS_EMAIL);
+    }
 	
 	/**
      * Secao de configuracoes das informacoes base do cliente

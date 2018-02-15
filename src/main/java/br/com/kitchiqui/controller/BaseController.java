@@ -44,6 +44,7 @@ public class BaseController {
 	protected static final String DADOS_PESSOAIS_CLIENTE_PEDIDOS = "/dadosPessoaisClientePedidos.xhtml";
 	protected static final String DADOS_PESSOAIS_CLIENTE_ALTERA_SENHA = "/dadosPessoaisClienteAlterarSenha.xhtml";
 	protected static final String GERENCIAR_CLIENTE = "/dadosPessoaisGerenciar.xhtml";
+	protected static final String DADOS_PESSOAIS_EMAIL = "/dadosPessoaisEnviarEmail.xhtml";
 	
 	private Cliente cliente= null;
 	private Cliente clienteGestao = new Cliente();
@@ -66,6 +67,7 @@ public class BaseController {
 	private String tmpStatusEnvio;
 	private String tmpStatusPedido;
 	private String tmpUltimoStatusPedido;
+	private String tmpCorpoEmail;
 	
 	private String buscarCNPJ;
 	private String buscarEndereco;
@@ -437,6 +439,14 @@ public class BaseController {
 
 	public void setUsuarioAdministrador(boolean usuarioAdministrador) {
 		this.usuarioAdministrador = usuarioAdministrador;
+	}
+
+	public String getTmpCorpoEmail() {
+		return tmpCorpoEmail;
+	}
+
+	public void setTmpCorpoEmail(String tmpCorpoEmail) {
+		this.tmpCorpoEmail = tmpCorpoEmail;
 	}
 	
 	/**
