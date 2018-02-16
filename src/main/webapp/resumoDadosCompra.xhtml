@@ -77,15 +77,18 @@
 		                        </thead>
 	                		<tbody>
 	                			<c:forEach var="produto" items="#{clienteMB.cliente.listaCarrinho}">
-	                        	<tr>
-		                            <td class="">
-										<span class="cartImage"><img src="#{produto.srcImagemCarrinho}" alt="image"/></span>		
-		                            </td>
-		                            <td class=""><h:outputText escape="false" value="#{produto.titulo}"/></td>
-		                            <td class=""></td>
-		                            <td class="count-input"><h:outputText escape="false" value="#{produto.quantidade}"/></td>
-		                            <td class=""><h:outputText escape="false" value="#{produto.precoFormatado}"/></td>
-	                        	</tr>
+	                				<!-- Listando somente os SOLICITADOS -->
+	                				<c:if test="#{produto.compraProduto.codCompra == '6'}">
+			                        	<tr>
+				                            <td class="">
+												<span class="cartImage"><img src="#{produto.srcImagemCarrinho}" alt="image"/></span>		
+				                            </td>
+				                            <td class=""><h:outputText escape="false" value="#{produto.titulo}"/></td>
+				                            <td class=""></td>
+				                            <td class="count-input"><h:outputText escape="false" value="#{produto.quantidade}"/></td>
+				                            <td class=""><h:outputText escape="false" value="#{produto.precoFormatado}"/></td>
+			                        	</tr>
+			                        </c:if>	
 	                        	</c:forEach>
                           	</tbody>
                           	</table>

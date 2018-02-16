@@ -66,6 +66,20 @@ public class ClienteMB extends BaseController implements Serializable {
 		}
     }
     
+    /**
+     * Tratando de limpeza de itens que foram solicitados
+     * no entanto não estiverem concluidos sua fase de aquisicao
+     * pelo sistema
+     */
+    public void excluirProdutoSolicitado() {
+    	List<Produto> tmp = new ArrayList<>();
+    	for (Produto p : getCliente().getListaCarrinho()) {
+    		if (!p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo())) 
+    			tmp.add(p);
+    	}
+    	getCliente().setListaCarrinho(tmp);
+    }
+    
     /*
      * Atualizando informativo ao usuario
      */
@@ -234,6 +248,7 @@ public class ClienteMB extends BaseController implements Serializable {
     	getCliente().setNomeFiltro(null);
     	getCliente().setEmailFiltro(null);
     	setClientePesquisado(true);
+    	excluirProdutoSolicitado();
     }
     
     
@@ -245,6 +260,7 @@ public class ClienteMB extends BaseController implements Serializable {
     	boolean adicionado = false;
     	CompraProduto cp = new CompraProduto();
     	cp.setCodCompra(EnumStatusCompra.SOLICITADO.getTipo());
+    	cp.setStatusCompra(EnumStatusCompra.descricaoStatus(cp.getCodCompra()));
     	List<Produto> listTmp = new ArrayList<>();
     	listTmp.clear();
     	
@@ -750,6 +766,7 @@ public class ClienteMB extends BaseController implements Serializable {
      * Secao de configuracoes das informacoes base do cliente
      */
     public void verificarDadosPessoaisPedidos() {
+    	excluirProdutoSolicitado();
     	Util.forward(DADOS_PESSOAIS_CLIENTE_PEDIDOS);
     }
     
