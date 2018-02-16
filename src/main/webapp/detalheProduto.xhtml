@@ -94,16 +94,9 @@
                   				<c:if test="#{produtoMB.produto.disponivel}">
 					                <span class="quick-drop">
 					                	<h:selectOneMenu id="quantidade" value="#{produtoMB.produto.quantidade}" class="select-drop">
-					                		<f:selectItem itemValue="1" itemLabel="&nbsp;1"/>
-					                		<f:selectItem itemValue="2" itemLabel="&nbsp;2"/>
-					                		<f:selectItem itemValue="3" itemLabel="&nbsp;3"/>
-					                		<f:selectItem itemValue="4" itemLabel="&nbsp;4"/>
-					                		<f:selectItem itemValue="5" itemLabel="&nbsp;5"/>
-					                		<f:selectItem itemValue="6" itemLabel="&nbsp;6"/>
-					                		<f:selectItem itemValue="7" itemLabel="&nbsp;7"/>
-					                		<f:selectItem itemValue="8" itemLabel="&nbsp;8"/>
-					                		<f:selectItem itemValue="9" itemLabel="&nbsp;9"/>
-					                		<f:selectItem itemValue="10" itemLabel="&nbsp;10"/>
+					                		<c:forEach var="i" begin="1" end="#{produtoMB.produto.qtdEstoque}">
+					                			<f:selectItem itemValue="${i}" itemLabel="&nbsp;${i}"/>
+					                		</c:forEach>
 					                	</h:selectOneMenu>
 					                </span>
                   				<!--  
