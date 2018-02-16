@@ -130,6 +130,48 @@ public class EnviarEmail {
     }
     
     /**
+     * E-mail enviado aos administradores com finalidade
+     * de indicar um produto em falta
+     * @param produto
+     * @return
+     */
+    public static boolean produtoEmFalta(Produto produto) {
+    	boolean retorno = true;
+    	ArrayList<String> tmpEmail = new ArrayList<>();
+    	StringBuilder tmp = new StringBuilder();
+    	StringBuilder assunto = new StringBuilder();
+    	
+    	tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
+        tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
+        tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
+        tmp.append("<div style='margin-top: 20px; margin-left: 15px;'>");
+        
+        tmp.append("<table style='width: 80%'>");
+        tmp.append("<thead>");
+		tmp.append("<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>");
+		tmp.append("<th>Produto</th>");
+		tmp.append("<th>Quantidade</th>");
+		tmp.append("<th>Preço Unitário</th>");
+		tmp.append("</tr>");
+		tmp.append("</thead>");
+		tmp.append("<tbody>");
+		tmp.append("<tr>");
+		tmp.append("<td>"+produto.getTitulo()+"</td>");
+        tmp.append("<td>"+produto.getQuantidade()+"</td>");
+        tmp.append("<td>"+produto.getPrecoFormatado()+"</td>");
+        tmp.append("</tr>");
+        tmp.append("</tbody>");
+        
+        tmp.append("</div>");
+        tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
+    	
+    	assunto.append("Produto em falta - KitChiqui.com.br (Indisponível)");
+    	EnviarEmail.tratarEnvio(tmpEmail, assunto.toString(), tmp.toString(), EnumTipoEmail.NOTIFICACAO_ADMINISTRADOR.getTipo());
+    	
+    	return retorno;
+    }
+    
+    /**
      * Quando o operador deseja enviar um e-mail com conteúdo
      * diferente do padrao, necessario conforme a necessidade especifica
      * do caso.

@@ -46,6 +46,8 @@ public class BaseController {
 	protected static final String GERENCIAR_CLIENTE = "/dadosPessoaisGerenciar.xhtml";
 	protected static final String DADOS_PESSOAIS_EMAIL = "/dadosPessoaisEnviarEmail.xhtml";
 	
+	protected static final Integer VAZIO = 0;
+	
 	private Cliente cliente= null;
 	private Cliente clienteGestao = new Cliente();
 	private Produto produto = null;

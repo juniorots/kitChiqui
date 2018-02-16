@@ -107,7 +107,7 @@ public class ClienteMB extends BaseController implements Serializable {
         
         entityManager.getTransaction().commit();
         
-        if (origem.length == 0 || !origem[0].equals("fecharCompra")) 
+        if (origem.length == VAZIO || !origem[0].equals("fecharCompra")) 
         	Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Dados atualizados");
         Util.gravarClienteSessao( usAlterado );
 //        setCliente ( Util.captarClienteSessao() );
@@ -384,6 +384,13 @@ public class ClienteMB extends BaseController implements Serializable {
     		p.getCompraProduto().setCodCompra(EnumStatusCompra.PROCESSANDO.getTipo());
     		p.getCompraProduto().setStatusCompra(EnumStatusCompra.descricaoStatus(p.getCompraProduto().getCodCompra()));
     		p.getCompraProduto().setDtCompra(Calendar.getInstance().getTime());
+    		
+    		// gerenciando estoque
+    		p.setQtdEstoque(p.getQtdEstoque() - p.getQuantidade());
+    		if (p.getQtdEstoque() == VAZIO) {
+    			p.setDisponivel(false);
+    			EnviarEmail.produtoEmFalta(p);
+    		}
     	}
     	
     	alterarCliente("fecharCompra");
@@ -642,7 +649,7 @@ public class ClienteMB extends BaseController implements Serializable {
         setProduto(dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto"))));
         getProduto().getCompraProduto().setCodCompra(Integer.parseInt(getTmpUltimoStatusPedido()));        
         getProduto().getCompraProduto().setStatusCompra(EnumStatusCompra.descricaoStatus(getProduto().getCompraProduto().getCodCompra()));
-        
+
         dao.update(getProduto());
         entityManager.getTransaction().commit();
         
