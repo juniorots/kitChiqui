@@ -42,6 +42,8 @@ public class Produto extends DomainObject {
 	
 	private Integer quantidade;
 	
+	private Integer qtdEstoque;
+	
 	/*
 	 * PRODUTO_VITRINE = 1;
 	 * PRODUTO_DESTAQUE = 2;
@@ -288,5 +290,13 @@ public class Produto extends DomainObject {
 
 	public void setCompraProduto(CompraProduto compraProduto) {
 		this.compraProduto = compraProduto;
+	}
+
+	public Integer getQtdEstoque() {
+		return qtdEstoque;
+	}
+
+	public void setQtdEstoque(Integer qtdEstoque) {
+		this.qtdEstoque = qtdEstoque;
 	}
 }

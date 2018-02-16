@@ -72,6 +72,7 @@ public class ProdutoDAOTest {
       prod.setDescritivo("Sucesso a cada sorriso");
       prod.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod.setQtdEstoque(10);
       prod.setDisponivel(true);
       
       // Tratando secao de detalhe
@@ -168,6 +169,7 @@ public class ProdutoDAOTest {
       prod2.setDescritivo("Para cuidar de você");
       prod2.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod2.setQtdEstoque(8);
       prod2.setDisponivel(true);
       
       // Tratando secao de detalhe
@@ -255,6 +257,7 @@ public class ProdutoDAOTest {
       prod3.setDescritivo("Sua gengiva mais saudável");
       prod3.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod3.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod3.setQtdEstoque(8);
       prod3.setDisponivel(true);
       
    // Tratando secao de detalhe
@@ -344,6 +347,7 @@ public class ProdutoDAOTest {
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod4.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod4.setClasse(EnumClasseProduto.KIT_STANDART.getClasse());
+      prod4.setQtdEstoque(6);
       prod4.setDisponivel(true);
       
    // Tratando secao de detalhe
@@ -427,6 +431,7 @@ public class ProdutoDAOTest {
       prod5.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       prod5.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
+      prod5.setQtdEstoque(6);
       prod5.setDisponivel(true);
       
       // Tratando secao de detalhe
@@ -515,6 +520,7 @@ public class ProdutoDAOTest {
       prod6.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod6.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       prod6.setClasse(EnumClasseProduto.KIT_ORTODONTICO.getClasse());
+      prod6.setQtdEstoque(6);
       prod6.setDisponivel(true);
       
    // Tratando secao de detalhe
@@ -602,8 +608,9 @@ public class ProdutoDAOTest {
       prod7.setPreco(180D);
       prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod7.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
-      prod7.setDisponivel(true);
       prod7.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
+      prod7.setQtdEstoque(6);
+      prod7.setDisponivel(true);
       
       // Tratando secao de detalhe
       ImagemGrandeProduto imgG25 = new ImagemGrandeProduto();
@@ -691,8 +698,9 @@ public class ProdutoDAOTest {
       prod8.setPreco(250D);
       prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod8.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
-      prod8.setDisponivel(true);
       prod8.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
+      prod8.setQtdEstoque(6);
+      prod8.setDisponivel(true);
       
    // Tratando secao de detalhe
       ImagemGrandeProduto imgG29 = new ImagemGrandeProduto();
