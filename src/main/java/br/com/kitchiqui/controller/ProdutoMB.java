@@ -73,6 +73,21 @@ public class ProdutoMB extends BaseController implements Serializable {
 	}
 	
 	/**
+	 * Tratando da atualizacao do produto
+	 */
+	public void atualizarProduto() {
+		@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        dao.update(getProduto());
+        entityManager.getTransaction().commit();
+        
+        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Dados atualizados");
+	}
+	
+	/**
 	 * Tratando especificacao do produto
 	 * @return
 	 */

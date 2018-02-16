@@ -139,7 +139,7 @@
 					                  <strong>Hum!</strong> Infelizmente estamos sem este produto no momento.
 					                </div>
                   				</c:if>
-                  				<div class="tabArea">
+                  				<div class="tabArea" style="width: 80%;">
                   					<ul class="nav nav-tabs">
 				                      <li class="active"><a data-toggle="tab" href="#detalhes">detalhes</a></li>
 				                      <li><a data-toggle="tab" href="#notaTecnica">nota técnica</a></li>
@@ -172,9 +172,22 @@
 				                        <h:outputText escape="false" value="#{produtoMB.produto.anotacaoComposicao}"/>
 				                        </p>
 				                      </div>
-				                      <div id="controleEstoque" class="tab-pane fade">
-				                      	  
-				                      </div>
+				                      <c:if test="#{usuarioAdministrador}">
+					                      <div id="controleEstoque" class="tab-pane fade">
+					                      	<div class="form-group">	
+					                      	  <label for="" class="col-md-4 col-sm-8 control-label">Quantidade no Estoque</label>
+					                          <div class="col-md-3 col-sm-3">
+					                            <h:inputText class="form-control" id="qtdEstoque" value="#{produtoMB.produto.qtdEstoque}" />
+					                          </div>	  
+					                        </div>  
+					                        <div style="height: 50px;"/>
+					                        <div class="form-group">
+					                          <div class="col-md-0 col-sm-5">
+					                            <h:commandButton class="btn btn-primary btn-block" action="#{produtoMB.atualizarProduto}" value="Atualizar"/>
+					                          </div>
+					                        </div>
+					                      </div>
+				                      </c:if>
 				                    </div>
                   				</div>
 								
