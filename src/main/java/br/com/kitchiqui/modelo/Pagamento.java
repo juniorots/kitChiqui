@@ -96,7 +96,7 @@ public class Pagamento extends DomainObject {
 	}
 
 	public String getNomeTitular() {
-		return nomeTitular;
+		return nomeTitular.toUpperCase();
 	}
 
 	public void setNomeTitular(String nomeTitular) {
