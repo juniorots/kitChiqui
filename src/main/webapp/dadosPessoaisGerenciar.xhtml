@@ -102,6 +102,50 @@
 						                    </h:outputText>
 					                      </label>
 			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">Tipo de pagamento: </label>
+					                      <label for="">
+						                      <c:if test="#{clienteMB.clienteGestao.pagamento.tipoPagamento == '1'}">
+						                      	PayPal	
+						                      </c:if>
+						                      <c:if test="#{clienteMB.clienteGestao.pagamento.tipoPagamento == '2'}">
+						                      	Cartão de Crédito
+						                      </c:if>
+						                      <c:if test="#{clienteMB.clienteGestao.pagamento.tipoPagamento == '3'}">
+						                      	Cartão de Débito
+						                      </c:if>
+					                      </label>
+			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">Titular: </label>
+					                      <label for="">
+					                      	<strong><h:outputText escape="false" value="#{clienteMB.clienteGestao.pagamento.nomeTitular}"/></strong>
+					                      </label>
+			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">Número do Cartão: </label>
+					                      <label for="">
+					                      	<strong><h:outputText escape="false" value="#{clienteMB.clienteGestao.pagamento.numeroCartaoFormatado}"/></strong>
+					                      </label>
+			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">Vencimento mês: </label>
+					                      <label for="">
+					                      	<strong><h:outputText escape="false" value="#{clienteMB.clienteGestao.pagamento.mesValidadeCartao}"/></strong>
+					                      </label>
+			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">Vencimento ano: </label>
+					                      <label for="">
+					                      	<strong><h:outputText escape="false" value="#{clienteMB.clienteGestao.pagamento.anoValidadeCartao}"/></strong>
+					                      </label>
+			                    		</div>
+			                    		<div class="form-group">
+					                      <label for="">Código de Segurança: </label>
+					                      <label for="">
+					                      	<strong><h:outputText escape="false" value="#{clienteMB.clienteGestao.pagamento.codigoSeguranca}"/></strong>
+					                      </label>
+			                    		</div>
 		                    			<div class="form-group">
 					                      <label for="">Assunto do E-mail:</label>
 					                      <h:selectOneMenu id="tmpStatusEnvio" value="#{clienteMB.tmpStatusEnvio}" class="form-control" style="width: 30%;">

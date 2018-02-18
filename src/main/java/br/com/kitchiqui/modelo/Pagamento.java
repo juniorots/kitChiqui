@@ -5,8 +5,10 @@
  */
 package br.com.kitchiqui.modelo;
 
+import java.text.ParseException;
+
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.swing.text.MaskFormatter;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
 
@@ -22,8 +24,6 @@ public class Pagamento extends DomainObject {
 	 * 03 - Cartao de Débito
 	 */
 	private Integer tipoPagamento = EnumTipoPagamento.PAYPAL.getTipo();
-	
-	private String nomeContidoCartao;
 	
 	private String numeroCartao;
 	
@@ -45,16 +45,18 @@ public class Pagamento extends DomainObject {
 		this.tipoPagamento = tipoPagamento;
 	}
 
-	public String getNomeContidoCartao() {
-		return nomeContidoCartao;
-	}
-
-	public void setNomeContidoCartao(String nomeContidoCartao) {
-		this.nomeContidoCartao = nomeContidoCartao;
-	}
-
 	public String getNumeroCartao() {
 		return numeroCartao;
+	}
+	
+	public String getNumeroCartaoFormatado() {
+		try {
+			MaskFormatter mf = new MaskFormatter("AAAA AAAA AAAA AAAA");
+			return mf.valueToString(this.numeroCartao);
+		} catch (ParseException pe) {
+			pe.printStackTrace();
+			return "";
+		}
 	}
 
 	public void setNumeroCartao(String numeroCartao) {
