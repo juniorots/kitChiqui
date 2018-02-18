@@ -144,7 +144,7 @@ public class EnviarEmail {
     	tmp.append("<strong><span style='font-size: 25px; font-family: monospace'>KIT</span></strong> ");
         tmp.append("<strong><span style='font-size: 25px; color: #47BAC1; font-family: monospace'>CHIQUI</span></strong>");
         tmp.append("<br /><div style='background-color: #47BAC1; height: 5px; width: 80%;'></div>");
-        tmp.append("<div style='margin-top: 20px; margin-left: 15px;'>");
+        tmp.append("<div style='margin-top: 20px;'>");
         
         tmp.append("<table style='width: 80%'>");
         tmp.append("<thead>");
