@@ -59,7 +59,8 @@
 					                <table class="table">
 				                    	<thead>
 					                        <tr>
-					                        	<th>Item</th>
+					                        	<th>Código de Rastreio</th>
+					                        	<th>Produto</th>
 					                          	<th>Data</th>
 					                          	<th>Quantidade</th>
 					                          	<th>Preço unitário</th>
@@ -70,10 +71,11 @@
 				                      	<tbody>
 				                      		<c:forEach var="produto" items="#{clienteMB.cliente.listaCarrinho}">
 				                      			<tr>
+				                      				<td><h:outputText escape="false" value="#{produto.compraProduto.codigoRastreio}"/></td>
 				                      				<td><h:outputText escape="false" value="#{produto.titulo}"/></td>
 				                      				<td>
 				                      					<h:outputText escape="false" value="#{produto.compraProduto.dtCompra}">
-					                        				<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+					                        				<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
 				                        				</h:outputText>
 				                        			</td>
 				                      				<td><h:outputText escape="false" value="#{produto.quantidade}"/></td>

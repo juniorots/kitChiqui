@@ -72,7 +72,7 @@ public class EmailTest {
          
          ArrayList<String> emails = new ArrayList<>();
          
-//         emails.add("juniormsd@gmail.com");
+         emails.add("juniormsd@gmail.com");
 //         EnviarEmail.enviarEmailComercial(retorno.get(0), EnumStatusEnvio.CONFIRMANDO_ENTREGA.getTipo());
 //         EnviarEmail.recuperarSenha(emails, "SENHA_FAKE");
     }

@@ -100,7 +100,7 @@ public class ProdutoMB extends BaseController implements Serializable {
         ProdutoDAO dao = new ProdutoDAO(entityManager);
         setProduto(dao.selectById(UUID.fromString(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idProduto"))));
         
-		Util.forward(DETALHE_PRODUTO);
+        Util.forward(DETALHE_PRODUTO);
 	}
 	
 	/**

@@ -224,6 +224,7 @@ public class EnviarEmail {
         for (Produto p : cliente.getListaCarrinho()) {
 	       	if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.PROCESSANDO.getTipo())) {  
 				produtos += "<tr>"
+						+ "<td>"+p.getCompraProduto().getCodigoRastreio()+"</td>"
 						+ "<td>"+p.getTitulo()+"</td>"
 						+ "<td>"+p.getQuantidade()+"</td>"
 						+ "<td>"+p.getPrecoFormatado()+"</td>"
@@ -295,6 +296,7 @@ public class EnviarEmail {
   				+ "<table style='width: 80%'>"
   					+ "<thead>"
   					+ "<tr style='background-color: #47BAC1; text-align: left; font-weight: bold; color: black;'>"
+  						+"<th>Código de Rastreio</th>"
   						+"<th>Produto</th>"
   						+"<th>Quantidade</th>"
   						+"<th>Preço Unitário</th>"

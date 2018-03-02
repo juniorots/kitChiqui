@@ -53,6 +53,7 @@ public class CompraProduto extends DomainObject {
 	}
 
 	public String getCodigoRastreio() {
+		this.codigoRastreio = getId().toString().substring(0, 8);
 		return codigoRastreio;
 	}
 

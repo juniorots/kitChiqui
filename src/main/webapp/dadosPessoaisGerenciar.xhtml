@@ -161,7 +161,8 @@
 					                      	<table class="table">
 					                    	<thead>
 						                        <tr>
-						                        	<th>Item</th>
+						                        	<th>Código de Rastreio</th>
+						                        	<th>Produto</th>
 						                          	<th>Data</th>
 						                          	<th>Quantidade</th>
 						                          	<th>Preço unitário</th>
@@ -171,6 +172,7 @@
 					                      	<tbody>
 				                      			<c:forEach var="produto" items="#{clienteMB.clienteGestao.listaCarrinho}">
 				                      			<tr>
+				                      				<td><h:outputText escape="false" value="#{produto.compraProduto.codigoRastreio}"/></td>
 				                      				<td><h:outputText escape="false" value="#{produto.titulo}"/></td>
 				                      				<td>
 				                      					<h:outputText escape="false" value="#{produto.compraProduto.dtCompra}">
