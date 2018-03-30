@@ -205,7 +205,7 @@ public class ProdutoDAOTest {
       imgP8.setSrcImagem("img/products/signle-product/product-slide-small-B04.jpg");
       imgP8.setProduto(prod2);
       
-      prod2.setTituloDescritivo("Kit Pós-cirurgico - A atenção que você precisa.");
+      prod2.setTituloDescritivo("Kit Pós-cirurgico - O cuidado que você precisa.");
       prod2.setAnotacaoPrincipalDescritivo("Sabendo do cuidado que você precisa nesse momento tão sensível à sua "
       		+ "saúde, pensamos exatamente em tudo que irá lhe servir com praticidade, economicidade e higiene. "
       		+ "Não perca tempo e adquira já o seu kit focando na melhor recuperação e reabilitação funcional. "
