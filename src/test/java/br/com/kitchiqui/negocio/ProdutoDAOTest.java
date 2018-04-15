@@ -64,7 +64,7 @@ public class ProdutoDAOTest {
       ImagemGrandeProdutoDAO imgDAO = new ImagemGrandeProdutoDAO(entityManager);
       ImagemPequenoProdutoDAO imgPeqDAO = new ImagemPequenoProdutoDAO(entityManager);
       
-      prod.setSrcImagem("img/home/banner-slider/shoe1.png");
+      prod.setSrcImagem("img/home/banner-slider/vitrineMasculinoClassico.png");
       prod.setSrcImagemCarrinho("img/products/cart-image1.jpg");
       prod.setTitulo("KIT ORTODÔNTICO");
       prod.setPreco(450D);
@@ -161,13 +161,13 @@ public class ProdutoDAOTest {
       
       Produto prod2 = new Produto();   
       
-      prod2.setSrcImagem("img/home/banner-slider/shoe2.png");
+      prod2.setSrcImagem("img/home/banner-slider/kitClassico02.png");
       prod2.setSrcImagemCarrinho("img/products/cart-image2.jpg");
       prod2.setTitulo("KIT Pós-cirurgico");
       prod2.setPreco(650D);
       prod2.setSubTitulo("Delicadeza com carinho");
       prod2.setDescritivo("Para cuidar de você");
-      prod2.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
+      prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod2.setQtdEstoque(8);
       prod2.setDisponivel(true);
@@ -217,7 +217,7 @@ public class ProdutoDAOTest {
 	              + "<li>Escova extra-macia;</li>"
 	              + "<li>Fio dental;</li>"
 	              + "<li>Creme dental;</li>"
-	              + "<li>Enxaguante bucal solução com clorexidina;</li>"
+	              + "<li>Enxaguante bucal - solução com clorexidina;</li>"
               + "</ul>");
       
       prod2.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
@@ -249,13 +249,13 @@ public class ProdutoDAOTest {
 //      
       Produto prod3 = new Produto();   
       
-      prod3.setSrcImagem("img/home/banner-slider/shoe3.png");
+      prod3.setSrcImagem("img/home/banner-slider/kitInfantil01.png");
       prod3.setSrcImagemCarrinho("img/products/cart-image3.jpg");
       prod3.setTitulo("Kit Periodontal");
       prod3.setPreco(500D);
       prod3.setSubTitulo("Tratamento e Controle");
       prod3.setDescritivo("Sua gengiva mais saudável");
-      prod3.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
+      prod3.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod3.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod3.setQtdEstoque(8);
       prod3.setDisponivel(true);
@@ -424,11 +424,13 @@ public class ProdutoDAOTest {
       
       Produto prod5 = new Produto();   
       
-      prod5.setSrcImagem("img/home/featured-product/product-02.jpg");
+      prod5.setSrcImagem("img/home/banner-slider/vitrineMasculinoInfantil.png");
       prod5.setSrcImagemCarrinho("img/products/cart-image3.jpg");
       prod5.setTitulo("Kit Infantil - Escolar");
+      prod5.setSubTitulo("Sucesso escolar");
+      prod5.setDescritivo("Devida atenção na escola");
       prod5.setPreco(120D);
-      prod5.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod5.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       prod5.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
       prod5.setQtdEstoque(6);
@@ -513,11 +515,13 @@ public class ProdutoDAOTest {
       
       Produto prod6 = new Produto();   
       
-      prod6.setSrcImagem("img/home/featured-product/product-03.jpg");
+      prod6.setSrcImagem("img/home/banner-slider/vitrineFemininoClassico.png");
       prod6.setSrcImagemCarrinho("img/products/cart-image1.jpg");
       prod6.setTitulo("Kit Ortodôntico - Feminino");
+      prod6.setSubTitulo("Olhar feminino");
+      prod6.setDescritivo("Requinte de mulher!");
       prod6.setPreco(180D);
-      prod6.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod6.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod6.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       prod6.setClasse(EnumClasseProduto.KIT_ORTODONTICO.getClasse());
       prod6.setQtdEstoque(6);
