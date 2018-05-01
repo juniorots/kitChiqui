@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
+import br.com.kitchiqui.util.Util;
 
 @Entity
 public class CompraProduto extends DomainObject {
@@ -53,7 +54,9 @@ public class CompraProduto extends DomainObject {
 	}
 
 	public String getCodigoRastreio() {
-		this.codigoRastreio = getId().toString().substring(0, 8);
+		if ( !Util.isEmpty(getId()) ) {
+			this.codigoRastreio = getId().toString().substring(0, 8);
+		}
 		return codigoRastreio;
 	}
 

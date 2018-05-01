@@ -218,7 +218,8 @@ public class Cliente extends DomainObject {
 	public boolean isCarrinhoVazio() {
 		boolean vazio = true;
 		for (Produto p : getListaCarrinho()) {
-			if (p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
+			if ( !Util.isEmpty(p.getCompraProduto().getCodCompra())
+					&& p.getCompraProduto().getCodCompra().equals(EnumStatusCompra.SOLICITADO.getTipo()))
 				vazio = false;
 		}
 		return vazio;
