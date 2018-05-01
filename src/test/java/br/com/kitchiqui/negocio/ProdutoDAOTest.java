@@ -77,36 +77,61 @@ public class ProdutoDAOTest {
       
       // Tratando secao de detalhe
       ImagemGrandeProduto imgG1 = new ImagemGrandeProduto();
-      imgG1.setSrcImagem("img/products/signle-product/product-slide-big-01.jpg");
+      imgG1.setSrcImagem("img/products/signle-product/masculinoGrande.png");
       imgG1.setProduto(prod);
       
       ImagemGrandeProduto imgG2 = new ImagemGrandeProduto();
-      imgG2.setSrcImagem("img/products/signle-product/product-slide-big-02.jpg");
+      imgG2.setSrcImagem("img/products/signle-product/escovaOrtoGrande.png");
       imgG2.setProduto(prod);
       
       ImagemGrandeProduto imgG3 = new ImagemGrandeProduto();
-      imgG3.setSrcImagem("img/products/signle-product/product-slide-big-03.jpg");
+      imgG3.setSrcImagem("img/products/signle-product/passaFioGrande.png");
       imgG3.setProduto(prod);
       
       ImagemGrandeProduto imgG4 = new ImagemGrandeProduto();
-      imgG4.setSrcImagem("img/products/signle-product/product-slide-big-04.jpg");
+      imgG4.setSrcImagem("img/products/signle-product/pastaGrande.png");
       imgG4.setProduto(prod);
       
+      ImagemGrandeProduto imgG5 = new ImagemGrandeProduto();
+      imgG5.setSrcImagem("img/products/signle-product/escovaInterGrande.png");
+      imgG5.setProduto(prod);
+      
+      ImagemGrandeProduto imgG6 = new ImagemGrandeProduto();
+      imgG6.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+      imgG6.setProduto(prod);
+      
+      ImagemGrandeProduto imgG7 = new ImagemGrandeProduto();
+      imgG7.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG7.setProduto(prod);
+      
       ImagemPequenoProduto imgP1 = new ImagemPequenoProduto();
-      imgP1.setSrcImagem("img/products/signle-product/product-slide-small-01.jpg");
+      imgP1.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
       imgP1.setProduto(prod);
       
       ImagemPequenoProduto imgP2 = new ImagemPequenoProduto();
-      imgP2.setSrcImagem("img/products/signle-product/product-slide-small-02.jpg");
+      imgP2.setSrcImagem("img/products/signle-product/escovaOrtoPequena.png");
       imgP2.setProduto(prod);
       
       ImagemPequenoProduto imgP3 = new ImagemPequenoProduto();
-      imgP3.setSrcImagem("img/products/signle-product/product-slide-small-03.jpg");
+      imgP3.setSrcImagem("img/products/signle-product/passaFioPequeno.png");
       imgP3.setProduto(prod);
       
       ImagemPequenoProduto imgP4 = new ImagemPequenoProduto();
-      imgP4.setSrcImagem("img/products/signle-product/product-slide-small-04.jpg");
+      imgP4.setSrcImagem("img/products/signle-product/pastaPequena.png");
       imgP4.setProduto(prod);
+
+      ImagemPequenoProduto imgP5 = new ImagemPequenoProduto();
+      imgP5.setSrcImagem("img/products/signle-product/escovaInterPequena.png");
+      imgP5.setProduto(prod);
+      
+      ImagemPequenoProduto imgP6 = new ImagemPequenoProduto();
+      imgP6.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+      imgP6.setProduto(prod);
+      
+      ImagemPequenoProduto imgP7 = new ImagemPequenoProduto();
+      imgP7.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP7.setProduto(prod);
+      
       
       prod.setTituloDescritivo("Kit Ortodôntico carinho especial com sua estética");
       prod.setAnotacaoPrincipalDescritivo("A importância da saúde bucal é fundamental "
@@ -128,7 +153,7 @@ public class ProdutoDAOTest {
       
       prod.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
     		  + "<ul class=\"list-unstyled\">"
-              + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+              + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
               + "<li>Escova ortodôntica: Pegar medida Curaprox;</li>"
               + "<li>Passa fio: Pegar medidas passa fio;</li>"
               + "<li>Fio dental: Tamanho em metros;</li>"
@@ -154,10 +179,16 @@ public class ProdutoDAOTest {
       imgDAO.insert(imgG2);
       imgDAO.insert(imgG3);
       imgDAO.insert(imgG4);
+      imgDAO.insert(imgG5);
+      imgDAO.insert(imgG6);
+      imgDAO.insert(imgG7);
       imgPeqDAO.insert(imgP1);
       imgPeqDAO.insert(imgP2);
       imgPeqDAO.insert(imgP3);
       imgPeqDAO.insert(imgP4);
+      imgPeqDAO.insert(imgP5);
+      imgPeqDAO.insert(imgP6);
+      imgPeqDAO.insert(imgP7);
       
       Produto prod2 = new Produto();   
       
@@ -173,37 +204,45 @@ public class ProdutoDAOTest {
       prod2.setDisponivel(true);
       
       // Tratando secao de detalhe
-      ImagemGrandeProduto imgG5 = new ImagemGrandeProduto();
-      imgG5.setSrcImagem("img/products/signle-product/product-slide-big-B01.jpg");
-      imgG5.setProduto(prod2);
-      
-      ImagemGrandeProduto imgG6 = new ImagemGrandeProduto();
-      imgG6.setSrcImagem("img/products/signle-product/product-slide-big-B02.jpg");
-      imgG6.setProduto(prod2);
-      
-      ImagemGrandeProduto imgG7 = new ImagemGrandeProduto();
-      imgG7.setSrcImagem("img/products/signle-product/product-slide-big-B03.jpg");
-      imgG7.setProduto(prod2);
-      
       ImagemGrandeProduto imgG8 = new ImagemGrandeProduto();
-      imgG8.setSrcImagem("img/products/signle-product/product-slide-big-B04.jpg");
+      imgG8.setSrcImagem("img/products/signle-product/masculinoGrande.png");
       imgG8.setProduto(prod2);
       
-      ImagemPequenoProduto imgP5 = new ImagemPequenoProduto();
-      imgP5.setSrcImagem("img/products/signle-product/product-slide-small-B01.jpg");
-      imgP5.setProduto(prod2);
+      ImagemGrandeProduto imgG9 = new ImagemGrandeProduto();
+      imgG9.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
+      imgG9.setProduto(prod2);
       
-      ImagemPequenoProduto imgP6 = new ImagemPequenoProduto();
-      imgP6.setSrcImagem("img/products/signle-product/product-slide-small-B02.jpg");
-      imgP6.setProduto(prod2);
+      ImagemGrandeProduto imgG10 = new ImagemGrandeProduto();
+      imgG10.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG10.setProduto(prod2);
       
-      ImagemPequenoProduto imgP7 = new ImagemPequenoProduto();
-      imgP7.setSrcImagem("img/products/signle-product/product-slide-small-B03.jpg");
-      imgP7.setProduto(prod2);
+      ImagemGrandeProduto imgG11 = new ImagemGrandeProduto();
+      imgG11.setSrcImagem("img/products/signle-product/pastaGrande.png");
+      imgG11.setProduto(prod2);
+      
+      ImagemGrandeProduto imgG12 = new ImagemGrandeProduto();
+      imgG12.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+      imgG12.setProduto(prod2);
       
       ImagemPequenoProduto imgP8 = new ImagemPequenoProduto();
-      imgP8.setSrcImagem("img/products/signle-product/product-slide-small-B04.jpg");
+      imgP8.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
       imgP8.setProduto(prod2);
+      
+      ImagemPequenoProduto imgP9 = new ImagemPequenoProduto();
+      imgP9.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
+      imgP9.setProduto(prod2);
+      
+      ImagemPequenoProduto imgP10 = new ImagemPequenoProduto();
+      imgP10.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP10.setProduto(prod2);
+      
+      ImagemPequenoProduto imgP11 = new ImagemPequenoProduto();
+      imgP11.setSrcImagem("img/products/signle-product/pastaPequena.png");
+      imgP11.setProduto(prod2);
+      
+      ImagemPequenoProduto imgP12 = new ImagemPequenoProduto();
+      imgP12.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+      imgP12.setProduto(prod2);
       
       prod2.setTituloDescritivo("Kit Pós-cirurgico - O cuidado que você precisa.");
       prod2.setAnotacaoPrincipalDescritivo("Sabendo do cuidado que você precisa nesse momento tão sensível à sua "
@@ -222,7 +261,7 @@ public class ProdutoDAOTest {
       
       prod2.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
     		  + "<ul class=\"list-unstyled\">"
-              + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+    		  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
               + "<li>Escova extra-macia: Pegar medida Curaprox;</li>"
               + "<li>Fio dental: Tamanho em metros;</li>"
               + "<li>Creme dental: Especificar o tamanho;</li>"
@@ -238,14 +277,16 @@ public class ProdutoDAOTest {
           + "</ul>");
       
       dao.insert(prod2);      
-      imgDAO.insert(imgG5);
-      imgDAO.insert(imgG6);
-      imgDAO.insert(imgG7);
       imgDAO.insert(imgG8);
-      imgPeqDAO.insert(imgP5);
-      imgPeqDAO.insert(imgP6);
-      imgPeqDAO.insert(imgP7);
+      imgDAO.insert(imgG9);
+      imgDAO.insert(imgG10);
+      imgDAO.insert(imgG11);
+      imgDAO.insert(imgG12);
       imgPeqDAO.insert(imgP8);
+      imgPeqDAO.insert(imgP9);
+      imgPeqDAO.insert(imgP10);
+      imgPeqDAO.insert(imgP11);
+      imgPeqDAO.insert(imgP12);
 //      
       Produto prod3 = new Produto();   
       
@@ -261,37 +302,53 @@ public class ProdutoDAOTest {
       prod3.setDisponivel(true);
       
    // Tratando secao de detalhe
-      ImagemGrandeProduto imgG9 = new ImagemGrandeProduto();
-      imgG9.setSrcImagem("img/products/signle-product/product-slide-big-P01.jpg");
-      imgG9.setProduto(prod3);
+      ImagemGrandeProduto imgG13 = new ImagemGrandeProduto();
+      imgG13.setSrcImagem("img/products/signle-product/masculinoGrande.png");
+      imgG13.setProduto(prod3);
       
-      ImagemGrandeProduto imgG10 = new ImagemGrandeProduto();
-      imgG10.setSrcImagem("img/products/signle-product/product-slide-big-P02.jpg");
-      imgG10.setProduto(prod3);
+      ImagemGrandeProduto imgG14 = new ImagemGrandeProduto();
+      imgG14.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
+      imgG14.setProduto(prod3);
       
-      ImagemGrandeProduto imgG11 = new ImagemGrandeProduto();
-      imgG11.setSrcImagem("img/products/signle-product/product-slide-big-P03.jpg");
-      imgG11.setProduto(prod3);
+      ImagemGrandeProduto imgG15 = new ImagemGrandeProduto();
+      imgG15.setSrcImagem("img/products/signle-product/escovaInterGrande.png");
+      imgG15.setProduto(prod3);
       
-      ImagemGrandeProduto imgG12 = new ImagemGrandeProduto();
-      imgG12.setSrcImagem("img/products/signle-product/product-slide-big-P04.jpg");
-      imgG12.setProduto(prod3);
+      ImagemGrandeProduto imgG16 = new ImagemGrandeProduto();
+      imgG16.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG16.setProduto(prod3);
       
-      ImagemPequenoProduto imgP9 = new ImagemPequenoProduto();
-      imgP9.setSrcImagem("img/products/signle-product/product-slide-small-P01.jpg");
-      imgP9.setProduto(prod3);
+      ImagemGrandeProduto imgG17 = new ImagemGrandeProduto();
+      imgG17.setSrcImagem("img/products/signle-product/pastaGrande.png");
+      imgG17.setProduto(prod3);
       
-      ImagemPequenoProduto imgP10 = new ImagemPequenoProduto();
-      imgP10.setSrcImagem("img/products/signle-product/product-slide-small-P02.jpg");
-      imgP10.setProduto(prod3);
+      ImagemGrandeProduto imgG18 = new ImagemGrandeProduto();
+      imgG18.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+      imgG18.setProduto(prod3);
       
-      ImagemPequenoProduto imgP11 = new ImagemPequenoProduto();
-      imgP11.setSrcImagem("img/products/signle-product/product-slide-small-P03.jpg");
-      imgP11.setProduto(prod3);
+      ImagemPequenoProduto imgP13 = new ImagemPequenoProduto();
+      imgP13.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
+      imgP13.setProduto(prod3);
       
-      ImagemPequenoProduto imgP12 = new ImagemPequenoProduto();
-      imgP12.setSrcImagem("img/products/signle-product/product-slide-small-P04.jpg");
-      imgP12.setProduto(prod3);
+      ImagemPequenoProduto imgP14 = new ImagemPequenoProduto();
+      imgP14.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
+      imgP14.setProduto(prod3);
+      
+      ImagemPequenoProduto imgP15 = new ImagemPequenoProduto();
+      imgP15.setSrcImagem("img/products/signle-product/escovaInterPequena.png");
+      imgP15.setProduto(prod3);
+      
+      ImagemPequenoProduto imgP16 = new ImagemPequenoProduto();
+      imgP16.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP16.setProduto(prod3);
+      
+      ImagemPequenoProduto imgP17 = new ImagemPequenoProduto();
+      imgP17.setSrcImagem("img/products/signle-product/pastaPequena.png");
+      imgP17.setProduto(prod3);
+      
+      ImagemPequenoProduto imgP18 = new ImagemPequenoProduto();
+      imgP18.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+      imgP18.setProduto(prod3);
       
       prod3.setTituloDescritivo("Kit Periodontal - Pensamos na sua gengiva");
       prod3.setAnotacaoPrincipalDescritivo("Sabemos que nos ater somente aos dentes não é o suficiente. "
@@ -311,7 +368,7 @@ public class ProdutoDAOTest {
 	  
 	  prod3.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
-	          + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
 	          + "<li>Escova periodontal: Definir característica técnica;</li>"
 	          + "<li>Escova interdental: Definir característica técnica;</li>"
 	          + "<li>Fita dental: Tamanho em metros;</li>"
@@ -329,14 +386,18 @@ public class ProdutoDAOTest {
 	      + "</ul>");
       
       dao.insert(prod3);
-      imgDAO.insert(imgG9);
-      imgDAO.insert(imgG10);
-      imgDAO.insert(imgG11);
-      imgDAO.insert(imgG12);
-      imgPeqDAO.insert(imgP9);
-      imgPeqDAO.insert(imgP10);
-      imgPeqDAO.insert(imgP11);
-      imgPeqDAO.insert(imgP12);
+      imgDAO.insert(imgG13);
+      imgDAO.insert(imgG14);
+      imgDAO.insert(imgG15);
+      imgDAO.insert(imgG16);
+      imgDAO.insert(imgG17);
+      imgDAO.insert(imgG18);
+      imgPeqDAO.insert(imgP13);
+      imgPeqDAO.insert(imgP14);
+      imgPeqDAO.insert(imgP15);
+      imgPeqDAO.insert(imgP16);
+      imgPeqDAO.insert(imgP17);
+      imgPeqDAO.insert(imgP18);
       
       Produto prod4 = new Produto();   
       
@@ -351,37 +412,37 @@ public class ProdutoDAOTest {
       prod4.setDisponivel(true);
       
    // Tratando secao de detalhe
-      ImagemGrandeProduto imgG13 = new ImagemGrandeProduto();
-      imgG13.setSrcImagem("img/products/signle-product/product-slide-big-P01.jpg");
-      imgG13.setProduto(prod4);
+      ImagemGrandeProduto imgG19 = new ImagemGrandeProduto();
+      imgG19.setSrcImagem("img/products/signle-product/standardGrande.png");
+      imgG19.setProduto(prod4);
       
-      ImagemGrandeProduto imgG14 = new ImagemGrandeProduto();
-      imgG14.setSrcImagem("img/products/signle-product/product-slide-big-P02.jpg");
-      imgG14.setProduto(prod4);
+      ImagemGrandeProduto imgG20 = new ImagemGrandeProduto();
+      imgG20.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
+      imgG20.setProduto(prod4);
       
-      ImagemGrandeProduto imgG15 = new ImagemGrandeProduto();
-      imgG15.setSrcImagem("img/products/signle-product/product-slide-big-P03.jpg");
-      imgG15.setProduto(prod4);
+      ImagemGrandeProduto imgG21 = new ImagemGrandeProduto();
+      imgG21.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG21.setProduto(prod4);
       
-      ImagemGrandeProduto imgG16 = new ImagemGrandeProduto();
-      imgG16.setSrcImagem("img/products/signle-product/product-slide-big-P04.jpg");
-      imgG16.setProduto(prod4);
+      ImagemGrandeProduto imgG22 = new ImagemGrandeProduto();
+      imgG22.setSrcImagem("img/products/signle-product/pastaGrande.png");
+      imgG22.setProduto(prod4);
       
-      ImagemPequenoProduto imgP13 = new ImagemPequenoProduto();
-      imgP13.setSrcImagem("img/products/signle-product/product-slide-small-P01.jpg");
-      imgP13.setProduto(prod4);
+      ImagemPequenoProduto imgP19 = new ImagemPequenoProduto();
+      imgP19.setSrcImagem("img/products/signle-product/standardPequeno.png");
+      imgP19.setProduto(prod4);
       
-      ImagemPequenoProduto imgP14 = new ImagemPequenoProduto();
-      imgP14.setSrcImagem("img/products/signle-product/product-slide-small-P02.jpg");
-      imgP14.setProduto(prod4);
+      ImagemPequenoProduto imgP20 = new ImagemPequenoProduto();
+      imgP20.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
+      imgP20.setProduto(prod4);
       
-      ImagemPequenoProduto imgP15 = new ImagemPequenoProduto();
-      imgP15.setSrcImagem("img/products/signle-product/product-slide-small-P03.jpg");
-      imgP15.setProduto(prod4);
+      ImagemPequenoProduto imgP21 = new ImagemPequenoProduto();
+      imgP21.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP21.setProduto(prod4);
       
-      ImagemPequenoProduto imgP16 = new ImagemPequenoProduto();
-      imgP16.setSrcImagem("img/products/signle-product/product-slide-small-P04.jpg");
-      imgP16.setProduto(prod4);
+      ImagemPequenoProduto imgP22 = new ImagemPequenoProduto();
+      imgP22.setSrcImagem("img/products/signle-product/pastaPequena.png");
+      imgP22.setProduto(prod4);
       
       prod4.setTituloDescritivo("Kit Standart - Fundamental a qualquer momento");
       prod4.setAnotacaoPrincipalDescritivo("Todos possui a necessidade de higienização diária, com Kit Standart montamos o que você precisa. "
@@ -399,7 +460,7 @@ public class ProdutoDAOTest {
 	  
 	  prod4.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
-	          + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+	          + "<li>Kit: 6 cm (Largura), 5 cm (Altura), 21 cm (Comprimento);</li>"
 	          + "<li>Escova macia: Definir característica técnica;</li>"
 	          + "<li>Fio dental: Tamanho em metros;</li>"
 	          + "<li>Creme dental: Especificar o tamanho;</li>"
@@ -413,14 +474,14 @@ public class ProdutoDAOTest {
 	      + "</ul>");
       
       dao.insert(prod4);
-      imgDAO.insert(imgG13);
-      imgDAO.insert(imgG14);
-      imgDAO.insert(imgG15);
-      imgDAO.insert(imgG16);
-      imgPeqDAO.insert(imgP13);
-      imgPeqDAO.insert(imgP14);
-      imgPeqDAO.insert(imgP15);
-      imgPeqDAO.insert(imgP16);
+      imgDAO.insert(imgG19);
+      imgDAO.insert(imgG20);
+      imgDAO.insert(imgG21);
+      imgDAO.insert(imgG22);
+      imgPeqDAO.insert(imgP19);
+      imgPeqDAO.insert(imgP20);
+      imgPeqDAO.insert(imgP21);
+      imgPeqDAO.insert(imgP22);
       
       Produto prod5 = new Produto();   
       
@@ -428,7 +489,7 @@ public class ProdutoDAOTest {
       prod5.setSrcImagemCarrinho("img/products/cart-image3.jpg");
       prod5.setTitulo("Kit Infantil - Escolar");
       prod5.setSubTitulo("Sucesso escolar");
-      prod5.setDescritivo("Devida atenção na escola");
+      prod5.setDescritivo("Para os meninos");
       prod5.setPreco(120D);
       prod5.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
@@ -437,37 +498,45 @@ public class ProdutoDAOTest {
       prod5.setDisponivel(true);
       
       // Tratando secao de detalhe
-      ImagemGrandeProduto imgG17 = new ImagemGrandeProduto();
-      imgG17.setSrcImagem("img/products/signle-product/product-slide-big-P01.jpg");
-      imgG17.setProduto(prod5);
+      ImagemGrandeProduto imgG23 = new ImagemGrandeProduto();
+      imgG23.setSrcImagem("img/products/signle-product/infantilMasculinoGrande.png");
+      imgG23.setProduto(prod5);
       
-      ImagemGrandeProduto imgG18 = new ImagemGrandeProduto();
-      imgG18.setSrcImagem("img/products/signle-product/product-slide-big-P02.jpg");
-      imgG18.setProduto(prod5);
+      ImagemGrandeProduto imgG24 = new ImagemGrandeProduto();
+      imgG24.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
+      imgG24.setProduto(prod5);
       
-      ImagemGrandeProduto imgG19 = new ImagemGrandeProduto();
-      imgG19.setSrcImagem("img/products/signle-product/product-slide-big-P03.jpg");
-      imgG19.setProduto(prod5);
+      ImagemGrandeProduto imgG25 = new ImagemGrandeProduto();
+      imgG25.setSrcImagem("img/products/signle-product/cremeInfantilGrande.png");
+      imgG25.setProduto(prod5);
       
-      ImagemGrandeProduto imgG20 = new ImagemGrandeProduto();
-      imgG20.setSrcImagem("img/products/signle-product/product-slide-big-P04.jpg");
-      imgG20.setProduto(prod5);
+      ImagemGrandeProduto imgG26 = new ImagemGrandeProduto();
+      imgG26.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG26.setProduto(prod5);
       
-      ImagemPequenoProduto imgP17 = new ImagemPequenoProduto();
-      imgP17.setSrcImagem("img/products/signle-product/product-slide-small-P01.jpg");
-      imgP17.setProduto(prod5);
+      ImagemGrandeProduto imgG27 = new ImagemGrandeProduto();
+      imgG27.setSrcImagem("img/products/signle-product/toalhaGrande.png");
+      imgG27.setProduto(prod5);
       
-      ImagemPequenoProduto imgP18 = new ImagemPequenoProduto();
-      imgP18.setSrcImagem("img/products/signle-product/product-slide-small-P02.jpg");
-      imgP18.setProduto(prod5);
+      ImagemPequenoProduto imgP23 = new ImagemPequenoProduto();
+      imgP23.setSrcImagem("img/products/signle-product/infantilFemininoPequeno.png");
+      imgP23.setProduto(prod5);
       
-      ImagemPequenoProduto imgP19 = new ImagemPequenoProduto();
-      imgP19.setSrcImagem("img/products/signle-product/product-slide-small-P03.jpg");
-      imgP19.setProduto(prod5);
+      ImagemPequenoProduto imgP24 = new ImagemPequenoProduto();
+      imgP24.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
+      imgP24.setProduto(prod5);
       
-      ImagemPequenoProduto imgP20 = new ImagemPequenoProduto();
-      imgP20.setSrcImagem("img/products/signle-product/product-slide-small-P04.jpg");
-      imgP20.setProduto(prod5);
+      ImagemPequenoProduto imgP25 = new ImagemPequenoProduto();
+      imgP25.setSrcImagem("img/products/signle-product/cremeInfantilPequeno.png");
+      imgP25.setProduto(prod5);
+      
+      ImagemPequenoProduto imgP26 = new ImagemPequenoProduto();
+      imgP26.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP26.setProduto(prod5);
+      
+      ImagemPequenoProduto imgP27 = new ImagemPequenoProduto();
+      imgP27.setSrcImagem("img/products/signle-product/toalhaPequena.png");
+      imgP27.setProduto(prod5);
       
       prod5.setTituloDescritivo("Kit Infantil - Sucesso nas escolas");
       prod5.setAnotacaoPrincipalDescritivo("Educar as crianças a fazer a higienização bucal até mesmo fora de casa é um desafio. "
@@ -487,7 +556,7 @@ public class ProdutoDAOTest {
 	  
 	  prod5.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
-	          + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+	          + "<li>Kit: 22 cm (Largura), 14 cm (Altura), 10 cm (Comprimento);</li>"
 	          + "<li>Escova macia: Definir característica técnica;</li>"
 	          + "<li>Fio dental: Tamanho em metros;</li>"
 	          + "<li>Creme dental: Especificar o tamanho;</li>"
@@ -502,16 +571,17 @@ public class ProdutoDAOTest {
 	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
 	      + "</ul>");
       
-      
       dao.insert(prod5);
-      imgDAO.insert(imgG17);
-      imgDAO.insert(imgG18);
-      imgDAO.insert(imgG19);
-      imgDAO.insert(imgG20);
-      imgPeqDAO.insert(imgP17);
-      imgPeqDAO.insert(imgP18);
-      imgPeqDAO.insert(imgP19);
-      imgPeqDAO.insert(imgP20);
+      imgDAO.insert(imgG23);
+      imgDAO.insert(imgG24);
+      imgDAO.insert(imgG25);
+      imgDAO.insert(imgG26);
+      imgDAO.insert(imgG27);
+      imgPeqDAO.insert(imgP23);
+      imgPeqDAO.insert(imgP24);
+      imgPeqDAO.insert(imgP25);
+      imgPeqDAO.insert(imgP26);
+      imgPeqDAO.insert(imgP27);
       
       Produto prod6 = new Produto();   
       
@@ -528,37 +598,61 @@ public class ProdutoDAOTest {
       prod6.setDisponivel(true);
       
    // Tratando secao de detalhe
-      ImagemGrandeProduto imgG21 = new ImagemGrandeProduto();
-      imgG21.setSrcImagem("img/products/signle-product/product-slide-big-P01.jpg");
-      imgG21.setProduto(prod6);
+      ImagemGrandeProduto imgG28 = new ImagemGrandeProduto();
+      imgG28.setSrcImagem("img/products/signle-product/femininoGrande.png");
+      imgG28.setProduto(prod6);
       
-      ImagemGrandeProduto imgG22 = new ImagemGrandeProduto();
-      imgG22.setSrcImagem("img/products/signle-product/product-slide-big-P02.jpg");
-      imgG22.setProduto(prod6);
+      ImagemGrandeProduto imgG29 = new ImagemGrandeProduto();
+      imgG29.setSrcImagem("img/products/signle-product/escovaOrtoGrande.png");
+      imgG29.setProduto(prod6);
       
-      ImagemGrandeProduto imgG23 = new ImagemGrandeProduto();
-      imgG23.setSrcImagem("img/products/signle-product/product-slide-big-P03.jpg");
-      imgG23.setProduto(prod6);
+      ImagemGrandeProduto imgG30 = new ImagemGrandeProduto();
+      imgG30.setSrcImagem("img/products/signle-product/escovaInterGrande.png");
+      imgG30.setProduto(prod6);
       
-      ImagemGrandeProduto imgG24 = new ImagemGrandeProduto();
-      imgG24.setSrcImagem("img/products/signle-product/product-slide-big-P04.jpg");
-      imgG24.setProduto(prod6);
+      ImagemGrandeProduto imgG31 = new ImagemGrandeProduto();
+      imgG31.setSrcImagem("img/products/signle-product/passaFioGrande.png");
+      imgG31.setProduto(prod6);
       
-      ImagemPequenoProduto imgP21 = new ImagemPequenoProduto();
-      imgP21.setSrcImagem("img/products/signle-product/product-slide-small-P01.jpg");
-      imgP21.setProduto(prod6);
+      ImagemGrandeProduto imgG32 = new ImagemGrandeProduto();
+      imgG32.setSrcImagem("img/products/signle-product/pastaGrande.png");
+      imgG32.setProduto(prod6);
       
-      ImagemPequenoProduto imgP22 = new ImagemPequenoProduto();
-      imgP22.setSrcImagem("img/products/signle-product/product-slide-small-P02.jpg");
-      imgP22.setProduto(prod6);
+      ImagemGrandeProduto imgG33 = new ImagemGrandeProduto();
+      imgG33.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG33.setProduto(prod6);
       
-      ImagemPequenoProduto imgP23 = new ImagemPequenoProduto();
-      imgP23.setSrcImagem("img/products/signle-product/product-slide-small-P03.jpg");
-      imgP23.setProduto(prod6);
+      ImagemGrandeProduto imgG34 = new ImagemGrandeProduto();
+      imgG34.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+      imgG34.setProduto(prod6);
       
-      ImagemPequenoProduto imgP24 = new ImagemPequenoProduto();
-      imgP24.setSrcImagem("img/products/signle-product/product-slide-small-P04.jpg");
-      imgP24.setProduto(prod6);
+      ImagemPequenoProduto imgP28 = new ImagemPequenoProduto();
+      imgP28.setSrcImagem("img/products/signle-product/femininoPequeno.png");
+      imgP28.setProduto(prod6);
+      
+      ImagemPequenoProduto imgP29 = new ImagemPequenoProduto();
+      imgP29.setSrcImagem("img/products/signle-product/escovaOrtoPequena.png");
+      imgP29.setProduto(prod6);
+      
+      ImagemPequenoProduto imgP30 = new ImagemPequenoProduto();
+      imgP30.setSrcImagem("img/products/signle-product/escovaInterPequena.png");
+      imgP30.setProduto(prod6);
+      
+      ImagemPequenoProduto imgP31 = new ImagemPequenoProduto();
+      imgP31.setSrcImagem("img/products/signle-product/passaFioPequeno.png");
+      imgP31.setProduto(prod6);
+      
+      ImagemPequenoProduto imgP32 = new ImagemPequenoProduto();
+      imgP32.setSrcImagem("img/products/signle-product/pastaPequena.png");
+      imgP32.setProduto(prod6);
+      
+      ImagemPequenoProduto imgP33 = new ImagemPequenoProduto();
+      imgP33.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP33.setProduto(prod6);
+      
+      ImagemPequenoProduto imgP34 = new ImagemPequenoProduto();
+      imgP34.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+      imgP34.setProduto(prod6);
       
       prod6.setTituloDescritivo("Kit Ortodôntico - A delicadeza da mulher");
       prod6.setAnotacaoPrincipalDescritivo("O tratamento com aparelhos ortodôntico tende a criar alguns obstáculos para a higiene bucal.  "
@@ -578,7 +672,7 @@ public class ProdutoDAOTest {
 	  
 	  prod6.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
-	          + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
 	          + "<li>Escova macia: Definir característica técnica;</li>"
 	          + "<li>Fio dental: Tamanho em metros;</li>"
 	          + "<li>Creme dental: Especificar o tamanho;</li>"
@@ -595,14 +689,20 @@ public class ProdutoDAOTest {
 	      + "</ul>");
       
       dao.insert(prod6);
-      imgDAO.insert(imgG21);
-      imgDAO.insert(imgG22);
-      imgDAO.insert(imgG23);
-      imgDAO.insert(imgG24);
-      imgPeqDAO.insert(imgP21);
-      imgPeqDAO.insert(imgP22);
-      imgPeqDAO.insert(imgP23);
-      imgPeqDAO.insert(imgP24);
+      imgDAO.insert(imgG28);
+      imgDAO.insert(imgG29);
+      imgDAO.insert(imgG30);
+      imgDAO.insert(imgG31);
+      imgDAO.insert(imgG32);
+      imgDAO.insert(imgG33);
+      imgDAO.insert(imgG34);
+      imgPeqDAO.insert(imgP28);
+      imgPeqDAO.insert(imgP29);
+      imgPeqDAO.insert(imgP30);
+      imgPeqDAO.insert(imgP31);
+      imgPeqDAO.insert(imgP32);
+      imgPeqDAO.insert(imgP33);
+      imgPeqDAO.insert(imgP34);
       
       Produto prod7 = new Produto();   
       
@@ -617,37 +717,53 @@ public class ProdutoDAOTest {
       prod7.setDisponivel(true);
       
       // Tratando secao de detalhe
-      ImagemGrandeProduto imgG25 = new ImagemGrandeProduto();
-      imgG25.setSrcImagem("img/products/signle-product/product-slide-big-P01.jpg");
-      imgG25.setProduto(prod7);
+      ImagemGrandeProduto imgG35 = new ImagemGrandeProduto();
+      imgG35.setSrcImagem("img/products/signle-product/femininoGrande.png");
+      imgG35.setProduto(prod7);
       
-      ImagemGrandeProduto imgG26 = new ImagemGrandeProduto();
-      imgG26.setSrcImagem("img/products/signle-product/product-slide-big-P02.jpg");
-      imgG26.setProduto(prod7);
+      ImagemGrandeProduto imgG36 = new ImagemGrandeProduto();
+      imgG36.setSrcImagem("img/products/signle-product/escovaFemininaGrande.png");
+      imgG36.setProduto(prod7);
       
-      ImagemGrandeProduto imgG27 = new ImagemGrandeProduto();
-      imgG27.setSrcImagem("img/products/signle-product/product-slide-big-P03.jpg");
-      imgG27.setProduto(prod7);
+      ImagemGrandeProduto imgG37 = new ImagemGrandeProduto();
+      imgG37.setSrcImagem("img/products/signle-product/escovaInterGrande.png");
+      imgG37.setProduto(prod7);
       
-      ImagemGrandeProduto imgG28 = new ImagemGrandeProduto();
-      imgG28.setSrcImagem("img/products/signle-product/product-slide-big-P04.jpg");
-      imgG28.setProduto(prod7);
+      ImagemGrandeProduto imgG38 = new ImagemGrandeProduto();
+      imgG38.setSrcImagem("img/products/signle-product/pastaGrande.png");
+      imgG38.setProduto(prod7);
       
-      ImagemPequenoProduto imgP25 = new ImagemPequenoProduto();
-      imgP25.setSrcImagem("img/products/signle-product/product-slide-small-P01.jpg");
-      imgP25.setProduto(prod7);
+      ImagemGrandeProduto imgG39 = new ImagemGrandeProduto();
+      imgG39.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG39.setProduto(prod7);
       
-      ImagemPequenoProduto imgP26 = new ImagemPequenoProduto();
-      imgP26.setSrcImagem("img/products/signle-product/product-slide-small-P02.jpg");
-      imgP26.setProduto(prod7);
+      ImagemGrandeProduto imgG40 = new ImagemGrandeProduto();
+      imgG40.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+      imgG40.setProduto(prod7);
       
-      ImagemPequenoProduto imgP27 = new ImagemPequenoProduto();
-      imgP27.setSrcImagem("img/products/signle-product/product-slide-small-P03.jpg");
-      imgP27.setProduto(prod7);
+      ImagemPequenoProduto imgP35 = new ImagemPequenoProduto();
+      imgP35.setSrcImagem("img/products/signle-product/femininoPequeno.png");
+      imgP35.setProduto(prod7);
       
-      ImagemPequenoProduto imgP28 = new ImagemPequenoProduto();
-      imgP28.setSrcImagem("img/products/signle-product/product-slide-small-P04.jpg");
-      imgP28.setProduto(prod7);
+      ImagemPequenoProduto imgP36 = new ImagemPequenoProduto();
+      imgP36.setSrcImagem("img/products/signle-product/escovaFemininaPequena.png");
+      imgP36.setProduto(prod7);
+      
+      ImagemPequenoProduto imgP37 = new ImagemPequenoProduto();
+      imgP37.setSrcImagem("img/products/signle-product/escovaInterPequena.png");
+      imgP37.setProduto(prod7);
+      
+      ImagemPequenoProduto imgP38 = new ImagemPequenoProduto();
+      imgP38.setSrcImagem("img/products/signle-product/pastaPequena.png");
+      imgP38.setProduto(prod7);
+      
+      ImagemPequenoProduto imgP39 = new ImagemPequenoProduto();
+      imgP39.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP39.setProduto(prod7);
+      
+      ImagemPequenoProduto imgP40 = new ImagemPequenoProduto();
+      imgP40.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+      imgP40.setProduto(prod7);
       
       prod7.setTituloDescritivo("Kit Periodontal - Força feminina");
       prod7.setAnotacaoPrincipalDescritivo("A doença periodontal acomete gengiva e periodonto (estrutura de suporte aos dentes) "
@@ -668,7 +784,7 @@ public class ProdutoDAOTest {
 	  
 	  prod7.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
-	          + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
 	          + "<li>Escova macia: Definir característica técnica;</li>"
 	          + "<li>Fio dental: Tamanho em metros;</li>"
 	          + "<li>Creme dental: Especificar o tamanho;</li>"
@@ -684,15 +800,18 @@ public class ProdutoDAOTest {
 	      + "</ul>");
       
       dao.insert(prod7);
-      imgDAO.insert(imgG25);
-      imgDAO.insert(imgG26);
-      imgDAO.insert(imgG27);
-      imgDAO.insert(imgG28);
-      imgPeqDAO.insert(imgP25);
-      imgPeqDAO.insert(imgP26);
-      imgPeqDAO.insert(imgP27);
-      imgPeqDAO.insert(imgP28);
-
+      imgDAO.insert(imgG35);
+      imgDAO.insert(imgG36);
+      imgDAO.insert(imgG37);
+      imgDAO.insert(imgG38);
+      imgDAO.insert(imgG39);
+      imgDAO.insert(imgG40);
+      imgPeqDAO.insert(imgP35);
+      imgPeqDAO.insert(imgP36);
+      imgPeqDAO.insert(imgP37);
+      imgPeqDAO.insert(imgP38);
+      imgPeqDAO.insert(imgP39);
+      imgPeqDAO.insert(imgP40);
       
       Produto prod8 = new Produto();   
       
@@ -707,37 +826,45 @@ public class ProdutoDAOTest {
       prod8.setDisponivel(true);
       
    // Tratando secao de detalhe
-      ImagemGrandeProduto imgG29 = new ImagemGrandeProduto();
-      imgG29.setSrcImagem("img/products/signle-product/product-slide-big-P01.jpg");
-      imgG29.setProduto(prod8);
+      ImagemGrandeProduto imgG41 = new ImagemGrandeProduto();
+      imgG41.setSrcImagem("img/products/signle-product/femininoGrande.png");
+      imgG41.setProduto(prod8);
       
-      ImagemGrandeProduto imgG30 = new ImagemGrandeProduto();
-      imgG30.setSrcImagem("img/products/signle-product/product-slide-big-P02.jpg");
-      imgG30.setProduto(prod8);
+      ImagemGrandeProduto imgG42 = new ImagemGrandeProduto();
+      imgG42.setSrcImagem("img/products/signle-product/escovaFemininaGrande.png");
+      imgG42.setProduto(prod8);
       
-      ImagemGrandeProduto imgG31 = new ImagemGrandeProduto();
-      imgG31.setSrcImagem("img/products/signle-product/product-slide-big-P03.jpg");
-      imgG31.setProduto(prod8);
+      ImagemGrandeProduto imgG43 = new ImagemGrandeProduto();
+      imgG43.setSrcImagem("img/products/signle-product/pastaGrande.png");
+      imgG43.setProduto(prod8);
       
-      ImagemGrandeProduto imgG32 = new ImagemGrandeProduto();
-      imgG32.setSrcImagem("img/products/signle-product/product-slide-big-P04.jpg");
-      imgG32.setProduto(prod8);
+      ImagemGrandeProduto imgG44 = new ImagemGrandeProduto();
+      imgG44.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG44.setProduto(prod8);
       
-      ImagemPequenoProduto imgP29 = new ImagemPequenoProduto();
-      imgP29.setSrcImagem("img/products/signle-product/product-slide-small-P01.jpg");
-      imgP29.setProduto(prod8);
+      ImagemGrandeProduto imgG45 = new ImagemGrandeProduto();
+      imgG45.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+      imgG45.setProduto(prod8);
       
-      ImagemPequenoProduto imgP30 = new ImagemPequenoProduto();
-      imgP30.setSrcImagem("img/products/signle-product/product-slide-small-P02.jpg");
-      imgP30.setProduto(prod8);
+      ImagemPequenoProduto imgP41 = new ImagemPequenoProduto();
+      imgP41.setSrcImagem("img/products/signle-product/femininoPequeno.png");
+      imgP41.setProduto(prod8);
       
-      ImagemPequenoProduto imgP31 = new ImagemPequenoProduto();
-      imgP31.setSrcImagem("img/products/signle-product/product-slide-small-P03.jpg");
-      imgP31.setProduto(prod8);
+      ImagemPequenoProduto imgP42 = new ImagemPequenoProduto();
+      imgP42.setSrcImagem("img/products/signle-product/escovaFemininaPequena.png");
+      imgP42.setProduto(prod8);
       
-      ImagemPequenoProduto imgP32 = new ImagemPequenoProduto();
-      imgP32.setSrcImagem("img/products/signle-product/product-slide-small-P04.jpg");
-      imgP32.setProduto(prod8);
+      ImagemPequenoProduto imgP43 = new ImagemPequenoProduto();
+      imgP43.setSrcImagem("img/products/signle-product/pastaPequena.png");
+      imgP43.setProduto(prod8);
+      
+      ImagemPequenoProduto imgP44 = new ImagemPequenoProduto();
+      imgP44.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP44.setProduto(prod8);
+      
+      ImagemPequenoProduto imgP45 = new ImagemPequenoProduto();
+      imgP45.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+      imgP45.setProduto(prod8);
       
       prod8.setTituloDescritivo("Kit Pós-Cirúrgico - Toque feminino");
       prod8.setAnotacaoPrincipalDescritivo("Os cuidados no pós-cirúrgico são essenciais para o sucesso de um tratamento. "
@@ -756,7 +883,7 @@ public class ProdutoDAOTest {
 	  
 	  prod8.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
-	          + "<li>Kit: XX cm (Largura), XX cm (Altura), XX cm (Comprimento);</li>"
+			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
 	          + "<li>Escova macia: Definir característica técnica;</li>"
 	          + "<li>Fio dental: Tamanho em metros;</li>"
 	          + "<li>Creme dental: Especificar o tamanho;</li>"
@@ -772,14 +899,117 @@ public class ProdutoDAOTest {
 	      + "</ul>");
       
       dao.insert(prod8);
-      imgDAO.insert(imgG29);
-      imgDAO.insert(imgG30);
-      imgDAO.insert(imgG31);
-      imgDAO.insert(imgG32);
-      imgPeqDAO.insert(imgP29);
-      imgPeqDAO.insert(imgP30);
-      imgPeqDAO.insert(imgP31);
-      imgPeqDAO.insert(imgP32);
+      imgDAO.insert(imgG41);
+      imgDAO.insert(imgG42);
+      imgDAO.insert(imgG43);
+      imgDAO.insert(imgG44);
+      imgDAO.insert(imgG45);
+      imgPeqDAO.insert(imgP41);
+      imgPeqDAO.insert(imgP42);
+      imgPeqDAO.insert(imgP43);
+      imgPeqDAO.insert(imgP44);
+      imgPeqDAO.insert(imgP45);
+      
+      Produto prod9 = new Produto();   
+      
+      prod9.setSrcImagem("img/home/featured-product/kitInfantilFemininoFundo.jpg");
+      prod9.setSrcImagemCarrinho("img/products/cart-image3.jpg");
+      prod9.setTitulo("Kit Infantil - Escolar");
+      prod9.setSubTitulo("Delicadeza das meninas");
+      prod9.setDescritivo("Coisa que menina sabe...");
+      prod9.setPreco(120D);
+      prod9.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod9.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
+      prod9.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
+      prod9.setQtdEstoque(6);
+      prod9.setDisponivel(true);
+      
+      // Tratando secao de detalhe
+      ImagemGrandeProduto imgG46 = new ImagemGrandeProduto();
+      imgG46.setSrcImagem("img/products/signle-product/infantilFemininoGrande.png");
+      imgG46.setProduto(prod9);
+      
+      ImagemGrandeProduto imgG47 = new ImagemGrandeProduto();
+      imgG47.setSrcImagem("img/products/signle-product/escovaFemininaGrande.png");
+      imgG47.setProduto(prod9);
+      
+      ImagemGrandeProduto imgG48 = new ImagemGrandeProduto();
+      imgG48.setSrcImagem("img/products/signle-product/cremeInfantilGrande.png");
+      imgG48.setProduto(prod9);
+      
+      ImagemGrandeProduto imgG49 = new ImagemGrandeProduto();
+      imgG49.setSrcImagem("img/products/signle-product/fioGrande.png");
+      imgG49.setProduto(prod9);
+      
+      ImagemGrandeProduto imgG50 = new ImagemGrandeProduto();
+      imgG50.setSrcImagem("img/products/signle-product/toalhaGrande.png");
+      imgG50.setProduto(prod9);
+      
+      ImagemPequenoProduto imgP46 = new ImagemPequenoProduto();
+      imgP46.setSrcImagem("img/products/signle-product/infantilFemininoPequeno.png");
+      imgP46.setProduto(prod9);
+      
+      ImagemPequenoProduto imgP47 = new ImagemPequenoProduto();
+      imgP47.setSrcImagem("img/products/signle-product/escovaFemininaPequena.png");
+      imgP47.setProduto(prod9);
+      
+      ImagemPequenoProduto imgP48 = new ImagemPequenoProduto();
+      imgP48.setSrcImagem("img/products/signle-product/cremeInfantilPequeno.png");
+      imgP48.setProduto(prod9);
+      
+      ImagemPequenoProduto imgP49 = new ImagemPequenoProduto();
+      imgP49.setSrcImagem("img/products/signle-product/fioPequeno.png");
+      imgP49.setProduto(prod9);
+      
+      ImagemPequenoProduto imgP50 = new ImagemPequenoProduto();
+      imgP50.setSrcImagem("img/products/signle-product/toalhaPequena.png");
+      imgP50.setProduto(prod9);
+      
+      prod9.setTituloDescritivo("Kit Infantil - Sucesso nas escolas");
+      prod9.setAnotacaoPrincipalDescritivo("Educar as crianças a fazer a higienização bucal até mesmo fora de casa é um desafio. "
+      		+ "Com nosso produto essa missão torna-se elementar, contendo todo o carinho para esse período em que as "
+      		+ "crianças estão longe da rotina de casa. Dispomos todos os itens que facilitam esse momento. "
+      		+ "Trazendo também independência a criança quanto a cuidar da saúde bucal"
+      		+ "");
+      
+      prod9.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
+	    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Estojo personalizado;</li>"
+	              + "<li>Escova macia;</li>"
+	              + "<li>Pasta de dente infantil;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Toalinha;</li>"
+	          + "</ul>");
+	  
+	  prod9.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+			  + "<ul class=\"list-unstyled\">"
+			  + "<li>Kit: 22 cm (Largura), 14 cm (Altura), 10 cm (Comprimento);</li>"
+	          + "<li>Escova macia: Definir característica técnica;</li>"
+	          + "<li>Fio dental: Tamanho em metros;</li>"
+	          + "<li>Creme dental: Especificar o tamanho;</li>"
+	      + "</ul>");
+	  
+	  prod9.setAnotacaoComposicao("Vimos como fundamental:"
+			  + "<ul class=\"list-unstyled\">"
+	          + "<li>Estojo personalizado, formato anatômico de fácil utilização, com cores alegres;</li>"
+	          + "<li>Escova macia com formato adequado para a boquinha das crianças;</li>"
+	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
+	          + "<li>Fio dental, remove biofilme dental, evitando a formação de placa bacteriana;</li>"
+	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
+	      + "</ul>");
+      
+      
+      dao.insert(prod9);
+      imgDAO.insert(imgG46);
+      imgDAO.insert(imgG47);
+      imgDAO.insert(imgG48);
+      imgDAO.insert(imgG49);
+      imgDAO.insert(imgG50);
+      imgPeqDAO.insert(imgP46);
+      imgPeqDAO.insert(imgP47);
+      imgPeqDAO.insert(imgP48);
+      imgPeqDAO.insert(imgP49);
+      imgPeqDAO.insert(imgP50);
 //      
 //      Produto prod9 = new Produto();   
 //      
