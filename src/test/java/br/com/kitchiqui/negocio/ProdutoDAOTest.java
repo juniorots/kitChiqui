@@ -401,7 +401,7 @@ public class ProdutoDAOTest {
       
       Produto prod4 = new Produto();   
       
-      prod4.setSrcImagem("img/home/featured-product/product-01.jpg");
+      prod4.setSrcImagem("img/home/featured-product/kitStandart.png");
       prod4.setSrcImagemCarrinho("img/products/cart-image1.jpg");
       prod4.setTitulo("Kit Standart - Essencial");
       prod4.setPreco(50D);
