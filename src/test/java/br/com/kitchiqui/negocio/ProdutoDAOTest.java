@@ -64,7 +64,7 @@ public class ProdutoDAOTest {
       ImagemGrandeProdutoDAO imgDAO = new ImagemGrandeProdutoDAO(entityManager);
       ImagemPequenoProdutoDAO imgPeqDAO = new ImagemPequenoProdutoDAO(entityManager);
       
-      prod.setSrcImagem("img/home/banner-slider/vitrineMasculinoClassico.png");
+      prod.setSrcImagem("img/home/banner-slider/kitFemininoPosCirurgico.png");
       prod.setSrcImagemCarrinho("img/products/cart-image1.jpg");
       prod.setTitulo("KIT ORTODÔNTICO");
       prod.setPreco(450D);
@@ -192,7 +192,7 @@ public class ProdutoDAOTest {
       
       Produto prod2 = new Produto();   
       
-      prod2.setSrcImagem("img/home/banner-slider/kitClassico02.png");
+      prod2.setSrcImagem("img/home/banner-slider/kitMasculinoPosCirurgico.png");
       prod2.setSrcImagemCarrinho("img/products/cart-image2.jpg");
       prod2.setTitulo("KIT Pós-cirurgico");
       prod2.setPreco(650D);
@@ -912,7 +912,7 @@ public class ProdutoDAOTest {
       
       Produto prod9 = new Produto();   
       
-      prod9.setSrcImagem("img/home/featured-product/kitInfantilFemininoFundo.jpg");
+      prod9.setSrcImagem("img/home/featured-product/kitInfantilFeminino.png");
       prod9.setSrcImagemCarrinho("img/products/cart-image3.jpg");
       prod9.setTitulo("Kit Infantil - Escolar");
       prod9.setSubTitulo("Delicadeza das meninas");
