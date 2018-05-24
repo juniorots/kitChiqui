@@ -169,16 +169,19 @@
 					                      <div id="controleEstoque" class="tab-pane fade">
 					                      	<div class="form-group">	
 					                      	  <label for="" class="col-md-4 col-sm-5 control-label">Quantidade no Estoque</label>
-					                          <div class="col-md-4 col-sm-6">
+					                          <div class="col-md-9 col-sm-9">
 					                            <h:inputText class="form-control" id="qtdEstoque" value="#{produtoMB.produto.qtdEstoque}" />
 					                          </div>	  
-					                          <div style="height: 30px;"/>
-					                          <label for="" class="col-md-6 col-sm-5 control-label">Preço</label>
-					                          <div class="col-md-4 col-sm-6">
+					                        </div>
+					                        <div class="form-group">
+					                          <label for="" class="col-md-5 col-sm-5 control-label">Preço</label>
+					                          <div class="col-md-9 col-sm-9">
 					                            <p:inputMask class="form-control" id="strPreco" value="#{produtoMB.produto.strPreco}" mask="R$ 999,99" />
 					                          </div>
 					                        </div>  
-					                        <div style="height: 50px;"/>
+					                        <div class="form-group">
+     			                              <div style="height: 50px;"/>
+					                        </div>
 					                        <div class="form-group">
 					                          <div class="col-md-0 col-sm-5">
 					                            <h:commandButton class="btn btn-primary btn-block" action="#{produtoMB.atualizarProduto}" value="Atualizar"/>
