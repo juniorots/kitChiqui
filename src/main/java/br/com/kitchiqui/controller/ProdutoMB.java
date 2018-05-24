@@ -81,6 +81,9 @@ public class ProdutoMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
+        if (!Util.isEmpty(getProduto().getStrPreco())) {
+        	getProduto().setPreco(Double.parseDouble(getProduto().getStrPreco().replaceAll("[R$]", "").replaceAll("[,]", ".")));
+        }
         dao.update(getProduto());
         entityManager.getTransaction().commit();
         

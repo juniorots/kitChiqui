@@ -53,6 +53,8 @@ public class Produto extends DomainObject {
 	
 	private Double preco;
 	
+	private String strPreco;
+	
 	private Boolean disponivel;
 	
 	/*
@@ -100,6 +102,14 @@ public class Produto extends DomainObject {
 	@LazyToOne (LazyToOneOption.NO_PROXY)
 	private CompraProduto compraProduto;
 	
+	public String getStrPreco() {
+		return strPreco;
+	}
+
+	public void setStrPreco(String strPreco) {
+		this.strPreco = strPreco;
+	}
+
 	public ContadorClasseProduto getContadorClasse() {
 		return contadorClasse;
 	}

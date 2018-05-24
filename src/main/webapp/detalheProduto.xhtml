@@ -168,10 +168,15 @@
 				                      <c:if test="#{usuarioAdministrador}">
 					                      <div id="controleEstoque" class="tab-pane fade">
 					                      	<div class="form-group">	
-					                      	  <label for="" class="col-md-4 col-sm-8 control-label">Quantidade no Estoque</label>
-					                          <div class="col-md-3 col-sm-3">
+					                      	  <label for="" class="col-md-4 col-sm-5 control-label">Quantidade no Estoque</label>
+					                          <div class="col-md-4 col-sm-6">
 					                            <h:inputText class="form-control" id="qtdEstoque" value="#{produtoMB.produto.qtdEstoque}" />
 					                          </div>	  
+					                          <div style="height: 30px;"/>
+					                          <label for="" class="col-md-6 col-sm-5 control-label">Preço</label>
+					                          <div class="col-md-4 col-sm-6">
+					                            <p:inputMask class="form-control" id="strPreco" value="#{produtoMB.produto.strPreco}" mask="R$ 999,99" />
+					                          </div>
 					                        </div>  
 					                        <div style="height: 50px;"/>
 					                        <div class="form-group">
