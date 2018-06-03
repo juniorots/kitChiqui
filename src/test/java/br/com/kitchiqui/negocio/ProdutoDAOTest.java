@@ -71,6 +71,7 @@ public class ProdutoDAOTest {
       prod.setSubTitulo("Promoção do mês");
       prod.setDescritivo("Sucesso a cada sorriso");
       prod.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
+      prod.setClasse(EnumClasseProduto.KIT_ORTODONTICO.getClasse());
       prod.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod.setQtdEstoque(10);
       prod.setDisponivel(true);
@@ -199,6 +200,7 @@ public class ProdutoDAOTest {
       prod2.setSubTitulo("Delicadeza com carinho");
       prod2.setDescritivo("Para cuidar de você");
       prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod2.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
       prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod2.setQtdEstoque(8);
       prod2.setDisponivel(true);
@@ -297,6 +299,7 @@ public class ProdutoDAOTest {
       prod3.setSubTitulo("Tratamento e Controle");
       prod3.setDescritivo("Sua gengiva mais saudável");
       prod3.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod3.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
       prod3.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod3.setQtdEstoque(8);
       prod3.setDisponivel(true);
