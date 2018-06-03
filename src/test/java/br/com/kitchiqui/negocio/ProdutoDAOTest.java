@@ -64,7 +64,7 @@ public class ProdutoDAOTest {
       ImagemGrandeProdutoDAO imgDAO = new ImagemGrandeProdutoDAO(entityManager);
       ImagemPequenoProdutoDAO imgPeqDAO = new ImagemPequenoProdutoDAO(entityManager);
       
-      prod.setSrcImagem("img/home/banner-slider/vitrineOrtoMasculino.png");
+      prod.setSrcImagem("img/home/banner-slider/kitVitrineOrtoMasculino.png");
       prod.setSrcImagemCarrinho("img/products/cart-image1.jpg");
       prod.setTitulo("KIT ORTODÔNTICO");
       prod.setPreco(450D);
@@ -495,7 +495,7 @@ public class ProdutoDAOTest {
       
       Produto prod5 = new Produto();   
       
-      prod5.setSrcImagem("img/home/banner-slider/vitrineMasculinoInfantil.png");
+      prod5.setSrcImagem("img/home/banner-slider/kitVitrineMasculinoInfantil.png");
       prod5.setSrcImagemCarrinho("img/products/cart-image3.jpg");
       prod5.setTitulo("Kit Infantil - Para Meninos");
       prod5.setSubTitulo("Sucesso escolar");
@@ -793,7 +793,7 @@ public class ProdutoDAOTest {
       prod7.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
 	    		  + "<ul class=\"list-unstyled\">"
 	              + "<li>Estojo personalizado;</li>"
-	              + "<li>Escova macia;</li>"
+	              + "<li>Escova periodontal;</li>"
 	              + "<li>Escova interdental;</li>"
 	              + "<li>Creme dental;</li>"
 	              + "<li>Fita dental;</li>"
