@@ -183,6 +183,7 @@ public class ProdutoMB extends BaseController implements Serializable {
 	 * Responsavel por classificar os produtos, conforme sua tipificacao, ex: conjuntos de estojos, escovas, kits montados entre outros
 	 */
 	public void contabilizarClasseProduto(ProdutoDAO dao) {
+		getProduto().setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
 		getProduto().setClasse(EnumClasseProduto.KIT_STANDART.getClasse());
 		getProduto().getContadorClasse().setQtdKitStandart(dao.selectUsingFilter(getProduto()).size());
 		

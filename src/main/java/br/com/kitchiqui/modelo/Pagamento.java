@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.swing.text.MaskFormatter;
 
 import br.com.kitchiqui.framework.persistence.DomainObject;
+import br.com.kitchiqui.util.Util;
 
 @Entity
 public class Pagamento extends DomainObject {
@@ -96,7 +97,12 @@ public class Pagamento extends DomainObject {
 	}
 
 	public String getNomeTitular() {
-		return nomeTitular.toUpperCase();
+		if (!Util.isEmpty(this.nomeTitular)) {
+			return nomeTitular.toUpperCase();
+		} else {
+			return "";
+		}
+			
 	}
 
 	public void setNomeTitular(String nomeTitular) {

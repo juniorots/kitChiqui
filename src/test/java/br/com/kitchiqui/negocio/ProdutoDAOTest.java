@@ -65,7 +65,7 @@ public class ProdutoDAOTest {
       ImagemPequenoProdutoDAO imgPeqDAO = new ImagemPequenoProdutoDAO(entityManager);
       
       prod.setSrcImagem("img/home/banner-slider/kitVitrineOrtoMasculino.png");
-      prod.setSrcImagemCarrinho("img/products/cart-image1.jpg");
+      prod.setSrcImagemCarrinho("img/products/kitVitrineOrtoMasculino64x74.png");
       prod.setTitulo("KIT ORTODÔNTICO");
       prod.setPreco(450D);
       prod.setSubTitulo("Promoção do mês");
@@ -193,7 +193,7 @@ public class ProdutoDAOTest {
       Produto prod2 = new Produto();   
       
       prod2.setSrcImagem("img/home/featured-product/kitMasculinoPosCirurgico.png");
-      prod2.setSrcImagemCarrinho("img/products/cart-image2.jpg");
+      prod2.setSrcImagemCarrinho("img/products/kitMasculinoPosCirurgico64x74.png");
       prod2.setTitulo("KIT Pós-cirurgico");
       prod2.setPreco(650D);
       prod2.setSubTitulo("Delicadeza com carinho");
@@ -412,7 +412,7 @@ public class ProdutoDAOTest {
       Produto prod4 = new Produto();   
       
       prod4.setSrcImagem("img/home/featured-product/kitStandart.png");
-      prod4.setSrcImagemCarrinho("img/products/cart-image1.jpg");
+      prod4.setSrcImagemCarrinho("img/products/kitStandart64x74.png");
       prod4.setTitulo("Kit Standart - Essencial");
       prod4.setPreco(50D);
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
@@ -496,7 +496,7 @@ public class ProdutoDAOTest {
       Produto prod5 = new Produto();   
       
       prod5.setSrcImagem("img/home/banner-slider/kitVitrineMasculinoInfantil.png");
-      prod5.setSrcImagemCarrinho("img/products/cart-image3.jpg");
+      prod5.setSrcImagemCarrinho("img/products/kitVitrineMasculinoInfantil64x74.png");
       prod5.setTitulo("Kit Infantil - Para Meninos");
       prod5.setSubTitulo("Sucesso escolar");
       prod5.setDescritivo("Para os meninos");
@@ -596,7 +596,7 @@ public class ProdutoDAOTest {
       Produto prod6 = new Produto();   
       
       prod6.setSrcImagem("img/home/banner-slider/kitVitrineOrtoFeminino.png");
-      prod6.setSrcImagemCarrinho("img/products/cart-image1.jpg");
+      prod6.setSrcImagemCarrinho("img/products/kitVitrineOrtoFeminino64x74.png");
       prod6.setTitulo("Kit Ortodôntico - Feminino");
       prod6.setSubTitulo("Olhar feminino");
       prod6.setDescritivo("Requinte de mulher!");
@@ -836,7 +836,7 @@ public class ProdutoDAOTest {
       Produto prod8 = new Produto();   
       
       prod8.setSrcImagem("img/home/featured-product/kitFemininoPosCirurgico.png");
-      prod8.setSrcImagemCarrinho("img/products/cart-image3.jpg");
+      prod8.setSrcImagemCarrinho("img/products/kitFemininoPosCirurgico64x74.png");
       prod8.setTitulo("Kit Pós-Cirúrgico - Feminino");
       prod8.setPreco(250D);
       prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
@@ -933,7 +933,7 @@ public class ProdutoDAOTest {
       Produto prod9 = new Produto();   
       
       prod9.setSrcImagem("img/home/featured-product/kitInfantilFeminino.png");
-      prod9.setSrcImagemCarrinho("img/products/cart-image3.jpg");
+      prod9.setSrcImagemCarrinho("img/products/kitInfantilFeminino64x74.png");
       prod9.setTitulo("Kit Infantil - Para meninas");
       prod9.setSubTitulo("Delicadeza das meninas");
       prod9.setDescritivo("Coisa que menina sabe...");
