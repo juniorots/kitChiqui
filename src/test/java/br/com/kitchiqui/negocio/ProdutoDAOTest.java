@@ -293,7 +293,7 @@ public class ProdutoDAOTest {
       Produto prod3 = new Produto();   
       
       prod3.setSrcImagem("img/home/featured-product/kitPeriodontalMasculino.png");
-      prod3.setSrcImagemCarrinho("img/products/cart-image3.jpg");
+      prod3.setSrcImagemCarrinho("img/products/kitPeriodontalMasculino64x74.png");
       prod3.setTitulo("Kit Periodontal");
       prod3.setPreco(500D);
       prod3.setSubTitulo("Tratamento e Controle");
@@ -720,7 +720,7 @@ public class ProdutoDAOTest {
       Produto prod7 = new Produto();   
       
       prod7.setSrcImagem("img/home/featured-product/kitPeriodontalFeminino.png");
-      prod7.setSrcImagemCarrinho("img/products/cart-image2.jpg");
+      prod7.setSrcImagemCarrinho("img/products/kitPeriodontalFeminino64x74.png");
       prod7.setTitulo("Kit Periodontal - Feminino");
       prod7.setPreco(180D);
       prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
