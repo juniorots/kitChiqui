@@ -416,7 +416,7 @@ public class ProdutoDAOTest {
       
       prod4.setSrcImagem("img/home/featured-product/kitStandart.png");
       prod4.setSrcImagemCarrinho("img/products/kitStandart64x74.png");
-      prod4.setTitulo("Kit Standart - Essencial");
+      prod4.setTitulo("Kit Standard - Essencial");
       prod4.setPreco(50D);
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod4.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
@@ -457,8 +457,8 @@ public class ProdutoDAOTest {
       imgP23.setSrcImagem("img/products/signle-product/pastaPequena.png");
       imgP23.setProduto(prod4);
       
-      prod4.setTituloDescritivo("Kit Standart - Fundamental a qualquer momento");
-      prod4.setAnotacaoPrincipalDescritivo("Todos possui a necessidade de higienização diária, com Kit Standart montamos o que você precisa. "
+      prod4.setTituloDescritivo("Kit Standard - Fundamental a qualquer momento");
+      prod4.setAnotacaoPrincipalDescritivo("Todos possui a necessidade de higienização diária, com Kit Standard montamos o que você precisa. "
     		+ "Com elementos fundamentais a sua saúde bucal, pensamos na melhor composição a sua felicidade, "
       		+ "faça uso dessa facilidade e praticidade nos momentos mais importantes a você. "
       		+ "");
