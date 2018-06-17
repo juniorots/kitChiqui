@@ -9,8 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import lombok.Cleanup;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,14 +18,17 @@ import org.junit.Test;
 import br.com.kitchiqui.base.ImagemGrandeProdutoDAO;
 import br.com.kitchiqui.base.ImagemPequenoProdutoDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.controller.BaseController;
 import br.com.kitchiqui.modelo.EnumClasseProduto;
 import br.com.kitchiqui.modelo.EnumEspecie;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.ImagemGrandeProduto;
 import br.com.kitchiqui.modelo.ImagemPequenoProduto;
 import br.com.kitchiqui.modelo.Produto;
+import br.com.kitchiqui.util.Util;
+import lombok.Cleanup;
 
-public class ProdutoDAOTest {
+public class ProdutoDAOTest extends BaseController {
 	
 	@BeforeClass
     public static void setUpClass() {
@@ -45,11 +46,86 @@ public class ProdutoDAOTest {
     public void tearDown() {
     }
 
-    @Test
+//    @Test
     public void example() {
     }
     
-//  @Test
+    /**
+     * Util na verificacao de produto ja existente na base de dados
+     * @return
+     */
+    public Produto contidoBase(Produto produto) {
+    	@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+                
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        if (!Util.isEmpty(dao.findByStringField("srcImagem", produto.getSrcImagem(), true, 0, 1))) {
+        	return dao.findByStringField("srcImagem", produto.getSrcImagem(), true, 0, 1).get(0);
+        } else 
+        	return null;
+    }
+    
+    /**
+     * Atualizando produto
+     */
+    public void atualizarProduto(Produto produto) {
+		@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        if (!Util.isEmpty(produto.getStrPreco())) {
+        	produto.setPreco(Double.parseDouble(produto.getStrPreco().replaceAll("[R$]", "").replaceAll("[,]", ".")));
+        }
+        dao.update(produto);
+        entityManager.getTransaction().commit();
+	}
+    
+    /**
+     * Inserindo produto na base
+     */
+    public void inserirProduto(Produto produto) {
+		@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        if (!Util.isEmpty(produto.getStrPreco())) {
+        	produto.setPreco(Double.parseDouble(produto.getStrPreco().replaceAll("[R$]", "").replaceAll("[,]", ".")));
+        }
+        dao.insert(produto);
+        entityManager.getTransaction().commit();
+	}
+    
+    /**
+     * Tratando conjunto de imagens anexas
+     * @param imgG
+     */
+    public void inserirImagemGrande(ImagemGrandeProduto imgG) {
+		@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ImagemGrandeProdutoDAO dao = new ImagemGrandeProdutoDAO(entityManager);
+        dao.insert(imgG);
+	}
+    
+    /**
+     * Tratando conjunto de imagens anexas
+     * @param imgP
+     */
+    public void inserirImagemPequeno(ImagemPequenoProduto imgP) {
+		@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ImagemPequenoProdutoDAO dao = new ImagemPequenoProdutoDAO(entityManager);
+        dao.insert(imgP);
+        entityManager.getTransaction().commit();
+	}
+    
+  @Test
   public void mainTest() {
 	  
 	  @Cleanup
@@ -60,9 +136,9 @@ public class ProdutoDAOTest {
       entityManager.getTransaction().begin();
 
       Produto prod = new Produto();    
-      ProdutoDAO dao = new ProdutoDAO(entityManager);
-      ImagemGrandeProdutoDAO imgDAO = new ImagemGrandeProdutoDAO(entityManager);
-      ImagemPequenoProdutoDAO imgPeqDAO = new ImagemPequenoProdutoDAO(entityManager);
+//      ProdutoDAO dao = new ProdutoDAO(entityManager);
+//      ImagemGrandeProdutoDAO imgDAO = new ImagemGrandeProdutoDAO(entityManager);
+//      ImagemPequenoProdutoDAO imgPeqDAO = new ImagemPequenoProdutoDAO(entityManager);
       
       prod.setSrcImagem("img/home/banner-slider/kitVitrineOrtoMasculino.png");
       prod.setSrcImagemCarrinho("img/products/kitVitrineOrtoMasculino64x74.png");
@@ -174,22 +250,43 @@ public class ProdutoDAOTest {
               + "<li>Para remover bactérias e resíduos nada mais prático que o nosso enxaguante bucal;</li>"
           + "</ul>");
       
+      Produto tmp = contidoBase(prod);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod);
+    	  inserirImagemGrande(imgG1);
+    	  inserirImagemGrande(imgG2);
+    	  inserirImagemGrande(imgG3);
+    	  inserirImagemGrande(imgG4);
+    	  inserirImagemGrande(imgG5);
+    	  inserirImagemGrande(imgG6);
+    	  inserirImagemGrande(imgG7);
+    	  inserirImagemPequeno(imgP1);
+    	  inserirImagemPequeno(imgP2);
+    	  inserirImagemPequeno(imgP3);
+    	  inserirImagemPequeno(imgP4);
+    	  inserirImagemPequeno(imgP5);
+    	  inserirImagemPequeno(imgP6);
+    	  inserirImagemPequeno(imgP7);
+      } else {
+    	  prod.setId(tmp.getId());
+    	  atualizarProduto(prod);
+      }
       
-      dao.insert(prod); 
-      imgDAO.insert(imgG1);
-      imgDAO.insert(imgG2);
-      imgDAO.insert(imgG3);
-      imgDAO.insert(imgG4);
-      imgDAO.insert(imgG5);
-      imgDAO.insert(imgG6);
-      imgDAO.insert(imgG7);
-      imgPeqDAO.insert(imgP1);
-      imgPeqDAO.insert(imgP2);
-      imgPeqDAO.insert(imgP3);
-      imgPeqDAO.insert(imgP4);
-      imgPeqDAO.insert(imgP5);
-      imgPeqDAO.insert(imgP6);
-      imgPeqDAO.insert(imgP7);
+//      dao.insert(prod); 
+//      imgDAO.insert(imgG1);
+//      imgDAO.insert(imgG2);
+//      imgDAO.insert(imgG3);
+//      imgDAO.insert(imgG4);
+//      imgDAO.insert(imgG5);
+//      imgDAO.insert(imgG6);
+//      imgDAO.insert(imgG7);
+//      imgPeqDAO.insert(imgP1);
+//      imgPeqDAO.insert(imgP2);
+//      imgPeqDAO.insert(imgP3);
+//      imgPeqDAO.insert(imgP4);
+//      imgPeqDAO.insert(imgP5);
+//      imgPeqDAO.insert(imgP6);
+//      imgPeqDAO.insert(imgP7);
       
       Produto prod2 = new Produto();   
       
@@ -278,17 +375,35 @@ public class ProdutoDAOTest {
               + "<li>Enxaguante bucal, solução com clorexidina extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
           + "</ul>");
       
-      dao.insert(prod2);      
-      imgDAO.insert(imgG8);
-      imgDAO.insert(imgG9);
-      imgDAO.insert(imgG10);
-      imgDAO.insert(imgG11);
-      imgDAO.insert(imgG12);
-      imgPeqDAO.insert(imgP8);
-      imgPeqDAO.insert(imgP9);
-      imgPeqDAO.insert(imgP10);
-      imgPeqDAO.insert(imgP11);
-      imgPeqDAO.insert(imgP12);
+      tmp = contidoBase(prod2);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod2);
+    	  inserirImagemGrande(imgG8);
+    	  inserirImagemGrande(imgG9);
+    	  inserirImagemGrande(imgG10);
+    	  inserirImagemGrande(imgG11);
+    	  inserirImagemGrande(imgG12);
+    	  inserirImagemPequeno(imgP8);
+    	  inserirImagemPequeno(imgP9);
+    	  inserirImagemPequeno(imgP10);
+    	  inserirImagemPequeno(imgP11);
+    	  inserirImagemPequeno(imgP12);
+      } else {
+    	  prod2.setId(tmp.getId());
+    	  atualizarProduto(prod2);
+      }
+      
+//      dao.insert(prod2);      
+//      imgDAO.insert(imgG8);
+//      imgDAO.insert(imgG9);
+//      imgDAO.insert(imgG10);
+//      imgDAO.insert(imgG11);
+//      imgDAO.insert(imgG12);
+//      imgPeqDAO.insert(imgP8);
+//      imgPeqDAO.insert(imgP9);
+//      imgPeqDAO.insert(imgP10);
+//      imgPeqDAO.insert(imgP11);
+//      imgPeqDAO.insert(imgP12);
 //      
       Produto prod3 = new Produto();   
       
@@ -396,21 +511,43 @@ public class ProdutoDAOTest {
 	          + "<li>Enxaguante bucal, solução com clorexidina extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
 	      + "</ul>");
       
-      dao.insert(prod3);
-      imgDAO.insert(imgG13);
-      imgDAO.insert(imgG14);
-      imgDAO.insert(imgG15);
-      imgDAO.insert(imgG16);
-      imgDAO.insert(imgG17);
-      imgDAO.insert(imgG18);
-      imgDAO.insert(imgG19);
-      imgPeqDAO.insert(imgP13);
-      imgPeqDAO.insert(imgP14);
-      imgPeqDAO.insert(imgP15);
-      imgPeqDAO.insert(imgP16);
-      imgPeqDAO.insert(imgP17);
-      imgPeqDAO.insert(imgP18);
-      imgPeqDAO.insert(imgP19);
+	  tmp = contidoBase(prod3);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod3);
+    	  inserirImagemGrande(imgG13);
+    	  inserirImagemGrande(imgG14);
+    	  inserirImagemGrande(imgG15);
+    	  inserirImagemGrande(imgG16);
+    	  inserirImagemGrande(imgG17);
+    	  inserirImagemGrande(imgG18);
+    	  inserirImagemGrande(imgG19);
+    	  inserirImagemPequeno(imgP13);
+    	  inserirImagemPequeno(imgP14);
+    	  inserirImagemPequeno(imgP15);
+    	  inserirImagemPequeno(imgP16);
+    	  inserirImagemPequeno(imgP17);
+    	  inserirImagemPequeno(imgP18);
+    	  inserirImagemPequeno(imgP19);
+      } else {
+    	  prod3.setId(tmp.getId());
+    	  atualizarProduto(prod3);
+      }
+	  
+//      dao.insert(prod3);
+//      imgDAO.insert(imgG13);
+//      imgDAO.insert(imgG14);
+//      imgDAO.insert(imgG15);
+//      imgDAO.insert(imgG16);
+//      imgDAO.insert(imgG17);
+//      imgDAO.insert(imgG18);
+//      imgDAO.insert(imgG19);
+//      imgPeqDAO.insert(imgP13);
+//      imgPeqDAO.insert(imgP14);
+//      imgPeqDAO.insert(imgP15);
+//      imgPeqDAO.insert(imgP16);
+//      imgPeqDAO.insert(imgP17);
+//      imgPeqDAO.insert(imgP18);
+//      imgPeqDAO.insert(imgP19);
       
       Produto prod4 = new Produto();   
       
@@ -486,15 +623,31 @@ public class ProdutoDAOTest {
 	          + "<li>Creme dental, auxilia na remoção de placas;</li>"
 	      + "</ul>");
       
-      dao.insert(prod4);
-      imgDAO.insert(imgG20);
-      imgDAO.insert(imgG21);
-      imgDAO.insert(imgG22);
-      imgDAO.insert(imgG23);
-      imgPeqDAO.insert(imgP20);
-      imgPeqDAO.insert(imgP21);
-      imgPeqDAO.insert(imgP22);
-      imgPeqDAO.insert(imgP23);
+	  tmp = contidoBase(prod4);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod4);
+    	  inserirImagemGrande(imgG20);
+    	  inserirImagemGrande(imgG21);
+    	  inserirImagemGrande(imgG22);
+    	  inserirImagemGrande(imgG23);
+    	  inserirImagemPequeno(imgP20);
+    	  inserirImagemPequeno(imgP21);
+    	  inserirImagemPequeno(imgP22);
+    	  inserirImagemPequeno(imgP23);
+      } else {
+    	  prod4.setId(tmp.getId());
+    	  atualizarProduto(prod4);
+      }
+	  
+//      dao.insert(prod4);
+//      imgDAO.insert(imgG20);
+//      imgDAO.insert(imgG21);
+//      imgDAO.insert(imgG22);
+//      imgDAO.insert(imgG23);
+//      imgPeqDAO.insert(imgP20);
+//      imgPeqDAO.insert(imgP21);
+//      imgPeqDAO.insert(imgP22);
+//      imgPeqDAO.insert(imgP23);
       
       Produto prod5 = new Produto();   
       
@@ -584,17 +737,35 @@ public class ProdutoDAOTest {
 	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
 	      + "</ul>");
       
-      dao.insert(prod5);
-      imgDAO.insert(imgG24);
-      imgDAO.insert(imgG25);
-      imgDAO.insert(imgG26);
-      imgDAO.insert(imgG27);
-      imgDAO.insert(imgG28);
-      imgPeqDAO.insert(imgP24);
-      imgPeqDAO.insert(imgP25);
-      imgPeqDAO.insert(imgP26);
-      imgPeqDAO.insert(imgP27);
-      imgPeqDAO.insert(imgP28);
+	  tmp = contidoBase(prod5);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod5);
+    	  inserirImagemGrande(imgG24);
+    	  inserirImagemGrande(imgG25);
+    	  inserirImagemGrande(imgG26);
+    	  inserirImagemGrande(imgG27);
+    	  inserirImagemGrande(imgG28);
+    	  inserirImagemPequeno(imgP24);
+    	  inserirImagemPequeno(imgP25);
+    	  inserirImagemPequeno(imgP26);
+    	  inserirImagemPequeno(imgP27);
+    	  inserirImagemPequeno(imgP28);
+      } else {
+    	  prod5.setId(tmp.getId());
+    	  atualizarProduto(prod5);
+      }
+	  
+//      dao.insert(prod5);
+//      imgDAO.insert(imgG24);
+//      imgDAO.insert(imgG25);
+//      imgDAO.insert(imgG26);
+//      imgDAO.insert(imgG27);
+//      imgDAO.insert(imgG28);
+//      imgPeqDAO.insert(imgP24);
+//      imgPeqDAO.insert(imgP25);
+//      imgPeqDAO.insert(imgP26);
+//      imgPeqDAO.insert(imgP27);
+//      imgPeqDAO.insert(imgP28);
       
       Produto prod6 = new Produto();   
       
@@ -701,21 +872,43 @@ public class ProdutoDAOTest {
 	          + "<li>Enxaguante bucal, remove bactérias;</li>"
 	      + "</ul>");
       
-      dao.insert(prod6);
-      imgDAO.insert(imgG29);
-      imgDAO.insert(imgG30);
-      imgDAO.insert(imgG31);
-      imgDAO.insert(imgG32);
-      imgDAO.insert(imgG33);
-      imgDAO.insert(imgG34);
-      imgDAO.insert(imgG35);
-      imgPeqDAO.insert(imgP29);
-      imgPeqDAO.insert(imgP30);
-      imgPeqDAO.insert(imgP31);
-      imgPeqDAO.insert(imgP32);
-      imgPeqDAO.insert(imgP33);
-      imgPeqDAO.insert(imgP34);
-      imgPeqDAO.insert(imgP35);
+	  tmp = contidoBase(prod6);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod6);
+    	  inserirImagemGrande(imgG29);
+    	  inserirImagemGrande(imgG30);
+    	  inserirImagemGrande(imgG31);
+    	  inserirImagemGrande(imgG32);
+    	  inserirImagemGrande(imgG33);
+    	  inserirImagemGrande(imgG34);
+    	  inserirImagemGrande(imgG35);
+    	  inserirImagemPequeno(imgP29);
+    	  inserirImagemPequeno(imgP30);
+    	  inserirImagemPequeno(imgP31);
+    	  inserirImagemPequeno(imgP32);
+    	  inserirImagemPequeno(imgP33);
+    	  inserirImagemPequeno(imgP34);
+    	  inserirImagemPequeno(imgP35);
+      } else {
+    	  prod6.setId(tmp.getId());
+    	  atualizarProduto(prod6);
+      }
+	  
+//      dao.insert(prod6);
+//      imgDAO.insert(imgG29);
+//      imgDAO.insert(imgG30);
+//      imgDAO.insert(imgG31);
+//      imgDAO.insert(imgG32);
+//      imgDAO.insert(imgG33);
+//      imgDAO.insert(imgG34);
+//      imgDAO.insert(imgG35);
+//      imgPeqDAO.insert(imgP29);
+//      imgPeqDAO.insert(imgP30);
+//      imgPeqDAO.insert(imgP31);
+//      imgPeqDAO.insert(imgP32);
+//      imgPeqDAO.insert(imgP33);
+//      imgPeqDAO.insert(imgP34);
+//      imgPeqDAO.insert(imgP35);
       
       Produto prod7 = new Produto();   
       
@@ -820,21 +1013,43 @@ public class ProdutoDAOTest {
 	          + "<li>Enxaguante bucal remove bactérias causadoras da doença periodontal em ate 95%;</li>"
 	      + "</ul>");
       
-      dao.insert(prod7);
-      imgDAO.insert(imgG36);
-      imgDAO.insert(imgG37);
-      imgDAO.insert(imgG38);
-      imgDAO.insert(imgG39);
-      imgDAO.insert(imgG40);
-      imgDAO.insert(imgG41);
-      imgDAO.insert(imgG42);
-      imgPeqDAO.insert(imgP36);
-      imgPeqDAO.insert(imgP37);
-      imgPeqDAO.insert(imgP38);
-      imgPeqDAO.insert(imgP39);
-      imgPeqDAO.insert(imgP40);
-      imgPeqDAO.insert(imgP41);
-      imgPeqDAO.insert(imgP42);
+	  tmp = contidoBase(prod7);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod7);
+    	  inserirImagemGrande(imgG36);
+    	  inserirImagemGrande(imgG37);
+    	  inserirImagemGrande(imgG38);
+    	  inserirImagemGrande(imgG39);
+    	  inserirImagemGrande(imgG40);
+    	  inserirImagemGrande(imgG41);
+    	  inserirImagemGrande(imgG42);
+    	  inserirImagemPequeno(imgP36);
+    	  inserirImagemPequeno(imgP37);
+    	  inserirImagemPequeno(imgP38);
+    	  inserirImagemPequeno(imgP39);
+    	  inserirImagemPequeno(imgP40);
+    	  inserirImagemPequeno(imgP41);
+    	  inserirImagemPequeno(imgP42);
+      } else {
+    	  prod7.setId(tmp.getId());
+    	  atualizarProduto(prod7);
+      }
+	  
+//      dao.insert(prod7);
+//      imgDAO.insert(imgG36);
+//      imgDAO.insert(imgG37);
+//      imgDAO.insert(imgG38);
+//      imgDAO.insert(imgG39);
+//      imgDAO.insert(imgG40);
+//      imgDAO.insert(imgG41);
+//      imgDAO.insert(imgG42);
+//      imgPeqDAO.insert(imgP36);
+//      imgPeqDAO.insert(imgP37);
+//      imgPeqDAO.insert(imgP38);
+//      imgPeqDAO.insert(imgP39);
+//      imgPeqDAO.insert(imgP40);
+//      imgPeqDAO.insert(imgP41);
+//      imgPeqDAO.insert(imgP42);
       
       Produto prod8 = new Produto();   
       
@@ -921,17 +1136,35 @@ public class ProdutoDAOTest {
 	          + "<li>Enxaguante bucal, diminuindo a proliferação bacteriana na área operada evitando infecções;</li>"
 	      + "</ul>");
       
-      dao.insert(prod8);
-      imgDAO.insert(imgG43);
-      imgDAO.insert(imgG44);
-      imgDAO.insert(imgG45);
-      imgDAO.insert(imgG46);
-      imgDAO.insert(imgG47);
-      imgPeqDAO.insert(imgP43);
-      imgPeqDAO.insert(imgP44);
-      imgPeqDAO.insert(imgP45);
-      imgPeqDAO.insert(imgP46);
-      imgPeqDAO.insert(imgP47);
+	  tmp = contidoBase(prod8);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod8);
+    	  inserirImagemGrande(imgG43);
+    	  inserirImagemGrande(imgG44);
+    	  inserirImagemGrande(imgG45);
+    	  inserirImagemGrande(imgG46);
+    	  inserirImagemGrande(imgG47);
+    	  inserirImagemPequeno(imgP43);
+    	  inserirImagemPequeno(imgP44);
+    	  inserirImagemPequeno(imgP45);
+    	  inserirImagemPequeno(imgP46);
+    	  inserirImagemPequeno(imgP47);
+      } else {
+    	  prod8.setId(tmp.getId());
+    	  atualizarProduto(prod8);
+      }
+	  
+//      dao.insert(prod8);
+//      imgDAO.insert(imgG43);
+//      imgDAO.insert(imgG44);
+//      imgDAO.insert(imgG45);
+//      imgDAO.insert(imgG46);
+//      imgDAO.insert(imgG47);
+//      imgPeqDAO.insert(imgP43);
+//      imgPeqDAO.insert(imgP44);
+//      imgPeqDAO.insert(imgP45);
+//      imgPeqDAO.insert(imgP46);
+//      imgPeqDAO.insert(imgP47);
       
       Produto prod9 = new Produto();   
       
@@ -1021,18 +1254,35 @@ public class ProdutoDAOTest {
 	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
 	      + "</ul>");
       
+	  tmp = contidoBase(prod9);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod9);
+    	  inserirImagemGrande(imgG48);
+    	  inserirImagemGrande(imgG49);
+    	  inserirImagemGrande(imgG50);
+    	  inserirImagemGrande(imgG51);
+    	  inserirImagemGrande(imgG52);
+    	  inserirImagemPequeno(imgP48);
+    	  inserirImagemPequeno(imgP49);
+    	  inserirImagemPequeno(imgP50);
+    	  inserirImagemPequeno(imgP51);
+    	  inserirImagemPequeno(imgP52);
+      } else {
+    	  prod9.setId(tmp.getId());
+    	  atualizarProduto(prod9);
+      }
       
-      dao.insert(prod9);
-      imgDAO.insert(imgG48);
-      imgDAO.insert(imgG49);
-      imgDAO.insert(imgG50);
-      imgDAO.insert(imgG51);
-      imgDAO.insert(imgG52);
-      imgPeqDAO.insert(imgP48);
-      imgPeqDAO.insert(imgP49);
-      imgPeqDAO.insert(imgP50);
-      imgPeqDAO.insert(imgP51);
-      imgPeqDAO.insert(imgP52);
+//      dao.insert(prod9);
+//      imgDAO.insert(imgG48);
+//      imgDAO.insert(imgG49);
+//      imgDAO.insert(imgG50);
+//      imgDAO.insert(imgG51);
+//      imgDAO.insert(imgG52);
+//      imgPeqDAO.insert(imgP48);
+//      imgPeqDAO.insert(imgP49);
+//      imgPeqDAO.insert(imgP50);
+//      imgPeqDAO.insert(imgP51);
+//      imgPeqDAO.insert(imgP52);
 //      
 //      Produto prod9 = new Produto();   
 //      
@@ -1070,7 +1320,7 @@ public class ProdutoDAOTest {
 //      prod11.setClasse(EnumClasseProduto.ESTOJO.getClasse());
 //      dao.insert(prod11);
       
-      entityManager.getTransaction().commit();
+//      entityManager.getTransaction().commit();
   }
   
 }
