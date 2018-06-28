@@ -109,6 +109,7 @@ public class ProdutoDAOTest extends BaseController {
         
         ImagemGrandeProdutoDAO dao = new ImagemGrandeProdutoDAO(entityManager);
         dao.insert(imgG);
+        entityManager.getTransaction().commit();
 	}
     
     /**
