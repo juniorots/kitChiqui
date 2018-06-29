@@ -35,6 +35,7 @@ public class EnviarEmail {
         HtmlEmail email = new HtmlEmail();
         
         try {
+        	email.setCharset("UTF-8");
             email.setHostName(Constantes.HOST_NAME_GMAIL);
             email.addBcc(Constantes.ADMINISTRADOR_1);
             email.addBcc(Constantes.ADMINISTRADOR_2);
