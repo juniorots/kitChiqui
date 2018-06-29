@@ -182,6 +182,10 @@ public class ProdutoDAOTest extends BaseController {
       imgG7.setSrcImagem("img/products/signle-product/fioGrande.png");
       imgG7.setProduto(prod);
       
+      ImagemGrandeProduto imgG53 = new ImagemGrandeProduto();
+      imgG53.setSrcImagem("img/products/signle-product/ceraGrande.png");
+      imgG53.setProduto(prod);
+      
       ImagemPequenoProduto imgP1 = new ImagemPequenoProduto();
       imgP1.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
       imgP1.setProduto(prod);
@@ -210,7 +214,10 @@ public class ProdutoDAOTest extends BaseController {
       imgP7.setSrcImagem("img/products/signle-product/fioPequeno.png");
       imgP7.setProduto(prod);
       
-      
+      ImagemPequenoProduto imgP53 = new ImagemPequenoProduto();
+      imgP53.setSrcImagem("img/products/signle-product/ceraPequeno.png");
+      imgP53.setProduto(prod);
+            
       prod.setTituloDescritivo("Kit Ortodôntico carinho especial com sua estética");
       prod.setAnotacaoPrincipalDescritivo("A importância da saúde bucal é fundamental "
       		+ "com a boa higiene do aparelho ortodôntico, "
@@ -226,18 +233,20 @@ public class ProdutoDAOTest extends BaseController {
 	              + "<li>Fio dental;</li>"
 	              + "<li>Creme dental;</li>"
 	              + "<li>Escova interdental;</li>"
+	              + "<li>Cera ortodôntica;</li>"
 	              + "<li>Enxaguante bucal;</li>"
               + "</ul>");
       
       prod.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
     		  + "<ul class=\"list-unstyled\">"
               + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-              + "<li>Escova ortodôntica: Pegar medida Curaprox;</li>"
-              + "<li>Passa fio: Pegar medidas passa fio;</li>"
-              + "<li>Fio dental: Tamanho em metros;</li>"
-              + "<li>Creme dental: Especificar o tamanho;</li>"
-              + "<li>Escova interdental: Característica;</li>"
-              + "<li>Enxaguante bucal: Especificar tamanho em ML;</li>"
+              + "<li>Escova ortodôntica: Curaprox 5460 Ortho Ultra macia - 0,10 mm de diâmetro;</li>"
+              + "<li>Passa fio: 30 unidades;</li>"
+              + "<li>Fio dental: 100 metros;</li>"
+              + "<li>Creme dental: 70g;</li>"
+              + "<li>Escova interdental: 3 a 7mm;</li>"
+              + "<li>Cera ortodôntica vigente do mercado</li>"
+              + "<li>Enxaguante bucal: 60mL;</li>"
           + "</ul>");
       
       prod.setAnotacaoComposicao("A higienização bucal é um processo composto de várias etapas, principalmente nesse momento específico "
@@ -261,6 +270,7 @@ public class ProdutoDAOTest extends BaseController {
     	  inserirImagemGrande(imgG5);
     	  inserirImagemGrande(imgG6);
     	  inserirImagemGrande(imgG7);
+    	  inserirImagemGrande(imgG53);
     	  inserirImagemPequeno(imgP1);
     	  inserirImagemPequeno(imgP2);
     	  inserirImagemPequeno(imgP3);
@@ -268,6 +278,7 @@ public class ProdutoDAOTest extends BaseController {
     	  inserirImagemPequeno(imgP5);
     	  inserirImagemPequeno(imgP6);
     	  inserirImagemPequeno(imgP7);
+    	  inserirImagemPequeno(imgP53);
       } else {
     	  prod.setId(tmp.getId());
     	  atualizarProduto(prod);
@@ -362,10 +373,10 @@ public class ProdutoDAOTest extends BaseController {
       prod2.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
     		  + "<ul class=\"list-unstyled\">"
     		  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-              + "<li>Escova extra-macia: Pegar medida Curaprox;</li>"
-              + "<li>Fio dental: Tamanho em metros;</li>"
-              + "<li>Creme dental: Especificar o tamanho;</li>"
-              + "<li>Enxaguante bucal: Especificar tamanho em ML;</li>"
+              + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+              + "<li>Fio dental: 100 metros;</li>"
+              + "<li>Creme dental: 70g;</li>"
+              + "<li>Enxaguante bucal: 60mL;</li>"
           + "</ul>");
       
       prod2.setAnotacaoComposicao("A recuperação pós-cirurgica é fundamental quando associada a boa higienização, do que compomos descreve-se:"
@@ -496,11 +507,11 @@ public class ProdutoDAOTest extends BaseController {
 	  prod3.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
 			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-	          + "<li>Escova periodontal: Definir característica técnica;</li>"
-	          + "<li>Escova interdental: Definir característica técnica;</li>"
-	          + "<li>Fita dental: Tamanho em metros;</li>"
-	          + "<li>Creme dental: Especificar o tamanho;</li>"
-	          + "<li>Enxaguante bucal: Especificar tamanho em ML;</li>"
+	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+	          + "<li>Escova interdental: 3 a 7mm;</li>"
+	          + "<li>Fita dental: 100 metros;</li>"
+	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Enxaguante bucal: 60mL;</li>"
 	      + "</ul>");
 	  
 	  prod3.setAnotacaoComposicao("Dos cuidados que pensamos à sua gengiva:"
@@ -612,9 +623,9 @@ public class ProdutoDAOTest extends BaseController {
 	  prod4.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Kit: 6 cm (Largura), 5 cm (Altura), 21 cm (Comprimento);</li>"
-	          + "<li>Escova macia: Definir característica técnica;</li>"
-	          + "<li>Fio dental: Tamanho em metros;</li>"
-	          + "<li>Creme dental: Especificar o tamanho;</li>"
+	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+	          + "<li>Fio dental: 100 metros;</li>"
+	          + "<li>Creme dental: 70g;</li>"
 	      + "</ul>");
 	  
 	  prod4.setAnotacaoComposicao("Vimos como fundamental:"
@@ -724,9 +735,12 @@ public class ProdutoDAOTest extends BaseController {
 	  prod5.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Kit: 22 cm (Largura), 14 cm (Altura), 10 cm (Comprimento);</li>"
-	          + "<li>Escova macia: Definir característica técnica;</li>"
-	          + "<li>Fio dental: Tamanho em metros;</li>"
-	          + "<li>Creme dental: Especificar o tamanho;</li>"
+	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+	          + "<li>Fio dental: 100 metros;</li>"
+	          + "<li>Creme dental: 50g;</li>"
+	          + "<li>Fio dental: 100 metros;</li>"
+	          + "<li>Toalha: 23x34cm;</li>"
+	          
 	      + "</ul>");
 	  
 	  prod5.setAnotacaoComposicao("Vimos como fundamental:"
@@ -811,6 +825,10 @@ public class ProdutoDAOTest extends BaseController {
       imgG35.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
       imgG35.setProduto(prod6);
       
+      ImagemGrandeProduto imgG54 = new ImagemGrandeProduto();
+      imgG54.setSrcImagem("img/products/signle-product/ceraGrande.png");
+      imgG54.setProduto(prod6);
+      
       ImagemPequenoProduto imgP29 = new ImagemPequenoProduto();
       imgP29.setSrcImagem("img/products/signle-product/femininoPequeno.png");
       imgP29.setProduto(prod6);
@@ -839,6 +857,10 @@ public class ProdutoDAOTest extends BaseController {
       imgP35.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
       imgP35.setProduto(prod6);
       
+      ImagemPequenoProduto imgP54 = new ImagemPequenoProduto();
+      imgP54.setSrcImagem("img/products/signle-product/ceraPequeno.png");
+      imgP54.setProduto(prod6);
+      
       prod6.setTituloDescritivo("Kit Ortodôntico - A delicadeza da mulher");
       prod6.setAnotacaoPrincipalDescritivo("O tratamento com aparelhos ortodôntico tende a criar alguns obstáculos para a higiene bucal.  "
       		+ "O Kit Ortodôntico Feminino possui todos os itens necessários para uma boa higiene bucal considerando a essência da mulher."
@@ -852,15 +874,20 @@ public class ProdutoDAOTest extends BaseController {
 	              + "<li>Passa fio;</li>"
 	              + "<li>Creme dental;</li>"
 	              + "<li>Fio dental;</li>"
+	              + "<li>Cera ortodôntica;</li>"
 	              + "<li>Enxaguante bucal;</li>"
 	          + "</ul>");
 	  
 	  prod6.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
 			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-	          + "<li>Escova macia: Definir característica técnica;</li>"
-	          + "<li>Fio dental: Tamanho em metros;</li>"
-	          + "<li>Creme dental: Especificar o tamanho;</li>"
+			  + "<li>Escova ortodôntica: Curaprox 5460 Ortho Ultra macia - 0,10 mm de diâmetro;</li>"
+			  + "<li>Escova interdental: 3 a 7mm;</li>"
+			  + "<li>Passa fio: 30 unidades;</li>"
+			  + "<li>Creme dental: 70g;</li>"
+			  + "<li>Fio dental: 100 metros;</li>"
+			  + "<li>Cera ortodôntica vigente no mercado;</li>"
+			  + "<li>Enxaguante bucal: 60mL;</li>"
 	      + "</ul>");
 	  
 	  prod6.setAnotacaoComposicao("Vimos como fundamental:"
@@ -883,6 +910,7 @@ public class ProdutoDAOTest extends BaseController {
     	  inserirImagemGrande(imgG33);
     	  inserirImagemGrande(imgG34);
     	  inserirImagemGrande(imgG35);
+    	  inserirImagemGrande(imgG54);
     	  inserirImagemPequeno(imgP29);
     	  inserirImagemPequeno(imgP30);
     	  inserirImagemPequeno(imgP31);
@@ -890,6 +918,7 @@ public class ProdutoDAOTest extends BaseController {
     	  inserirImagemPequeno(imgP33);
     	  inserirImagemPequeno(imgP34);
     	  inserirImagemPequeno(imgP35);
+    	  inserirImagemPequeno(imgP54);
       } else {
     	  prod6.setId(tmp.getId());
     	  atualizarProduto(prod6);
@@ -1000,9 +1029,11 @@ public class ProdutoDAOTest extends BaseController {
 	  prod7.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
 			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-	          + "<li>Escova macia: Definir característica técnica;</li>"
-	          + "<li>Fio dental: Tamanho em metros;</li>"
-	          + "<li>Creme dental: Especificar o tamanho;</li>"
+			  + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+			  + "<li>Escova interdental: 3 a 7mm;</li>"
+	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Fita dental: 100 metros;</li>"
+	          + "<li>Enxaguante bucal: 60mL;</li>"
 	      + "</ul>");
 	  
 	  prod7.setAnotacaoComposicao("Vimos como fundamental:"
@@ -1123,9 +1154,10 @@ public class ProdutoDAOTest extends BaseController {
 	  prod8.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
 			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-	          + "<li>Escova macia: Definir característica técnica;</li>"
-	          + "<li>Fio dental: Tamanho em metros;</li>"
-	          + "<li>Creme dental: Especificar o tamanho;</li>"
+	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Fio dental: 100 metros;</li>"
+	          + "<li>Enxaguante bucal: 60mL;</li>"
 	      + "</ul>");
 	  
 	  prod8.setAnotacaoComposicao("Vimos como fundamental:"
@@ -1241,9 +1273,10 @@ public class ProdutoDAOTest extends BaseController {
 	  prod9.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
 			  + "<ul class=\"list-unstyled\">"
 			  + "<li>Kit: 22 cm (Largura), 14 cm (Altura), 10 cm (Comprimento);</li>"
-	          + "<li>Escova macia: Definir característica técnica;</li>"
-	          + "<li>Fio dental: Tamanho em metros;</li>"
-	          + "<li>Creme dental: Especificar o tamanho;</li>"
+	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+	          + "<li>Creme dental: 50g;</li>"
+	          + "<li>Fio dental: 100 metros;</li>"
+	          + "<li>Toalha: 23x34cm;</li>"
 	      + "</ul>");
 	  
 	  prod9.setAnotacaoComposicao("Vimos como fundamental:"
