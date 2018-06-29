@@ -215,7 +215,7 @@ public class ProdutoDAOTest extends BaseController {
       imgP7.setProduto(prod);
       
       ImagemPequenoProduto imgP53 = new ImagemPequenoProduto();
-      imgP53.setSrcImagem("img/products/signle-product/ceraPequeno.png");
+      imgP53.setSrcImagem("img/products/signle-product/ceraPequena.png");
       imgP53.setProduto(prod);
             
       prod.setTituloDescritivo("Kit Ortodôntico carinho especial com sua estética");
@@ -257,6 +257,7 @@ public class ProdutoDAOTest extends BaseController {
               + "<li>Creme, mais indicado para a situação;</li>"
               + "<li>Escova anatomicamente apropriada a melhor higienização;</li>"
               + "<li>Escova interdental, focando na finalização perfeita em sua função;</li>"
+              + "<li>Protegendo sua gengiva, nada mais útil que a cera ortodôntica;</li>"
               + "<li>Para remover bactérias e resíduos nada mais prático que o nosso enxaguante bucal;</li>"
           + "</ul>");
       
@@ -381,7 +382,7 @@ public class ProdutoDAOTest extends BaseController {
       
       prod2.setAnotacaoComposicao("A recuperação pós-cirurgica é fundamental quando associada a boa higienização, do que compomos descreve-se:"
     		  + "<ul class=\"list-unstyled\">"
-              + "<li>Escova extra-macia, possui a função de não agredir a região tratada;</li>"
+              + "<li>Escova ultra macia, possui a função de não agredir a região tratada;</li>"
               + "<li>Fio dental, remover biofilme dental com eficiência;</li>"
               + "<li>Creme dental, evitando a ploriferação de placa bacteriana;</li>"
               + "<li>Enxaguante bucal, solução com clorexidina extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
@@ -858,7 +859,7 @@ public class ProdutoDAOTest extends BaseController {
       imgP35.setProduto(prod6);
       
       ImagemPequenoProduto imgP54 = new ImagemPequenoProduto();
-      imgP54.setSrcImagem("img/products/signle-product/ceraPequeno.png");
+      imgP54.setSrcImagem("img/products/signle-product/ceraPequena.png");
       imgP54.setProduto(prod6);
       
       prod6.setTituloDescritivo("Kit Ortodôntico - A delicadeza da mulher");
@@ -897,6 +898,7 @@ public class ProdutoDAOTest extends BaseController {
 	          + "<li>Passa fio, essencial para facilitar o uso do fio dental;</li>"
 	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
 	          + "<li>Fio dental, remove biofilme dental localizado entre os dentes;</li>"
+	          + "<li>Protegendo sua gengiva, nada mais útil que a cera ortodôntica;</li>"
 	          + "<li>Enxaguante bucal, remove bactérias;</li>"
 	      + "</ul>");
       
@@ -1040,6 +1042,7 @@ public class ProdutoDAOTest extends BaseController {
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Lindo estojo personalizado, que facilita a locomoção dos itens, mantendo-os devidamente organizado e livre de exposições externas;</li>"
 	          + "<li>Escova macia e anatômica com cerdas macias que não agridem a gengiva, evitando traumas;</li>"
+	          + "<li>Escova interdental, para os casos onde houve perda óssea, facilitando assim a higienização;</li>"
 	          + "<li>Pasta de dente, com o princípio de remoção do biofilme dental;</li>"
 	          + "<li>Fio dental, remove biofilme dental, evitando assim a formação de placa bacteriana;</li>"
 	          + "<li>Enxaguante bucal remove bactérias causadoras da doença periodontal em ate 95%;</li>"
