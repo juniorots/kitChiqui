@@ -257,7 +257,7 @@ public class ProdutoDAOTest extends BaseController {
               + "<li>Creme, mais indicado para a situação;</li>"
               + "<li>Escova anatomicamente apropriada a melhor higienização;</li>"
               + "<li>Escova interdental, focando na finalização perfeita em sua função;</li>"
-              + "<li>Protegendo sua gengiva, nada mais útil que a cera ortodôntica;</li>"
+              + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
               + "<li>Para remover bactérias e resíduos nada mais prático que o nosso enxaguante bucal;</li>"
           + "</ul>");
       
@@ -739,7 +739,6 @@ public class ProdutoDAOTest extends BaseController {
 	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
 	          + "<li>Fio dental: 100 metros;</li>"
 	          + "<li>Creme dental: 50g;</li>"
-	          + "<li>Fio dental: 100 metros;</li>"
 	          + "<li>Toalha: 23x34cm;</li>"
 	          
 	      + "</ul>");
@@ -898,7 +897,7 @@ public class ProdutoDAOTest extends BaseController {
 	          + "<li>Passa fio, essencial para facilitar o uso do fio dental;</li>"
 	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
 	          + "<li>Fio dental, remove biofilme dental localizado entre os dentes;</li>"
-	          + "<li>Protegendo sua gengiva, nada mais útil que a cera ortodôntica;</li>"
+	          + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
 	          + "<li>Enxaguante bucal, remove bactérias;</li>"
 	      + "</ul>");
       
