@@ -412,7 +412,7 @@ public class ClienteMB extends BaseController implements Serializable {
     	alterarCliente("fecharCompra");
     	
     	// Enviar notificacao da compra
-    	EnviarEmail.enviarEmailComercial(getCliente(), EnumStatusEnvio.AGUARDANDO_PAGAMENTO.getTipo());
+    	EnviarEmail.enviarEmailComercial(Util.captarClienteSessao(), EnumStatusEnvio.AGUARDANDO_PAGAMENTO.getTipo());
     	
     	Util.forward(QUARTO_PASSO_COMPRAS);
     }
