@@ -668,7 +668,7 @@ public class ProdutoDAOTest extends BaseController {
       prod5.setSrcImagemCarrinho("img/products/kitVitrineMasculinoInfantil64x74.png");
       prod5.setTitulo("Kit Infantil - Para Meninos");
       prod5.setSubTitulo("Sucesso escolar");
-      prod5.setDescritivo("Para os meninos");
+      prod5.setDescritivo("");
       prod5.setPreco(0D);
       prod5.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
