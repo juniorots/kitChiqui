@@ -698,7 +698,7 @@ public class ProdutoDAOTest extends BaseController {
       imgG28.setProduto(prod5);
       
       ImagemPequenoProduto imgP24 = new ImagemPequenoProduto();
-      imgP24.setSrcImagem("img/products/signle-product/infantilFemininoPequeno.png");
+      imgP24.setSrcImagem("img/products/signle-product/infantilMasculinoPequeno.png");
       imgP24.setProduto(prod5);
       
       ImagemPequenoProduto imgP25 = new ImagemPequenoProduto();
