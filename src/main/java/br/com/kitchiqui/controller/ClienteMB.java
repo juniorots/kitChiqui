@@ -674,6 +674,23 @@ public class ClienteMB extends BaseController implements Serializable {
     }
     
     /**
+     * Com a responsabilidade de tratar o backUp de informacoes
+     * Uteis ao sistema
+     */
+    public void tratarBackUp() {
+    	
+    	@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ClienteDAO dao = new ClienteDAO(entityManager);
+        List<Cliente> clientes = dao.selectAll();
+        
+        
+//        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Back Up realizado com sucesso."); // acertô!
+    }
+    
+    /**
      * Util para capturar os valores que forem
      * buscados automaticamente pelo sistema e inserindo tais
      * valores no objeto correspondente ao endereco
