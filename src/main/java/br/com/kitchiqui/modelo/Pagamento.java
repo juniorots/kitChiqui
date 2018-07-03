@@ -20,11 +20,11 @@ public class Pagamento extends DomainObject {
 
 	/*
 	 * Dos tipos de pagamento:
-	 * 01 - PayPal DEFAULT;
-	 * 02 - Cartao de Credito
+	 * 01 - PayPal;
+	 * 02 - Cartao de Credito DEFAULT;
 	 * 03 - Cartao de Débito
 	 */
-	private Integer tipoPagamento = EnumTipoPagamento.PAYPAL.getTipo();
+	private Integer tipoPagamento = EnumTipoPagamento.CARTAO_CREDITO.getTipo();
 	
 	private String numeroCartao;
 	

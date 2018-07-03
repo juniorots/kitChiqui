@@ -21,6 +21,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import br.com.kitchiqui.modelo.Cliente;
+import br.com.kitchiqui.modelo.Produto;
 
 /**
  * Concentrador de atividades backup dos dados uteis
@@ -54,6 +55,130 @@ public class BackUp {
 				Element nome = doc.createElement("nome");
 				nome.appendChild(doc.createTextNode(cliente.getNome()));
 				client.appendChild(nome);
+				
+				Element nomeCompleto = doc.createElement("nomeCompleto");
+				nomeCompleto.appendChild(doc.createTextNode(cliente.getNomeCompleto()));
+				client.appendChild(nomeCompleto);
+				
+				Element nrCpf = doc.createElement("nrCpf");
+				nrCpf.appendChild(doc.createTextNode(cliente.getNrCpf()));
+				client.appendChild(nrCpf);
+				
+				Element nrRG = doc.createElement("nrRG");
+				nrRG.appendChild(doc.createTextNode(cliente.getNrRG()));
+				client.appendChild(nrRG);
+				
+				Element nrTelefone = doc.createElement("nrTelefone");
+				nrTelefone.appendChild(doc.createTextNode(cliente.getNrTelefone()));
+				client.appendChild(nrTelefone);
+				
+				Element email = doc.createElement("email");
+				email.appendChild(doc.createTextNode(cliente.getEmail()));
+				client.appendChild(email);
+				
+				Element senha = doc.createElement("senha");
+				senha.appendChild(doc.createTextNode(cliente.getSenha()));
+				client.appendChild(senha);
+				
+				Element dtNascimento = doc.createElement("dtNascimento");
+				dtNascimento.appendChild(doc.createTextNode(cliente.getDtNascimento().toString()));
+				client.appendChild(dtNascimento);
+				
+				Element tmpDtNascimento = doc.createElement("tmpDtNascimento");
+				tmpDtNascimento.appendChild(doc.createTextNode(cliente.getTmpDtNascimento()));
+				client.appendChild(tmpDtNascimento);
+				
+				// Endereco
+				Element endereco = doc.createElement("endereco");
+				client.appendChild(endereco);
+				endereco.setAttribute("id", String.valueOf(tmp));
+				
+				Element modoEnvio = doc.createElement("modoEnvio");
+				modoEnvio.appendChild(doc.createTextNode(cliente.getEndereco().getModoEnvio().toString()));
+				endereco.appendChild(modoEnvio);
+				
+				Element precoModoEnvio = doc.createElement("precoModoEnvio");
+				precoModoEnvio.appendChild(doc.createTextNode(cliente.getEndereco().getPrecoModoEnvio().toString()));
+				endereco.appendChild(precoModoEnvio);
+				
+				Element cep = doc.createElement("cep");
+				cep.appendChild(doc.createTextNode(cliente.getEndereco().getCep()));
+				endereco.appendChild(cep);
+				
+				Element nomeRua = doc.createElement("nomeRua");
+				nomeRua.appendChild(doc.createTextNode(cliente.getEndereco().getNomeRua()));
+				endereco.appendChild(nomeRua);
+				
+				Element numero = doc.createElement("numero");
+				numero.appendChild(doc.createTextNode(cliente.getEndereco().getNumero()));
+				endereco.appendChild(numero);
+				
+				Element complemento = doc.createElement("complemento");
+				complemento.appendChild(doc.createTextNode(cliente.getEndereco().getComplemento()));
+				endereco.appendChild(complemento);
+				
+				Element bairro = doc.createElement("bairro");
+				bairro.appendChild(doc.createTextNode(cliente.getEndereco().getBairro()));
+				endereco.appendChild(bairro);
+				
+				Element nomeCidade = doc.createElement("nomeCidade");
+				nomeCidade.appendChild(doc.createTextNode(cliente.getEndereco().getNomeCidade()));
+				endereco.appendChild(nomeCidade);
+				
+				Element estado = doc.createElement("estado");
+				estado.appendChild(doc.createTextNode(cliente.getEndereco().getEstado()));
+				endereco.appendChild(estado);
+				
+				//Pagamento
+				Element pagamento = doc.createElement("pagamento");
+				client.appendChild(pagamento);
+				pagamento.setAttribute("id", String.valueOf(tmp));
+				
+				Element tipoPagamento = doc.createElement("tipoPagamento");
+				tipoPagamento.appendChild(doc.createTextNode(cliente.getPagamento().getTipoPagamento().toString()));
+				pagamento.appendChild(tipoPagamento);
+				
+				Element numeroCartao = doc.createElement("numeroCartao");
+				numeroCartao.appendChild(doc.createTextNode(cliente.getPagamento().getNumeroCartao()));
+				pagamento.appendChild(numeroCartao);
+				
+				Element mesValidadeCartao = doc.createElement("mesValidadeCartao");
+				mesValidadeCartao.appendChild(doc.createTextNode(cliente.getPagamento().getMesValidadeCartao().toString()));
+				pagamento.appendChild(mesValidadeCartao);
+				
+				Element anoValidadeCartao = doc.createElement("anoValidadeCartao");
+				anoValidadeCartao.appendChild(doc.createTextNode(cliente.getPagamento().getAnoValidadeCartao().toString()));
+				pagamento.appendChild(anoValidadeCartao);
+				
+				Element codigoSeguranca = doc.createElement("codigoSeguranca");
+				codigoSeguranca.appendChild(doc.createTextNode(cliente.getPagamento().getCodigoSeguranca().toString()));
+				pagamento.appendChild(codigoSeguranca);
+				
+				Element nrParcelas = doc.createElement("nrParcelas");
+				nrParcelas.appendChild(doc.createTextNode(cliente.getPagamento().getNrParcelas().toString()));
+				pagamento.appendChild(nrParcelas);
+				
+				Element nomeTitular = doc.createElement("nomeTitular");
+				nomeTitular.appendChild(doc.createTextNode(cliente.getPagamento().getNomeTitular()));
+				pagamento.appendChild(nomeTitular);
+				
+				//Carrinho
+				int i = 1;
+				for (Produto p : cliente.getListaCarrinho()) {
+					Element carrinho = doc.createElement("carrinho");
+					client.appendChild(carrinho);
+					carrinho.setAttribute("id", String.valueOf(i));
+					
+					Element idCliente = doc.createElement("idCliente");
+					idCliente.appendChild(doc.createTextNode(cliente.getId().toString()));
+					carrinho.appendChild(idCliente);
+					
+					Element idProduto = doc.createElement("idProduto");
+					idProduto.appendChild(doc.createTextNode(p.getId().toString()));
+					carrinho.appendChild(idProduto);
+					
+					i++;
+				}
 				
 				tmp++;
 			}
