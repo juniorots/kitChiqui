@@ -2,8 +2,11 @@ package br.com.kitchiqui.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,6 +17,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,6 +25,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import br.com.kitchiqui.modelo.Cliente;
+import br.com.kitchiqui.modelo.CompraProduto;
+import br.com.kitchiqui.modelo.Endereco;
+import br.com.kitchiqui.modelo.Pagamento;
 import br.com.kitchiqui.modelo.Produto;
 
 /**
@@ -51,6 +58,10 @@ public class BackUp {
 				Element client = doc.createElement("cliente");
 				rootElement.appendChild(client);
 				client.setAttribute("id", String.valueOf(tmp));
+				
+				Element idtCliente = doc.createElement("idtCliente");
+				idtCliente.appendChild(doc.createTextNode(cliente.getId().toString()));
+				client.appendChild(idtCliente);
 				
 				Element nome = doc.createElement("nome");
 				nome.appendChild(doc.createTextNode(cliente.getNome()));
@@ -93,6 +104,10 @@ public class BackUp {
 				client.appendChild(endereco);
 				endereco.setAttribute("id", String.valueOf(tmp));
 				
+				Element idtEndereco = doc.createElement("idtEndereco");
+				idtEndereco.appendChild(doc.createTextNode(cliente.getEndereco().getId().toString()));
+				endereco.appendChild(idtEndereco);
+				
 				Element modoEnvio = doc.createElement("modoEnvio");
 				modoEnvio.appendChild(doc.createTextNode(cliente.getEndereco().getModoEnvio().toString()));
 				endereco.appendChild(modoEnvio);
@@ -133,6 +148,10 @@ public class BackUp {
 				Element pagamento = doc.createElement("pagamento");
 				client.appendChild(pagamento);
 				pagamento.setAttribute("id", String.valueOf(tmp));
+				
+				Element idtPagamento = doc.createElement("idtPagamento");
+				idtPagamento.appendChild(doc.createTextNode(cliente.getPagamento().getId().toString()));
+				pagamento.appendChild(idtPagamento);
 				
 				Element tipoPagamento = doc.createElement("tipoPagamento");
 				tipoPagamento.appendChild(doc.createTextNode(cliente.getPagamento().getTipoPagamento().toString()));
@@ -177,6 +196,30 @@ public class BackUp {
 					idProduto.appendChild(doc.createTextNode(p.getId().toString()));
 					carrinho.appendChild(idProduto);
 					
+					Element compraProduto = doc.createElement("compraProduto");
+					compraProduto.appendChild(carrinho);
+					compraProduto.setAttribute("id", "1");
+					
+					Element idtCompraProduto = doc.createElement("idtCompraProduto");
+					idtCompraProduto.appendChild(doc.createTextNode(p.getCompraProduto().getId().toString()));
+					carrinho.appendChild(idtCompraProduto);
+					
+					Element codigoRastreio = doc.createElement("codigoRastreio");
+					codigoRastreio.appendChild(doc.createTextNode(p.getCompraProduto().getCodigoRastreio().toString()));
+					carrinho.appendChild(codigoRastreio);
+					
+					Element dtCompra = doc.createElement("dtCompra");
+					dtCompra.appendChild(doc.createTextNode(p.getCompraProduto().getDtCompra().toString()));
+					carrinho.appendChild(dtCompra);
+					
+					Element codCompra = doc.createElement("codCompra");
+					codCompra.appendChild(doc.createTextNode(p.getCompraProduto().getCodCompra().toString()));
+					carrinho.appendChild(codCompra);
+					
+					Element statusCompra = doc.createElement("statusCompra");
+					statusCompra.appendChild(doc.createTextNode(p.getCompraProduto().getStatusCompra()));
+					carrinho.appendChild(statusCompra);
+					
 					i++;
 				}
 				
@@ -211,6 +254,7 @@ public class BackUp {
 	 * 2 - Penultimo backUp gerado;
 	 * 3 - AntePenultimo backUp gerado;
 	 * @return
+	 * @throws java.text.ParseException 
 	 */
 	public static List<Cliente> leDadosCliente() {
 		List<Cliente> lista = new ArrayList<>();
@@ -224,15 +268,117 @@ public class BackUp {
 //			System.out.println("Raiz :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("cliente");
 			
+			Endereco end = null;
+			Pagamento pag = null;
+			
+			Produto prod = null;
+			Cliente cli = null;
+			
+			CompraProduto compProd = null;
+			SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-DD");
+			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 //				System.out.println("\nItem :" + nNode.getNodeName());
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
+					cli = new Cliente();
+					
+//					System.out.println("id: " + eElement.getAttribute("id"));
+//					System.out.println("Nome: " + eElement.getElementsByTagName("nome").item(0).getTextContent());
+					
+					cli.setId(UUID.fromString(eElement.getElementsByTagName("idtCliente").item(0).getTextContent()));
+					cli.setNome(eElement.getElementsByTagName("nome").item(0).getTextContent());
+					cli.setNomeCompleto(eElement.getElementsByTagName("nomeCompleto").item(0).getTextContent());
+					
+					cli.setNrCpf(eElement.getElementsByTagName("nrCpf").item(0).getTextContent());
+					cli.setNrRG(eElement.getElementsByTagName("nrRG").item(0).getTextContent());
+					cli.setNrTelefone(eElement.getElementsByTagName("nrTelefone").item(0).getTextContent());
+					
+					cli.setEmail(eElement.getElementsByTagName("email").item(0).getTextContent());
+					cli.setSenha(eElement.getElementsByTagName("senha").item(0).getTextContent());
+					cli.setDtNascimento(formato.parse(eElement.getElementsByTagName("dtNascimento").item(0).getTextContent()));
+					
+					cli.setTmpDtNascimento(eElement.getElementsByTagName("tmpDtNascimento").item(0).getTextContent());
+					
+					NodeList nListEndereco = eElement.getElementsByTagName("endereco");
+					
+					for (int i = 0; i < nListEndereco.getLength(); i++) {
+						Node nodeEnd = nListEndereco.item(i);
+						if (nodeEnd.getNodeType() == Node.ELEMENT_NODE) {
 
-					System.out.println("id: " + eElement.getAttribute("id"));
-					System.out.println("Nome: " + eElement.getElementsByTagName("nome").item(0).getTextContent());
+							Element elEnd = (Element) nodeEnd;
+							end = new Endereco();
+							
+							end.setId(UUID.fromString(elEnd.getElementsByTagName("idtEndereco").item(0).getTextContent()));
+							end.setModoEnvio(Integer.parseInt(elEnd.getElementsByTagName("modoEnvio").item(0).getTextContent()));
+							end.setPrecoModoEnvio(Double.parseDouble(elEnd.getElementsByTagName("precoModoEnvio").item(0).getTextContent()));
+							
+							end.setCep(elEnd.getElementsByTagName("cep").item(0).getTextContent());
+							end.setNomeRua(elEnd.getElementsByTagName("nomeRua").item(0).getTextContent());
+							end.setNumero(elEnd.getElementsByTagName("numero").item(0).getTextContent());
+							
+							end.setComplemento(elEnd.getElementsByTagName("complemento").item(0).getTextContent());
+							end.setBairro(elEnd.getElementsByTagName("bairro").item(0).getTextContent());
+							end.setNomeCidade(elEnd.getElementsByTagName("nomeCidade").item(0).getTextContent());
+							
+							end.setEstado(elEnd.getElementsByTagName("estado").item(0).getTextContent());
+							cli.setEndereco(end);
+						}
+					}
+					
+					NodeList nListPagamento = eElement.getElementsByTagName("pagamento");
+					
+					for (int i = 0; i < nListPagamento.getLength(); i++) {
+						Node nodePag = nListPagamento.item(i);
+						if (nodePag.getNodeType() == Node.ELEMENT_NODE) {
+							Element elPag = (Element) nodePag;
+							pag = new Pagamento();
+							
+							pag.setId(UUID.fromString(elPag.getElementsByTagName("idtPagamento").item(0).getTextContent()));
+							pag.setTipoPagamento(Integer.parseInt(elPag.getElementsByTagName("idtPagamento").item(0).getTextContent()));
+							pag.setNumeroCartao(elPag.getElementsByTagName("numeroCartao").item(0).getTextContent());
+							
+							pag.setMesValidadeCartao(Integer.parseInt(elPag.getElementsByTagName("mesValidadeCartao").item(0).getTextContent()));
+							pag.setAnoValidadeCartao(Integer.parseInt(elPag.getElementsByTagName("anoValidadeCartao").item(0).getTextContent()));
+							pag.setCodigoSeguranca(Integer.parseInt(elPag.getElementsByTagName("codigoSeguranca").item(0).getTextContent()));
+							
+							pag.setNrParcelas(Integer.parseInt(elPag.getElementsByTagName("nrParcelas").item(0).getTextContent()));
+							pag.setNomeTitular(elPag.getElementsByTagName("nomeTitular").item(0).getTextContent());
+							cli.setPagamento(pag);
+						}
+					}
+					
+					NodeList nListCarrinho = eElement.getElementsByTagName("carrinho");
+					for (int i = 0; i < nListCarrinho.getLength(); i++) {
+						Node nodeProd = nListCarrinho.item(i);
+						if (nodeProd.getNodeType() == Node.ELEMENT_NODE) {
+							Element elProd = (Element) nodeProd;
+							prod = new Produto();
+							
+							prod.setId(UUID.fromString(elProd.getElementsByTagName("idProduto").item(0).getTextContent()));
+							
+							NodeList nListCompra = elProd.getElementsByTagName("compraProduto");
+							for (int j = 0; j < nListCompra.getLength(); j++) {
+								Node nodeCompProd = nListCompra.item(j);
+								if (nodeCompProd.getNodeType() == Node.ELEMENT_NODE) {
+									Element elCompProd = (Element) nodeCompProd;
+									compProd = new CompraProduto();
+									
+									compProd.setId(UUID.fromString(elCompProd.getElementsByTagName("idtCompraProduto").item(0).getTextContent()));
+									compProd.setStatusCompra(elCompProd.getElementsByTagName("statusCompra").item(0).getTextContent());
+									compProd.setCodigoRastreio(elCompProd.getElementsByTagName("codigoRastreio").item(0).getTextContent());
+									
+									compProd.setCodCompra(Integer.parseInt(elCompProd.getElementsByTagName("codCompra").item(0).getTextContent()));
+									compProd.setStatusCompra(elCompProd.getElementsByTagName("statusCompra").item(0).getTextContent());
+									prod.setCompraProduto(compProd);
+								}
+							}
+							cli.getListaCarrinho().add(prod);
+						}
+					}
+					
 				}
 			}
 		} catch (ParserConfigurationException pce) {
@@ -241,6 +387,10 @@ public class BackUp {
 			se.printStackTrace();
 		} catch (IOException ie) {
 			ie.printStackTrace();
+		} catch (DOMException e) {
+			e.printStackTrace();
+		} catch (ParseException pe) {
+			pe.printStackTrace();
 		}
 		return lista;
 	}
