@@ -37,6 +37,7 @@ import br.com.kitchiqui.modelo.EnumEnvio;
 import br.com.kitchiqui.modelo.EnumStatusCompra;
 import br.com.kitchiqui.modelo.EnumStatusEnvio;
 import br.com.kitchiqui.modelo.Produto;
+import br.com.kitchiqui.util.BackUp;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.EnviarEmail;
 import br.com.kitchiqui.util.Util;
@@ -685,7 +686,7 @@ public class ClienteMB extends BaseController implements Serializable {
         
         ClienteDAO dao = new ClienteDAO(entityManager);
         List<Cliente> clientes = dao.selectAll();
-        
+        BackUp.gravarDadosCliente(clientes);
         
 //        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Back Up realizado com sucesso."); // acertô!
     }

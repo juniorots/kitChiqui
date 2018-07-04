@@ -40,10 +40,6 @@ public class ClienteDAOTest extends BaseController {
     public void tearDown() {
     }
 
-//    @Test
-    public void example() {
-    }
-    
     public Parceiro contidoBase(Parceiro parc) {
     	@Cleanup
         final EntityManager entityManager = getInstanceEntity();
@@ -80,6 +76,6 @@ public class ClienteDAOTest extends BaseController {
     @Test
     public void mainTest(){
     	ClienteMB clienteMB = new ClienteMB();
-//    	clienteMB.tratarBackUp();
+    	clienteMB.tratarBackUp();
     }
 }

@@ -6,6 +6,8 @@
 package br.com.kitchiqui.modelo;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.swing.text.MaskFormatter;
@@ -65,6 +67,9 @@ public class Pagamento extends DomainObject {
 	}
 
 	public Integer getMesValidadeCartao() {
+		if (mesValidadeCartao == null) {
+			mesValidadeCartao = 1;
+		}
 		return mesValidadeCartao;
 	}
 
@@ -73,6 +78,10 @@ public class Pagamento extends DomainObject {
 	}
 
 	public Integer getAnoValidadeCartao() {
+		if (anoValidadeCartao == null) {
+			SimpleDateFormat formato = new SimpleDateFormat("YYYY");
+			anoValidadeCartao = Integer.parseInt(formato.format(Calendar.getInstance().getTime()));
+		}
 		return anoValidadeCartao;
 	}
 
@@ -81,6 +90,9 @@ public class Pagamento extends DomainObject {
 	}
 
 	public Integer getCodigoSeguranca() {
+		if (codigoSeguranca == null) {
+			codigoSeguranca = 0;
+		}
 		return codigoSeguranca;
 	}
 
@@ -89,6 +101,9 @@ public class Pagamento extends DomainObject {
 	}
 
 	public Integer getNrParcelas() {
+		if (nrParcelas == null) {
+			nrParcelas = 1;
+		}
 		return nrParcelas;
 	}
 

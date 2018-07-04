@@ -198,6 +198,7 @@ public class BackUp {
 		} catch (TransformerException te) {
 			te.printStackTrace();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		return true;
