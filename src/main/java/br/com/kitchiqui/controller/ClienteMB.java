@@ -241,6 +241,14 @@ public class ClienteMB extends BaseController implements Serializable {
     	limparClienteGestao();
     	Util.forward(GERENCIAR_CLIENTE);
     }
+    
+    /**
+     * Secao de configuracoes das informacoes base do cliente
+     */
+    public void tratarPainelControle() {
+    	limparClienteGestao();
+    	Util.forward(PAINEL_CONTROLE);
+    }
 
     public void limparClienteGestao() {
     	setClienteGestao(null);
@@ -738,7 +746,7 @@ public class ClienteMB extends BaseController implements Serializable {
         List<Cliente> clientes = dao.selectAll();
         BackUp.gravarDadosCliente(clientes);
         
-//        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Back Up realizado com sucesso."); // acertô!
+        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Back Up realizado com sucesso."); // acertô!
     }
     
     /**

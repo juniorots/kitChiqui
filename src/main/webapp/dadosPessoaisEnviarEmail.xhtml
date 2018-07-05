@@ -41,6 +41,7 @@
 	            	<div class="col-xs-12">
 	            		<div class="btn-group" role="group" aria-label="...">
 	            			<c:if test="#{usuarioAdministrador}">
+	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarPainelControle}"><i class="fa fa-cubes" aria-hidden="true"></i>Painel Controle</h:commandLink> 
 	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar Cliente</h:commandLink>
 	            				<h:commandLink class="btn btn-default active" action="#{clienteMB.tratarEmailPersonalizado}"><i class="fa fa-envelope" aria-hidden="true"></i>E-mail</h:commandLink>
 	            			</c:if>

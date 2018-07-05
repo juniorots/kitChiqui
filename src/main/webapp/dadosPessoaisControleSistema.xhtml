@@ -9,6 +9,8 @@
       template="/WEB-INF/template/mestre.xhtml">
    	<ui:define name="centro">
     	<h:form id="formDadosPessoais" role="form" >
+    	<c:set var="clientePesquisado" value="#{clienteMB.clientePesquisado}"/>
+    	
         <!--
          NOTA: para capturar o caminho relativo do projeto, usa-se:
             #[request.contextPath}/<DIRETORIO>/..
@@ -39,43 +41,52 @@
 	            	<div class="col-xs-12">
 	            		<div class="btn-group" role="group" aria-label="...">
 	            			<c:if test="#{usuarioAdministrador}">
-	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarPainelControle}"><i class="fa fa-cubes" aria-hidden="true"></i>Painel Controle</h:commandLink>
+	            				<h:commandLink class="btn btn-default active" action="#{clienteMB.tratarPainelControle}"><i class="fa fa-cubes" aria-hidden="true"></i>Painel Controle</h:commandLink>
 	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarGerenciamentoCliente}"><i class="fa fa-cog" aria-hidden="true"></i>Gerenciar Cliente</h:commandLink>
 	            				<h:commandLink class="btn btn-default" action="#{clienteMB.tratarEmailPersonalizado}"><i class="fa fa-envelope" aria-hidden="true"></i>E-mail</h:commandLink>
-	            			</c:if>	
+	            			</c:if>
 	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoais}"><i class="fa fa-user" aria-hidden="true"></i>Dados Pessoais</h:commandLink>
                 			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisEndereco}"><i class="fa fa-map-marker" aria-hidden="true"></i>Endereço</h:commandLink>
                 			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisPedidos}"><i class="fa fa-list" aria-hidden="true"></i>Meus Pedidos</h:commandLink>
-	            			<h:commandLink class="btn btn-default active" action="#{clienteMB.verificarDadosPessoaisAlteraSenha}"><i class="fa fa-key" aria-hidden="true"></i>Alteração de Senha</h:commandLink>
+	            			<h:commandLink class="btn btn-default" action="#{clienteMB.verificarDadosPessoaisAlteraSenha}"><i class="fa fa-key" aria-hidden="true"></i>Alteração de Senha</h:commandLink>
 	            		</div>
 	            	</div>
             	</div>
             	
             	<div class="row">
-            		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
-            			<div class="panel panel-default">
-							<div class="panel panel-default">
-				                	<div class="form-group">
-					                	<small style="color: red">(*) Obrigatório</small>
-					                </div>
-				                    <div class="form-group">
-				                      <label for=""><span style="color: red">*</span>&nbsp;Senha</label>
-				                      <h:inputSecret id="senha" class="form-control" value="#{clienteMB.cliente.senha}" required="true" requiredMessage="Senha obrigatório"/>
-                					  <p:message for="senha" display="text"/>
-				                    </div>
-				                    <div class="form-group">
-				                      <label for=""><span style="color: red">*</span>&nbsp;Confirme a senha</label>
-				                	  <h:inputSecret id="confirmaSenha" class="form-control" value="#{clienteMB.cliente.confirmaSenha}" required="true" requiredMessage="Confirmação de Senha obrigatório"/>
-	                				  <p:message for="confirmaSenha" display="text"/>
-				                    </div>
-				                    <h:commandButton class="btn btn-primary btn-block" action="#{clienteMB.alterarSenha}" value="Alterar"/>
-			              	</div>
-						</div>		
-                	</div> 
-	            </div>
-       		</div>
+           			<div class="innerWrapper profile">
+                        <div class="form-group">
+	                        <div class="col-md-2 col-sm-3 col-xs-4">
+	                        	<h:commandButton id="btnBackUp" class="btn btn-primary btn-block" action="#{clienteMB.tratarBackUp}" value="Efetuar Back Up"/>
+	                        </div>
+                        </div>
+		            </div>
+            	</div>
+	    	</div>
 	    </section>
-        
+		<script type="text/javascript">
+	        $('#btnNotificar').click(function() {
+				$.confirm({
+					theme: 'supervan',
+					title: 'Notificar cliente',
+					content: 'Confirma o envio do e-mail?',
+					buttons: {
+						sim: {
+							text: "Sim",
+							//btnClass: 'btn-blue',
+							keys: ['enter'],
+							action: function() {
+								$('#formDadosPessoais\\:lnkNotificar').click();
+							}
+						},	
+						nao: {
+							text: "Não"
+						}
+					}	
+				});
+			});
+        </script>
+       
         </h:form>
 		</ui:define>
     </ui:composition>

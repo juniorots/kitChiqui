@@ -45,6 +45,7 @@ public class BaseController {
 	protected static final String DADOS_PESSOAIS_CLIENTE_ALTERA_SENHA = "/dadosPessoaisClienteAlterarSenha.xhtml";
 	protected static final String GERENCIAR_CLIENTE = "/dadosPessoaisGerenciar.xhtml";
 	protected static final String DADOS_PESSOAIS_EMAIL = "/dadosPessoaisEnviarEmail.xhtml";
+	protected static final String PAINEL_CONTROLE = "/dadosPessoaisControleSistema.xhtml";
 	
 	protected static final Integer VAZIO = 0;
 	
