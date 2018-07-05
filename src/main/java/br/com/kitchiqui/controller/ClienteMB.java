@@ -744,9 +744,13 @@ public class ClienteMB extends BaseController implements Serializable {
         ClienteDAO dao = new ClienteDAO(entityManager);
         
         List<Cliente> clientes = dao.selectAll();
-        BackUp.gravarDadosCliente(clientes);
-        
-        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Back Up realizado com sucesso."); // acertô!
+        try {
+	        BackUp.gravarDadosCliente(clientes);
+	        Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Back Up realizado com sucesso"); // acertô!
+        } catch (NullPointerException ne) {
+        	ne.printStackTrace();
+        	Util.montarMensagem(FacesMessage.SEVERITY_ERROR, "Falha no processo de Back Up"); // acertô!
+        }
     }
     
     /**
