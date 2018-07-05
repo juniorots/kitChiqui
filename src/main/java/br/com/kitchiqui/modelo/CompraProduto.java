@@ -7,6 +7,7 @@ package br.com.kitchiqui.modelo;
 
 import static javax.persistence.TemporalType.DATE;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -30,6 +31,9 @@ public class CompraProduto extends DomainObject {
 	private String statusCompra;
 
 	public Date getDtCompra() {
+		if (dtCompra == null) {
+			dtCompra = Calendar.getInstance().getTime();
+		}
 		return dtCompra;
 	}
 
@@ -38,6 +42,9 @@ public class CompraProduto extends DomainObject {
 	}
 
 	public Integer getCodCompra() {
+		if (codCompra == null) {
+			codCompra = 0;
+		}
 		return codCompra;
 	}
 

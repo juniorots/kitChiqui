@@ -197,28 +197,28 @@ public class BackUp {
 					carrinho.appendChild(idProduto);
 					
 					Element compraProduto = doc.createElement("compraProduto");
-					compraProduto.appendChild(carrinho);
+					carrinho.appendChild(compraProduto);
 					compraProduto.setAttribute("id", "1");
 					
 					Element idtCompraProduto = doc.createElement("idtCompraProduto");
 					idtCompraProduto.appendChild(doc.createTextNode(p.getCompraProduto().getId().toString()));
-					carrinho.appendChild(idtCompraProduto);
+					compraProduto.appendChild(idtCompraProduto);
 					
 					Element codigoRastreio = doc.createElement("codigoRastreio");
 					codigoRastreio.appendChild(doc.createTextNode(p.getCompraProduto().getCodigoRastreio().toString()));
-					carrinho.appendChild(codigoRastreio);
+					compraProduto.appendChild(codigoRastreio);
 					
 					Element dtCompra = doc.createElement("dtCompra");
 					dtCompra.appendChild(doc.createTextNode(p.getCompraProduto().getDtCompra().toString()));
-					carrinho.appendChild(dtCompra);
+					compraProduto.appendChild(dtCompra);
 					
 					Element codCompra = doc.createElement("codCompra");
 					codCompra.appendChild(doc.createTextNode(p.getCompraProduto().getCodCompra().toString()));
-					carrinho.appendChild(codCompra);
+					compraProduto.appendChild(codCompra);
 					
 					Element statusCompra = doc.createElement("statusCompra");
 					statusCompra.appendChild(doc.createTextNode(p.getCompraProduto().getStatusCompra()));
-					carrinho.appendChild(statusCompra);
+					compraProduto.appendChild(statusCompra);
 					
 					i++;
 				}
@@ -337,7 +337,7 @@ public class BackUp {
 							pag = new Pagamento();
 							
 							pag.setId(UUID.fromString(elPag.getElementsByTagName("idtPagamento").item(0).getTextContent()));
-							pag.setTipoPagamento(Integer.parseInt(elPag.getElementsByTagName("idtPagamento").item(0).getTextContent()));
+							pag.setTipoPagamento(Integer.parseInt(elPag.getElementsByTagName("tipoPagamento").item(0).getTextContent()));
 							pag.setNumeroCartao(elPag.getElementsByTagName("numeroCartao").item(0).getTextContent());
 							
 							pag.setMesValidadeCartao(Integer.parseInt(elPag.getElementsByTagName("mesValidadeCartao").item(0).getTextContent()));
@@ -372,6 +372,8 @@ public class BackUp {
 									
 									compProd.setCodCompra(Integer.parseInt(elCompProd.getElementsByTagName("codCompra").item(0).getTextContent()));
 									compProd.setStatusCompra(elCompProd.getElementsByTagName("statusCompra").item(0).getTextContent());
+									compProd.setDtCompra(formato.parse(elCompProd.getElementsByTagName("dtCompra").item(0).getTextContent()));
+									
 									prod.setCompraProduto(compProd);
 								}
 							}
@@ -380,6 +382,7 @@ public class BackUp {
 					}
 					
 				}
+				System.out.println("FIM");
 			}
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();

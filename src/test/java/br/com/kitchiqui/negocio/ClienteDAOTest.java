@@ -6,8 +6,6 @@
 package br.com.kitchiqui.negocio;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,8 +15,8 @@ import org.junit.Test;
 
 import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.controller.BaseController;
-import br.com.kitchiqui.controller.ClienteMB;
 import br.com.kitchiqui.modelo.Parceiro;
+import br.com.kitchiqui.util.BackUp;
 import br.com.kitchiqui.util.Util;
 import lombok.Cleanup;
 
@@ -75,7 +73,8 @@ public class ClienteDAOTest extends BaseController {
     
     @Test
     public void mainTest(){
-    	ClienteMB clienteMB = new ClienteMB();
-    	clienteMB.tratarBackUp();
+//    	ClienteMB clienteMB = new ClienteMB();
+//    	clienteMB.tratarBackUp();
+    	BackUp.leDadosCliente();
     }
 }
