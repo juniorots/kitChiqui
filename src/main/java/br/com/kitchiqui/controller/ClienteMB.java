@@ -6,8 +6,6 @@
 package br.com.kitchiqui.controller;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,7 +25,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import lombok.Cleanup;
 import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.base.MalaDiretaDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
@@ -41,6 +38,7 @@ import br.com.kitchiqui.util.BackUp;
 import br.com.kitchiqui.util.Constantes;
 import br.com.kitchiqui.util.EnviarEmail;
 import br.com.kitchiqui.util.Util;
+import lombok.Cleanup;
 
 @ManagedBean(name="clienteMB")
 @SessionScoped
@@ -435,6 +433,36 @@ public class ClienteMB extends BaseController implements Serializable {
     }
     
     /**
+     * Util na utilizacao de backup, visando persistencia em base de dados.
+     * @param cliente
+     */
+    public static void gravarClienteBackUp(Cliente cliente) {
+    	@Cleanup
+        final EntityManager entManager = getInstanceEntity();
+        
+        entManager.getTransaction().begin();
+        ClienteDAO dao = new ClienteDAO(entManager);
+    
+        dao.insert( cliente );
+        entManager.getTransaction().commit();
+    }
+    
+    /**
+     * Util na utilizacao de backup, visando persistencia em base de dados.
+     * @param cliente
+     */
+    public static void atualizarClienteBackUp(Cliente cliente) {
+    	@Cleanup
+        final EntityManager entManager = getInstanceEntity();
+        
+        entManager.getTransaction().begin();
+        ClienteDAO dao = new ClienteDAO(entManager);
+    
+        dao.update( cliente );
+        entManager.getTransaction().commit();
+    }
+    
+    /**
      * Responsavel por persistir as informacoes digitadas na base
      */
     public void salvarCliente() {
@@ -526,8 +554,29 @@ public class ClienteMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
-        return Util.isEmpty( dao.findByStringField("email", cliente.getEmail(), true, 0, 1) );
+        boolean retorno = false;
+        
+        retorno = Util.isEmpty( dao.findByStringField("email", cliente.getEmail(), true, 0, 1) );
+        return retorno;
     }
+    
+    /**
+	 * Util para utilizacao de backUp - restauracao do sistema
+	 * @param produto
+	 * @return
+	 */
+	public Cliente pesquisaBackUp(Cliente cliente) {
+		@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        
+        ClienteDAO dao = null;
+        Cliente retorno = null;
+        
+        dao = new ClienteDAO(entityManager);
+        retorno = dao.findByStringField("email", cliente.getEmail(), true, 0, 1).get(0);
+        return retorno;
+	}
     
     /**
      * Credenciando Cliente
@@ -685,6 +734,7 @@ public class ClienteMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         ClienteDAO dao = new ClienteDAO(entityManager);
+        
         List<Cliente> clientes = dao.selectAll();
         BackUp.gravarDadosCliente(clientes);
         

@@ -5,20 +5,14 @@
  */
 package br.com.kitchiqui.negocio;
 
-import javax.persistence.EntityManager;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.controller.BaseController;
-import br.com.kitchiqui.modelo.Parceiro;
 import br.com.kitchiqui.util.BackUp;
-import br.com.kitchiqui.util.Util;
-import lombok.Cleanup;
 
 public class ClienteDAOTest extends BaseController {
 	
@@ -38,43 +32,11 @@ public class ClienteDAOTest extends BaseController {
     public void tearDown() {
     }
 
-    public Parceiro contidoBase(Parceiro parc) {
-    	@Cleanup
-        final EntityManager entityManager = getInstanceEntity();
-        entityManager.getTransaction().begin();
-                
-        ParceiroDAO dao = new ParceiroDAO(entityManager);
-        
-        if (!Util.isEmpty(dao.findByStringField("srcImagem", parc.getSrcImagem(), true, 0, 1))) {
-        	return dao.findByStringField("srcImagem", parc.getSrcImagem(), true, 0, 1).get(0);
-        } else 
-        	return null;
-    }
-    
-    public void atualizarParceiro(Parceiro parc) {
-		@Cleanup
-        final EntityManager entityManager = getInstanceEntity();
-        entityManager.getTransaction().begin();
-        
-        ParceiroDAO dao = new ParceiroDAO(entityManager);
-        dao.update(parc);
-        entityManager.getTransaction().commit();
-	}
-    
-    public void inserirParceiro(Parceiro parc) {
-		@Cleanup
-        final EntityManager entityManager = getInstanceEntity();
-        entityManager.getTransaction().begin();
-        
-        ParceiroDAO dao = new ParceiroDAO(entityManager);
-        dao.insert(parc);
-        entityManager.getTransaction().commit();
-	}
-    
     @Test
+    public void disabled() {}
+    
+//    @Test
     public void mainTest(){
-//    	ClienteMB clienteMB = new ClienteMB();
-//    	clienteMB.tratarBackUp();
     	BackUp.leDadosCliente();
     }
 }

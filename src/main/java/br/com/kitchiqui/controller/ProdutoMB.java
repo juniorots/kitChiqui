@@ -57,7 +57,7 @@ public class ProdutoMB extends BaseController implements Serializable {
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
         ParceiroDAO parDAO = new ParceiroDAO(entityManager);
-        
+
         for (Produto p : dao.selectAll()) {
         	if (p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())) { 
         		this.listaVitrine.add( p );
@@ -66,10 +66,10 @@ public class ProdutoMB extends BaseController implements Serializable {
         		this.listaDestaque.add( p );
         	}
         }
-        
-        for (Parceiro par : parDAO.selectAll()) {
-        	this.listaParceiros.add( par );
-        }
+	        // Deve-se habilitar quando novamente for inserir os parceiros no site
+//	        for (Parceiro par : parDAO.selectAll()) {
+//	        	this.listaParceiros.add( par );
+//	        }
 	}
 	
 	/**
@@ -88,6 +88,22 @@ public class ProdutoMB extends BaseController implements Serializable {
         entityManager.getTransaction().commit();
         
         Util.montarMensagem(FacesMessage.SEVERITY_INFO, "Dados atualizados");
+	}
+	
+	/**
+	 * Util para utilizacao de backUp - restauracao do sistema
+	 * @param produto
+	 * @return
+	 */
+	public static Produto pesquisaBackUp(Produto produto) {
+		@Cleanup
+        final EntityManager entityManager = getInstanceEntity();
+        entityManager.getTransaction().begin();
+        Produto retorno = null;
+        
+        ProdutoDAO dao = new ProdutoDAO(entityManager);
+        retorno = dao.findByStringField("srcImagem", produto.getSrcImagem(), true, 0, 1).get(0); 
+        return retorno;
 	}
 	
 	/**

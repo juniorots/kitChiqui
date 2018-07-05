@@ -348,7 +348,7 @@ public class DaoJpa2<DO extends DomainObject> implements DataAccessObject<DO> {
 
     
     public DO update(DO object) {
-        return getEntityManager().merge(object);
+    	return getEntityManager().merge(object);
     }
 
     
