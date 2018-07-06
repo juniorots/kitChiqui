@@ -60,25 +60,33 @@ public class BackUp {
 				rootElement.appendChild(client);
 				client.setAttribute("id", String.valueOf(tmp));
 				
-//				Element idtCliente = doc.createElement("idtCliente");
-//				idtCliente.appendChild(doc.createTextNode(cliente.getId().toString()));
-//				client.appendChild(idtCliente);
-				
 				Element nome = doc.createElement("nome");
 				nome.appendChild(doc.createTextNode(cliente.getNome()));
 				client.appendChild(nome);
+				
+				if (Util.isEmpty(cliente.getNomeCompleto())) 
+					cliente.setNomeCompleto("");
 				
 				Element nomeCompleto = doc.createElement("nomeCompleto");
 				nomeCompleto.appendChild(doc.createTextNode(cliente.getNomeCompleto()));
 				client.appendChild(nomeCompleto);
 				
+				if (Util.isEmpty(cliente.getNrCpf())) 
+					cliente.setNrCpf("");
+				
 				Element nrCpf = doc.createElement("nrCpf");
 				nrCpf.appendChild(doc.createTextNode(cliente.getNrCpf()));
 				client.appendChild(nrCpf);
 				
+				if (Util.isEmpty(cliente.getNrRG())) 
+					cliente.setNrRG("");
+				
 				Element nrRG = doc.createElement("nrRG");
 				nrRG.appendChild(doc.createTextNode(cliente.getNrRG()));
 				client.appendChild(nrRG);
+				
+				if (Util.isEmpty(cliente.getNrTelefone())) 
+					cliente.setNrTelefone("");
 				
 				Element nrTelefone = doc.createElement("nrTelefone");
 				nrTelefone.appendChild(doc.createTextNode(cliente.getNrTelefone()));
@@ -105,10 +113,6 @@ public class BackUp {
 				client.appendChild(endereco);
 				endereco.setAttribute("id", String.valueOf(tmp));
 				
-//				Element idtEndereco = doc.createElement("idtEndereco");
-//				idtEndereco.appendChild(doc.createTextNode(cliente.getEndereco().getId().toString()));
-//				endereco.appendChild(idtEndereco);
-				
 				Element modoEnvio = doc.createElement("modoEnvio");
 				modoEnvio.appendChild(doc.createTextNode(cliente.getEndereco().getModoEnvio().toString()));
 				endereco.appendChild(modoEnvio);
@@ -117,29 +121,50 @@ public class BackUp {
 				precoModoEnvio.appendChild(doc.createTextNode(cliente.getEndereco().getPrecoModoEnvio().toString()));
 				endereco.appendChild(precoModoEnvio);
 				
+				if (Util.isEmpty(cliente.getEndereco().getCep())) 
+					cliente.getEndereco().setCep("");
+				
 				Element cep = doc.createElement("cep");
 				cep.appendChild(doc.createTextNode(cliente.getEndereco().getCep()));
 				endereco.appendChild(cep);
+				
+				if (Util.isEmpty(cliente.getEndereco().getNomeRua())) 
+					cliente.getEndereco().setNomeRua("");
 				
 				Element nomeRua = doc.createElement("nomeRua");
 				nomeRua.appendChild(doc.createTextNode(cliente.getEndereco().getNomeRua()));
 				endereco.appendChild(nomeRua);
 				
+				if (Util.isEmpty(cliente.getEndereco().getNumero())) 
+					cliente.getEndereco().setNumero("");
+				
 				Element numero = doc.createElement("numero");
 				numero.appendChild(doc.createTextNode(cliente.getEndereco().getNumero()));
 				endereco.appendChild(numero);
+				
+				if (Util.isEmpty(cliente.getEndereco().getComplemento())) 
+					cliente.getEndereco().setComplemento("");
 				
 				Element complemento = doc.createElement("complemento");
 				complemento.appendChild(doc.createTextNode(cliente.getEndereco().getComplemento()));
 				endereco.appendChild(complemento);
 				
+				if (Util.isEmpty(cliente.getEndereco().getBairro())) 
+					cliente.getEndereco().setBairro("");
+				
 				Element bairro = doc.createElement("bairro");
 				bairro.appendChild(doc.createTextNode(cliente.getEndereco().getBairro()));
 				endereco.appendChild(bairro);
 				
+				if (Util.isEmpty(cliente.getEndereco().getNomeCidade())) 
+					cliente.getEndereco().setNomeCidade("");
+				
 				Element nomeCidade = doc.createElement("nomeCidade");
 				nomeCidade.appendChild(doc.createTextNode(cliente.getEndereco().getNomeCidade()));
 				endereco.appendChild(nomeCidade);
+				
+				if (Util.isEmpty(cliente.getEndereco().getEstado())) 
+					cliente.getEndereco().setEstado("");
 				
 				Element estado = doc.createElement("estado");
 				estado.appendChild(doc.createTextNode(cliente.getEndereco().getEstado()));
@@ -150,13 +175,12 @@ public class BackUp {
 				client.appendChild(pagamento);
 				pagamento.setAttribute("id", String.valueOf(tmp));
 				
-//				Element idtPagamento = doc.createElement("idtPagamento");
-//				idtPagamento.appendChild(doc.createTextNode(cliente.getPagamento().getId().toString()));
-//				pagamento.appendChild(idtPagamento);
-				
 				Element tipoPagamento = doc.createElement("tipoPagamento");
 				tipoPagamento.appendChild(doc.createTextNode(cliente.getPagamento().getTipoPagamento().toString()));
 				pagamento.appendChild(tipoPagamento);
+				
+				if (Util.isEmpty(cliente.getPagamento().getNumeroCartao())) 
+					cliente.getPagamento().setNumeroCartao("");
 				
 				Element numeroCartao = doc.createElement("numeroCartao");
 				numeroCartao.appendChild(doc.createTextNode(cliente.getPagamento().getNumeroCartao()));
@@ -178,6 +202,9 @@ public class BackUp {
 				nrParcelas.appendChild(doc.createTextNode(cliente.getPagamento().getNrParcelas().toString()));
 				pagamento.appendChild(nrParcelas);
 				
+				if (Util.isEmpty(cliente.getPagamento().getNomeTitular())) 
+					cliente.getPagamento().setNomeTitular("");
+				
 				Element nomeTitular = doc.createElement("nomeTitular");
 				nomeTitular.appendChild(doc.createTextNode(cliente.getPagamento().getNomeTitular()));
 				pagamento.appendChild(nomeTitular);
@@ -189,14 +216,6 @@ public class BackUp {
 					client.appendChild(carrinho);
 					carrinho.setAttribute("id", String.valueOf(i));
 					
-//					Element idCliente = doc.createElement("idCliente");
-//					idCliente.appendChild(doc.createTextNode(cliente.getId().toString()));
-//					carrinho.appendChild(idCliente);
-					
-//					Element idProduto = doc.createElement("idProduto");
-//					idProduto.appendChild(doc.createTextNode(p.getId().toString()));
-//					carrinho.appendChild(idProduto);
-					
 					Element srcImagem = doc.createElement("srcImagem");
 					srcImagem.appendChild(doc.createTextNode(p.getSrcImagem().toString()));
 					carrinho.appendChild(srcImagem);
@@ -204,10 +223,6 @@ public class BackUp {
 					Element compraProduto = doc.createElement("compraProduto");
 					carrinho.appendChild(compraProduto);
 					compraProduto.setAttribute("id", "1");
-					
-//					Element idtCompraProduto = doc.createElement("idtCompraProduto");
-//					idtCompraProduto.appendChild(doc.createTextNode(p.getCompraProduto().getId().toString()));
-//					compraProduto.appendChild(idtCompraProduto);
 					
 					Element codigoRastreio = doc.createElement("codigoRastreio");
 					codigoRastreio.appendChild(doc.createTextNode(p.getCompraProduto().getCodigoRastreio().toString()));
