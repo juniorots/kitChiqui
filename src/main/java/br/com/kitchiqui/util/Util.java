@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.InputMismatchException;
-import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,17 +25,11 @@ import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import lombok.Cleanup;
-
 import org.primefaces.context.RequestContext;
 
-import br.com.kitchiqui.base.ClienteDAO;
 import br.com.kitchiqui.modelo.Cliente;
 import br.com.kitchiqui.modelo.Produto;
 
@@ -45,6 +39,19 @@ import br.com.kitchiqui.modelo.Produto;
  */
 public class Util {
     
+	public static String gerarCodigoRastreio() {
+		String retorno = "00000000";
+		int min = 9999999;
+		int max = 99999999;
+		try {
+			int num = ThreadLocalRandom.current().nextInt(min, max+1);
+			retorno = String.valueOf(num);
+		} catch (IllegalArgumentException ie) {
+			ie.printStackTrace();
+		}
+		return retorno;
+	}
+	
     /**
      * Capta a data no formato, especificado pelo Cliente
      * caso nao seja especificado um formato valido

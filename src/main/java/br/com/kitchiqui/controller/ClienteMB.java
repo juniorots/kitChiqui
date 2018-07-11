@@ -407,6 +407,7 @@ public class ClienteMB extends BaseController implements Serializable {
     		p.getCompraProduto().setCodCompra(EnumStatusCompra.PROCESSANDO.getTipo());
     		p.getCompraProduto().setStatusCompra(EnumStatusCompra.descricaoStatus(p.getCompraProduto().getCodCompra()));
     		p.getCompraProduto().setDtCompra(Calendar.getInstance().getTime());
+    		p.getCompraProduto().setCodigoRastreio(Util.gerarCodigoRastreio());
     		
     		// gerenciando estoque
     		p.setQtdEstoque(p.getQtdEstoque() - p.getQuantidade());

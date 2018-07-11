@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.com.kitchiqui.util.Util;
 import lombok.Cleanup;
 
 public class UtilTest {
@@ -38,35 +39,19 @@ public class UtilTest {
     public void tearDown() {
     }
 
-    @Test
-    public void model() {
-        
-    }
-    
 //    @Test
+    public void model() {}
+    
+    @Test
     public void tratarPagina() {
-    	 @Cleanup
-         final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
-
-         @Cleanup
-         final EntityManager entityManager = entityManagerFactory.createEntityManager();
-         entityManager.getTransaction().begin();
+//    	 @Cleanup
+//         final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("databaseDefault");
+//
+//         @Cleanup
+//         final EntityManager entityManager = entityManagerFactory.createEntityManager();
+//         entityManager.getTransaction().begin();
          
-         /*
-          * 	TEMPLATE INSERCAO DE OBJETO NA BASE.
-         suario usuario = new Usuario();    
-         UsuarioDAO dao = new UsuarioDAO(entityManager);
+//         System.out.println(Util.gerarCodigoRastreio());
          
-//         usuario.setEmail("juniorots@gmail.com");
-//         usuario.setSenha("12345");
-//         usuario.setReceberEmail("S");
-         
-         Usuario usInserido = dao.insert(usuario);
-         
-         entityManager.getTransaction().commit();
-
-         List<Usuario> usuarios = dao.selectAll();
-         assertNotNull(usInserido.getId());
-         */
     }
 }

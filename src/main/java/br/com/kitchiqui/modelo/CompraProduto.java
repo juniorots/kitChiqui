@@ -61,9 +61,6 @@ public class CompraProduto extends DomainObject {
 	}
 
 	public String getCodigoRastreio() {
-		if ( !Util.isEmpty(getId()) ) {
-			this.codigoRastreio = getId().toString().substring(0, 8);
-		}
 		return codigoRastreio;
 	}
 
