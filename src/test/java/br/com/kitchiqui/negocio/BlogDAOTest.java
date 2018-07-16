@@ -118,7 +118,7 @@ public class BlogDAOTest extends BaseController {
         		+ "Pessoas que tem uma dieta rica em açúcar e carboidratos, associada aos fatores "
         		+ "acima tem um predisposição maior a desenvolver a doença carie.<br /><br />" 
         		+ "A partir daí a prevenção já não e possível para resolver o problema, após a instalação de  doença o "
-        		+ "paciente ira sentir sintomas como: sensibilidade, dor ao se alimentar, dor espontânea, odor "
+        		+ "paciente irá sentir sintomas como: sensibilidade, dor ao se alimentar, dor espontânea, odor "
         		+ "desagradável ao falar.<br /><br />"
         		+ "Desse momento em diante é preciso tratar a doença, um cirurgião dentista irá "
         		+ "avaliar o caso e escolher o melhor tratamento."
@@ -267,5 +267,48 @@ public class BlogDAOTest extends BaseController {
         	b4.setId(tmp.getId());
         	atualizarBlog(b4);
         }
+        
+        Blog b5 = new Blog();
+        b5.setSrcImagem("img/blog/sobrePeriodontite1170x550.jpg");
+        b5.setAutor("Fabiana Almeida");
+        b5.setDtPublicacao(Calendar.getInstance().getTime());
+        b5.setRegistroProfissional("CRO GO-11108");
+        b5.setTitulo("Periodontite");
+        b5.setSubTitulo("Para evitar a periodontite");
+        
+        b5.setTituloArtigo("Problemas da Periodontite");
+        b5.setDescritivoArtigo("Além dessa patologia oral ser infecciosa e bacteriana atinge pessoas adultas, sendo uma das causas de perda dentária...");
+        b5.setSrcImagemArtigo("img/home/articles/sobrePeriodontite270x179.jpg");
+        
+        b5.setTexto("<p style=\"text-align: justify;\">"
+        		+ "Doença  infecciosa e bacteriana. Trata-se de uma patologia oral que atinge pessoas adultas, "
+        		+ "seja ela de leve, médio ou de alto grau, é uma das causas de perda dentária.<br /><br />" 
+        		+ "Essa doença é a fase progressiva da gengivite, que por sua vez é a inflamação gengival. A diferença "
+        		+ "entre ambas é que a periodontite estendeu-se para os tecidos de suporte dos dentes, como o osso e "
+        		+ "o ligamento periodontal.<br /><br />"
+        		+ "Ela evolui a partir do tártaro, que por sua vez se origina do armazenamento da placa bacteriana.<br /><br />" 
+        		+ "O melhor  tratamento é a prevenção, cuidar de uma higienização adequada, com técnica e produtos "
+        		+ "adequados, associada a visitas regulares ao dentista.<br /><br />"
+        		+ "Infelizmente em alguns casos a doença já está instalada, então deve-se procurar um profissional para orientar ao "
+        		+ "tratamento mais adequado.<br /><br />" 
+        		+ "Cada caso depende do grau da doença e somente um dentista poderá indicar a melhor solução. Sendo "
+        		+ "variável do mais simples - procedimentos não cirúrgicos - avançando até casos mais graves "
+        		+ "necessitando assim de intervenção cirúrgica.<br /><br />" 
+        		+ "<strong>Para o caso de tratamento simples indica-se:</strong><br />"
+        		+ "- Raspagem de tártaro, medicamentos, associado a boa higienização;<br /><br />"
+        		+ "- Visitas regulares ao dentista.<br /><br />" 
+        		+ "<strong>Nos casos mais graves o tratamento pode se estender a outros procedimentos como:</strong><br />"
+        		+ "- Reparação cirúrgica;<br /><br />"
+        		+ "- Enxerto ósseo, gengival entre outros."
+        		+ "</p>");
+        
+        tmp = contidoBase(b5);
+        if (Util.isEmpty(tmp)) {
+        	inserirBlog(b5);
+        } else {
+        	b5.setId(tmp.getId());
+        	atualizarBlog(b5);
+        }
+        
     }
 }
