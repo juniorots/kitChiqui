@@ -32,10 +32,10 @@ public class ClienteDAOTest extends BaseController {
     public void tearDown() {
     }
 
-//    @Test
+    @Test
     public void disabled() {}
     
-    @Test
+//    @Test
     public void mainTest(){
     	BackUp.leDadosCliente();
     }
