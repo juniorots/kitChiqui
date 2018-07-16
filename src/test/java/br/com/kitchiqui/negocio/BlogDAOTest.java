@@ -184,7 +184,7 @@ public class BlogDAOTest extends BaseController {
         b3.setTitulo("Higiene Bucal");
         b3.setSubTitulo("Os benefícios de uma boa higienização");
         
-        b3.setTituloArtigo("A importância da higienização bucal");
+        b3.setTituloArtigo("Higienização bucal");
         b3.setDescritivoArtigo("Principal aliada na prevenção de doenças bucais, como a cárie, gengivite e periodontite...");
         b3.setSrcImagemArtigo("img/home/articles/sobreEscovacao270x179.jpg");
         
@@ -217,5 +217,55 @@ public class BlogDAOTest extends BaseController {
         	atualizarBlog(b3);
         }
         
+        Blog b4 = new Blog();
+        b4.setSrcImagem("img/blog/sobrePosCirurgico1170x550.jpg");
+        b4.setAutor("Fabiana Almeida");
+        b4.setDtPublicacao(Calendar.getInstance().getTime());
+        b4.setRegistroProfissional("CRO GO-11108");
+        b4.setTitulo("Cuidados no pós-cirurgico odontológico");
+        b4.setSubTitulo("Atenção aos cuidados pós-cirurgico");
+        
+        b4.setTituloArtigo("Pós-cirurgico e cuidados");
+        b4.setDescritivoArtigo("Existem diversos procedimentos cirúrgicos em odontologia, entre os mais comuns estão...");
+        b4.setSrcImagemArtigo("img/home/articles/sobrePosCirurgico270x179.jpg");
+        
+        b4.setTexto("<p style=\"text-align: justify;\">"
+        		+ "Existem diversos procedimentos cirúrgicos em odontologia, entre os mais comuns estão as extrações dentárias, "
+        		+ "implantes, enxertos ósseos e gengivais entre outros.<br /><br />" 
+        		+ "Após uma intervenção cirúrgica o organismo precisa de tempo para se regenerar, há cuidados que devem ser "
+        		+ "tomados para evitar complicações, como hemorragias, inchaços e infecções, tornado assim o processo de "
+        		+ "cicatrização mais rápido. Pensando nisso recomenda-se seguir os cuidados descritos:<br /><br />" 
+        		+ "- Siga todas as orientações passadas por seu dentista, fazendo uso de medicamentos conforme orientado;<br /><br />"
+        		+ "<strong>Para evitar o sangramento e inchaço:</strong><br />" 
+        		+ "- Morda firmemente uma gaze por meia hora e mantenha a cabeça elevada;<br /><br />" 
+        		+ "- Evite cuspir ou fazer sucção com canudo;<br /><br />" 
+        		+ "- Evite fumar por pelo menos 24 hrs;<br /><br />" 
+        		+ "- Aplique compressa de gelo sobre a face para evitar inchaços, tendo o cuidado de envolver o gelo a uma toalha para "
+        		+ "não causar queimaduras na pele;<br /><br />" 
+        		+ "<strong>Dieta pós-cirúrgica:</strong><br />" 
+        		+ "- Ingerir bastante líquido;<br /><br />" 
+        		+ "- Durante as primeiras 48 hrs a dieta deve ser líquida, pastosa e fria. Após esse período a dieta deve "
+        		+ "aos poucos ir voltando ao normal, porém evitando a ingestão de grãos (pipoca, amendoim, gergelim, granola entre outros) "
+        		+ "nesse período a ferida ainda está em cicatrização.<br /><br />" 
+        		+ "<strong>Higienização:</strong><br />" 
+        		+ "- Não faça bochecho ou escove os dentes algumas horas após a cirurgia, isso dará tempo para o organismo "
+        		+ "formar um coagulo no local lesionado, iniciando assim o processo de cicatrização;<br /><br />" 
+        		+ "- A escovação deve ser feita normalmente sempre após as refeições, preservando a área operada nunca "
+        		+ "passar a escova sobre a lesão cirúrgica;<br /><br />" 
+        		+ "- Faça o uso de fio dental, com uma escova macia escove todos os dentes delicadamente usando a "
+        		+ "técnica de sua preferência, faça a escovação da língua, é recomendado usar uma solução de bochecho "
+        		+ "com clorexidina para evitar o acúmulo de bactérias nesse período.<br /><br />" 
+        		+ "<strong>Repouso:</strong><br />" 
+        		+ "- Evite atividade física, esforço e exposição ao sol;<br /><br />" 
+        		+ "- Faça o retorno ao cirurgião dentista conforme recomendado."
+        		+ "</p>");
+        
+        tmp = contidoBase(b4);
+        if (Util.isEmpty(tmp)) {
+        	inserirBlog(b4);
+        } else {
+        	b4.setId(tmp.getId());
+        	atualizarBlog(b4);
+        }
     }
 }
