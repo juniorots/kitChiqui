@@ -310,5 +310,101 @@ public class BlogDAOTest extends BaseController {
         	atualizarBlog(b5);
         }
         
+        Blog b6 = new Blog();
+        b6.setSrcImagem("img/blog/sobreEscovacaoAdulto1170x550.jpg");
+        b6.setAutor("Fabiana Almeida");
+        b6.setDtPublicacao(Calendar.getInstance().getTime());
+        b6.setRegistroProfissional("CRO GO-11108");
+        b6.setTitulo("Escovação para Adultos");
+        b6.setSubTitulo("Das técnicas para adultos escovar");
+        
+        b6.setTituloArtigo("Escovação - Adultos");
+        b6.setDescritivoArtigo("A escovação ideal deve remover toda a placa bacteriana sem danificar a gengiva é evitar impor força excessiva...");
+        b6.setSrcImagemArtigo("img/home/articles/sobreEscovacaoAdulto270x179.png");
+        
+        b6.setTexto("<p style=\"text-align: justify;\">"
+        		+ "A escovação ideal deve remover toda a placa bacteriana sem danificar a gengiva, "
+        		+ "indica-se evitar impor força excessiva ao dente para não causar danos ao esmalte dentário.<br /><br />"
+        		+ "Nós dentistas indicamos técnicas para tornar sua escovação mais eficaz.<br /><br />" 
+        		+ "Na maioria dos casos o adulto já tem um hábito inserido em sua rotina (forma que "
+        		+ "escovou a vida inteira) necessitando de dedicação para a mudança do costume que "
+        		+ "muitas vezes não é correto, lembrando que a educação dos movimentos somente será "
+        		+ "necessária para pacientes onde a técnica habitual não é eficaz.<br /><br />" 
+        		+ "<strong>Das técnicas, descreve-se:</strong><br />" 
+        		+ "- Inicie sua higienização bucal pelo uso do fio dental ("
+        		+ "esse irá limpar entre os dentes onde a escova não consegue alcançar, devendo "
+        		+ "ser colocado pelos dentes deslizando-o na superfície de um dente e depois "
+        		+ "repetir o movimento até o próximo);<br /><br />" 
+        		+ "<strong>Dentes superiores:</strong><br />" 
+        		+ "- Coloque a cabeça da escova contra os dentes do fundo da boca fazendo um ângulo de "
+        		+ "45° graus, entre a gengiva e o dente, faça movimentos suaves de vai e vem, "
+        		+ "conte 10 vezes;<br /><br />"
+        		+ "- Em seguida faça movimentos de varredura de cima para baixo, repetindo 10 vezes;<br /><br />"
+        		+ "- Continue repetindo o movimento para os demais, "
+        		+ "escove a cada dois dentes por vez;<br /><br />" 
+        		+ "- Esse movimento deve ser feito em todas as faces dos dentes - vestibular "
+        		+ "(frente), palatino (dentro) e encima que é onde mastigamos.<br /><br />" 
+        		+ "<strong>Dentes inferiores:</strong><br />" 
+        		+ "- Deve-se repetir todos os movimentos, porém a varredura deve ser de baixo para cima;<br /><br />"
+        		+ "- Indica-se escovar a língua com movimentos de traz para frente, tenha o cuidado para não levar resíduos "
+        		+ "para o interior da garganta;<br /><br />" 
+        		+ "- Para finalizar use um enxaguante bucal, o ideal e fazer 1 bochecho de 1 minuto."
+        		+ "</p>");
+        
+        tmp = contidoBase(b6);
+        if (Util.isEmpty(tmp)) {
+        	inserirBlog(b6);
+        } else {
+        	b6.setId(tmp.getId());
+        	atualizarBlog(b6);
+        }
+        
+        Blog b7 = new Blog();
+        b7.setSrcImagem("img/blog/sobreEscovacaoInfantil1170x550.jpg");
+        b7.setAutor("Fabiana Almeida");
+        b7.setDtPublicacao(Calendar.getInstance().getTime());
+        b7.setRegistroProfissional("CRO GO-11108");
+        b7.setTitulo("Escovação para Crianças");
+        b7.setSubTitulo("Das técnicas para criança escovar");
+        
+        b7.setTituloArtigo("Escovação - Crianças");
+        b7.setDescritivoArtigo("Escovar os dentes de uma criança requer muito cuidado e dedicação é importante inserir esses...");
+        b7.setSrcImagemArtigo("img/home/articles/sobreEscovacaoInfantil270x179.png");
+        
+        b7.setTexto("<p style=\"text-align: justify;\">"
+        		+ "Escovar os dentes de uma criança requer muito cuidado e dedicação. É importante "
+        		+ "inserir esses hábitos nos primeiros meses de vida, assim como  visitar o dentista "
+        		+ "para que isso se torne algo natural e a criança leve os cuidados com a saúde bucal "
+        		+ "para toda vida, evitando problemas futuros para a vida adulta.<br /><br />" 
+        		+ "A escovação deve ser levada a sério, a criança deve ser estimulada, "
+        		+ "instruída desde sempre a uma boa higiene bucal, mas não devemos forçar evitando assim "
+        		+ "traumas ou rejeição por sua parte, este momento dever ser consciente e prazeroso.<br /><br />" 
+        		+ "Inicialmente a criança dever ser motivada a passar o fio dental, seguindo da "
+        		+ "escovação desenvolvendo assim sua coordenação motora e também o sentimento de "
+        		+ "responsabilidade pela sua saúde oral. É importante os pais revisar a escovação "
+        		+ "(escovar novamente) para que a higiene fique perfeita.<br /><br />"
+        		+ "Com o desenvolvimento da coordenação motora os pais devem remover o hábito de escovar novamente, "
+        		+ "passando a responsabilidade para a criança criando assim o cargo de somente "
+        		+ "monitorar o processo.<br /><br />" 
+        		+ "<strong>Técnica de escovação:</strong><br />" 
+        		+ "- Com os dentes cerrados, realize movimentos circulares com as pontas das "
+        		+ "cerdas da escova sobre os dentes;<br /><br />"
+        		+ "- Faça movimentos durante 10 segundos em cada grupo de dois dentes nas faces voltadas para a bochecha, nas "
+        		+ "faces internas, e nas faces de mastigação de cada dente. “Tecnicamente chamado de "
+        		+ "fones”, porém é conhecida como técnica da bolinha;<br /><br />" 
+        		+ "- Proucre escovar a parte superior da língua;<br /><br />" 
+        		+ "- Dica: Invente uma história, faça brincadeiras e este momento será tão legal "
+        		+ "que a criança não vai esperar você pedir pra ela ir escovar os dentes, "
+        		+ "tomando essa iniciativa por conta."
+        		+ "</p>");
+        
+        tmp = contidoBase(b7);
+        if (Util.isEmpty(tmp)) {
+        	inserirBlog(b7);
+        } else {
+        	b7.setId(tmp.getId());
+        	atualizarBlog(b7);
+        }
+        
     }
 }
