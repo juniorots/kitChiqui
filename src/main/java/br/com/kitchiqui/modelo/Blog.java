@@ -39,6 +39,37 @@ public class Blog extends DomainObject {
 	private String texto;
 	
 	private Integer tipoAssunto;
+	
+	// Secao artigo, contido na pagina principal
+	private String tituloArtigo;
+	
+	private String descritivoArtigo;
+	
+	private String srcImagemArtigo;
+	
+	public String getSrcImagemArtigo() {
+		return srcImagemArtigo;
+	}
+
+	public void setSrcImagemArtigo(String srcImagemArtigo) {
+		this.srcImagemArtigo = srcImagemArtigo;
+	}
+
+	public String getDescritivoArtigo() {
+		return descritivoArtigo;
+	}
+
+	public void setDescritivoArtigo(String descritivoArtigo) {
+		this.descritivoArtigo = descritivoArtigo;
+	}
+
+	public String getTituloArtigo() {
+		return tituloArtigo;
+	}
+
+	public void setTituloArtigo(String tituloArtigo) {
+		this.tituloArtigo = tituloArtigo;
+	}
 
 	public String getRegistroProfissional() {
 		return registroProfissional;

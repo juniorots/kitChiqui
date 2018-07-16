@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+        <!--
+         NOTA: para capturar o caminho relativo do projeto, usa-se:
+            #[request.contextPath}/<DIRETORIO>/..
+        -->
+        <div class="row latestArticles">
+            <div class="col-xs-12">
+              <div class="page-header">
+                <h4>Blog</h4>
+              </div>
+            </div>
+   			
+			<c:forEach items="#{produtoMB.listaBlog}" var="blog">
+			<div class="col-sm-3 col-xs-12">
+          		<div class="thumbnail">
+	           	<h5>
+	           		<h:commandLink action="#{produtoMB.chamarBlog}">
+	           			<f:param name="idBlog" value="#{blog.id}"/>
+	           			<h:outputText escape="false" value="#{blog.tituloArtigo}"/>
+	           		</h:commandLink>
+	           	</h5>
+             	<span class="meta">
+             		<h:outputText escape="false" value="#{blog.dtPublicacao}">
+           			<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+		           </h:outputText> por <h:outputText escape="false" value="#{blog.autor}"/>
+		      	</span>
+       			<h:commandLink action="#{produtoMB.chamarBlog}">
+            		<f:param name="idBlog" value="#{blog.id}"/>
+            		<img src="#{blog.srcImagemArtigo}" alt="blog"/>
+            	</h:commandLink>                	
+	            <div class="caption">
+    	          <p><h:outputText escape="false" value="#{blog.descritivoArtigo}"/></p>
+        	    </div>
+          		</div>
+        	</div>
+		  	</c:forEach>
+	</div>
+</ui:composition>

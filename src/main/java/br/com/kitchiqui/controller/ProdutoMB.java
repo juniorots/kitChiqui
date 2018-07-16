@@ -15,20 +15,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-import lombok.Cleanup;
 import br.com.kitchiqui.base.BlogDAO;
-import br.com.kitchiqui.base.MalaDiretaDAO;
-import br.com.kitchiqui.base.ParceiroDAO;
 import br.com.kitchiqui.base.ProdutoDAO;
+import br.com.kitchiqui.modelo.Blog;
 import br.com.kitchiqui.modelo.EnumClasseProduto;
-import br.com.kitchiqui.modelo.EnumStatusCompra;
 import br.com.kitchiqui.modelo.EnumTipoProduto;
 import br.com.kitchiqui.modelo.Parceiro;
 import br.com.kitchiqui.modelo.Produto;
 import br.com.kitchiqui.util.Util;
+import lombok.Cleanup;
 
 @ManagedBean(name="produtoMB")
 @SessionScoped
@@ -39,6 +35,7 @@ public class ProdutoMB extends BaseController implements Serializable {
 	private Collection<Produto> listaVitrine = new ArrayList();
 	private Collection<Produto> listaDestaque = new ArrayList();
 	private Collection<Parceiro> listaParceiros = new ArrayList();
+	private Collection<Blog> listaBlog = new ArrayList();
 	private Collection<Produto> listaFiltro = new ArrayList();
 
 	private String primeiroFiltro;
@@ -56,8 +53,9 @@ public class ProdutoMB extends BaseController implements Serializable {
         entityManager.getTransaction().begin();
         
         ProdutoDAO dao = new ProdutoDAO(entityManager);
-        ParceiroDAO parDAO = new ParceiroDAO(entityManager);
-
+//        ParceiroDAO parDAO = new ParceiroDAO(entityManager);
+        BlogDAO blogDAO = new BlogDAO(entityManager);
+        
         for (Produto p : dao.selectAll()) {
         	if (p.getTipo().equals(EnumTipoProduto.PRODUTO_VITRINE.getTipo())) { 
         		this.listaVitrine.add( p );
@@ -70,6 +68,10 @@ public class ProdutoMB extends BaseController implements Serializable {
 //	        for (Parceiro par : parDAO.selectAll()) {
 //	        	this.listaParceiros.add( par );
 //	        }
+        
+        for (Blog blog : blogDAO.selectAll()) {
+        	this.getListaBlog().add(blog);
+        }
 	}
 	
 	/**
@@ -220,14 +222,14 @@ public class ProdutoMB extends BaseController implements Serializable {
 	/**
 	 * Responsavel por direcionar ao blog com assunto especifidado pelo operador
 	 */
-	public void assumirBlog() {
+	public void chamarBlog() {
 		@Cleanup
         final EntityManager entityManager = getInstanceEntity();
         entityManager.getTransaction().begin();
         
         BlogDAO dao = new BlogDAO(entityManager);
         setBlog(null);
-        getBlog().setTipoAssunto(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("tipoAssunto")));
+        getBlog().setId(UUID.fromString( (FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idBlog"))) );
         setBlog(dao.selectUsingFilter(getBlog()).get(0));
 		
 		Util.forward(KIT_BLOG);
@@ -288,4 +290,11 @@ public class ProdutoMB extends BaseController implements Serializable {
 		this.segundoFiltro = segundoFiltro;
 	}
 
+	public Collection<Blog> getListaBlog() {
+		return listaBlog;
+	}
+
+	public void setListaBlog(Collection<Blog> listaBlog) {
+		this.listaBlog = listaBlog;
+	}
 }

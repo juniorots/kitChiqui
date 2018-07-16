@@ -101,19 +101,36 @@ public class BlogDAOTest extends BaseController {
 //        BlogDAO parDAO = new BlogDAO(entityManager);
         
         Blog b1 = new Blog();
-        b1.setSrcImagem("img/blog/blog-01.jpg");
+        b1.setSrcImagem("img/blog/sobreCarie1170x550.jpg");
         b1.setAutor("Fabiana Almeida");
         b1.setDtPublicacao(Calendar.getInstance().getTime());
         b1.setRegistroProfissional("CRO GO-11108");
-        b1.setTitulo("Qual o melhor tempo?");
-        b1.setSubTitulo("A importância do tempo de escovação.");
-        b1.setTipoAssunto(EnumAssuntoBlog.TEMPO_ESCOVACAO.getTipo());
-        b1.setTexto("<p>"
-        		+ "A escova e o fio dental são seus principais aliados para dentes brancos e um hálito fresco sempre. "
-        		+ "A escova ajuda a remover grande parte da placa, prevenindo a cárie. Já o fio dental vai alcançar os restinhos de "
-        		+ "comida naqueles cantinhos mais difíceis, como embaixo da gengiva e entre os dentes. "
-        		+ "Também não dá para esquecer de escovar a língua. Então, será que você tem feito uma escovação ideal? "
-        		+ "Que tal aprender de uma vez por todas o passo a passo?"
+        b1.setTitulo("O que é cárie?");
+        b1.setSubTitulo("Dos fatores da cárie");
+        
+        b1.setTituloArtigo("Falando sobre Cárie e prevenções");
+        b1.setDescritivoArtigo("Trata-se de uma doença multifatorial, sendo preciso da interação de diversos fatores para ser desenvolvida...");
+        b1.setSrcImagemArtigo("img/home/articles/sobreCarie270x179.jpg");
+        
+//        b1.setTipoAssunto(EnumAssuntoBlog.TEMPO_ESCOVACAO.getTipo());
+        b1.setTexto("<p style=\"text-align: justify;\">"
+        		+ "Trata-se de uma doença multifatorial, sendo preciso da interação de diversos fatores para ser desenvolvida.<br />" 
+        		+ "Entre eles estão a associação de bactérias presentes no meio bucal, dieta e o tempo em que o paciente leva "
+        		+ "após uma refeição ate a próxima higienização.<br /><br />"
+        		+ "Não e possível transmitir a doença carie, por que a formação de biofilme dental com potencial cariogênico "
+        		+ "esta relacionado ao hábito de vida do paciente, incluindo sua dieta, técnicas de escovação e visitas ao "
+        		+ "dentista como forma preventiva.<br /><br />"
+        		+ "Na presença de resíduos alimentares as bactérias produzem ácidos que desmineralizam os dentes, causando "
+        		+ "erosões dentárias (buracos nos dentes) inicialmente essas erosões se dão na camada mais superficial dos dentes, "
+        		+ "que é o esmalte dentário, na maioria das vezes se torna profunda invadindo a próxima camada, "
+        		+ "que chamamos de dentina.<br /><br />"
+        		+ "Pessoas que tem uma dieta rica em açúcar e carboidratos, associada aos fatores "
+        		+ "acima tem um predisposição maior a desenvolver a doença carie.<br /><br />" 
+        		+ "A partir daí a prevenção já não e possível para resolver o problema, após a instalação de  doença o "
+        		+ "paciente ira sentir sintomas como: sensibilidade, dor ao se alimentar, dor espontânea, odor "
+        		+ "desagradável ao falar.<br /><br />"
+        		+ "Desse momento em diante é preciso tratar a doença, um cirurgião dentista irá "
+        		+ "avaliar o caso e escolher o melhor tratamento."
         		+ "</p>");
         
         Blog tmp = contidoBase(b1);
@@ -140,12 +157,12 @@ public class BlogDAOTest extends BaseController {
         		+ "</p>");
         
         tmp = contidoBase(b2);
-        if (Util.isEmpty(tmp)) {
-        	inserirBlog(b2);
-        } else {
-        	b2.setId(tmp.getId());
-        	atualizarBlog(b2);
-        }
+//        if (Util.isEmpty(tmp)) {
+//        	inserirBlog(b2);
+//        } else {
+//        	b2.setId(tmp.getId());
+//        	atualizarBlog(b2);
+//        }
         
 //        parDAO.insert(b2);
 //        entityManager.getTransaction().commit();
