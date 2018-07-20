@@ -94,7 +94,7 @@ public class BlogDAOTest extends BaseController {
 
     	Blog b1 = new Blog();
         b1.setSrcImagem("img/blog/sobreCarie1170x550.jpg");
-        b1.setAutor("Fabiana Almeida");
+        b1.setAutor("Dra. Fabiana Almeida");
         b1.setDtPublicacao(Calendar.getInstance().getTime());
         b1.setRegistroProfissional("CRO GO-11108");
         b1.setTitulo("O que é cárie?");
@@ -134,7 +134,7 @@ public class BlogDAOTest extends BaseController {
         
         Blog b2 = new Blog();
         b2.setSrcImagem("img/blog/sobreGengivite1170x550.jpg");
-        b2.setAutor("Fabiana Almeida");
+        b2.setAutor("Dra. Fabiana Almeida");
         b2.setDtPublicacao(Calendar.getInstance().getTime());
         b2.setRegistroProfissional("CRO GO-11108");
         b2.setTitulo("Gengivites");
@@ -178,7 +178,7 @@ public class BlogDAOTest extends BaseController {
         
         Blog b3 = new Blog();
         b3.setSrcImagem("img/blog/sobreEscovacao1170x550.jpg");
-        b3.setAutor("Fabiana Almeida");
+        b3.setAutor("Dra. Fabiana Almeida");
         b3.setDtPublicacao(Calendar.getInstance().getTime());
         b3.setRegistroProfissional("CRO GO-11108");
         b3.setTitulo("Higiene Bucal");
@@ -219,7 +219,7 @@ public class BlogDAOTest extends BaseController {
         
         Blog b4 = new Blog();
         b4.setSrcImagem("img/blog/sobrePosCirurgico1170x550.jpg");
-        b4.setAutor("Fabiana Almeida");
+        b4.setAutor("Dra. Fabiana Almeida");
         b4.setDtPublicacao(Calendar.getInstance().getTime());
         b4.setRegistroProfissional("CRO GO-11108");
         b4.setTitulo("Cuidados no pós-cirurgico odontológico");
@@ -270,7 +270,7 @@ public class BlogDAOTest extends BaseController {
         
         Blog b5 = new Blog();
         b5.setSrcImagem("img/blog/sobrePeriodontite1170x550.jpg");
-        b5.setAutor("Fabiana Almeida");
+        b5.setAutor("Dra. Fabiana Almeida");
         b5.setDtPublicacao(Calendar.getInstance().getTime());
         b5.setRegistroProfissional("CRO GO-11108");
         b5.setTitulo("Periodontite");
@@ -312,7 +312,7 @@ public class BlogDAOTest extends BaseController {
         
         Blog b6 = new Blog();
         b6.setSrcImagem("img/blog/sobreEscovacaoAdulto1170x550.jpg");
-        b6.setAutor("Fabiana Almeida");
+        b6.setAutor("Dra. Fabiana Almeida");
         b6.setDtPublicacao(Calendar.getInstance().getTime());
         b6.setRegistroProfissional("CRO GO-11108");
         b6.setTitulo("Escovação para Adultos");
@@ -361,7 +361,7 @@ public class BlogDAOTest extends BaseController {
         
         Blog b7 = new Blog();
         b7.setSrcImagem("img/blog/sobreEscovacaoInfantil1170x550.jpg");
-        b7.setAutor("Fabiana Almeida");
+        b7.setAutor("Dra. Fabiana Almeida");
         b7.setDtPublicacao(Calendar.getInstance().getTime());
         b7.setRegistroProfissional("CRO GO-11108");
         b7.setTitulo("Escovação para Crianças");
@@ -406,5 +406,55 @@ public class BlogDAOTest extends BaseController {
         	atualizarBlog(b7);
         }
         
+        Blog b8 = new Blog();
+        b8.setSrcImagem("img/blog/sobreOrto1170x550.jpg");
+        b8.setAutor("Dra. Fabiana Almeida");
+        b8.setDtPublicacao(Calendar.getInstance().getTime());
+        b8.setRegistroProfissional("CRO GO-11108");
+        b8.setTitulo("Ortodontia");
+        b8.setSubTitulo("Cuidados com o aparelho ortodôntico");
+        
+        b8.setTituloArtigo("Aparelho Ortodôntico");
+        b8.setDescritivoArtigo("O uso de aparelho ortodôntico requer muitos cuidados, já que o tratamento na maioria das vezes se extende...");
+        b8.setSrcImagemArtigo("img/home/articles/sobreOrto270x179.jpg");
+        
+        b8.setTexto("<p style=\"text-align: justify;\">"
+        		+ "O uso de aparelho ortodôntico requer muitos cuidados, já que o tratamento na maioria das "
+        		+ "vezes se extende há um longo período. É preciso uma interação entre ortodontista e "
+        		+ "paciente para que haja sucesso no tratamento. Selecionei dicas importantes para vocês.<br /><br />" 
+        		+ "<strong>Visitas regulares ao ortodontista</strong><br />" 
+        		+ " O aparelho ortodôntico precisa ser ativado para que haja o desenvolvimento do "
+        		+ "tratamento, os retornos podem ser mensais ou como o profissional planejar.<br /><br />" 
+        		+ "<strong>Cuidados com a alimentação</strong><br />" 
+        		+ "Com o uso do aparelho ortodôntico o paciente deve mudar alguns hábitos alimentares, "
+        		+ "é preciso sempre observar a textura. Alimentos duros e pegajosos devem ser evitados "
+        		+ "como, por exemplo:<br /><br />" 
+        		+ "- Balas, chicletes, pirulitos e caramelos;<br /><br />" 
+        		+ "- Frutas duras como, maçã, goiaba e frutas de caroço devem ser evitadas ou consumidas "
+        		+ "cortadas.<br /><br />" 
+        		+ "- Carnes duras ou assadas devem ser evitadas ou consumir picada;<br /><br />" 
+        		+ "- Procure sempre observar a textura e evitar alimentos mais densos.<br /><br />" 
+        		+ "<strong>Higienização</strong><br />" 
+        		+ "É preciso uma atenção maior a higienização, pois ela se torna mais difícil, "
+        		+ "assim o paciente deve escolher acessórios adequados, dedicar tempo e habilidade.<br /><br />" 
+        		+ "Escolha a técnica adequada, faça uso de itens como passa fio para facilitar o uso do fio dental.<br /><br />" 
+        		+ "Com uma escova ortodôntica faça a escovação como se estivesse fazendo na escovação convencional, utilize "
+        		+ "escovas do tipo interdental para finalizar a higiene de forma a limpar onde a escova tradicional "
+        		+ "não alcança.<br /><br />" 
+        		+ "Use sempre uma solução de bochecho.<br /><br />" 
+        		+ "Em caso de machucados, utilize cera ortodôntica para proteção da mucosa, ela irá proteger a área "
+        		+ "machucada facilitando a cicatrização.<br /><br />" 
+        		+ "<strong>Não seja curioso</strong><br />" 
+        		+ "Evite mexer no aparelho ou morder objetos estranhos para evitar a sua quebra e consequentemente "
+        		+ "causar trauma a gengivas língua ou bochechas."
+        		+ "</p>");
+        
+        tmp = contidoBase(b8);
+        if (Util.isEmpty(tmp)) {
+        	inserirBlog(b8);
+        } else {
+        	b8.setId(tmp.getId());
+        	atualizarBlog(b8);
+        }
     }
 }

@@ -3,6 +3,8 @@
  */
 package br.com.kitchiqui.integracao;
 
-public class BaseComunicacao {
+import com.sun.jersey.api.client.Client;
 
+public class BaseComunicacao {
+	Client client = null;
 }
