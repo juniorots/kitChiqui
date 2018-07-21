@@ -415,12 +415,12 @@ public class BlogDAOTest extends BaseController {
         b8.setSubTitulo("Cuidados com o aparelho ortodôntico");
         
         b8.setTituloArtigo("Aparelho Ortodôntico");
-        b8.setDescritivoArtigo("O uso de aparelho ortodôntico requer muitos cuidados, já que o tratamento na maioria das vezes se extende...");
+        b8.setDescritivoArtigo("O uso de aparelho ortodôntico requer muitos cuidados, já que o tratamento na maioria das vezes se estende...");
         b8.setSrcImagemArtigo("img/home/articles/sobreOrto270x179.jpg");
         
         b8.setTexto("<p style=\"text-align: justify;\">"
         		+ "O uso de aparelho ortodôntico requer muitos cuidados, já que o tratamento na maioria das "
-        		+ "vezes se extende há um longo período. É preciso uma interação entre ortodontista e "
+        		+ "vezes se estende há um longo período. É preciso uma interação entre ortodontista e "
         		+ "paciente para que haja sucesso no tratamento. Selecionei dicas importantes para vocês.<br /><br />" 
         		+ "<strong>Visitas regulares ao ortodontista</strong><br />" 
         		+ " O aparelho ortodôntico precisa ser ativado para que haja o desenvolvimento do "
