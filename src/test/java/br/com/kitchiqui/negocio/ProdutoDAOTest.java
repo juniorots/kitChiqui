@@ -143,14 +143,14 @@ public class ProdutoDAOTest extends BaseController {
       
       prod.setSrcImagem("img/home/banner-slider/kitVitrineOrtoMasculino.png");
       prod.setSrcImagemCarrinho("img/products/kitVitrineOrtoMasculino64x74.png");
-      prod.setTitulo("KIT ORTODÔNTICO");
-      prod.setPreco(205D);
+      prod.setTitulo("Necessaire Masculino");
+      prod.setPreco(40D);
       prod.setSubTitulo("Promoção do mês");
-      prod.setDescritivo("Sucesso a cada sorriso");
+      prod.setDescritivo("Essencial na Organização");
       prod.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod.setClasse(EnumClasseProduto.KIT_ORTODONTICO.getClasse());
       prod.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod.setQtdEstoque(10);
+      prod.setQtdEstoque(20);
       prod.setDisponivel(true);
       
       // Tratando secao de detalhe
@@ -158,128 +158,128 @@ public class ProdutoDAOTest extends BaseController {
       imgG1.setSrcImagem("img/products/signle-product/masculinoGrande.png");
       imgG1.setProduto(prod);
       
-      ImagemGrandeProduto imgG2 = new ImagemGrandeProduto();
-      imgG2.setSrcImagem("img/products/signle-product/escovaOrtoGrande.png");
-      imgG2.setProduto(prod);
+//      ImagemGrandeProduto imgG2 = new ImagemGrandeProduto();
+//      imgG2.setSrcImagem("img/products/signle-product/escovaOrtoGrande.png");
+//      imgG2.setProduto(prod);
       
-      ImagemGrandeProduto imgG3 = new ImagemGrandeProduto();
-      imgG3.setSrcImagem("img/products/signle-product/passaFioGrande.png");
-      imgG3.setProduto(prod);
-      
-      ImagemGrandeProduto imgG4 = new ImagemGrandeProduto();
-      imgG4.setSrcImagem("img/products/signle-product/pastaGrande.png");
-      imgG4.setProduto(prod);
-      
-      ImagemGrandeProduto imgG5 = new ImagemGrandeProduto();
-      imgG5.setSrcImagem("img/products/signle-product/escovaInterGrande.png");
-      imgG5.setProduto(prod);
-      
-      ImagemGrandeProduto imgG6 = new ImagemGrandeProduto();
-      imgG6.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
-      imgG6.setProduto(prod);
-      
-      ImagemGrandeProduto imgG7 = new ImagemGrandeProduto();
-      imgG7.setSrcImagem("img/products/signle-product/fioGrande.png");
-      imgG7.setProduto(prod);
-      
-      ImagemGrandeProduto imgG53 = new ImagemGrandeProduto();
-      imgG53.setSrcImagem("img/products/signle-product/ceraGrande.png");
-      imgG53.setProduto(prod);
-      
+//      ImagemGrandeProduto imgG3 = new ImagemGrandeProduto();
+//      imgG3.setSrcImagem("img/products/signle-product/passaFioGrande.png");
+//      imgG3.setProduto(prod);
+//      
+//      ImagemGrandeProduto imgG4 = new ImagemGrandeProduto();
+//      imgG4.setSrcImagem("img/products/signle-product/pastaGrande.png");
+//      imgG4.setProduto(prod);
+//      
+//      ImagemGrandeProduto imgG5 = new ImagemGrandeProduto();
+//      imgG5.setSrcImagem("img/products/signle-product/escovaInterGrande.png");
+//      imgG5.setProduto(prod);
+//      
+//      ImagemGrandeProduto imgG6 = new ImagemGrandeProduto();
+//      imgG6.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+//      imgG6.setProduto(prod);
+//      
+//      ImagemGrandeProduto imgG7 = new ImagemGrandeProduto();
+//      imgG7.setSrcImagem("img/products/signle-product/fioGrande.png");
+//      imgG7.setProduto(prod);
+//      
+//      ImagemGrandeProduto imgG53 = new ImagemGrandeProduto();
+//      imgG53.setSrcImagem("img/products/signle-product/ceraGrande.png");
+//      imgG53.setProduto(prod);
+//      
       ImagemPequenoProduto imgP1 = new ImagemPequenoProduto();
       imgP1.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
       imgP1.setProduto(prod);
-      
-      ImagemPequenoProduto imgP2 = new ImagemPequenoProduto();
-      imgP2.setSrcImagem("img/products/signle-product/escovaOrtoPequena.png");
-      imgP2.setProduto(prod);
-      
-      ImagemPequenoProduto imgP3 = new ImagemPequenoProduto();
-      imgP3.setSrcImagem("img/products/signle-product/passaFioPequeno.png");
-      imgP3.setProduto(prod);
-      
-      ImagemPequenoProduto imgP4 = new ImagemPequenoProduto();
-      imgP4.setSrcImagem("img/products/signle-product/pastaPequena.png");
-      imgP4.setProduto(prod);
-
-      ImagemPequenoProduto imgP5 = new ImagemPequenoProduto();
-      imgP5.setSrcImagem("img/products/signle-product/escovaInterPequena.png");
-      imgP5.setProduto(prod);
-      
-      ImagemPequenoProduto imgP6 = new ImagemPequenoProduto();
-      imgP6.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
-      imgP6.setProduto(prod);
-      
-      ImagemPequenoProduto imgP7 = new ImagemPequenoProduto();
-      imgP7.setSrcImagem("img/products/signle-product/fioPequeno.png");
-      imgP7.setProduto(prod);
-      
-      ImagemPequenoProduto imgP53 = new ImagemPequenoProduto();
-      imgP53.setSrcImagem("img/products/signle-product/ceraPequena.png");
-      imgP53.setProduto(prod);
+//      
+//      ImagemPequenoProduto imgP2 = new ImagemPequenoProduto();
+//      imgP2.setSrcImagem("img/products/signle-product/escovaOrtoPequena.png");
+//      imgP2.setProduto(prod);
+//      
+//      ImagemPequenoProduto imgP3 = new ImagemPequenoProduto();
+//      imgP3.setSrcImagem("img/products/signle-product/passaFioPequeno.png");
+//      imgP3.setProduto(prod);
+//      
+//      ImagemPequenoProduto imgP4 = new ImagemPequenoProduto();
+//      imgP4.setSrcImagem("img/products/signle-product/pastaPequena.png");
+//      imgP4.setProduto(prod);
+//
+//      ImagemPequenoProduto imgP5 = new ImagemPequenoProduto();
+//      imgP5.setSrcImagem("img/products/signle-product/escovaInterPequena.png");
+//      imgP5.setProduto(prod);
+//      
+//      ImagemPequenoProduto imgP6 = new ImagemPequenoProduto();
+//      imgP6.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+//      imgP6.setProduto(prod);
+//      
+//      ImagemPequenoProduto imgP7 = new ImagemPequenoProduto();
+//      imgP7.setSrcImagem("img/products/signle-product/fioPequeno.png");
+//      imgP7.setProduto(prod);
+//      
+//      ImagemPequenoProduto imgP53 = new ImagemPequenoProduto();
+//      imgP53.setSrcImagem("img/products/signle-product/ceraPequena.png");
+//      imgP53.setProduto(prod);
             
-      prod.setTituloDescritivo("Kit Ortodôntico carinho especial com sua estética");
-      prod.setAnotacaoPrincipalDescritivo("A importância da saúde bucal é fundamental "
-      		+ "com a boa higiene do aparelho ortodôntico, "
-      		+ "nada mais prático que um Kit especialmente montado para você. Oferecemos essa exclusividade "
-      		+ "com o foco em dar maior praticidade no seu dia-a-dia. Selecionamos os itens fundamentais ao "
-      		+ "seu pleno tratamento ortodôntico.");
+      prod.setTituloDescritivo("Kit Estojo de Organização modelo masculino");
+      prod.setAnotacaoPrincipalDescritivo("A importância da organização é fundamental "
+      		+ "com base nisso montamos essa linda necessaire com requintes masculino.");
+//      		+ "nada mais prático que um Kit especialmente montado para você. Oferecemos essa exclusividade "
+//      		+ "com o foco em dar maior praticidade no seu dia-a-dia. Selecionamos os itens fundamentais ao "
+//      		+ "seu pleno tratamento ortodôntico.");
       
       prod.setAnotacaoDetalhe("<p>O que vimos de importante a você:</p>"
     		  + "<ul class=\"list-unstyled\">"
 	              + "<li>Estojo personalizado;</li>"
-	              + "<li>Escova ortodôntica;</li>"
-	              + "<li>Passa fio;</li>"
-	              + "<li>Fio dental;</li>"
-	              + "<li>Creme dental;</li>"
-	              + "<li>Escova interdental;</li>"
-	              + "<li>Cera ortodôntica;</li>"
-	              + "<li>Enxaguante bucal;</li>"
+//	              + "<li>Escova ortodôntica;</li>"
+//	              + "<li>Passa fio;</li>"
+//	              + "<li>Fio dental;</li>"
+//	              + "<li>Creme dental;</li>"
+//	              + "<li>Escova interdental;</li>"
+//	              + "<li>Cera ortodôntica;</li>"
+//	              + "<li>Enxaguante bucal;</li>"
               + "</ul>");
       
       prod.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
     		  + "<ul class=\"list-unstyled\">"
               + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-              + "<li>Escova ortodôntica: Curaprox 5460 Ortho Ultra macia - 0,10 mm de diâmetro;</li>"
-              + "<li>Passa fio: 30 unidades;</li>"
-              + "<li>Fio dental: 100 metros;</li>"
-              + "<li>Creme dental: 70g;</li>"
-              + "<li>Escova interdental: 3 a 7mm;</li>"
-              + "<li>Cera ortodôntica vigente do mercado</li>"
-              + "<li>Enxaguante bucal: 60mL;</li>"
+//              + "<li>Escova ortodôntica: Curaprox 5460 Ortho Ultra macia - 0,10 mm de diâmetro;</li>"
+//              + "<li>Passa fio: 30 unidades;</li>"
+//              + "<li>Fio dental: 100 metros;</li>"
+//              + "<li>Creme dental: 70g;</li>"
+//              + "<li>Escova interdental: 3 a 7mm;</li>"
+//              + "<li>Cera ortodôntica vigente do mercado</li>"
+//              + "<li>Enxaguante bucal: 60mL;</li>"
           + "</ul>");
       
-      prod.setAnotacaoComposicao("A higienização bucal é um processo composto de várias etapas, principalmente nesse momento específico "
-      		+ "de tratamento ortodôntico, nos quais citamos:"
-    		  + "<ul class=\"list-unstyled\">"
-              + "<li>Remoção do biofilme dental com auxílio do fio;</li>"
-              + "<li>Passa fio, fundamental nos pequenos espaços dispostos pelos brackets;</li>"
-              + "<li>Creme, mais indicado para a situação;</li>"
-              + "<li>Escova anatomicamente apropriada a melhor higienização;</li>"
-              + "<li>Escova interdental, focando na finalização perfeita em sua função;</li>"
-              + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
-              + "<li>Para remover bactérias e resíduos nada mais prático que o nosso enxaguante bucal;</li>"
-          + "</ul>");
+      prod.setAnotacaoComposicao("Organização é fundamental, principalmente na correria do dia a dia. ");
+//      		+ "de tratamento ortodôntico, nos quais citamos:"
+//    		  + "<ul class=\"list-unstyled\">"
+//              + "<li>Remoção do biofilme dental com auxílio do fio;</li>"
+//              + "<li>Passa fio, fundamental nos pequenos espaços dispostos pelos brackets;</li>"
+//              + "<li>Creme, mais indicado para a situação;</li>"
+//              + "<li>Escova anatomicamente apropriada a melhor higienização;</li>"
+//              + "<li>Escova interdental, focando na finalização perfeita em sua função;</li>"
+//              + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
+//              + "<li>Para remover bactérias e resíduos nada mais prático que o nosso enxaguante bucal;</li>"
+//          + "</ul>");
       
       Produto tmp = contidoBase(prod);
       if (Util.isEmpty(tmp)) {
     	  inserirProduto(prod);
     	  inserirImagemGrande(imgG1);
-    	  inserirImagemGrande(imgG2);
-    	  inserirImagemGrande(imgG3);
-    	  inserirImagemGrande(imgG4);
-    	  inserirImagemGrande(imgG5);
-    	  inserirImagemGrande(imgG6);
-    	  inserirImagemGrande(imgG7);
-    	  inserirImagemGrande(imgG53);
+//    	  inserirImagemGrande(imgG2);
+//    	  inserirImagemGrande(imgG3);
+//    	  inserirImagemGrande(imgG4);
+//    	  inserirImagemGrande(imgG5);
+//    	  inserirImagemGrande(imgG6);
+//    	  inserirImagemGrande(imgG7);
+//    	  inserirImagemGrande(imgG53);
     	  inserirImagemPequeno(imgP1);
-    	  inserirImagemPequeno(imgP2);
-    	  inserirImagemPequeno(imgP3);
-    	  inserirImagemPequeno(imgP4);
-    	  inserirImagemPequeno(imgP5);
-    	  inserirImagemPequeno(imgP6);
-    	  inserirImagemPequeno(imgP7);
-    	  inserirImagemPequeno(imgP53);
+//    	  inserirImagemPequeno(imgP2);
+//    	  inserirImagemPequeno(imgP3);
+//    	  inserirImagemPequeno(imgP4);
+//    	  inserirImagemPequeno(imgP5);
+//    	  inserirImagemPequeno(imgP6);
+//    	  inserirImagemPequeno(imgP7);
+//    	  inserirImagemPequeno(imgP53);
       } else {
     	  prod.setId(tmp.getId());
     	  atualizarProduto(prod);
@@ -301,110 +301,110 @@ public class ProdutoDAOTest extends BaseController {
 //      imgPeqDAO.insert(imgP6);
 //      imgPeqDAO.insert(imgP7);
       
-      Produto prod2 = new Produto();   
-      
-      prod2.setSrcImagem("img/home/featured-product/kitMasculinoPosCirurgico.png");
-      prod2.setSrcImagemCarrinho("img/products/kitMasculinoPosCirurgico64x74.png");
-      prod2.setTitulo("KIT Pós-cirurgico");
-      prod2.setPreco(147D);
-      prod2.setSubTitulo("Delicadeza com carinho");
-      prod2.setDescritivo("Para cuidar de você");
-      prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
-      prod2.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
-      prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod2.setQtdEstoque(8);
-      prod2.setDisponivel(true);
-      
-      // Tratando secao de detalhe
-      ImagemGrandeProduto imgG8 = new ImagemGrandeProduto();
-      imgG8.setSrcImagem("img/products/signle-product/masculinoGrande.png");
-      imgG8.setProduto(prod2);
-      
-      ImagemGrandeProduto imgG9 = new ImagemGrandeProduto();
-      imgG9.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
-      imgG9.setProduto(prod2);
-      
-      ImagemGrandeProduto imgG10 = new ImagemGrandeProduto();
-      imgG10.setSrcImagem("img/products/signle-product/fioGrande.png");
-      imgG10.setProduto(prod2);
-      
-      ImagemGrandeProduto imgG11 = new ImagemGrandeProduto();
-      imgG11.setSrcImagem("img/products/signle-product/pastaGrande.png");
-      imgG11.setProduto(prod2);
-      
-      ImagemGrandeProduto imgG12 = new ImagemGrandeProduto();
-      imgG12.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
-      imgG12.setProduto(prod2);
-      
-      ImagemPequenoProduto imgP8 = new ImagemPequenoProduto();
-      imgP8.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
-      imgP8.setProduto(prod2);
-      
-      ImagemPequenoProduto imgP9 = new ImagemPequenoProduto();
-      imgP9.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
-      imgP9.setProduto(prod2);
-      
-      ImagemPequenoProduto imgP10 = new ImagemPequenoProduto();
-      imgP10.setSrcImagem("img/products/signle-product/fioPequeno.png");
-      imgP10.setProduto(prod2);
-      
-      ImagemPequenoProduto imgP11 = new ImagemPequenoProduto();
-      imgP11.setSrcImagem("img/products/signle-product/pastaPequena.png");
-      imgP11.setProduto(prod2);
-      
-      ImagemPequenoProduto imgP12 = new ImagemPequenoProduto();
-      imgP12.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
-      imgP12.setProduto(prod2);
-      
-      prod2.setTituloDescritivo("Kit Pós-cirurgico - O cuidado que você precisa.");
-      prod2.setAnotacaoPrincipalDescritivo("Sabendo do cuidado que você precisa nesse momento tão sensível à sua "
-      		+ "saúde, pensamos exatamente em tudo que irá lhe servir com praticidade, economicidade e higiene. "
-      		+ "Não perca tempo e adquira já o seu kit focando na melhor recuperação e reabilitação funcional. "
-      		+ "Pensamos carinhosamente em você.");
-      
-      prod2.setAnotacaoDetalhe("<p>Do que dispomos:</p>"
-    		  + "<ul class=\"list-unstyled\">"
-	              + "<li>Estojo personalizado;</li>"
-	              + "<li>Escova extra-macia;</li>"
-	              + "<li>Fio dental;</li>"
-	              + "<li>Creme dental;</li>"
-	              + "<li>Enxaguante bucal - solução com clorexidina;</li>"
-              + "</ul>");
-      
-      prod2.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
-    		  + "<ul class=\"list-unstyled\">"
-    		  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-              + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-              + "<li>Fio dental: 100 metros;</li>"
-              + "<li>Creme dental: 70g;</li>"
-              + "<li>Enxaguante bucal: 60mL;</li>"
-          + "</ul>");
-      
-      prod2.setAnotacaoComposicao("A recuperação pós-cirurgica é fundamental quando associada a boa higienização, do que compomos descreve-se:"
-    		  + "<ul class=\"list-unstyled\">"
-              + "<li>Escova ultra macia, possui a função de não agredir a região tratada;</li>"
-              + "<li>Fio dental, remover biofilme dental com eficiência;</li>"
-              + "<li>Creme dental, evitando a ploriferação de placa bacteriana;</li>"
-              + "<li>Enxaguante bucal, solução com clorexidina extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
-          + "</ul>");
-      
-      tmp = contidoBase(prod2);
-      if (Util.isEmpty(tmp)) {
-    	  inserirProduto(prod2);
-    	  inserirImagemGrande(imgG8);
-    	  inserirImagemGrande(imgG9);
-    	  inserirImagemGrande(imgG10);
-    	  inserirImagemGrande(imgG11);
-    	  inserirImagemGrande(imgG12);
-    	  inserirImagemPequeno(imgP8);
-    	  inserirImagemPequeno(imgP9);
-    	  inserirImagemPequeno(imgP10);
-    	  inserirImagemPequeno(imgP11);
-    	  inserirImagemPequeno(imgP12);
-      } else {
-    	  prod2.setId(tmp.getId());
-    	  atualizarProduto(prod2);
-      }
+//      Produto prod2 = new Produto();   
+//      
+//      prod2.setSrcImagem("img/home/featured-product/kitMasculinoPosCirurgico.png");
+//      prod2.setSrcImagemCarrinho("img/products/kitMasculinoPosCirurgico64x74.png");
+//      prod2.setTitulo("KIT Pós-cirurgico");
+//      prod2.setPreco(147D);
+//      prod2.setSubTitulo("Delicadeza com carinho");
+//      prod2.setDescritivo("Para cuidar de você");
+//      prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+//      prod2.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
+//      prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+//      prod2.setQtdEstoque(8);
+//      prod2.setDisponivel(true);
+//      
+//      // Tratando secao de detalhe
+//      ImagemGrandeProduto imgG8 = new ImagemGrandeProduto();
+//      imgG8.setSrcImagem("img/products/signle-product/masculinoGrande.png");
+//      imgG8.setProduto(prod2);
+//      
+//      ImagemGrandeProduto imgG9 = new ImagemGrandeProduto();
+//      imgG9.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
+//      imgG9.setProduto(prod2);
+//      
+//      ImagemGrandeProduto imgG10 = new ImagemGrandeProduto();
+//      imgG10.setSrcImagem("img/products/signle-product/fioGrande.png");
+//      imgG10.setProduto(prod2);
+//      
+//      ImagemGrandeProduto imgG11 = new ImagemGrandeProduto();
+//      imgG11.setSrcImagem("img/products/signle-product/pastaGrande.png");
+//      imgG11.setProduto(prod2);
+//      
+//      ImagemGrandeProduto imgG12 = new ImagemGrandeProduto();
+//      imgG12.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
+//      imgG12.setProduto(prod2);
+//      
+//      ImagemPequenoProduto imgP8 = new ImagemPequenoProduto();
+//      imgP8.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
+//      imgP8.setProduto(prod2);
+//      
+//      ImagemPequenoProduto imgP9 = new ImagemPequenoProduto();
+//      imgP9.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
+//      imgP9.setProduto(prod2);
+//      
+//      ImagemPequenoProduto imgP10 = new ImagemPequenoProduto();
+//      imgP10.setSrcImagem("img/products/signle-product/fioPequeno.png");
+//      imgP10.setProduto(prod2);
+//      
+//      ImagemPequenoProduto imgP11 = new ImagemPequenoProduto();
+//      imgP11.setSrcImagem("img/products/signle-product/pastaPequena.png");
+//      imgP11.setProduto(prod2);
+//      
+//      ImagemPequenoProduto imgP12 = new ImagemPequenoProduto();
+//      imgP12.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
+//      imgP12.setProduto(prod2);
+//      
+//      prod2.setTituloDescritivo("Kit Pós-cirurgico - O cuidado que você precisa.");
+//      prod2.setAnotacaoPrincipalDescritivo("Sabendo do cuidado que você precisa nesse momento tão sensível à sua "
+//      		+ "saúde, pensamos exatamente em tudo que irá lhe servir com praticidade, economicidade e higiene. "
+//      		+ "Não perca tempo e adquira já o seu kit focando na melhor recuperação e reabilitação funcional. "
+//      		+ "Pensamos carinhosamente em você.");
+//      
+//      prod2.setAnotacaoDetalhe("<p>Do que dispomos:</p>"
+//    		  + "<ul class=\"list-unstyled\">"
+//	              + "<li>Estojo personalizado;</li>"
+//	              + "<li>Escova extra-macia;</li>"
+//	              + "<li>Fio dental;</li>"
+//	              + "<li>Creme dental;</li>"
+//	              + "<li>Enxaguante bucal - solução com clorexidina;</li>"
+//              + "</ul>");
+//      
+//      prod2.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+//    		  + "<ul class=\"list-unstyled\">"
+//    		  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
+//              + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
+//              + "<li>Fio dental: 100 metros;</li>"
+//              + "<li>Creme dental: 70g;</li>"
+//              + "<li>Enxaguante bucal: 60mL;</li>"
+//          + "</ul>");
+//      
+//      prod2.setAnotacaoComposicao("A recuperação pós-cirurgica é fundamental quando associada a boa higienização, do que compomos descreve-se:"
+//    		  + "<ul class=\"list-unstyled\">"
+//              + "<li>Escova ultra macia, possui a função de não agredir a região tratada;</li>"
+//              + "<li>Fio dental, remover biofilme dental com eficiência;</li>"
+//              + "<li>Creme dental, evitando a ploriferação de placa bacteriana;</li>"
+//              + "<li>Enxaguante bucal, solução com clorexidina extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
+//          + "</ul>");
+//      
+//      tmp = contidoBase(prod2);
+//      if (Util.isEmpty(tmp)) {
+//    	  inserirProduto(prod2);
+//    	  inserirImagemGrande(imgG8);
+//    	  inserirImagemGrande(imgG9);
+//    	  inserirImagemGrande(imgG10);
+//    	  inserirImagemGrande(imgG11);
+//    	  inserirImagemGrande(imgG12);
+//    	  inserirImagemPequeno(imgP8);
+//    	  inserirImagemPequeno(imgP9);
+//    	  inserirImagemPequeno(imgP10);
+//    	  inserirImagemPequeno(imgP11);
+//    	  inserirImagemPequeno(imgP12);
+//      } else {
+//    	  prod2.setId(tmp.getId());
+//    	  atualizarProduto(prod2);
+//      }
       
 //      dao.insert(prod2);      
 //      imgDAO.insert(imgG8);
