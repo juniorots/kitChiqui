@@ -295,7 +295,7 @@ public class ProdutoDAOTest extends BaseController {
       prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod2.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
       prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod2.setQtdEstoque(8);
+      prod2.setQtdEstoque(20);
       prod2.setDisponivel(true);
 //      
 //      // Tratando secao de detalhe
@@ -400,7 +400,7 @@ public class ProdutoDAOTest extends BaseController {
       prod3.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod3.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
       prod3.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-      prod3.setQtdEstoque(8);
+      prod3.setQtdEstoque(20);
       prod3.setDisponivel(true);
 //      
 //   // Tratando secao de detalhe
