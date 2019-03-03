@@ -143,7 +143,7 @@ public class ProdutoDAOTest extends BaseController {
       
       prod.setSrcImagem("img/home/banner-slider/kitVitrineOrtoMasculino.png");
       prod.setSrcImagemCarrinho("img/products/kitVitrineOrtoMasculino64x74.png");
-      prod.setTitulo("Necessaire Masculino");
+      prod.setTitulo("Kit Ortodontico - Masculino");
       prod.setPreco(65D);
       prod.setSubTitulo("Promoção do mês");
       prod.setDescritivo("Essencial na Organização");
@@ -716,7 +716,7 @@ public class ProdutoDAOTest extends BaseController {
       
       prod6.setSrcImagem("img/home/banner-slider/kitVitrineOrtoFeminino.png");
       prod6.setSrcImagemCarrinho("img/products/kitVitrineOrtoFeminino64x74.png");
-      prod6.setTitulo("Kit Clássico - Feminino");
+      prod6.setTitulo("Kit Ortodontico - Feminino");
       prod6.setSubTitulo("Olhar feminino");
       prod6.setDescritivo("Requinte de mulher!");
       prod6.setPreco(65D);
