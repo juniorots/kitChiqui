@@ -144,7 +144,7 @@ public class ProdutoDAOTest extends BaseController {
       prod.setSrcImagem("img/home/banner-slider/kitVitrineOrtoMasculino.png");
       prod.setSrcImagemCarrinho("img/products/kitVitrineOrtoMasculino64x74.png");
       prod.setTitulo("Necessaire Masculino");
-      prod.setPreco(40D);
+      prod.setPreco(65D);
       prod.setSubTitulo("Promoção do mês");
       prod.setDescritivo("Essencial na Organização");
       prod.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
@@ -219,47 +219,46 @@ public class ProdutoDAOTest extends BaseController {
 //      imgP53.setProduto(prod);
             
       prod.setTituloDescritivo("Kit Estojo de Organização modelo masculino");
-      prod.setAnotacaoPrincipalDescritivo("A importância da organização é fundamental "
-      		+ "com base nisso montamos essa linda necessaire com requintes masculino.");
-//      		+ "nada mais prático que um Kit especialmente montado para você. Oferecemos essa exclusividade "
-//      		+ "com o foco em dar maior praticidade no seu dia-a-dia. Selecionamos os itens fundamentais ao "
-//      		+ "seu pleno tratamento ortodôntico.");
+      prod.setAnotacaoPrincipalDescritivo("Pensando na sua comodidade "
+      		+ "nada mais prático que um Kit especialmente montado para você. Oferecemos essa exclusividade "
+      		+ "com o foco em dar maior praticidade no seu dia-a-dia. Selecionamos os itens fundamentais ao "
+      		+ "seu pleno tratamento ortodôntico.");
       
       prod.setAnotacaoDetalhe("<p>O que vimos de importante a você:</p>"
     		  + "<ul class=\"list-unstyled\">"
 	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova ortodôntica;</li>"
-//	              + "<li>Passa fio;</li>"
-//	              + "<li>Fio dental;</li>"
-//	              + "<li>Creme dental;</li>"
-//	              + "<li>Escova interdental;</li>"
-//	              + "<li>Cera ortodôntica;</li>"
-//	              + "<li>Enxaguante bucal;</li>"
+	              + "<li>Escova extra-macia;</li>"
+	              + "<li>Passa fio;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Creme dental;</li>"
+	              + "<li>Escova interdental;</li>"
+	              + "<li>Cera ortodôntica;</li>"
+	              + "<li>Enxaguante bucal;</li>"
               + "</ul>");
       
-      prod.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+      prod.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores:"
     		  + "<ul class=\"list-unstyled\">"
               + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-//              + "<li>Escova ortodôntica: Curaprox 5460 Ortho Ultra macia - 0,10 mm de diâmetro;</li>"
-//              + "<li>Passa fio: 30 unidades;</li>"
-//              + "<li>Fio dental: 100 metros;</li>"
-//              + "<li>Creme dental: 70g;</li>"
-//              + "<li>Escova interdental: 3 a 7mm;</li>"
+              + "<li>Escova ultra macia: Tipo Médio com sensibilidade à sua gengiva;</li>"
+              + "<li>Passa fio;</li>"
+              + "<li>Fio dental: 50 metros;</li>"
+              + "<li>Creme dental: 70g;</li>"
+              + "<li>Escova interdental: 3 a 7mm;</li>"
 //              + "<li>Cera ortodôntica vigente do mercado</li>"
-//              + "<li>Enxaguante bucal: 60mL;</li>"
+              + "<li>Enxaguante bucal: 250mL;</li>"
           + "</ul>");
       
-      prod.setAnotacaoComposicao("Organização é fundamental, principalmente na correria do dia a dia. ");
-//      		+ "de tratamento ortodôntico, nos quais citamos:"
-//    		  + "<ul class=\"list-unstyled\">"
-//              + "<li>Remoção do biofilme dental com auxílio do fio;</li>"
-//              + "<li>Passa fio, fundamental nos pequenos espaços dispostos pelos brackets;</li>"
-//              + "<li>Creme, mais indicado para a situação;</li>"
-//              + "<li>Escova anatomicamente apropriada a melhor higienização;</li>"
-//              + "<li>Escova interdental, focando na finalização perfeita em sua função;</li>"
-//              + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
-//              + "<li>Para remover bactérias e resíduos nada mais prático que o nosso enxaguante bucal;</li>"
-//          + "</ul>");
+      prod.setAnotacaoComposicao("Organização é fundamental, principalmente na correria do dia a dia. "
+      		+ "focando no seu tratamento ortodôntico, podemos citar:"
+    		  + "<ul class=\"list-unstyled\">"
+              + "<li>Remoção do biofilme dental com auxílio do fio;</li>"
+              + "<li>Passa fio, fundamental nos pequenos espaços dispostos pelos brackets;</li>"
+              + "<li>Creme, mais indicado para a situação;</li>"
+              + "<li>Escova anatomicamente apropriada a melhor higienização;</li>"
+              + "<li>Escova interdental, focando na finalização perfeita em sua função;</li>"
+              + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
+              + "<li>Para remover bactérias e resíduos nada mais prático que o nosso enxaguante bucal;</li>"
+          + "</ul>");
       
       Produto tmp = contidoBase(prod);
       if (Util.isEmpty(tmp)) {
@@ -285,41 +284,24 @@ public class ProdutoDAOTest extends BaseController {
     	  atualizarProduto(prod);
       }
       
-//      dao.insert(prod); 
-//      imgDAO.insert(imgG1);
-//      imgDAO.insert(imgG2);
-//      imgDAO.insert(imgG3);
-//      imgDAO.insert(imgG4);
-//      imgDAO.insert(imgG5);
-//      imgDAO.insert(imgG6);
-//      imgDAO.insert(imgG7);
-//      imgPeqDAO.insert(imgP1);
-//      imgPeqDAO.insert(imgP2);Fio dental, remover biofilme dental;</li>"
-//      + "<li>
-//      imgPeqDAO.insert(imgP3);
-//      imgPeqDAO.insert(imgP4);
-//      imgPeqDAO.insert(imgP5);
-//      imgPeqDAO.insert(imgP6);
-//      imgPeqDAO.insert(imgP7);
+      Produto prod2 = new Produto();   
       
-//      Produto prod2 = new Produto();   
-//      
-//      prod2.setSrcImagem("img/home/featured-product/kitMasculinoPosCirurgico.png");
-//      prod2.setSrcImagemCarrinho("img/products/kitMasculinoPosCirurgico64x74.png");
-//      prod2.setTitulo("KIT Pós-cirurgico");
-//      prod2.setPreco(147D);
-//      prod2.setSubTitulo("Delicadeza com carinho");
-//      prod2.setDescritivo("Para cuidar de você");
-//      prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
-//      prod2.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
-//      prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-//      prod2.setQtdEstoque(8);
-//      prod2.setDisponivel(true);
+      prod2.setSrcImagem("img/home/featured-product/kitMasculinoPosCirurgico.png");
+      prod2.setSrcImagemCarrinho("img/products/kitMasculinoPosCirurgico64x74.png");
+      prod2.setTitulo("KIT Pós-cirurgico");
+      prod2.setPreco(55D);
+      prod2.setSubTitulo("Delicadeza com carinho");
+      prod2.setDescritivo("Para cuidar de você");
+      prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod2.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
+      prod2.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod2.setQtdEstoque(8);
+      prod2.setDisponivel(true);
 //      
 //      // Tratando secao de detalhe
-//      ImagemGrandeProduto imgG8 = new ImagemGrandeProduto();
-//      imgG8.setSrcImagem("img/products/signle-product/masculinoGrande.png");
-//      imgG8.setProduto(prod2);
+      ImagemGrandeProduto imgG8 = new ImagemGrandeProduto();
+      imgG8.setSrcImagem("img/products/signle-product/masculinoGrande.png");
+      imgG8.setProduto(prod2);
 //      
 //      ImagemGrandeProduto imgG9 = new ImagemGrandeProduto();
 //      imgG9.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
@@ -337,9 +319,9 @@ public class ProdutoDAOTest extends BaseController {
 //      imgG12.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
 //      imgG12.setProduto(prod2);
 //      
-//      ImagemPequenoProduto imgP8 = new ImagemPequenoProduto();
-//      imgP8.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
-//      imgP8.setProduto(prod2);
+      ImagemPequenoProduto imgP8 = new ImagemPequenoProduto();
+      imgP8.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
+      imgP8.setProduto(prod2);
 //      
 //      ImagemPequenoProduto imgP9 = new ImagemPequenoProduto();
 //      imgP9.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
@@ -357,87 +339,74 @@ public class ProdutoDAOTest extends BaseController {
 //      imgP12.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
 //      imgP12.setProduto(prod2);
 //      
-//      prod2.setTituloDescritivo("Kit Pós-cirurgico - O cuidado que você precisa.");
-//      prod2.setAnotacaoPrincipalDescritivo("Sabendo do cuidado que você precisa nesse momento tão sensível à sua "
-//      		+ "saúde, pensamos exatamente em tudo que irá lhe servir com praticidade, economicidade e higiene. "
-//      		+ "Não perca tempo e adquira já o seu kit focando na melhor recuperação e reabilitação funcional. "
-//      		+ "Pensamos carinhosamente em você.");
+      prod2.setTituloDescritivo("Kit Pós-cirurgico - O cuidado que você precisa.");
+      prod2.setAnotacaoPrincipalDescritivo("Sabendo do cuidado que você precisa nesse momento tão sensível à sua "
+      		+ "saúde, pensamos exatamente em tudo que irá lhe servir com praticidade, economicidade e higiene. "
+      		+ "Não perca tempo e adquira já o seu kit focando na melhor recuperação e reabilitação funcional. "
+      		+ "Pensamos carinhosamente em você.");
+      
+      prod2.setAnotacaoDetalhe("<p>Do que dispomos:</p>"
+    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Estojo personalizado;</li>"
+	              + "<li>Escova extra-macia;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Creme dental;</li>"
+	              + "<li>Enxaguante bucal;</li>"
+              + "</ul>");
+      
+      prod2.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores: "
+    		  + "<ul class=\"list-unstyled\">"
+    		  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
+              + "<li>Escova ultra macia;</li>"
+              + "<li>Fio dental: 50 metros;</li>"
+              + "<li>Creme dental: 70g;</li>"
+              + "<li>Enxaguante bucal: 250mL;</li>"
+          + "</ul>");
+      
+      prod2.setAnotacaoComposicao("A recuperação pós-cirurgica é fundamental quando associada a boa higienização, do que compomos descreve-se:"
+    		  + "<ul class=\"list-unstyled\">"
+              + "<li>Escova ultra macia, possui a função de não agredir a região tratada;</li>"
+              + "<li>Fio dental, remover biofilme dental com eficiência;</li>"
+              + "<li>Creme dental, evitando a ploriferação de placa bacteriana;</li>"
+              + "<li>Enxaguante bucal, extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
+          + "</ul>");
 //      
-//      prod2.setAnotacaoDetalhe("<p>Do que dispomos:</p>"
-//    		  + "<ul class=\"list-unstyled\">"
-//	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova extra-macia;</li>"
-//	              + "<li>Fio dental;</li>"
-//	              + "<li>Creme dental;</li>"
-//	              + "<li>Enxaguante bucal - solução com clorexidina;</li>"
-//              + "</ul>");
-//      
-//      prod2.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
-//    		  + "<ul class=\"list-unstyled\">"
-//    		  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-//              + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-//              + "<li>Fio dental: 100 metros;</li>"
-//              + "<li>Creme dental: 70g;</li>"
-//              + "<li>Enxaguante bucal: 60mL;</li>"
-//          + "</ul>");
-//      
-//      prod2.setAnotacaoComposicao("A recuperação pós-cirurgica é fundamental quando associada a boa higienização, do que compomos descreve-se:"
-//    		  + "<ul class=\"list-unstyled\">"
-//              + "<li>Escova ultra macia, possui a função de não agredir a região tratada;</li>"
-//              + "<li>Fio dental, remover biofilme dental com eficiência;</li>"
-//              + "<li>Creme dental, evitando a ploriferação de placa bacteriana;</li>"
-//              + "<li>Enxaguante bucal, solução com clorexidina extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
-//          + "</ul>");
-//      
-//      tmp = contidoBase(prod2);
-//      if (Util.isEmpty(tmp)) {Fio dental, remover biofilme dental;</li>"
-//      + "<li>
-//    	  inserirProduto(prod2);
-//    	  inserirImagemGrande(imgG8);
+      tmp = contidoBase(prod2);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod2);
+    	  inserirImagemGrande(imgG8);
 //    	  inserirImagemGrande(imgG9);
 //    	  inserirImagemGrande(imgG10);
 //    	  inserirImagemGrande(imgG11);
 //    	  inserirImagemGrande(imgG12);
-//    	  inserirImagemPequeno(imgP8);
+    	  inserirImagemPequeno(imgP8);
 //    	  inserirImagemPequeno(imgP9);
 //    	  inserirImagemPequeno(imgP10);
 //    	  inserirImagemPequeno(imgP11);
 //    	  inserirImagemPequeno(imgP12);
-//      } else {
-//    	  prod2.setId(tmp.getId());
-//    	  atualizarProduto(prod2);
-//      }
+      } else {
+    	  prod2.setId(tmp.getId());
+    	  atualizarProduto(prod2);
+      }
       
-//      dao.insert(prod2);      
-//      imgDAO.insert(imgG8);
-//      imgDAO.insert(imgG9);
-//      imgDAO.insert(imgG10);
-//      imgDAO.insert(imgG11);
-//      imgDAO.insert(imgG12);
-//      imgPeqDAO.insert(imgP8);
-//      imgPeqDAO.insert(imgP9);
-//      imgPeqDAO.insert(imgP10);
-//      imgPeqDAO.insert(imgP11);
-//      imgPeqDAO.insert(imgP12);
-//      
-//      Produto prod3 = new Produto();   
-//      
-//      prod3.setSrcImagem("img/home/featured-product/kitPeriodontalMasculino.png");
-//      prod3.setSrcImagemCarrinho("img/products/kitPeriodontalMasculino64x74.png");
-//      prod3.setTitulo("Kit Periodontal");
-//      prod3.setPreco(164D);
-//      prod3.setSubTitulo("Tratamento e Controle");
-//      prod3.setDescritivo("Sua gengiva mais saudável");
-//      prod3.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
-//      prod3.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
-//      prod3.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
-//      prod3.setQtdEstoque(8);
-//      prod3.setDisponivel(true);
+      Produto prod3 = new Produto();   
+      
+      prod3.setSrcImagem("img/home/featured-product/kitPeriodontalMasculino.png");
+      prod3.setSrcImagemCarrinho("img/products/kitPeriodontalMasculino64x74.png");
+      prod3.setTitulo("Kit Periodontal");
+      prod3.setPreco(65D);
+      prod3.setSubTitulo("Tratamento e Controle");
+      prod3.setDescritivo("Sua gengiva mais saudável");
+      prod3.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod3.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
+      prod3.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
+      prod3.setQtdEstoque(8);
+      prod3.setDisponivel(true);
 //      
 //   // Tratando secao de detalhe
-//      ImagemGrandeProduto imgG13 = new ImagemGrandeProduto();
-//      imgG13.setSrcImagem("img/products/signle-product/masculinoGrande.png");
-//      imgG13.setProduto(prod3);
+      ImagemGrandeProduto imgG13 = new ImagemGrandeProduto();
+      imgG13.setSrcImagem("img/products/signle-product/masculinoGrande.png");
+      imgG13.setProduto(prod3);
 //      
 //      ImagemGrandeProduto imgG14 = new ImagemGrandeProduto();
 //      imgG14.setSrcImagem("img/products/signle-product/escovaMasculinaGrande.png");
@@ -463,9 +432,9 @@ public class ProdutoDAOTest extends BaseController {
 //      imgG19.setSrcImagem("img/products/signle-product/interdentalGrande.png");
 //      imgG19.setProduto(prod3);
 //      
-//      ImagemPequenoProduto imgP13 = new ImagemPequenoProduto();
-//      imgP13.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
-//      imgP13.setProduto(prod3);
+      ImagemPequenoProduto imgP13 = new ImagemPequenoProduto();
+      imgP13.setSrcImagem("img/products/signle-product/masculinoPequeno.png");
+      imgP13.setProduto(prod3);
 //      
 //      ImagemPequenoProduto imgP14 = new ImagemPequenoProduto();
 //      imgP14.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
@@ -491,87 +460,69 @@ public class ProdutoDAOTest extends BaseController {
 //      imgP19.setSrcImagem("img/products/signle-product/interdentalPequeno.png");
 //      imgP19.setProduto(prod3);
 //      
-//      prod3.setTituloDescritivo("Kit Periodontal - Pensamos na sua gengiva");
-//      prod3.setAnotacaoPrincipalDescritivo("Sabemos que nos ater somente aos dentes não é o suficiente. "
-//    		+ "É comum a existência de danos irreversíveis à estrutura óssea, ocasionando percas dentárias, "
-//      		+ "com essa necessidade montamos o Kit essencial com total carinho à sua gengiva. "
-//      		+ "");
+      prod3.setTituloDescritivo("Kit Periodontal - Pensamos na sua gengiva");
+      prod3.setAnotacaoPrincipalDescritivo("Sabemos que nos ater somente aos dentes não é o suficiente. "
+    		+ "É comum a existência de danos irreversíveis à estrutura óssea, ocasionando percas dentárias, "
+      		+ "com essa necessidade montamos o Kit essencial com total carinho à sua gengiva. "
+      		+ "");
 //      
-//      prod3.setAnotacaoDetalhe("<p>Veja nossa atenção a você:</p>"
-//	    		  + "<ul class=\"list-unstyled\">"
-//	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova periodontal;</li>"
-//	              + "<li>Escova interdental;</li>"
-//	              + "<li>Fita dental;</li>"
-//	              + "<li>Creme dental;</li>"
-//	              + "<li>Enxaguante bucal solução com clorexidina;</li>"
-//	          + "</ul>");
+      prod3.setAnotacaoDetalhe("<p>Veja nossa atenção a você:</p>"
+	    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Estojo personalizado;</li>"
+	              + "<li>Escova ultra macia;</li>"
+	              + "<li>Escova interdental;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Creme dental;</li>"
+	              + "<li>Enxaguante bucal;</li>"
+	          + "</ul>");
 //	  
-//	  prod3.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
-//			  + "<ul class=\"list-unstyled\">"
-//			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-//	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-//	          + "<li>Escova interdental: 3 a 7mm;</li>"
-//	          + "<li>Fita dental: 100 metros;</li>"
-//	          + "<li>Creme dental: 70g;</li>"Fio dental, remover biofilme dental;</li>"
-//      + "<li>
-//	          + "<li>Enxaguante bucal: 60mL;</li>"
-//	      + "</ul>");
+	  prod3.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores: "
+			  + "<ul class=\"list-unstyled\">"
+			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
+	          + "<li>Escova ultra macia;</li>"
+	          + "<li>Escova interdental: 3 a 7mm;</li>"
+	          + "<li>Fita dental: 50 metros;</li>"
+	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Enxaguante bucal: 250mL;</li>"
+	      + "</ul>");
 //	  
-//	  prod3.setAnotacaoComposicao("Dos cuidados que pensamos à sua gengiva:"
-//			  + "<ul class=\"list-unstyled\">"
-//	          + "<li>Escova periodontal, cerdas macias limpam melhor a gengiva sem causar danos;</li>"
-//	          + "<li>Escova interdental, para os casos onde houve perda óssea, facilitando assim a higienização;</li>"
-//	          + "<li>Fita dental, remover biofilme dental considerando os espaços em excesso;</li>"
-//	          + "<li>Creme dental, evitando a ploriferação de placa bacteriana;</li>"
-//	          + "<li>Enxaguante bucal, solução com clorexidina extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
-//	      + "</ul>");
+	  prod3.setAnotacaoComposicao("Dos cuidados que pensamos à sua gengiva:"
+			  + "<ul class=\"list-unstyled\">"
+	          + "<li>Escova ultra macia, cerdas macias limpam melhor a gengiva sem causar danos;</li>"
+	          + "<li>Escova interdental, para os casos onde houve perda óssea, facilitando assim a higienização;</li>"
+	          + "<li>Fio dental, remover biofilme dental considerando os espaços em excesso;</li>"
+	          + "<li>Creme dental, evitando a ploriferação de placa bacteriana;</li>"
+	          + "<li>Enxaguante bucal, extremamente útil na remoção de bactérias inibindo sua proliferação;</li>"
+	      + "</ul>");
 //      
-//	  tmp = contidoBase(prod3);
-//      if (Util.isEmpty(tmp)) {
-//    	  inserirProduto(prod3);
-//    	  inserirImagemGrande(imgG13);
+	  tmp = contidoBase(prod3);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod3);
+    	  inserirImagemGrande(imgG13);
 //    	  inserirImagemGrande(imgG14);
 //    	  inserirImagemGrande(imgG15);
 //    	  inserirImagemGrande(imgG16);
 //    	  inserirImagemGrande(imgG17);
 //    	  inserirImagemGrande(imgG18);
 //    	  inserirImagemGrande(imgG19);
-//    	  inserirImagemPequeno(imgP13);Fio dental, remover biofilme dental;</li>"
-//      + "<li>
+    	  inserirImagemPequeno(imgP13);
 //    	  inserirImagemPequeno(imgP14);
 //    	  inserirImagemPequeno(imgP15);
 //    	  inserirImagemPequeno(imgP16);
 //    	  inserirImagemPequeno(imgP17);
 //    	  inserirImagemPequeno(imgP18);
 //    	  inserirImagemPequeno(imgP19);
-//      } else {
-//    	  prod3.setId(tmp.getId());
-//    	  atualizarProduto(prod3);
-//      }
+      } else {
+    	  prod3.setId(tmp.getId());
+    	  atualizarProduto(prod3);
+      }
 	  
-//      dao.insert(prod3);
-//      imgDAO.insert(imgG13);
-//      imgDAO.insert(imgG14);
-//      imgDAO.insert(imgG15);
-//      imgDAO.insert(imgG16);
-//      imgDAO.insert(imgG17);
-//      imgDAO.insert(imgG18);
-//      imgDAO.insert(imgG19);
-//      imgPeqDAO.insert(imgP13);
-//      imgPeqDAO.insert(imgP14);
-//      imgPeqDAO.insert(imgP15);
-//      imgPeqDAO.insert(imgP16);
-//      imgPeqDAO.insert(imgP17);
-//      imgPeqDAO.insert(imgP18);
-//      imgPeqDAO.insert(imgP19);
-      
       Produto prod4 = new Produto();   
       
       prod4.setSrcImagem("img/home/featured-product/kitStandart.png");
       prod4.setSrcImagemCarrinho("img/products/kitStandart64x74.png");
       prod4.setTitulo("Kit Standard - Essencial");
-      prod4.setPreco(30D);
+      prod4.setPreco(35D);
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod4.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod4.setClasse(EnumClasseProduto.KIT_STANDART.getClasse());
@@ -595,9 +546,9 @@ public class ProdutoDAOTest extends BaseController {
 //      imgG23.setSrcImagem("img/products/signle-product/pastaGrande.png");
 //      imgG23.setProduto(prod4);
 //      
-//      ImagemPequenoProduto imgP20 = new ImagemPequenoProduto();
-//      imgP20.setSrcImagem("img/products/signle-product/standardPequeno.png");
-//      imgP20.setProduto(prod4);
+      ImagemPequenoProduto imgP20 = new ImagemPequenoProduto();
+      imgP20.setSrcImagem("img/products/signle-product/standardPequeno.png");
+      imgP20.setProduto(prod4);
 //      
 //      ImagemPequenoProduto imgP21 = new ImagemPequenoProduto();
 //      imgP21.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
@@ -618,24 +569,24 @@ public class ProdutoDAOTest extends BaseController {
       prod4.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
 	    		  + "<ul class=\"list-unstyled\">"
 	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova macia;</li>"
-//	              + "<li>Fio dental;</li>"
-//	              + "<li>Creme dental;</li>"
+	              + "<li>Escova macia;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Creme dental;</li>"
 	          + "</ul>");
 	  
-	  prod4.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+	  prod4.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores:"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Kit: 6 cm (Largura), 5 cm (Altura), 21 cm (Comprimento);</li>"
-//	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-//	          + "<li>Fio dental: 100 metros;</li>"
-//	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Escova ultra macia;</li>"
+	          + "<li>Fio dental: 50 metros;</li>"
+	          + "<li>Creme dental: 70g;</li>"
 	      + "</ul>");
 	  
 	  prod4.setAnotacaoComposicao("Vimos como fundamental:"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Necessaire de fácil adaptação e organização;</li>"
-//	          + "<li>Fio dental, remover biofilme dental;</li>"
-//	          + "<li>Creme dental, auxilia na remoção de placas;</li>"
+	          + "<li>Fio dental, remover biofilme dental;</li>"
+	          + "<li>Creme dental, auxilia na remoção de placas;</li>"
 	      + "</ul>");
       
 	  tmp = contidoBase(prod4);
@@ -645,7 +596,7 @@ public class ProdutoDAOTest extends BaseController {
 //    	  inserirImagemGrande(imgG21);
 //    	  inserirImagemGrande(imgG22);
 //    	  inserirImagemGrande(imgG23);
-//    	  inserirImagemPequeno(imgP20);
+    	  inserirImagemPequeno(imgP20);
 //    	  inserirImagemPequeno(imgP21);
 //    	  inserirImagemPequeno(imgP22);
 //    	  inserirImagemPequeno(imgP23);
@@ -654,16 +605,6 @@ public class ProdutoDAOTest extends BaseController {
     	  atualizarProduto(prod4);
       }
 	  
-//      dao.insert(prod4);
-//      imgDAO.insert(imgG20);
-//      imgDAO.insert(imgG21);
-//      imgDAO.insert(imgG22);
-//      imgDAO.insert(imgG23);
-//      imgPeqDAO.insert(imgP20);
-//      imgPeqDAO.insert(imgP21);
-//      imgPeqDAO.insert(imgP22);
-//      imgPeqDAO.insert(imgP23);
-      
       Produto prod5 = new Produto();   
       
       prod5.setSrcImagem("img/home/banner-slider/kitVitrineMasculinoInfantil.png");
@@ -671,7 +612,7 @@ public class ProdutoDAOTest extends BaseController {
       prod5.setTitulo("Kit Infantil - Para Meninos");
       prod5.setSubTitulo("Sucesso escolar");
       prod5.setDescritivo("");
-      prod5.setPreco(40D);
+      prod5.setPreco(55D);
       prod5.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       prod5.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
@@ -699,9 +640,9 @@ public class ProdutoDAOTest extends BaseController {
 //      imgG28.setSrcImagem("img/products/signle-product/toalhaGrande.png");
 //      imgG28.setProduto(prod5);
 //      
-//      ImagemPequenoProduto imgP24 = new ImagemPequenoProduto();
-//      imgP24.setSrcImagem("img/products/signle-product/infantilMasculinoPequeno.png");
-//      imgP24.setProduto(prod5);
+      ImagemPequenoProduto imgP24 = new ImagemPequenoProduto();
+      imgP24.setSrcImagem("img/products/signle-product/infantilMasculinoPequeno.png");
+      imgP24.setProduto(prod5);
 //      
 //      ImagemPequenoProduto imgP25 = new ImagemPequenoProduto();
 //      imgP25.setSrcImagem("img/products/signle-product/escovaMasculinaPequena.png");
@@ -729,28 +670,28 @@ public class ProdutoDAOTest extends BaseController {
       prod5.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
 	    		  + "<ul class=\"list-unstyled\">"
 	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova macia;</li>"
-//	              + "<li>Pasta de dente infantil;</li>"
-//	              + "<li>Fio dental;</li>"
-//	              + "<li>Toalinha;</li>"
+	              + "<li>Escova ultra macia;</li>"
+	              + "<li>Pasta de dente infantil;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Toalinha;</li>"
 	          + "</ul>");
 	  
-	  prod5.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+	  prod5.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores:"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Kit: 22 cm (Largura), 14 cm (Altura), 10 cm (Comprimento);</li>"
-//	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-//	          + "<li>Fio dental: 100 metros;</li>"
-//	          + "<li>Creme dental: 50g;</li>"
-//	          + "<li>Toalha: 23x34cm;</li>"
+	          + "<li>Escova ultra macia;</li>"
+	          + "<li>Fio dental: 50 metros;</li>"
+	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Toalha de rosto;</li>"
 	      + "</ul>");
 	  
 	  prod5.setAnotacaoComposicao("Vimos como fundamental:"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Estojo personalizado, formato anatômico de fácil utilização, com cores alegres;</li>"
-//	          + "<li>Escova macia com formato adequado para a boquinha das crianças;</li>"
-//	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
-//	          + "<li>Fio dental, remove biofilme dental, evitando a formação de placa bacteriana;</li>"
-//	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
+	          + "<li>Escova macia com formato adequado para a boquinha das crianças;</li>"
+	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
+	          + "<li>Fio dental, remove biofilme dental, evitando a formação de placa bacteriana;</li>"
+	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
 	      + "</ul>");
       
 	  tmp = contidoBase(prod5);
@@ -761,7 +702,7 @@ public class ProdutoDAOTest extends BaseController {
 //    	  inserirImagemGrande(imgG26);
 //    	  inserirImagemGrande(imgG27);
 //    	  inserirImagemGrande(imgG28);
-//    	  inserirImagemPequeno(imgP24);
+    	  inserirImagemPequeno(imgP24);
 //    	  inserirImagemPequeno(imgP25);
 //    	  inserirImagemPequeno(imgP26);
 //    	  inserirImagemPequeno(imgP27);
@@ -771,18 +712,6 @@ public class ProdutoDAOTest extends BaseController {
     	  atualizarProduto(prod5);
       }
 	  
-//      dao.insert(prod5);
-//      imgDAO.insert(imgG24);
-//      imgDAO.insert(imgG25);
-//      imgDAO.insert(imgG26);
-//      imgDAO.insert(imgG27);
-//      imgDAO.insert(imgG28);
-//      imgPeqDAO.insert(imgP24);
-//      imgPeqDAO.insert(imgP25);
-//      imgPeqDAO.insert(imgP26);
-//      imgPeqDAO.insert(imgP27);
-//      imgPeqDAO.insert(imgP28);
-      
       Produto prod6 = new Produto();   
       
       prod6.setSrcImagem("img/home/banner-slider/kitVitrineOrtoFeminino.png");
@@ -790,7 +719,7 @@ public class ProdutoDAOTest extends BaseController {
       prod6.setTitulo("Kit Clássico - Feminino");
       prod6.setSubTitulo("Olhar feminino");
       prod6.setDescritivo("Requinte de mulher!");
-      prod6.setPreco(40D);
+      prod6.setPreco(65D);
       prod6.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod6.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       prod6.setClasse(EnumClasseProduto.KIT_ORTODONTICO.getClasse());
@@ -870,36 +799,36 @@ public class ProdutoDAOTest extends BaseController {
       prod6.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
 	    		  + "<ul class=\"list-unstyled\">"
 	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova ortodôntica;</li>"
-//	              + "<li>Escova interdental;</li>"
-//	              + "<li>Passa fio;</li>"
-//	              + "<li>Creme dental;</li>"
-//	              + "<li>Fio dental;</li>"
-//	              + "<li>Cera ortodôntica;</li>"
-//	              + "<li>Enxaguante bucal;</li>"
+	              + "<li>Escova ortodôntica;</li>"
+	              + "<li>Escova interdental;</li>"
+	              + "<li>Passa fio;</li>"
+	              + "<li>Creme dental;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Cera ortodôntica;</li>"
+	              + "<li>Enxaguante bucal;</li>"
 	          + "</ul>");
 	  
-	  prod6.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+	  prod6.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores:"
 			  + "<ul class=\"list-unstyled\">"
 			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-//			  + "<li>Escova ortodôntica: Curaprox 5460 Ortho Ultra macia - 0,10 mm de diâmetro;</li>"
-//			  + "<li>Escova interdental: 3 a 7mm;</li>"
-//			  + "<li>Passa fio: 30 unidades;</li>"
-//			  + "<li>Creme dental: 70g;</li>"
-//			  + "<li>Fio dental: 100 metros;</li>"
-//			  + "<li>Cera ortodôntica vigente no mercado;</li>"
-//			  + "<li>Enxaguante bucal: 60mL;</li>"
+			  + "<li>Escova ortodôntica: Ultra macia;</li>"
+			  + "<li>Escova interdental: 3 a 7mm;</li>"
+			  + "<li>Passa fio;</li>"
+			  + "<li>Creme dental: 70g;</li>"
+			  + "<li>Fio dental: 50 metros;</li>"
+			  + "<li>Cera ortodôntica vigente no mercado;</li>"
+			  + "<li>Enxaguante bucal: 250mL;</li>"
 	      + "</ul>");
 	  
 	  prod6.setAnotacaoComposicao("Vimos como fundamental:"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Lindo Kit feminino;</li>"
-//	          + "<li>Escova interdental, devido ao seu formato cônico e cilíndrico se encaixa entre os dentes, finalizando a higienização;</li>"
-//	          + "<li>Passa fio, essencial para facilitar o uso do fio dental;</li>"
-//	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
-//	          + "<li>Fio dental, remove biofilme dental localizado entre os dentes;</li>"
-//	          + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
-//	          + "<li>Enxaguante bucal, remove bactérias;</li>"
+	          + "<li>Escova interdental, devido ao seu formato cônico e cilíndrico se encaixa entre os dentes, finalizando a higienização;</li>"
+	          + "<li>Passa fio, essencial para facilitar o uso do fio dental;</li>"
+	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
+	          + "<li>Fio dental, remove biofilme dental localizado entre os dentes;</li>"
+	          + "<li>Protegendo a mucosa bucal, nada mais útil que a cera ortodôntica;</li>"
+	          + "<li>Enxaguante bucal, remove bactérias;</li>"
 	      + "</ul>");
       
 	  tmp = contidoBase(prod6);
@@ -913,7 +842,7 @@ public class ProdutoDAOTest extends BaseController {
 //    	  inserirImagemGrande(imgG34);
 //    	  inserirImagemGrande(imgG35);
 //    	  inserirImagemGrande(imgG54);
-//    	  inserirImagemPequeno(imgP29);
+    	  inserirImagemPequeno(imgP29);
 //    	  inserirImagemPequeno(imgP30);
 //    	  inserirImagemPequeno(imgP31);
 //    	  inserirImagemPequeno(imgP32);
@@ -926,38 +855,22 @@ public class ProdutoDAOTest extends BaseController {
     	  atualizarProduto(prod6);
       }
 	  
-//      dao.insert(prod6);
-//      imgDAO.insert(imgG29);
-//      imgDAO.insert(imgG30);
-//      imgDAO.insert(imgG31);
-//      imgDAO.insert(imgG32);
-//      imgDAO.insert(imgG33);
-//      imgDAO.insert(imgG34);
-//      imgDAO.insert(imgG35);
-//      imgPeqDAO.insert(imgP29);
-//      imgPeqDAO.insert(imgP30);
-//      imgPeqDAO.insert(imgP31);
-//      imgPeqDAO.insert(imgP32);
-//      imgPeqDAO.insert(imgP33);
-//      imgPeqDAO.insert(imgP34);
-//      imgPeqDAO.insert(imgP35);
+      Produto prod7 = new Produto();   
       
-//      Produto prod7 = new Produto();   
-//      
-//      prod7.setSrcImagem("img/home/featured-product/kitPeriodontalFeminino.png");
-//      prod7.setSrcImagemCarrinho("img/products/kitPeriodontalFeminino64x74.png");
-//      prod7.setTitulo("Kit Periodontal - Feminino");
-//      prod7.setPreco(164D);
-//      prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
-//      prod7.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
-//      prod7.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
-//      prod7.setQtdEstoque(6);
-//      prod7.setDisponivel(true);
+      prod7.setSrcImagem("img/home/featured-product/kitPeriodontalFeminino.png");
+      prod7.setSrcImagemCarrinho("img/products/kitPeriodontalFeminino64x74.png");
+      prod7.setTitulo("Kit Periodontal - Feminino");
+      prod7.setPreco(65D);
+      prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod7.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
+      prod7.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
+      prod7.setQtdEstoque(20);
+      prod7.setDisponivel(true);
 //      
 //      // Tratando secao de detalhe
-//      ImagemGrandeProduto imgG36 = new ImagemGrandeProduto();
-//      imgG36.setSrcImagem("img/products/signle-product/femininoGrande.png");
-//      imgG36.setProduto(prod7);
+      ImagemGrandeProduto imgG36 = new ImagemGrandeProduto();
+      imgG36.setSrcImagem("img/products/signle-product/femininoGrande.png");
+      imgG36.setProduto(prod7);
 //      
 //      ImagemGrandeProduto imgG37 = new ImagemGrandeProduto();
 //      imgG37.setSrcImagem("img/products/signle-product/escovaFemininaGrande.png");
@@ -983,9 +896,9 @@ public class ProdutoDAOTest extends BaseController {
 //      imgG42.setSrcImagem("img/products/signle-product/interdentalGrande.png");
 //      imgG42.setProduto(prod7);
 //      
-//      ImagemPequenoProduto imgP36 = new ImagemPequenoProduto();
-//      imgP36.setSrcImagem("img/products/signle-product/femininoPequeno.png");
-//      imgP36.setProduto(prod7);
+      ImagemPequenoProduto imgP36 = new ImagemPequenoProduto();
+      imgP36.setSrcImagem("img/products/signle-product/femininoPequeno.png");
+      imgP36.setProduto(prod7);
 //      
 //      ImagemPequenoProduto imgP37 = new ImagemPequenoProduto();
 //      imgP37.setSrcImagem("img/products/signle-product/escovaFemininaPequena.png");
@@ -1011,97 +924,81 @@ public class ProdutoDAOTest extends BaseController {
 //      imgP42.setSrcImagem("img/products/signle-product/interdentalPequeno.png");
 //      imgP42.setProduto(prod7);
 //      
-//      prod7.setTituloDescritivo("Kit Periodontal - Força feminina");
-//      prod7.setAnotacaoPrincipalDescritivo("A doença periodontal acomete gengiva e periodonto (estrutura de suporte aos dentes) "
-//      		+ "o principal fator de sucesso e controle do tratamento é a perfeita higienizaçao, "
-//      		+ "para isso existem itens que facilitam a higiene. Para sua comodidade montamos o "
-//      		+ "kit perfeito para o seu tratamento não deixando de pensar nos detalhes femininos, é claro!"
-//      		+ "");
+      prod7.setTituloDescritivo("Kit Periodontal - Força feminina");
+      prod7.setAnotacaoPrincipalDescritivo("A doença periodontal acomete gengiva e periodonto (estrutura de suporte aos dentes) "
+      		+ "o principal fator de sucesso e controle do tratamento é a perfeita higienizaçao, "
+      		+ "para isso existem itens que facilitam a higiene. Para sua comodidade montamos o "
+      		+ "kit perfeito para o seu tratamento não deixando de pensar nos detalhes femininos, é claro!"
+      		+ "");
 //      
-//      prod7.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
-//	    		  + "<ul class=\"list-unstyled\">"
-//	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova periodontal;</li>"
-//	              + "<li>Escova interdental;</li>"
-//	              + "<li>Creme dental;</li>"
-//	              + "<li>Fita dental;</li>"
-//	              + "<li>Enxaguante bucal com clorexidina;</li>"
-//	          + "</ul>");
+      prod7.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
+	    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Estojo personalizado;</li>"
+	              + "<li>Escova ultra macia;</li>"
+	              + "<li>Escova interdental;</li>"
+	              + "<li>Creme dental;</li>"
+	              + "<li>Fita dental;</li>"
+	              + "<li>Enxaguante bucal;</li>"
+	          + "</ul>");
 //	  
-//	  prod7.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
-//			  + "<ul class=\"list-unstyled\">"
-//			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-//			  + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-//			  + "<li>Escova interdental: 3 a 7mm;</li>"
-//	          + "<li>Creme dental: 70g;</li>"
-//	          + "<li>Fita dental: 100 metros;</li>"
-//	          + "<li>Enxaguante bucal: 60mL;</li>"
-//	      + "</ul>");
+	  prod7.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores:"
+			  + "<ul class=\"list-unstyled\">"
+			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
+			  + "<li>Escova Ultra macia;</li>"
+			  + "<li>Escova interdental: 3 a 7mm;</li>"
+	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Fita dental: 25 metros;</li>"
+	          + "<li>Enxaguante bucal: 250mL;</li>"
+	      + "</ul>");
 //	  
-//	  prod7.setAnotacaoComposicao("Vimos como fundamental:"
-//			  + "<ul class=\"list-unstyled\">"
-//	          + "<li>Lindo estojo personalizado, que facilita a locomoção dos itens, mantendo-os devidamente organizado e livre de exposições externas;</li>"
-//	          + "<li>Escova macia e anatômica com cerdas macias que não agridem a gengiva, evitando traumas;</li>"
-//	          + "<li>Escova interdental, para os casos onde houve perda óssea, facilitando assim a higienização;</li>"
-//	          + "<li>Pasta de dente, com o princípio de remoção do biofilme dental;</li>"
-//	          + "<li>Fio dental, remove biofilme dental, evitando assim a formação de placa bacteriana;</li>"
-//	          + "<li>Enxaguante bucal remove bactérias causadoras da doença periodontal em ate 95%;</li>"
-//	      + "</ul>");
+	  prod7.setAnotacaoComposicao("Vimos como fundamental:"
+			  + "<ul class=\"list-unstyled\">"
+	          + "<li>Lindo estojo personalizado, que facilita a locomoção dos itens, mantendo-os devidamente organizado e livre de exposições externas;</li>"
+	          + "<li>Escova macia e anatômica com cerdas macias que não agridem a gengiva, evitando traumas;</li>"
+	          + "<li>Escova interdental, para os casos onde houve perda óssea, facilitando assim a higienização;</li>"
+	          + "<li>Pasta de dente, com o princípio de remoção do biofilme dental;</li>"
+	          + "<li>Fio dental, remove biofilme dental, evitando assim a formação de placa bacteriana;</li>"
+	          + "<li>Enxaguante bucal remove bactérias causadoras da doença periodontal em ate 95%;</li>"
+	      + "</ul>");
 //      
-//	  tmp = contidoBase(prod7);
-//      if (Util.isEmpty(tmp)) {
-//    	  inserirProduto(prod7);
-//    	  inserirImagemGrande(imgG36);
+	  tmp = contidoBase(prod7);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod7);
+    	  inserirImagemGrande(imgG36);
 //    	  inserirImagemGrande(imgG37);
 //    	  inserirImagemGrande(imgG38);
 //    	  inserirImagemGrande(imgG39);
 //    	  inserirImagemGrande(imgG40);
 //    	  inserirImagemGrande(imgG41);
 //    	  inserirImagemGrande(imgG42);
-//    	  inserirImagemPequeno(imgP36);
+    	  inserirImagemPequeno(imgP36);
 //    	  inserirImagemPequeno(imgP37);
 //    	  inserirImagemPequeno(imgP38);
 //    	  inserirImagemPequeno(imgP39);
 //    	  inserirImagemPequeno(imgP40);
 //    	  inserirImagemPequeno(imgP41);
 //    	  inserirImagemPequeno(imgP42);
-//      } else {
-//    	  prod7.setId(tmp.getId());
-//    	  atualizarProduto(prod7);
-//      }
+      } else {
+    	  prod7.setId(tmp.getId());
+    	  atualizarProduto(prod7);
+      }
 	  
-//      dao.insert(prod7);
-//      imgDAO.insert(imgG36);
-//      imgDAO.insert(imgG37);
-//      imgDAO.insert(imgG38);
-//      imgDAO.insert(imgG39);
-//      imgDAO.insert(imgG40);
-//      imgDAO.insert(imgG41);
-//      imgDAO.insert(imgG42);
-//      imgPeqDAO.insert(imgP36);
-//      imgPeqDAO.insert(imgP37);
-//      imgPeqDAO.insert(imgP38);
-//      imgPeqDAO.insert(imgP39);
-//      imgPeqDAO.insert(imgP40);
-//      imgPeqDAO.insert(imgP41);
-//      imgPeqDAO.insert(imgP42);
+      Produto prod8 = new Produto();   
       
-//      Produto prod8 = new Produto();   
-//      
-//      prod8.setSrcImagem("img/home/featured-product/kitFemininoPosCirurgico.png");
-//      prod8.setSrcImagemCarrinho("img/products/kitFemininoPosCirurgico64x74.png");
-//      prod8.setTitulo("Kit Pós-Cirúrgico - Feminino");
-//      prod8.setPreco(147D);
-//      prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
-//      prod8.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
-//      prod8.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
-//      prod8.setQtdEstoque(6);
-//      prod8.setDisponivel(true);
+      prod8.setSrcImagem("img/home/featured-product/kitFemininoPosCirurgico.png");
+      prod8.setSrcImagemCarrinho("img/products/kitFemininoPosCirurgico64x74.png");
+      prod8.setTitulo("Kit Pós-Cirúrgico - Feminino");
+      prod8.setPreco(55D);
+      prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
+      prod8.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
+      prod8.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
+      prod8.setQtdEstoque(6);
+      prod8.setDisponivel(true);
 //      
 //   // Tratando secao de detalhe
-//      ImagemGrandeProduto imgG43 = new ImagemGrandeProduto();
-//      imgG43.setSrcImagem("img/products/signle-product/femininoGrande.png");
-//      imgG43.setProduto(prod8);
+      ImagemGrandeProduto imgG43 = new ImagemGrandeProduto();
+      imgG43.setSrcImagem("img/products/signle-product/femininoGrande.png");
+      imgG43.setProduto(prod8);
 //      
 //      ImagemGrandeProduto imgG44 = new ImagemGrandeProduto();
 //      imgG44.setSrcImagem("img/products/signle-product/escovaFemininaGrande.png");
@@ -1119,9 +1016,9 @@ public class ProdutoDAOTest extends BaseController {
 //      imgG47.setSrcImagem("img/products/signle-product/enxaguaGrande.png");
 //      imgG47.setProduto(prod8);
 //      
-//      ImagemPequenoProduto imgP43 = new ImagemPequenoProduto();
-//      imgP43.setSrcImagem("img/products/signle-product/femininoPequeno.png");
-//      imgP43.setProduto(prod8);
+      ImagemPequenoProduto imgP43 = new ImagemPequenoProduto();
+      imgP43.setSrcImagem("img/products/signle-product/femininoPequeno.png");
+      imgP43.setProduto(prod8);
 //      
 //      ImagemPequenoProduto imgP44 = new ImagemPequenoProduto();
 //      imgP44.setSrcImagem("img/products/signle-product/escovaFemininaPequena.png");
@@ -1139,69 +1036,57 @@ public class ProdutoDAOTest extends BaseController {
 //      imgP47.setSrcImagem("img/products/signle-product/enxaguaPequeno.png");
 //      imgP47.setProduto(prod8);
 //      
-//      prod8.setTituloDescritivo("Kit Pós-Cirúrgico - Toque feminino");
-//      prod8.setAnotacaoPrincipalDescritivo("Os cuidados no pós-cirúrgico são essenciais para o sucesso de um tratamento. "
-//      		+ "Entre eles destacamos a higienização bucal. "
-//      		+ "Pensando nisso montamos um kit que se adéqua a esse momento delicado da sua saúde. Lembrando do lado feminino."
-//      		+ "");
+      prod8.setTituloDescritivo("Kit Pós-Cirúrgico - Toque feminino");
+      prod8.setAnotacaoPrincipalDescritivo("Os cuidados no pós-cirúrgico são essenciais para o sucesso de um tratamento. "
+      		+ "Entre eles destacamos a higienização bucal. "
+      		+ "Pensando nisso montamos um kit que se adéqua a esse momento delicado da sua saúde. Lembrando do lado feminino."
+      		+ "");
 //      
-//      prod8.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
-//	    		  + "<ul class=\"list-unstyled\">"
-//	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova macia;</li>"
-//	              + "<li>Creme dental;</li>"
-//	              + "<li>Fio dental;</li>"
-//	              + "<li>Enxaguante bucal com clorexidina;</li>"
-//	          + "</ul>");
+      prod8.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
+	    		  + "<ul class=\"list-unstyled\">"
+	              + "<li>Estojo personalizado;</li>"
+	              + "<li>Escova macia;</li>"
+	              + "<li>Creme dental;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Enxaguante bucal;</li>"
+	          + "</ul>");
 //	  
-//	  prod8.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
-//			  + "<ul class=\"list-unstyled\">"
-//			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
-//	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-//	          + "<li>Creme dental: 70g;</li>"
-//	          + "<li>Fio dental: 100 metros;</li>"
-//	          + "<li>Enxaguante bucal: 60mL;</li>"
-//	      + "</ul>");
+	  prod8.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+			  + "<ul class=\"list-unstyled\">"
+			  + "<li>Kit: 25 cm (Largura), 23 cm (Altura), 10 cm (Comprimento);</li>"
+	          + "<li>Escova ultra macia;</li>"
+	          + "<li>Creme dental: 70g;</li>"
+	          + "<li>Fio dental: 50 metros;</li>"
+	          + "<li>Enxaguante bucal: 250mL;</li>"
+	      + "</ul>");
 //	  
-//	  prod8.setAnotacaoComposicao("Vimos como fundamental:"
-//			  + "<ul class=\"list-unstyled\">"
-//	          + "<li>Lindo estojo personalizado, com detalhes que facilitam o uso, tornando fácil transportar o kit no dia a dia;</li>"
-//	          + "<li>Escova com cerdas macias que não agride a área operada;</li>"
-//	          + "<li>Creme dental, remove o biofilme dental;</li>"
-//	          + "<li>Fio dental, remove biofilme dental localizado entre os dentes;</li>"
-//	          + "<li>Enxaguante bucal, diminuindo a proliferação bacteriana na área operada evitando infecções;</li>"
-//	      + "</ul>");
+	  prod8.setAnotacaoComposicao("Vimos como fundamental:"
+			  + "<ul class=\"list-unstyled\">"
+	          + "<li>Lindo estojo personalizado, com detalhes que facilitam o uso, tornando fácil transportar o kit no dia a dia;</li>"
+	          + "<li>Escova com cerdas macias que não agride a área operada;</li>"
+	          + "<li>Creme dental, remove o biofilme dental;</li>"
+	          + "<li>Fio dental, remove biofilme dental localizado entre os dentes;</li>"
+	          + "<li>Enxaguante bucal, diminuindo a proliferação bacteriana na área operada evitando infecções;</li>"
+	      + "</ul>");
 //      
-//	  tmp = contidoBase(prod8);
-//      if (Util.isEmpty(tmp)) {
-//    	  inserirProduto(prod8);
-//    	  inserirImagemGrande(imgG43);
+	  tmp = contidoBase(prod8);
+      if (Util.isEmpty(tmp)) {
+    	  inserirProduto(prod8);
+    	  inserirImagemGrande(imgG43);
 //    	  inserirImagemGrande(imgG44);
 //    	  inserirImagemGrande(imgG45);
 //    	  inserirImagemGrande(imgG46);
 //    	  inserirImagemGrande(imgG47);
-//    	  inserirImagemPequeno(imgP43);
+    	  inserirImagemPequeno(imgP43);
 //    	  inserirImagemPequeno(imgP44);
 //    	  inserirImagemPequeno(imgP45);
 //    	  inserirImagemPequeno(imgP46);
 //    	  inserirImagemPequeno(imgP47);
-//      } else {
-//    	  prod8.setId(tmp.getId());
-//    	  atualizarProduto(prod8);
-//      }
+      } else {
+    	  prod8.setId(tmp.getId());
+    	  atualizarProduto(prod8);
+      }
 	  
-//      dao.insert(prod8);
-//      imgDAO.insert(imgG43);
-//      imgDAO.insert(imgG44);
-//      imgDAO.insert(imgG45);
-//      imgDAO.insert(imgG46);
-//      imgDAO.insert(imgG47);
-//      imgPeqDAO.insert(imgP43);
-//      imgPeqDAO.insert(imgP44);
-//      imgPeqDAO.insert(imgP45);
-//      imgPeqDAO.insert(imgP46);
-//      imgPeqDAO.insert(imgP47);
-      
       Produto prod9 = new Produto();   
       
       prod9.setSrcImagem("img/home/featured-product/kitInfantilFeminino.png");
@@ -1209,7 +1094,7 @@ public class ProdutoDAOTest extends BaseController {
       prod9.setTitulo("Kit Infantil - Para meninas");
       prod9.setSubTitulo("Delicadeza das meninas");
       prod9.setDescritivo("Coisa que menina sabe...");
-      prod9.setPreco(40D);
+      prod9.setPreco(55D);
       prod9.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod9.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       prod9.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
@@ -1267,28 +1152,28 @@ public class ProdutoDAOTest extends BaseController {
       prod9.setAnotacaoDetalhe("<p>O que oferecemos:</p>"
 	    		  + "<ul class=\"list-unstyled\">"
 	              + "<li>Estojo personalizado;</li>"
-//	              + "<li>Escova macia;</li>"
-//	              + "<li>Pasta de dente infantil;</li>"
-//	              + "<li>Fio dental;</li>"
-//	              + "<li>Toalinha;</li>"
+	              + "<li>Escova ultra macia;</li>"
+	              + "<li>Pasta de dente infantil;</li>"
+	              + "<li>Fio dental;</li>"
+	              + "<li>Toalinha;</li>"
 	          + "</ul>");
 	  
-	  prod9.setAnotacaoTecnica("Descritivo dos itens (dimensões):"
+	  prod9.setAnotacaoTecnica("Descritivo dos itens (dimensões), considerando a variação conforme a disposição dos fornecedores:"
 			  + "<ul class=\"list-unstyled\">"
 			  + "<li>Kit: 22 cm (Largura), 14 cm (Altura), 10 cm (Comprimento);</li>"
-//	          + "<li>Escova Curaprox 5460 Ultra macia - 0,10 mm de diâmetro;</li>"
-//	          + "<li>Creme dental: 50g;</li>"
-//	          + "<li>Fio dental: 100 metros;</li>"
-//	          + "<li>Toalha: 23x34cm;</li>"
+	          + "<li>Escova ultra macia;</li>"
+	          + "<li>Creme dental: 50g;</li>"
+	          + "<li>Fio dental: 25 metros;</li>"
+	          + "<li>Toalha de rosto;</li>"
 	      + "</ul>");
 	  
 	  prod9.setAnotacaoComposicao("Vimos como fundamental:"
 			  + "<ul class=\"list-unstyled\">"
 	          + "<li>Estojo personalizado, formato anatômico de fácil utilização, com cores alegres;</li>"
-//	          + "<li>Escova macia com formato adequado para a boquinha das crianças;</li>"
-//	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
-//	          + "<li>Fio dental, remove biofilme dental, evitando a formação de placa bacteriana;</li>"
-//	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
+	          + "<li>Escova macia com formato adequado para a boquinha das crianças;</li>"
+	          + "<li>Pasta de dente, remove o biofilme dental;</li>"
+	          + "<li>Fio dental, remove biofilme dental, evitando a formação de placa bacteriana;</li>"
+	          + "<li>Toalha, com foco em facilitar a higienizaçao;</li>"
 	      + "</ul>");
       
 	  tmp = contidoBase(prod9);
@@ -1299,7 +1184,7 @@ public class ProdutoDAOTest extends BaseController {
 //    	  inserirImagemGrande(imgG50);
 //    	  inserirImagemGrande(imgG51);
 //    	  inserirImagemGrande(imgG52);
-//    	  inserirImagemPequeno(imgP48);
+    	  inserirImagemPequeno(imgP48);
 //    	  inserirImagemPequeno(imgP49);
 //    	  inserirImagemPequeno(imgP50);
 //    	  inserirImagemPequeno(imgP51);
@@ -1309,18 +1194,6 @@ public class ProdutoDAOTest extends BaseController {
     	  atualizarProduto(prod9);
       }
       
-//      dao.insert(prod9);
-//      imgDAO.insert(imgG48);
-//      imgDAO.insert(imgG49);
-//      imgDAO.insert(imgG50);
-//      imgDAO.insert(imgG51);
-//      imgDAO.insert(imgG52);
-//      imgPeqDAO.insert(imgP48);
-//      imgPeqDAO.insert(imgP49);
-//      imgPeqDAO.insert(imgP50);
-//      imgPeqDAO.insert(imgP51);
-//      imgPeqDAO.insert(imgP52);
-//      
 //      Produto prod9 = new Produto();   
 //      
 //      prod9.setSrcImagem("img/home/featured-product/product-06.jpg");
