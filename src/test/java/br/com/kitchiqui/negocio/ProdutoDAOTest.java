@@ -144,7 +144,7 @@ public class ProdutoDAOTest extends BaseController {
       prod.setSrcImagem("img/home/banner-slider/kitVitrineOrtoMasculino.png");
       prod.setSrcImagemCarrinho("img/products/kitVitrineOrtoMasculino64x74.png");
       prod.setTitulo("Kit Ortodontico - Masculino");
-      prod.setPreco(65D);
+      prod.setPreco(75D);
       prod.setSubTitulo("Promoção do mês");
       prod.setDescritivo("Essencial na Organização");
       prod.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
@@ -289,7 +289,7 @@ public class ProdutoDAOTest extends BaseController {
       prod2.setSrcImagem("img/home/featured-product/kitMasculinoPosCirurgico.png");
       prod2.setSrcImagemCarrinho("img/products/kitMasculinoPosCirurgico64x74.png");
       prod2.setTitulo("KIT Pós-cirurgico");
-      prod2.setPreco(55D);
+      prod2.setPreco(65D);
       prod2.setSubTitulo("Delicadeza com carinho");
       prod2.setDescritivo("Para cuidar de você");
       prod2.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
@@ -394,7 +394,7 @@ public class ProdutoDAOTest extends BaseController {
       prod3.setSrcImagem("img/home/featured-product/kitPeriodontalMasculino.png");
       prod3.setSrcImagemCarrinho("img/products/kitPeriodontalMasculino64x74.png");
       prod3.setTitulo("Kit Periodontal");
-      prod3.setPreco(65D);
+      prod3.setPreco(75D);
       prod3.setSubTitulo("Tratamento e Controle");
       prod3.setDescritivo("Sua gengiva mais saudável");
       prod3.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
@@ -522,7 +522,7 @@ public class ProdutoDAOTest extends BaseController {
       prod4.setSrcImagem("img/home/featured-product/kitStandart.png");
       prod4.setSrcImagemCarrinho("img/products/kitStandart64x74.png");
       prod4.setTitulo("Kit Standard - Essencial");
-      prod4.setPreco(35D);
+      prod4.setPreco(45D);
       prod4.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod4.setEspecie(EnumEspecie.PRODUTO_MASCULINO.getEspecie());
       prod4.setClasse(EnumClasseProduto.KIT_STANDART.getClasse());
@@ -612,7 +612,7 @@ public class ProdutoDAOTest extends BaseController {
       prod5.setTitulo("Kit Infantil - Para Meninos");
       prod5.setSubTitulo("Sucesso escolar");
       prod5.setDescritivo("");
-      prod5.setPreco(55D);
+      prod5.setPreco(65D);
       prod5.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod5.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       prod5.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
@@ -719,7 +719,7 @@ public class ProdutoDAOTest extends BaseController {
       prod6.setTitulo("Kit Ortodontico - Feminino");
       prod6.setSubTitulo("Olhar feminino");
       prod6.setDescritivo("Requinte de mulher!");
-      prod6.setPreco(65D);
+      prod6.setPreco(75D);
       prod6.setTipo(EnumTipoProduto.PRODUTO_VITRINE.getTipo());
       prod6.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       prod6.setClasse(EnumClasseProduto.KIT_ORTODONTICO.getClasse());
@@ -860,7 +860,7 @@ public class ProdutoDAOTest extends BaseController {
       prod7.setSrcImagem("img/home/featured-product/kitPeriodontalFeminino.png");
       prod7.setSrcImagemCarrinho("img/products/kitPeriodontalFeminino64x74.png");
       prod7.setTitulo("Kit Periodontal - Feminino");
-      prod7.setPreco(65D);
+      prod7.setPreco(75D);
       prod7.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod7.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       prod7.setClasse(EnumClasseProduto.KIT_PERIODONTAL.getClasse());
@@ -988,7 +988,7 @@ public class ProdutoDAOTest extends BaseController {
       prod8.setSrcImagem("img/home/featured-product/kitFemininoPosCirurgico.png");
       prod8.setSrcImagemCarrinho("img/products/kitFemininoPosCirurgico64x74.png");
       prod8.setTitulo("Kit Pós-Cirúrgico - Feminino");
-      prod8.setPreco(55D);
+      prod8.setPreco(65D);
       prod8.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod8.setEspecie(EnumEspecie.PRODUTO_FEMININO.getEspecie());
       prod8.setClasse(EnumClasseProduto.KIT_POSCIRURGICO.getClasse());
@@ -1094,7 +1094,7 @@ public class ProdutoDAOTest extends BaseController {
       prod9.setTitulo("Kit Infantil - Para meninas");
       prod9.setSubTitulo("Delicadeza das meninas");
       prod9.setDescritivo("Coisa que menina sabe...");
-      prod9.setPreco(55D);
+      prod9.setPreco(65D);
       prod9.setTipo(EnumTipoProduto.PRODUTO_DESTAQUE.getTipo());
       prod9.setEspecie(EnumEspecie.PRODUTO_INFANTIL.getEspecie());
       prod9.setClasse(EnumClasseProduto.KIT_ESCOLAR.getClasse());
